@@ -1,0 +1,120 @@
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace JLProject{
+    public abstract class HealthSystem : MonoBehaviour{
+        [SerializeField] protected float _maximumhealth = 100.0f;
+        public float MaxHealth{
+            get{ return _maximumhealth; }
+            protected set{ _maximumhealth = value; }
+        }
+        [SerializeField] protected float _currenthealth;
+        public float CurrentHealth{
+            get{ return _currenthealth; }
+            protected set{ _currenthealth = value; }
+        }
+        [SerializeField] protected float _armorvalue;
+        public float ArmorValue{
+            get{ return _armorvalue; }
+            set{ _armorvalue = value; }
+        }
+        [SerializeField] protected Damage.Faction _faction;
+        public Damage.Faction Faction{
+            get{ return _faction; }
+            set{ _faction = value; }
+        }
+        
+        public List<StatusObject.StatusType> StatusImmunities = new List<StatusObject.StatusType>(); 
+        //WORK ON THIS 
+        public List<StatusObject> Afflictions = new List<StatusObject>();
+
+        public float curShield;
+        public UIHealth UIhp;
+
+        public bool IsDead{ get; protected set; }
+        public bool CanRevive{ get; protected set; }
+
+        protected Action onDeath = delegate{ };
+        public Action OnDeath{
+            get{ return onDeath; }
+            set{ onDeath = value; }
+        }
+
+        protected Action onRevive = delegate{  };
+        public Action OnRevive{
+            get{ return onRevive; }
+            set{ onRevive = value; }
+        }
+
+        public delegate void TookDamageEvent(float hp);
+        public event TookDamageEvent TookDamage;
+
+        public delegate void HealDamageEvent(float hp);
+        public event HealDamageEvent HealDamage;
+
+        // Use this for initialization
+        void Start(){
+            _currenthealth = _maximumhealth;
+        }
+
+        public float HealthPercent(){
+            return _currenthealth / _maximumhealth;
+        }
+
+        /// <summary>
+        /// lose some health = [damage - armor]
+        /// </summary>
+        /// <param name="damage"></param>
+        public virtual void TakeDamage(object source, ref Damage.DamageEventArgs args){
+            if (_maximumhealth > 0){
+                _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0, _maximumhealth);
+                if (TookDamage != null) TookDamage(args.DamageValue);
+                if (_currenthealth == 0){
+                    HandleDeath();
+                }
+            }
+        }
+
+        /// <summary>
+        /// take some damage from a status effect, this damage is unmitigated
+        /// </summary>
+        /// <param name="damage"></param>
+        /// <param name="type"></param>
+        public virtual void TakeStatusDamage(float damage, StatusObject.StatusType type){
+            if (!StatusImmunities.Contains(type)){
+                if (_maximumhealth > 0){
+                    _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
+                    if (TookDamage != null) TookDamage(damage);
+                    if (_currenthealth == 0){
+                        HandleDeath();
+                    }
+                }
+            }
+            else{
+                if (TookDamage != null) TookDamage(0);
+            }
+        }
+
+        /// <summary>
+        /// heal some health
+        /// </summary>
+        /// <param name="heal"></param>
+        public virtual void Heal(object source, int heal){
+            _currenthealth = Mathf.Clamp(_currenthealth + heal, 0, _maximumhealth);
+            if (HealDamage != null) HealDamage(heal);
+        }
+
+        protected virtual void HandleDeath(){
+            if (IsDead) return;
+            IsDead = true;
+            OnDeath();
+        }
+
+        protected virtual void HandleRevive(){
+            if (!IsDead) return;
+            IsDead = false;
+            OnRevive();
+        }
+    }
+}

@@ -1,0 +1,47 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using JLProject;
+using UnityEngine;
+
+public class Explosive : Weapon{
+    private List<Entity> _targets = new List<Entity>();
+    public float Damage = 10.0f;
+    public Damage.DamageType Type = JLProject.Damage.DamageType.Explosive;
+    public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
+    private Damage.DamageEventArgs args;
+
+    //change this to use a sphere cast or something???
+    void Start(){
+       args = new Damage.DamageEventArgs(Damage, this.transform.position, Type, Faction);
+    }
+
+    public override void Fire(){
+        foreach (Entity e in _targets){
+            if (e.gameObject != null){
+                e.TakeDamage(this.gameObject, ref args);
+            }
+            else{
+                _targets.Remove(e);
+            }
+        }
+    }
+
+    //is this efficient??
+    //Explosion using an always enabled trigger volume to amass potential targets, then executes the explosion on targets when told to do so
+    void OnTriggerEnter(Collider c){
+        if (c.GetComponent<Entity>()){
+            Entity ent = c.gameObject.GetComponent<Entity>();
+            if (ent.Faction == JLProject.Damage.Faction.Player){
+                _targets.Add(ent);
+            }
+        }
+    }
+
+    void OntTriggerExit(Collider c){
+        Entity ent = c.gameObject.GetComponent<Entity>();
+        if (_targets.Contains(ent)){
+            _targets.Remove(ent);
+        }
+    }
+}
