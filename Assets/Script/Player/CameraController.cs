@@ -6,9 +6,9 @@ namespace JLProject{
     public class CameraController : MonoBehaviour{
         private Transform _player;
         private Camera c;
-        public float CameraHeight = 11, CameraHorizontal = 0, CameraVertical = -5;
+        public float CameraHeight = 9.0f, CameraHorizontal = 0.0f, CameraVertical = -7.5f;
         public bool LockedToPlayer = true;
-        public float CameraFollowDelay = 0.4f; //How behind the camera is when the player moves
+        public float CameraFollowDelay = 0.1f; //How behind the camera is when the player moves
         private float _screenHeight, _screenWidth, _cameraHeight, _cameraTimetoReach;
         private Vector3 _target;
 

@@ -27,11 +27,12 @@ public class GameController : MonoBehaviour{
         _pauseMenu = pauseUI.GetComponent<PauseMenu>();
         _pauseMenu.Restart += RestartLevel;
         _pauseMenu.LoadNext += LoadNextLevel;
-
+        _pauseMenu.LoadMain += LoadMainMenu;
+        _pauseMenu.ResumeGame += TogglePause;
         //world triggers
     }
 
-	// Update is called once per frame
+    // Update is called once per frame
 	void Update (){
 	    Pause();
 	}
@@ -41,7 +42,10 @@ public class GameController : MonoBehaviour{
     /// </summary>
     public void RestartLevel(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
+        Cursor.lockState = CursorLockMode.Confined;
+        paused = false;
+        pauseUI.SetActive(false);
+        Time.timeScale = 1.0f;
     }
 
     /// <summary>
@@ -52,24 +56,35 @@ public class GameController : MonoBehaviour{
         RestartLevel();
     }
 
+    /// <summary>
+    /// loads main menu
+    /// </summary>
+    private void LoadMainMenu() {
+        throw new System.NotImplementedException();
+    }
+
     //Move this to the pause handler
     /// <summary>
     /// pause the game
     /// </summary>
     private void Pause(){
         if (Input.GetKeyDown(KeyCode.Escape)){
-            if (!paused) {
-                Cursor.lockState = CursorLockMode.None;
-                paused = true;
-                pauseUI.SetActive(true);
-                Time.timeScale = 0.0f;
-            }
-            else{
-                Cursor.lockState = CursorLockMode.Confined;
-                paused = false;
-                pauseUI.SetActive(false);
-                Time.timeScale = 1.0f;
-            }
+            TogglePause();   
+        }
+    }
+
+    private void TogglePause(){
+        if (!paused) {
+            Cursor.lockState = CursorLockMode.None;
+            paused = true;
+            pauseUI.SetActive(true);
+            Time.timeScale = 0.0f;
+        }
+        else {
+            Cursor.lockState = CursorLockMode.Confined;
+            paused = false;
+            pauseUI.SetActive(false);
+            Time.timeScale = 1.0f;
         }
     }
 }

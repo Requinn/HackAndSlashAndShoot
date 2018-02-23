@@ -12,7 +12,7 @@ namespace JLProject{
         private CharacterController cc;
         private Vector3 _MoveDir = Vector3.zero; //not going anywhere
         private Vector3 _MousePos;
-
+        private int floorMask;
         public Weapon CurrentWeapon;
 
         public Transform WeaponAttachPoint;
@@ -20,6 +20,9 @@ namespace JLProject{
 
         private List<Weapon> _weaponsInHand = new List<Weapon>(2);
 
+        void Awake(){
+            floorMask = LayerMask.GetMask("Floor");
+        }
         void Start(){
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
@@ -59,13 +62,15 @@ namespace JLProject{
 
         /// <summary>
         /// rotates the characters towards the mouse
+        /// TODO fix bug where rotations are off because the camera is angled and the mous inpout doesn't reflect that
         /// </summary>
         private Vector3 GetMousePosition(){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    //cast a ray to the mouse position in world
             Plane hPlane = new Plane(Vector3.up, Vector3.zero);             //create a plane using the up vector and origin
             float dist = 0.0f;
-            if (hPlane.Raycast(ray, out dist)){                             //OUT where our mouse sits on this plane and raycast the direction
-                return ray.GetPoint(dist);      
+            if (hPlane.Raycast(ray, out dist)){
+                //OUT where our mouse sits on this plane and raycast the direction
+                return ray.GetPoint(dist);
             }
             return Vector3.zero;
         }
@@ -101,39 +106,44 @@ namespace JLProject{
         /// </summary>
         /// <param name="GO"></param>
         public void Equip(GameObject GO){
-            //we have a weapon in both slots, replace the current by:
-            //setting current weapon to the new instance, destroying the old one, then setting our current weapon to the one we just picked up
-            if (_weaponsInHand.Count >= 2){
-                /**if (CurrentWeapon.type == Weapon.Type.Ranged){
-                    ObjectPooler.ObjectPool.UnPoolItem(CurrentWeapon.GetComponent<Gun>().bullet);
-                }**/
-                _weaponsInHand[_weaponsInHand.IndexOf(CurrentWeapon)] = GO.GetComponent<Weapon>();
-                Destroy(CurrentWeapon.gameObject);
-                CurrentWeapon = GO.GetComponent<Weapon>();
-                GO.transform.parent = WeaponAttachPoint.transform;
-                GO.transform.position = WeaponAttachPoint.position;
-                GO.transform.rotation = WeaponAttachPoint.rotation;
-            }
-            else{
-                if (CurrentWeapon == null){
-                    //if we don't have one
-                    _weaponsInHand.Add(GO.GetComponent<Weapon>());
-                    CurrentWeapon = _weaponsInHand[0];
+            if (GO.GetComponent<Weapon>()){
+                //we have a weapon in both slots, replace the current by:
+                //setting current weapon to the new instance, destroying the old one, then setting our current weapon to the one we just picked up
+                if (_weaponsInHand.Count >= 2){
+                    /**if (CurrentWeapon.type == Weapon.Type.Ranged){
+                        ObjectPooler.ObjectPool.UnPoolItem(CurrentWeapon.GetComponent<Gun>().bullet);
+                    }**/
+                    _weaponsInHand[_weaponsInHand.IndexOf(CurrentWeapon)] = GO.GetComponent<Weapon>();
+                    Destroy(CurrentWeapon.gameObject);
+                    CurrentWeapon = GO.GetComponent<Weapon>();
                     GO.transform.parent = WeaponAttachPoint.transform;
                     GO.transform.position = WeaponAttachPoint.position;
                     GO.transform.rotation = WeaponAttachPoint.rotation;
                 }
-                else if (_weaponsInHand[0] != null){
-                    //if we have a weapon already, put it in the secondary slot
-                    _weaponsInHand.Add(GO.GetComponent<Weapon>());
-                    _weaponsInHand[1].gameObject.SetActive(false);
-                    GO.transform.parent = WeaponAttachPoint.transform;
-                    GO.transform.position = WeaponAttachPoint.position;
-                    GO.transform.rotation = WeaponAttachPoint.rotation;
+                else{
+                    if (CurrentWeapon == null){
+                        //if we don't have one
+                        _weaponsInHand.Add(GO.GetComponent<Weapon>());
+                        CurrentWeapon = _weaponsInHand[0];
+                        GO.transform.parent = WeaponAttachPoint.transform;
+                        GO.transform.position = WeaponAttachPoint.position;
+                        GO.transform.rotation = WeaponAttachPoint.rotation;
+                    }
+                    else if (_weaponsInHand[0] != null){
+                        //if we have a weapon already, put it in the secondary slot
+                        _weaponsInHand.Add(GO.GetComponent<Weapon>());
+                        _weaponsInHand[1].gameObject.SetActive(false);
+                        GO.transform.parent = WeaponAttachPoint.transform;
+                        GO.transform.position = WeaponAttachPoint.position;
+                        GO.transform.rotation = WeaponAttachPoint.rotation;
+                    }
+                }
+                if (GO.GetComponent<Gun>()){
+                    ObjectPooler.ObjectPool.PoolItem(GO.GetComponent<Gun>().bullet);
                 }
             }
-            if (GO.GetComponent<Gun>()){
-                ObjectPooler.ObjectPool.PoolItem(GO.GetComponent<Gun>().bullet);
+            if (GO.GetComponent<Shield>()){
+                
             }
         }
 

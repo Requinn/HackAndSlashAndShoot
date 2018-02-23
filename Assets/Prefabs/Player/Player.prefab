@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002170645820572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.306568, y: 2.6, z: 1.585}
+  m_LocalPosition: {x: 25.439354, y: 5.14, z: 5.611224}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4274008265826652}
@@ -156,6 +156,8 @@ MonoBehaviour:
   _currenthealth: 100
   _armorvalue: 0
   _faction: 1
+  StatusImmunities: 
+  Afflictions: []
   curShield: 0
   UIhp: {fileID: 0}
   speed: 9

@@ -22,7 +22,7 @@ public class ShortPistol : Gun{
         //pool objects on level start
         //don't allow weapon swapping mid mission to avoid repooling mid level
         if (_canAttack){
-            GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject("PlayerProjectile");
+            GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
             if (bullet != null){
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 rb.velocity = transform.TransformDirection(new Vector3(bullet.GetComponent<IProjectile>().GetVelocity(), 0, 0));

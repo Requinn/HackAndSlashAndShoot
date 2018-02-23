@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// A base class to handle health values on all entities
+/// - Big Thanks to Michael Wolf for letting me use some of his ideas
+/// </summary>
 namespace JLProject{
     public abstract class HealthSystem : MonoBehaviour{
         [SerializeField] protected float _maximumhealth = 100.0f;
@@ -30,7 +34,7 @@ namespace JLProject{
         public List<StatusObject> Afflictions = new List<StatusObject>();
 
         public float curShield;
-        public UIHealth UIhp;
+        public HealthBar UIhp;
 
         public bool IsDead{ get; protected set; }
         public bool CanRevive{ get; protected set; }
@@ -62,6 +66,11 @@ namespace JLProject{
             return _currenthealth / _maximumhealth;
         }
 
+        public void UpdateHealthUI(){
+            if (UIhp){
+                UIhp.UpdateHealthBar(HealthPercent());
+            }
+        }
         /// <summary>
         /// lose some health = [damage - armor]
         /// </summary>
@@ -70,10 +79,23 @@ namespace JLProject{
             if (_maximumhealth > 0){
                 _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0, _maximumhealth);
                 if (TookDamage != null) TookDamage(args.DamageValue);
+                UpdateHealthUI();
                 if (_currenthealth == 0){
                     HandleDeath();
                 }
             }
+        }
+
+        /// <summary>
+        /// Calculates the effective damage on the HealthManager, AFTER mutators.
+        /// Override this for changing how damage is handled specifically on this class.
+        /// Alternatively, attach a mutator. -Michael W.
+        /// </summary>
+        /// <param name="e"></param>
+        /// <returns></returns>
+        protected virtual float CalculateDamage(Damage.DamageEventArgs e) {
+            // For the simplest case, just pass the raw DamageValue.
+            return e.DamageValue;
         }
 
         /// <summary>
@@ -86,6 +108,7 @@ namespace JLProject{
                 if (_maximumhealth > 0){
                     _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
                     if (TookDamage != null) TookDamage(damage);
+                    UpdateHealthUI();
                     if (_currenthealth == 0){
                         HandleDeath();
                     }
@@ -103,6 +126,7 @@ namespace JLProject{
         public virtual void Heal(object source, int heal){
             _currenthealth = Mathf.Clamp(_currenthealth + heal, 0, _maximumhealth);
             if (HealDamage != null) HealDamage(heal);
+            UpdateHealthUI();
         }
 
         protected virtual void HandleDeath(){

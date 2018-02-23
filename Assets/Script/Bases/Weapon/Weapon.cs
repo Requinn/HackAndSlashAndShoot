@@ -15,6 +15,7 @@ namespace JLProject{
             Melee,
             Ranged
         }
+
         /// <summary>
         /// perform the attack
         /// </summary>

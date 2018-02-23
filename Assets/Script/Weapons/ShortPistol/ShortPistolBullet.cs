@@ -28,7 +28,6 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
 
     public void OnTriggerEnter(Collider c){
         Entity ent = c.gameObject.GetComponent<Entity>();
-        Debug.Log(ent);
         if (ent != null){
             if (ent.Faction != Damage.Faction.Player || ent.Faction != Damage.Faction.Allied){
                 //fix this later

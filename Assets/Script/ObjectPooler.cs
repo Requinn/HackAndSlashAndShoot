@@ -43,9 +43,9 @@ public class ObjectPooler : MonoBehaviour{
     }**/
 
     //get an inactive object to use
-    public GameObject GetPooledObject(string tag){
+    public GameObject GetPooledObject(GameObject opi){
         for (int i = 0; i < pooledObjects.Count; i++){
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].tag == tag){
+            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == opi.name+"(Clone)") {
                 return pooledObjects[i];
             }
         }

@@ -5,7 +5,11 @@ using JLProject;
 
 public class PauseMenu : MonoBehaviour{
     public delegate void PauseEvent();
-    public event PauseEvent Restart, LoadNext, LoadMain;
+    public event PauseEvent Restart, LoadNext, LoadMain, ResumeGame;
+
+    public void Start(){
+        gameObject.SetActive(false);
+    }
 
     public void RestartLevel(){
         Restart();
@@ -19,4 +23,7 @@ public class PauseMenu : MonoBehaviour{
         LoadMain();
     }
 
+    public void Resume(){
+        ResumeGame();
+    }
 }

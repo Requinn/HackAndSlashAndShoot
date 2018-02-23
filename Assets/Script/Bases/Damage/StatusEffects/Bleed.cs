@@ -19,9 +19,6 @@ public class Bleed : StatusObject{
         _initTime = Time.time;
     }
 
-    void InitializeProc(){
-        tickCount = duration / tickDelay;
-    }
     void Update(){
         if (_canTick && tickCount >= 0){
             GetComponentInParent<Entity>().TakeStatusDamage(damagePerTick, StatusType.Bleed);
