@@ -7,6 +7,7 @@ public class SingleSpawner : MonoBehaviour{
     void OnEnable(){
         SpawnObj();
     }
+
     void SpawnObj(){
         SpawnedObj = Instantiate(SpawnedObj, transform.position, Quaternion.identity);
     }

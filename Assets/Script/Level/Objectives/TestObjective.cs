@@ -9,7 +9,7 @@ using UnityEngine;
 public class TestObjective : LevelObjective, IKillObjective{
     public bool PreSpawn;
     public List<SingleSpawner> EnemyList = new List<SingleSpawner>();
-    public Unlockable ObjToUnlock;
+    //public Unlockable ObjToUnlock;
     [SerializeField] private int _deathCount = 0;
     private bool _spawned = false;
     public void Awake(){
@@ -51,8 +51,8 @@ public class TestObjective : LevelObjective, IKillObjective{
 
     public void CheckCompletion(){
         if (_deathCount == EnemyList.Count){
-            ObjToUnlock.Locked = false;
-            ObjToUnlock.Open();
+            ObjectToUnlock.Locked = false;
+            ObjectToUnlock.Open();
             OnCompleteObjective();
         }
     }

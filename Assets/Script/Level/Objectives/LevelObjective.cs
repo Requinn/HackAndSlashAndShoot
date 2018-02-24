@@ -16,6 +16,10 @@ namespace JLProject{
             Trigger
 
         }
+
+        public Unlockable ObjectToUnlock;
+        public Unlockable ObjectToLock;
+
         protected Action onCompleteObjective = delegate { };
         public Action OnCompleteObjective {
             get { return onCompleteObjective; }
