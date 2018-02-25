@@ -43,6 +43,9 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         else if(c.gameObject.tag == "Environment"){
             gameObject.SetActive(false);
         }
+        else if (c.gameObject.tag == "Switch"){
+            c.GetComponent<Switch>().Toggle();
+        }
     }
 
     private IEnumerator<float> DelayedRepool(float t){
