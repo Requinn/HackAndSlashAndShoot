@@ -14,7 +14,7 @@ namespace JLProject{
         private Vector3 _MousePos;
         private int floorMask;
         public Weapon CurrentWeapon;
-
+        public Shield CurrentShield;
         public Transform WeaponAttachPoint;
         public Transform ShieldAttachPoint;
 
@@ -44,7 +44,15 @@ namespace JLProject{
         /// gets mous input
         /// </summary>
         private void MouseInput(){
-            if (Input.GetMouseButtonDown(0) && CurrentWeapon != null){               
+            if (Input.GetMouseButton(1) && CurrentShield != null){
+                if (!CurrentShield.broken){
+                    CurrentShield.blocking = true;
+                }
+                else{
+                    CurrentShield.blocking = false;
+                }
+            }
+            else if (Input.GetMouseButtonDown(0) && CurrentWeapon != null){
                 CurrentWeapon.Fire();
             }
         }
@@ -61,15 +69,14 @@ namespace JLProject{
         }
 
         /// <summary>
-        /// rotates the characters towards the mouse
-        /// TODO fix bug where rotations are off because the camera is angled and the mous inpout doesn't reflect that
+        /// rotates the characters towards the mouse  
         /// </summary>
         private Vector3 GetMousePosition(){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    //cast a ray to the mouse position in world
-            Plane hPlane = new Plane(Vector3.up, Vector3.zero);             //create a plane using the up vector and origin
+            Plane hPlane = new Plane(Vector3.up, transform.position);       //create a plane using the up vector and ourselves
             float dist = 0.0f;
-            if (hPlane.Raycast(ray, out dist)){
-                //OUT where our mouse sits on this plane and raycast the direction
+            if (hPlane.Raycast(ray, out dist)){                             //raycast onto our plane with our mouse input
+                //OUT where our mouse sits on this plane and raycast the direction3 
                 return ray.GetPoint(dist);
             }
             return Vector3.zero;

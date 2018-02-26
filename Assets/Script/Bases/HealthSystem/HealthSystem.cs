@@ -33,8 +33,9 @@ namespace JLProject{
         //WORK ON THIS 
         public List<StatusObject> Afflictions = new List<StatusObject>();
 
-        public float curShield;
         public HealthBar UIhp;
+
+        public Shield shield;
 
         public bool IsDead{ get; protected set; }
         public bool CanRevive{ get; protected set; }
@@ -76,12 +77,18 @@ namespace JLProject{
         /// </summary>
         /// <param name="damage"></param>
         public virtual void TakeDamage(object source, ref Damage.DamageEventArgs args){
-            if (_maximumhealth > 0){
-                _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0, _maximumhealth);
-                if (TookDamage != null) TookDamage(args.DamageValue);
-                UpdateHealthUI();
-                if (_currenthealth == 0){
-                    HandleDeath();
+            if (shield != null && shield.blocking){
+                shield.Block(args.DamageValue);
+            }
+            else{
+                if (_maximumhealth > 0){
+                    _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0,
+                        _maximumhealth);
+                    if (TookDamage != null) TookDamage(args.DamageValue);
+                    UpdateHealthUI();
+                    if (_currenthealth == 0){
+                        HandleDeath();
+                    }
                 }
             }
         }

@@ -873,7 +873,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1138
+  m_Name: pb_Mesh-27332
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2347,6 +2347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Locked: 0
+  Opened: 0
 --- !u!23 &320436401
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5306,6 +5307,16 @@ Prefab:
       propertyPath: UIhp
       value: 
       objectReference: {fileID: 647239587}
+    - target: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+        type: 2}
+      propertyPath: CurrentShield
+      value: 
+      objectReference: {fileID: 970927885}
+    - target: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+        type: 2}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 970927885}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
   m_IsPrefabParent: 0
@@ -6676,6 +6687,54 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 944105984}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &970927884
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1526850212}
+    m_Modifications:
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4601182851589356, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 41197da6fa5901c4cb7296e9591fa046, type: 2}
+  m_IsPrefabParent: 0
+--- !u!114 &970927885 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114380260698998564, guid: 41197da6fa5901c4cb7296e9591fa046,
+    type: 2}
+  m_PrefabInternal: {fileID: 970927884}
+  m_Script: {fileID: 11500000, guid: 0d48cd97ad8e1a7478f125f2fd5d33ad, type: 3}
 --- !u!1 &985696967
 GameObject:
   m_ObjectHideFlags: 0
@@ -7311,7 +7370,7 @@ Prefab:
     - target: {fileID: 23330860493538886, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
         type: 2}
       propertyPath: m_SelectedEditorRenderState
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cee84bd61f1bfe645a2972eb1d1fe71e, type: 2}
@@ -9495,6 +9554,11 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!4 &1526850212 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4763654183145382, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 680667996}
 --- !u!1 &1547152976
 GameObject:
   m_ObjectHideFlags: 0
@@ -10936,6 +11000,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToUnlock: {fileID: 320436400}
+  ObjectToLock: {fileID: 0}
   PreSpawn: 0
   EnemyList:
   - {fileID: 1611673491}
