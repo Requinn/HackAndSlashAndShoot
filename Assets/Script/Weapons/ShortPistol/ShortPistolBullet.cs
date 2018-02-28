@@ -12,10 +12,11 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
     private Vector3 _curPos;
     private float _lifetime;
     public StatusObject statusObj;
+    private CoroutineHandle _repoolHandle;
     public void OnEnable(){
         _curPos = transform.position;
         _lifetime = CalculateTimeToLive();
-        Timing.RunCoroutine(DelayedRepool(_lifetime));
+        _repoolHandle = Timing.RunCoroutine(DelayedRepool(_lifetime));
     }
 
     private float CalculateTimeToLive(){
@@ -36,20 +37,25 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
                 if (statusObj){
                     ent.ApplyStatus(statusObj);
                 }
+                Timing.KillCoroutines(_repoolHandle);
                 gameObject.SetActive(false);
             }
             StopCoroutine(DelayedRepool(_lifetime));
         }
         else if(c.gameObject.tag == "Environment"){
+            Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
         else if (c.gameObject.tag == "Switch"){
             c.GetComponent<Switch>().Toggle();
+            Timing.KillCoroutines(_repoolHandle);
+            gameObject.SetActive(false);
         }
     }
 
     private IEnumerator<float> DelayedRepool(float t){
         yield return Timing.WaitForSeconds(t);
+        Timing.KillCoroutines(_repoolHandle);
         gameObject.SetActive(false);
     }
 

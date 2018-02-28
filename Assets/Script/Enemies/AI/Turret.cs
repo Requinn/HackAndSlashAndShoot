@@ -23,7 +23,7 @@ public class Turret : Entity{
 	    _vision = GetComponent<FoVDetection>();
 	    target = FindObjectOfType<PlayerController>().gameObject;
 	}
-	
+
 	// Update is called once per frame
 	void Update (){
 	    if (_vision.CanSeeTarget(target.transform) || _vision.inRange) {

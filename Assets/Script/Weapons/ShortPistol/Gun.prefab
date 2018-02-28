@@ -168,7 +168,7 @@ MonoBehaviour:
   bullet:
     objectToPool: {fileID: 1713346435508252, guid: 9f5ae7dbc42c16d44bd6716335630e61,
       type: 2}
-    amountToPool: 4
+    amountToPool: 2
     shouldExpand: 1
   ShotDelay: 0.15
   ReloadTime: 0.25
