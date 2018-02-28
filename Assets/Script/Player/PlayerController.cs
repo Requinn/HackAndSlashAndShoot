@@ -13,6 +13,7 @@ namespace JLProject{
         private Vector3 _MoveDir = Vector3.zero; //not going anywhere
         private Vector3 _MousePos;
         private int floorMask;
+        public float rotationSpeed = 360.0f;
         public Weapon CurrentWeapon;
         public Shield CurrentShield;
         public Transform WeaponAttachPoint;
@@ -82,13 +83,17 @@ namespace JLProject{
             return Vector3.zero;
         }
 
+        private Vector3 _pos, _dir;
+        private Quaternion _lookrotation;
         /// <summary>
         /// updates our rotation
         /// </summary>
         /// <param name="tpos"></param>
         private void AngleUpdate(Vector3 tpos){
-            Vector3 pos = transform.position;
-            transform.rotation = Quaternion.Euler(0, -GetAngle(pos, tpos) * 180.0f / Mathf.PI, 0);  //rotate towards an angle created by our position and direction
+            _pos = transform.position;
+            _dir = (tpos - _pos).normalized;
+             _lookrotation = Quaternion.LookRotation(_dir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, _lookrotation, Time.deltaTime * rotationSpeed);
         }
 
         /// <summary>
@@ -144,9 +149,6 @@ namespace JLProject{
                         GO.transform.position = WeaponAttachPoint.position;
                         GO.transform.rotation = WeaponAttachPoint.rotation;
                     }
-                }
-                if (GO.GetComponent<Gun>()){
-                    ObjectPooler.ObjectPool.PoolItem(GO.GetComponent<Gun>().bullet);
                 }
             }
             if (GO.GetComponent<Shield>()){

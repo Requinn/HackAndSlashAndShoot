@@ -15,7 +15,8 @@ public class ShortPistol : Gun{
 	    AttackDelay = ShotDelay;
 	    ReloadSpeed = ReloadTime;
 	    CurMag = MaxMag = MaxAmmo;
-	}
+	    ObjectPooler.ObjectPool.PoolItem(bullet);
+    }
 	
     public override void Fire(){
         //get bullet from the object pool
@@ -25,7 +26,7 @@ public class ShortPistol : Gun{
             GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
             if (bullet != null){
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                rb.velocity = transform.TransformDirection(new Vector3(bullet.GetComponent<IProjectile>().GetVelocity(), 0, 0));
+                rb.velocity = transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
                 bullet.transform.position = BarrelPoint.position;
                 bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
                 bullet.SetActive(true);

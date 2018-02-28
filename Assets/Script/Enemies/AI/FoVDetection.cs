@@ -8,9 +8,14 @@ public class FoVDetection : MonoBehaviour{
 
     [Range(0, 180)] [SerializeField] private float _xAngle = 60.0f;
     [Range(0, 180)] [SerializeField] private float _yAngle = 30.0f;
-
+    [Range(0, 180)] [SerializeField] private float _aggroXAngle = 15.0f;
+    
+    public Vector3 lastSeenPosition;
     //public string debugstr;
-    public bool drawBounds = false; 
+    public bool drawBounds = false;
+    public bool inRange = false;
+    public bool inAttackCone = false;
+
     private Transform _eyeTransform;
 	// Use this for initialization
 	void Awake (){
@@ -35,6 +40,7 @@ public class FoVDetection : MonoBehaviour{
         //within view range
         if (sightDistance.magnitude < _maxRange){
             //debugstr += "Within Range > ";
+            inRange = true;
             //check if the target is behind us
             if (_eyeTransform.InverseTransformPoint(target.position).z < 0.0f) return false;
 
@@ -43,20 +49,29 @@ public class FoVDetection : MonoBehaviour{
             //start checking for the angle in the X plane
             if (projectedVector.magnitude > 0.0f){
                 //debugstr += "In front > ";
-                if (Vector3.Angle(target.position - transform.position, transform.forward) <= _xAngle){
+                float angle = Vector3.Angle(target.position - transform.position, transform.forward);
+                if (angle <= _xAngle){
                     //debugstr += "In Cone > ";
+                    if (angle <= _aggroXAngle){
+                        inAttackCone = true;
+                    }
+                    else{
+                        inAttackCone = false;
+                    }
                     RaycastHit hit;
                     if (Physics.Raycast(_eyeTransform.position, -sightDistance, out hit, _maxRange)){
                         //debugstr += "FOUND";
-                        Debug.DrawRay(_eyeTransform.position, -sightDistance, Color.cyan, 600.0f);
-                        Debug.Log(hit.transform.gameObject);
+                        //Debug.DrawRay(_eyeTransform.position, -sightDistance, Color.cyan, 600.0f);
                         if (hit.collider.gameObject.tag == target.tag){
+                            lastSeenPosition = hit.collider.gameObject.transform.position;
                             return true;
                         }
                     }
                 }
             }
         }
+        inAttackCone = false;
+        inRange = false;
         return false;
     }
 
