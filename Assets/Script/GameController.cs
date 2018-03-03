@@ -14,7 +14,7 @@ public class GameController : MonoBehaviour{
 
     void Awake(){
         if (Controller != null){
-            GameObject.Destroy(Controller);
+            Destroy(Controller);
         }
         else{
             Controller = this;

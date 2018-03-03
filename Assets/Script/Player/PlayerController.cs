@@ -7,7 +7,7 @@ using UnityEngine;
 namespace JLProject{
     public class PlayerController : Entity{
         // Use this for initialization
-        public float speed;
+        public float speed, shieldedSpeed;
         private float _MovX, _MovZ;
         private CharacterController cc;
         private Vector3 _MoveDir = Vector3.zero; //not going anywhere
@@ -45,16 +45,20 @@ namespace JLProject{
         /// gets mous input
         /// </summary>
         private void MouseInput(){
-            if (Input.GetMouseButton(1) && CurrentShield != null){
+            if (Input.GetMouseButtonDown(1) && CurrentShield != null){
                 if (!CurrentShield.broken){
                     CurrentShield.blocking = true;
-                }
-                else{
-                    CurrentShield.blocking = false;
+                    MovementSpeed = shieldedSpeed;
                 }
             }
-            else if (Input.GetMouseButtonDown(0) && CurrentWeapon != null){
-                CurrentWeapon.Fire();
+            else if (Input.GetMouseButtonUp(1) && CurrentShield != null){
+                MovementSpeed = speed;
+                CurrentShield.blocking = false;
+            }
+            if (Input.GetMouseButtonDown(0) && CurrentWeapon != null ) {
+                if (CurrentShield != null && !CurrentShield.blocking){
+                    CurrentWeapon.Fire();
+                }
             }
         }
 

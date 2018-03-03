@@ -6,6 +6,14 @@ using UnityEngine;
 /// </summary>
 namespace JLProject{
     public abstract class Entity : HealthSystem {
+
+        public enum State{
+            Attacking,
+            Moving,
+            Idle
+
+        }
+
         private float _movementspeed;
 
         public float MovementSpeed {

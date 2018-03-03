@@ -55,11 +55,31 @@ namespace JLProject{
         public bool blocking = false;
         public HealthBar UIshield;
 
+        public GameObject shieldBubble;
         private CoroutineHandle _rechargeHandle, _regenHandle, _brokenrechargeHandle;
         // Use this for initialization
         void Start(){
             _currenthealth = _maximumhealth;
             UpdateHealthUI();
+        }
+
+        void LateUpdate(){
+            if (Input.GetMouseButtonDown(1)){
+                ShieldBubbleOn();
+            }else if (Input.GetMouseButtonUp(1)){
+                ShieldBubbleOff();
+            }
+        }
+
+        public void ShieldBubbleOn(){
+            if (shieldBubble != null && !broken){
+                shieldBubble.SetActive(true);
+            }
+        }
+        public void ShieldBubbleOff() {
+            if (shieldBubble != null) {
+                shieldBubble.SetActive(false);
+            }
         }
 
         public float HealthPercent() {
@@ -72,6 +92,10 @@ namespace JLProject{
             }
         }
 
+        /// <summary>
+        /// blocks damage and starts regeneration
+        /// </summary>
+        /// <param name="damage"></param>
         public virtual void Block(float damage){
             Timing.KillCoroutines(_regenHandle);
             Timing.KillCoroutines(_rechargeHandle);
@@ -82,6 +106,7 @@ namespace JLProject{
 
             if (_currenthealth <= 0.0f){
                 broken = true;
+                ShieldBubbleOff();
                 _brokenrechargeHandle = Timing.RunCoroutine(BrokenRecharge());
             }
             else{

@@ -10,7 +10,9 @@ using UnityEngine;
 namespace JLProject{
     public class ExitTrigger : MonoBehaviour{
         void OnTriggerEnter(Collider c){
-            GameController.Controller.RestartLevel();
+            if (c.tag == "Player"){
+                GameController.Controller.RestartLevel();
+            }
         }
     }
 }
