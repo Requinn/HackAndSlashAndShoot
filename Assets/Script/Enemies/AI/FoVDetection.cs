@@ -35,6 +35,7 @@ namespace JLProject{
         /// <summary>
         /// Field of View detection 
         /// Thanks to Michael W. for a much better version of this
+        /// TODO CLEAN UP THIS MESS
         /// </summary>
         /// <param name="target"></param>
         /// <returns></returns>
@@ -48,6 +49,7 @@ namespace JLProject{
                 inRange = true;
                 //check if the target is behind us
                 if (_eyeTransform.InverseTransformPoint(target.position).z < 0.0f){
+                    //if they're behind us return true
                     if (targetFound){
                         return true;
                     }
