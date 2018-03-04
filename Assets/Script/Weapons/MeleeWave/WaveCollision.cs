@@ -5,10 +5,24 @@ using UnityEngine;
 namespace JLProject {
     public class WaveCollision : MonoBehaviour{
         public Damage.DamageEventArgs args;
+        public StatusObject statusObj;
+        //TODO CLEAN UP THIS MESS
 
         void OnTriggerEnter(Collider c){
-            if (c.gameObject.tag == "Enemy" || c.gameObject.tag == "Neutral"){
-                c.gameObject.GetComponent<Entity>().TakeDamage(this.gameObject, ref args);
+            Entity ent = c.GetComponent<Entity>();
+            Switch swtch = c.GetComponent<Switch>();
+            if (ent != null){
+                if (ent.Faction != args.SourceFaction || ent.Faction == Damage.Faction.Neutral){
+                    //fix this later
+                    args.HitPoint = transform.position;
+                    ent.TakeDamage(gameObject, ref args);
+                    if (statusObj){
+                        ent.ApplyStatus(statusObj);
+                    }
+                }
+            }
+            if (swtch){
+                swtch.Toggle();
             }
         }
     }

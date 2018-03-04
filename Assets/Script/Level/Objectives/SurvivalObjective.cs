@@ -47,6 +47,7 @@ public class SurvivalObjective : LevelObjective{
     void OnTriggerEnter(Collider c){
         if (c.gameObject.tag == "Player" && !completed){
             Initiate();
+            GetComponent<Collider>().enabled = false;
         }
     }
 }

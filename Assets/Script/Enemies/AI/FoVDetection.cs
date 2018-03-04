@@ -18,7 +18,7 @@ namespace JLProject{
 
         public bool inRange = false;
         public bool inAttackCone = false;
-
+        public bool targetFound = false;
         private Transform _eyeTransform;
 
         // Use this for initialization
@@ -47,7 +47,11 @@ namespace JLProject{
                 //debugstr += "Within Range > ";
                 inRange = true;
                 //check if the target is behind us
-                if (_eyeTransform.InverseTransformPoint(target.position).z < 0.0f) return false;
+                if (_eyeTransform.InverseTransformPoint(target.position).z < 0.0f){
+                    if (targetFound){
+                        return true;
+                    }
+                }
 
                 var targetRelativeToEye = _eyeTransform.InverseTransformPoint(target.position);
                 var projectedVector = Vector3.Project(targetRelativeToEye, Vector3.forward);

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114635097609098154}
   m_Layer: 0
   m_Name: ShortWaveWeapon
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 54162297510848726}
   m_Layer: 0
   m_Name: Wave
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -774,7 +774,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   WaveComponent: {fileID: 1816152926367876}
-  CR: {fileID: 0}
+  attackDelay: 0.35
+  comboDelay: 1.25
+  swingCount: 3
+  faction: 1
   Damage: 15
 --- !u!114 &114850213985238202
 MonoBehaviour:
@@ -804,3 +807,4 @@ MonoBehaviour:
     DamageType: 0
     HitPoint: {x: 0, y: 0, z: 0}
     SourceFaction: 0
+  statusObj: {fileID: 0}

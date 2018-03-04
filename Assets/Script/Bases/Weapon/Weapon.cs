@@ -9,6 +9,7 @@ namespace JLProject{
         public float ReloadSpeed{ get; set; }
         public int CurMag{ get; set; }
         public int MaxMag{ get; set; }
+        public Damage.Faction Faction{ get; set; }
         protected bool _canAttack = true;
         public Type type;
         public enum Type{

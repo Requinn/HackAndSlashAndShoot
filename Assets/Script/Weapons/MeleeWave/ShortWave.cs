@@ -7,13 +7,16 @@ using UnityEngine.Experimental.UIElements;
 namespace JLProject{
     public class ShortWave : Melee{
         public GameObject WaveComponent;
-        public CollisionReport CR;
+        public float attackDelay = 0.65f;
+        public float comboDelay = 1.25f;
+        public int swingCount = 3;
+        public Damage.Faction faction;
         public float Damage = 15.0f;
         void Start(){
-            CurMag = MaxMag = 3;
-            AttackDelay = 0.25f;
-            ReloadSpeed = 0.65f;
-            WaveComponent.GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(Damage, this.transform.position, JLProject.Damage.DamageType.Melee, JLProject.Damage.Faction.Player);
+            CurMag = MaxMag = swingCount;
+            AttackDelay = attackDelay;
+            ReloadSpeed = comboDelay;
+            WaveComponent.GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(Damage, this.transform.position, JLProject.Damage.DamageType.Melee, faction);
         }
 
         public override void Fire(){

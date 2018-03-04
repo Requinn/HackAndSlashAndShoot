@@ -5,7 +5,7 @@
 public class FixedRotationToCamera : MonoBehaviour {
     Quaternion rotation;
     void Awake() {
-        rotation = transform.rotation;
+        rotation = Quaternion.identity;
         rotation.x = Camera.main.transform.rotation.x;
     }
     void LateUpdate() {

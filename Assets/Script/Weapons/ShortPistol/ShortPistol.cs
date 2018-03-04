@@ -9,6 +9,7 @@ public class ShortPistol : Gun{
     public float ReloadTime = 0.25f;
     public int MaxAmmo = 3;
     public Transform BarrelPoint;
+    public Damage.Faction faction;
     private Damage.DamageEventArgs args;
 	// Use this for initialization
 	void Start (){
@@ -25,6 +26,7 @@ public class ShortPistol : Gun{
         if (_canAttack){
             GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
             if (bullet != null){
+                bullet.GetComponent<IProjectile>().SetFaction(faction);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 rb.velocity = transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
                 bullet.transform.position = BarrelPoint.position;

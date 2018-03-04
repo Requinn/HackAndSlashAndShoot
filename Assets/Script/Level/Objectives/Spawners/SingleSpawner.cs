@@ -9,6 +9,6 @@ public class SingleSpawner : MonoBehaviour{
     }
 
     void SpawnObj(){
-        SpawnedObj = Instantiate(SpawnedObj, transform.position, Quaternion.identity);
+        SpawnedObj = Instantiate(SpawnedObj, transform.position, transform.rotation);
     }
 }

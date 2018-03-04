@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 /// <summary>
@@ -138,6 +139,8 @@ namespace JLProject{
 
         protected virtual void HandleDeath(){
             if (IsDead) return;
+            //CHANGE THIS CODE
+            Destroy(gameObject);
             IsDead = true;
             OnDeath();
         }

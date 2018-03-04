@@ -56,4 +56,11 @@ public class TestObjective : LevelObjective, IKillObjective{
             OnCompleteObjective();
         }
     }
+
+    void OnTriggerEnter(Collider c) {
+        if (c.gameObject.tag == "Player") {
+            Initiate();
+            GetComponent<Collider>().enabled = false;
+        }
+    }
 }

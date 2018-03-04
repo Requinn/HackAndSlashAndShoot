@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 114269120321676232}
   m_Layer: 0
   m_Name: DummyTurret
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -332,6 +332,7 @@ MonoBehaviour:
   drawBounds: 0
   inRange: 0
   inAttackCone: 0
+  targetFound: 0
 --- !u!114 &114273923714808118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -406,19 +407,20 @@ MonoBehaviour:
   bullet:
     objectToPool: {fileID: 1713346435508252, guid: 9f5ae7dbc42c16d44bd6716335630e61,
       type: 2}
-    amountToPool: 0
+    amountToPool: 1
     shouldExpand: 1
   ShotDelay: 0.5
   ReloadTime: 3
   MaxAmmo: 3
   BarrelPoint: {fileID: 4679165472318824}
+  faction: 3
 --- !u!114 &114531125134560354
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154147494263006}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b6bfab79b18a014ab56b998fbbf85e9, type: 3}
   m_Name: 
@@ -426,11 +428,12 @@ MonoBehaviour:
   _maximumhealth: 100
   _currenthealth: 0
   _armorvalue: 0
-  _faction: 0
+  _faction: 3
   StatusImmunities: 
   Afflictions: []
   UIhp: {fileID: 114096443861145058}
   shield: {fileID: 0}
+  useAI: 0
   target: {fileID: 0}
   rotationTime: 1.5
   weapon: {fileID: 114528671568539166}

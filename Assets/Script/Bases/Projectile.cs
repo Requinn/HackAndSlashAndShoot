@@ -6,6 +6,7 @@ using UnityEngine.VR.WSA.Persistence;
 namespace JLProject{
     public interface IProjectile{
         float GetVelocity();
+        void SetFaction(Damage.Faction f);
     }
 }
 

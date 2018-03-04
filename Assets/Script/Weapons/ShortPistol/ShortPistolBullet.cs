@@ -13,6 +13,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
     private float _lifetime;
     public StatusObject statusObj;
     private CoroutineHandle _repoolHandle;
+
     public void OnEnable(){
         _curPos = transform.position;
         _lifetime = CalculateTimeToLive();
@@ -23,12 +24,13 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         return FlightDistance / Velocity;
     }
 
-    public void Update(){
-        
+    public void SetFaction(Damage.Faction f){
+        args.SourceFaction = f;
     }
 
     public void OnTriggerEnter(Collider c){
-        Entity ent = c.gameObject.GetComponent<Entity>();
+        Entity ent = c.GetComponent<Entity>();
+        Switch swtch = c.GetComponent<Switch>();
         if (ent != null){
             if (ent.Faction != Damage.Faction.Player || ent.Faction != Damage.Faction.Allied){
                 //fix this later
@@ -46,8 +48,8 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
-        else if (c.gameObject.tag == "Switch"){
-            c.GetComponent<Switch>().Toggle();
+        if (swtch){
+            swtch.Toggle();
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }

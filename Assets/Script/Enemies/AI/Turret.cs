@@ -18,7 +18,7 @@ public class Turret : Entity{
 
     public Weapon weapon;
 
-    private bool _targetacquired = false;
+    private bool _targetAcquired = false;
     // Use this for initialization
     void Awake(){
 	    _vision = GetComponent<FoVDetection>();
@@ -29,9 +29,9 @@ public class Turret : Entity{
 	void Update (){
 	    if (useAI){
 	        if (_vision.CanSeeTarget(target.transform) || _vision.inRange){
-	            _targetacquired = true;
+	            _targetAcquired = true;
 	            if (!_vision.inRange){
-	                _targetacquired = false;
+	                _targetAcquired = false;
 	            }
 	            if (_vision.inAttackCone){
 	                Attack();
