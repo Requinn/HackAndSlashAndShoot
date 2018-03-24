@@ -20,7 +20,7 @@ public class DamageZone : MonoBehaviour {
     void OnTriggerStay(Collider c) {
         if (c.GetComponent<Entity>() && _canTick) {
             PlayerController ent = c.gameObject.GetComponent<PlayerController>();
-            if (ent.gameObject.tag == "Player") {
+            if (ent) {
                 var args = new Damage.DamageEventArgs(Damage, c.transform.position);
                 ent.TakeDamage(this.gameObject, ref args);
                 Timing.RunCoroutine(TickDelay(TickTime));

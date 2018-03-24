@@ -7,6 +7,8 @@ using UnityEngine;
 public class ShortPistol : Gun{
     public float ShotDelay = 0.15f;
     public float ReloadTime = 0.25f;
+    private AudioSource _gunSounds;
+    public AudioClip[] gunAudio;
     public int MaxAmmo = 3;
     public Transform BarrelPoint;
     public Damage.Faction faction;
@@ -17,7 +19,8 @@ public class ShortPistol : Gun{
 	    ReloadSpeed = ReloadTime;
 	    CurMag = MaxMag = MaxAmmo;
 	    ObjectPooler.ObjectPool.PoolItem(bullet);
-    }
+	    _gunSounds = GetComponent<AudioSource>();
+	}
 	
     public override void Fire(){
         //get bullet from the object pool
@@ -31,11 +34,13 @@ public class ShortPistol : Gun{
                 rb.velocity = transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
                 bullet.transform.position = BarrelPoint.position;
                 bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
+                _gunSounds.PlayOneShot(gunAudio[0]);
                 bullet.SetActive(true);
             }
             CurMag--;
             if (CurMag == 0){
                 Timing.RunCoroutine(base.Reload());
+                _gunSounds.PlayOneShot(gunAudio[1]);
             }
             else{
                 Timing.RunCoroutine(base.Delay());

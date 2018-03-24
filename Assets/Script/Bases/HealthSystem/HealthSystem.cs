@@ -82,7 +82,7 @@ namespace JLProject{
                 shield.Block(args.DamageValue);
             }
             else{
-                if (_maximumhealth > 0){
+                if (_maximumhealth > 0 && args.SourceFaction != _faction){
                     _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0,
                         _maximumhealth);
                     if (TookDamage != null) TookDamage(args.DamageValue);

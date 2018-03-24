@@ -24,7 +24,7 @@ namespace JLProject{
         // Update is called once per frame
         void Update(){
             //camera following the player
-            if (LockedToPlayer){
+            if (LockedToPlayer && _player){
                 _target = _player.position + new Vector3(CameraHorizontal, CameraHeight, CameraVertical);
             }
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _camVelocity, _cameraTimetoReach);

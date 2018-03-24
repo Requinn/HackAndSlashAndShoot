@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using NUnit.Framework.Internal;
 using UnityEngine;
 
 namespace JLProject{
@@ -115,6 +114,13 @@ namespace JLProject{
         /// </summary>
         protected override void Attack(){
             CurrentWeapon.Fire();
+        }
+
+        /// <summary>
+        /// DEBUG BUILDS ONLY
+        /// </summary>
+        protected override void HandleDeath() {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
 
         /// <summary>

@@ -51,8 +51,10 @@ public class TestObjective : LevelObjective, IKillObjective{
 
     public void CheckCompletion(){
         if (_deathCount == EnemyList.Count){
-            ObjectToUnlock.Locked = false;
-            ObjectToUnlock.Open();
+            if (ObjectToUnlock){
+                ObjectToUnlock.Locked = false;
+                ObjectToUnlock.Open();
+            }
             OnCompleteObjective();
         }
     }
