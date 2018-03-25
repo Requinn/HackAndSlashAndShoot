@@ -35,8 +35,8 @@ namespace JLProject{
         public List<StatusObject> Afflictions = new List<StatusObject>();
 
         public HealthBar UIhp;
-
         public Shield shield;
+        public DamageFloaterSpawner floater;
 
         public bool IsDead{ get; protected set; }
         public bool CanRevive{ get; protected set; }
@@ -79,12 +79,13 @@ namespace JLProject{
         /// <param name="damage"></param>
         public virtual void TakeDamage(object source, ref Damage.DamageEventArgs args){
             if (shield != null && shield.blocking){
+                floater.SpawnShieldText(args.DamageValue);
                 shield.Block(args.DamageValue);
             }
             else{
                 if (_maximumhealth > 0 && args.SourceFaction != _faction){
-                    _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0,
-                        _maximumhealth);
+                    _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0, _maximumhealth);
+                    floater.SpawnDamageText(args.DamageValue);
                     if (TookDamage != null) TookDamage(args.DamageValue);
                     UpdateHealthUI();
                     if (_currenthealth == 0){
@@ -133,6 +134,7 @@ namespace JLProject{
         /// <param name="heal"></param>
         public virtual void Heal(object source, int heal){
             _currenthealth = Mathf.Clamp(_currenthealth + heal, 0, _maximumhealth);
+            floater.SpawnHealText(heal);
             if (HealDamage != null) HealDamage(heal);
             UpdateHealthUI();
         }
