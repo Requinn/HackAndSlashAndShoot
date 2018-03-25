@@ -91,6 +91,7 @@ GameObject:
   - component: {fileID: 114076356978631866}
   - component: {fileID: 114909127087587598}
   - component: {fileID: 114010860128354402}
+  - component: {fileID: 114116076025838748}
   m_Layer: 0
   m_Name: NamePlate
   m_TagString: Untagged
@@ -1253,6 +1254,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114116076025838748
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862266957457004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b908f37b2e37d1645a36dbbad8ae6dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayDamage: 0
+  alphaValue: 1
+  textColor: {r: 0, g: 1, b: 0.17241383, a: 1}
+  UIobj: {fileID: 224785842745041448, guid: 3ca27591f44a1da4084b2caeca6c2e66, type: 2}
 --- !u!114 &114116664945345916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1264,7 +1280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ccc890e72d8b641ade96b2220be580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  type: 1
   Damage: 10
   Type: 3
   Faction: 3
@@ -1306,14 +1322,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d5d0597f931e47478825b26e7205d00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 60
-  _currenthealth: 60
+  _maximumhealth: 6000
+  _currenthealth: 6000
   _armorvalue: 0
   _faction: 3
   StatusImmunities: 
   Afflictions: []
-  curShield: 0
   UIhp: {fileID: 114420290716068482}
+  shield: {fileID: 0}
+  floater: {fileID: 114116076025838748}
   speed: 0
   eventItem: {fileID: 0}
 --- !u!114 &114420290716068482

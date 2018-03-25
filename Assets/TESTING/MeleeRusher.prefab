@@ -41,6 +41,7 @@ GameObject:
   - component: {fileID: 114065174279370964}
   - component: {fileID: 114875916923542930}
   - component: {fileID: 114813608123997538}
+  - component: {fileID: 114481612553244400}
   m_Layer: 0
   m_Name: NamePlate
   m_TagString: Untagged
@@ -939,6 +940,21 @@ MonoBehaviour:
     handleAnimatorIK: 0
   fsmTemplate: {fileID: 0}
   eventHandlerComponentsAdded: 0
+--- !u!114 &114481612553244400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1586028856539044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b908f37b2e37d1645a36dbbad8ae6dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayDamage: 0
+  alphaValue: 1
+  textColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  UIobj: {fileID: 224785842745041448, guid: 3ca27591f44a1da4084b2caeca6c2e66, type: 2}
 --- !u!114 &114503658098537584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1563,6 +1579,7 @@ MonoBehaviour:
   Afflictions: []
   UIhp: {fileID: 114219216753257162}
   shield: {fileID: 0}
+  floater: {fileID: 114481612553244400}
   useAI: 0
   target: {fileID: 0}
   rotationTime: 3

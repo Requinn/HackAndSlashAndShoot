@@ -63,6 +63,7 @@ GameObject:
   - component: {fileID: 114285445308072594}
   - component: {fileID: 114036150309416500}
   - component: {fileID: 114346202768194996}
+  - component: {fileID: 114521330462257012}
   m_Layer: 0
   m_Name: NamePlate
   m_TagString: Untagged
@@ -160,7 +161,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1154147494263006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 43.346237, y: 2, z: 3.18}
+  m_LocalPosition: {x: 41.37, y: 2, z: -1.71}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224035702266793224}
@@ -473,6 +474,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0383b9abee976b748971ffa1309cc0e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114521330462257012
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1307550593172370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b908f37b2e37d1645a36dbbad8ae6dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayDamage: 0
+  alphaValue: 1
+  textColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  UIobj: {fileID: 224785842745041448, guid: 3ca27591f44a1da4084b2caeca6c2e66, type: 2}
 --- !u!114 &114528671568539166
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -517,6 +533,7 @@ MonoBehaviour:
   Afflictions: []
   UIhp: {fileID: 114096443861145058}
   shield: {fileID: 0}
+  floater: {fileID: 114521330462257012}
   useAI: 0
   target: {fileID: 0}
   rotationTime: 1.5
