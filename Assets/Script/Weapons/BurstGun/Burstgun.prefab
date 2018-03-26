@@ -9,52 +9,20 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1224940042672958}
+  m_RootGameObject: {fileID: 1442791684928592}
   m_IsPrefabParent: 1
---- !u!1 &1102903291612004
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4780547283479546}
-  m_Layer: 0
-  m_Name: BulletPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1224940042672958
+--- !u!1 &1353616540637522
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4986631538467046}
-  - component: {fileID: 114514985020910520}
-  - component: {fileID: 82900433401386490}
-  m_Layer: 0
-  m_Name: Gun
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &1980481579687856
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4355840950537672}
-  - component: {fileID: 114167204378314110}
-  - component: {fileID: 23693325190915622}
-  - component: {fileID: 33573226904786322}
-  - component: {fileID: 114860700001598530}
+  - component: {fileID: 4929221748013314}
+  - component: {fileID: 114207098999848876}
+  - component: {fileID: 23631461549179082}
+  - component: {fileID: 33296803334810398}
+  - component: {fileID: 114544528165501618}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -62,53 +30,85 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
   m_IsActive: 1
---- !u!4 &4355840950537672
+--- !u!1 &1442791684928592
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4135747464813692}
+  - component: {fileID: 82193292924162736}
+  - component: {fileID: 114972855288568784}
+  m_Layer: 0
+  m_Name: Burstgun
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1653371907752884
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4456432953854406}
+  m_Layer: 0
+  m_Name: BulletPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4135747464813692
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980481579687856}
+  m_GameObject: {fileID: 1442791684928592}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 29.518, y: 2.65, z: -2.88}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4929221748013314}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4456432953854406
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1653371907752884}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -0, y: 0.75000066, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4929221748013314}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!4 &4929221748013314
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1353616540637522}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -0.31, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4780547283479546}
-  m_Father: {fileID: 4986631538467046}
+  - {fileID: 4456432953854406}
+  m_Father: {fileID: 4135747464813692}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
---- !u!4 &4780547283479546
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1102903291612004}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.75, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4355840950537672}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!4 &4986631538467046
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1224940042672958}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.524635, y: 5, z: -19.449793}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4355840950537672}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23693325190915622
+--- !u!23 &23631461549179082
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980481579687856}
+  m_GameObject: {fileID: 1353616540637522}
   m_Enabled: 1
   m_CastShadows: 2
   m_ReceiveShadows: 1
@@ -135,25 +135,25 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33573226904786322
+--- !u!33 &33296803334810398
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980481579687856}
+  m_GameObject: {fileID: 1353616540637522}
   m_Mesh: {fileID: 0}
---- !u!82 &82900433401386490
+--- !u!82 &82193292924162736
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1224940042672958}
+  m_GameObject: {fileID: 1442791684928592}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.686
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -240,49 +240,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114167204378314110
+--- !u!114 &114207098999848876
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980481579687856}
+  m_GameObject: {fileID: 1353616540637522}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 16342205, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 0
---- !u!114 &114514985020910520
+--- !u!114 &114544528165501618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1224940042672958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52fe79947b069ab4390a3cea81969ad6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  bullet:
-    objectToPool: {fileID: 1620600583638238, guid: 44be517d919f04d4ab21955569a6e64c,
-      type: 2}
-    amountToPool: 2
-    shouldExpand: 1
-  ShotDelay: 0.2
-  ReloadTime: 0.75
-  gunAudio:
-  - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
-  - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
-  MaxAmmo: 3
-  BarrelPoint: {fileID: 4780547283479546}
-  faction: 1
---- !u!114 &114860700001598530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1980481579687856}
+  m_GameObject: {fileID: 1353616540637522}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 185759285, guid: 0472bdc8d6d15384d98f22ee34302f9c, type: 3}
@@ -1253,3 +1228,30 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114972855288568784
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442791684928592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3813a09bf36d3428342650f9afb649, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
+  bullet:
+    objectToPool: {fileID: 1713346435508252, guid: 9f5ae7dbc42c16d44bd6716335630e61,
+      type: 2}
+    amountToPool: 5
+    shouldExpand: 1
+  ShotDelay: 0.8
+  ReloadTime: 0.25
+  burstCount: 5
+  burstDelay: 0.1
+  gunAudio:
+  - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
+  - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
+  MaxAmmo: 15
+  BarrelPoint: {fileID: 4456432953854406}
+  faction: 0

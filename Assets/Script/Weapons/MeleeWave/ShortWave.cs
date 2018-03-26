@@ -11,8 +11,8 @@ namespace JLProject{
         public Damage.Faction faction;
         public float Damage = 15.0f;
         void Start(){
-            CurMag = MaxMag = swingCount;
             AttackDelay = attackDelay;
+            CurMag = MaxMag = swingCount;
             ReloadSpeed = comboDelay;
             WaveComponent.GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(Damage, this.transform.position, JLProject.Damage.DamageType.Melee, faction);
         }

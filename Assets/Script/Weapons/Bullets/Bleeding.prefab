@@ -53,4 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   duration: 5
   tickDelay: 1
+  Type: 0
+  tickCount: 0
   damagePerTick: 5

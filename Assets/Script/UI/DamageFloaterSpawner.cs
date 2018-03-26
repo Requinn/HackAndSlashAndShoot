@@ -26,18 +26,18 @@ public class DamageFloaterSpawner : MonoBehaviour{
     public void SpawnDamageText(float damageIn){
         _text.color = _damagedColor;
         _text.text = "-" + Mathf.Floor(damageIn);
-        Transform floaterText = Instantiate(UIobj, transform.position, Quaternion.identity, transform);
+        Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 
     public void SpawnHealText(float healIn){
         _text.color = _healedColor;
         _text.text = "+" + Mathf.Floor(healIn);
-        Transform floaterText = Instantiate(UIobj, transform.position, Quaternion.identity, transform);
+        Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 
     public void SpawnShieldText(float shieldIn){
         _text.color = _shieldedColor;
         _text.text = "-" + Mathf.Floor(shieldIn);
-        Transform floaterText = Instantiate(UIobj, transform.position, Quaternion.identity, transform);
+        Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 }
