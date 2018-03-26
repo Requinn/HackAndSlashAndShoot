@@ -13,7 +13,7 @@ public class GameController : MonoBehaviour{
     private PauseMenu _pauseMenu;
 
     void Awake(){
-        if (Controller != null){
+        if (Controller != null && Controller != this){
             Destroy(Controller);
         }
         else{
