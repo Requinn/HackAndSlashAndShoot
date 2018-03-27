@@ -1239,19 +1239,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3813a09bf36d3428342650f9afb649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canAttack: 1
   type: 1
   bullet:
-    objectToPool: {fileID: 1713346435508252, guid: 9f5ae7dbc42c16d44bd6716335630e61,
+    objectToPool: {fileID: 1850941345847022, guid: 979532bf8a82aa041bfe949162a625af,
       type: 2}
-    amountToPool: 5
+    amountToPool: 10
     shouldExpand: 1
-  ShotDelay: 0.8
+  GunType: 0
+  ShotDelay: 0.9
   ReloadTime: 0.25
-  burstCount: 5
-  burstDelay: 0.1
+  burstCount: 8
+  burstDelay: 0.07
+  spray: 5
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
-  MaxAmmo: 15
+  MaxAmmo: 16
   BarrelPoint: {fileID: 4456432953854406}
   faction: 0

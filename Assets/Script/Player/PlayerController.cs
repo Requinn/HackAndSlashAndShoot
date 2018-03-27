@@ -3,6 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// TODO: Shielding mid attack shouldn't be possible. (fixed?)
+/// TODO: Moving during a melee attack or burst fire weapon shouldn't be possible.
+/// </summary>
 namespace JLProject{
     public class PlayerController : Entity{
         // Use this for initialization
@@ -44,10 +48,16 @@ namespace JLProject{
         /// gets mous input
         /// </summary>
         private void MouseInput(){
-            if (Input.GetMouseButtonDown(1) && CurrentShield != null){
+            if (Input.GetMouseButton(1) && CurrentShield != null){
                 if (!CurrentShield.broken){
-                    CurrentShield.blocking = true;
-                    MovementSpeed = shieldedSpeed;
+                    if (CurrentWeapon && CurrentWeapon._canAttack) { //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
+                        CurrentShield.blocking = true;
+                        MovementSpeed = shieldedSpeed;
+                    }
+                    if (!CurrentWeapon){            //we don't have a weapon, so block freely
+                        CurrentShield.blocking = true;
+                        MovementSpeed = shieldedSpeed;
+                    }
                 }
             }
             else if (Input.GetMouseButtonUp(1) && CurrentShield != null){

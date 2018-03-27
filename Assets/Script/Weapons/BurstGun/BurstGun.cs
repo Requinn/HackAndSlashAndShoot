@@ -9,6 +9,7 @@ public class BurstGun : Gun {
     public float ReloadTime = 0.25f;
     public int burstCount = 5;
     public float burstDelay = 0.05f;
+    public float spray = 0.1f;
     private AudioSource _gunSounds;
     public AudioClip[] gunAudio;
     public int MaxAmmo = 3;
@@ -16,8 +17,12 @@ public class BurstGun : Gun {
     public Damage.Faction faction;
     private Damage.DamageEventArgs args;
 
+    public delegate void BurstFiredEvent();
+
+    public event BurstFiredEvent BurstStart, BurstEnd;
     // Use this for initialization
-    void Start() {
+    void Start(){
+        AttackDelay = ShotDelay;
         ReloadSpeed = ReloadTime;
         CurMag = MaxMag = MaxAmmo;
         ObjectPooler.ObjectPool.PoolItem(bullet);
@@ -44,9 +49,8 @@ public class BurstGun : Gun {
         if (bullet != null) {
             bullet.GetComponent<IProjectile>().SetFaction(faction);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity =
-                transform.TransformDirection(
-                    new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
+            float deviation = Random.Range(-spray/2, spray/2); //a spray of bullets
+            rb.velocity = transform.TransformDirection(new Vector3(deviation, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
             _gunSounds.PlayOneShot(gunAudio[0]);

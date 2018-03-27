@@ -15,6 +15,12 @@ namespace MyNamespace{
             Faction = Damage.Faction.Enemy;
         }
 
+        void Update(){
+            if (Input.GetKeyDown(KeyCode.T)){
+                eventItem.Activate();
+            }
+        }
+
         protected override void Movement() {
         }
 

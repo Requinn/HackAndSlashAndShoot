@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public class ExplosiveEventTrigger : EventItem{
     public Weapon explosive;
+
     public override void Activate(){
         explosive.Fire();
     }

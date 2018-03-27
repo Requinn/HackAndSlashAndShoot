@@ -7,6 +7,7 @@ using UnityEngine;
 public class Explosive : Weapon{
     private List<Entity> _targets = new List<Entity>();
     public float Damage = 10.0f;
+    public float Force = 25.0f;
     public Damage.DamageType Type = JLProject.Damage.DamageType.Explosive;
     public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
     private Damage.DamageEventArgs args;
@@ -20,6 +21,10 @@ public class Explosive : Weapon{
         foreach (Entity e in _targets){
             if (e.gameObject != null){
                 e.TakeDamage(this.gameObject, ref args);
+                var impact = e.GetComponent<ImpactReceiver>();
+                if (impact){
+                    impact.AddImpact((e.transform.position - transform.position).normalized, Force);
+                }
             }
             else{
                 _targets.Remove(e);

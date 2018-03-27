@@ -115,7 +115,7 @@ MonoBehaviour:
     HitPoint: {x: 0, y: 0, z: 0}
     SourceFaction: 1
   FlightDistance: 9
-  Velocity: 15
+  Velocity: 17.5
   statusObj: {fileID: 0}
 --- !u!135 &135122271072685236
 SphereCollider:

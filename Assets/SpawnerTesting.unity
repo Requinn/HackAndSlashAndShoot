@@ -4467,7 +4467,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.5
+      value: 10.63
       objectReference: {fileID: 0}
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -4475,7 +4475,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -15.71
+      value: -16.25
       objectReference: {fileID: 0}
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4497,21 +4497,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114984650945366130, guid: 3988dcee9cf79db478e5f507a1cb79d2,
-        type: 2}
-      propertyPath: UIshield
-      value: 
-      objectReference: {fileID: 1201936499}
     - target: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
         type: 2}
       propertyPath: UIhp
       value: 
       objectReference: {fileID: 1163502739}
-    - target: {fileID: 143055931490861988, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+    - target: {fileID: 114984650945366130, guid: 3988dcee9cf79db478e5f507a1cb79d2,
         type: 2}
-      propertyPath: m_StepOffset
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: UIshield
+      value: 
+      objectReference: {fileID: 1201936499}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
   m_IsPrefabParent: 0
@@ -11009,7 +11004,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

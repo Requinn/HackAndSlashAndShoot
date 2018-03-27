@@ -10,7 +10,7 @@ namespace JLProject{
         public int CurMag{ get; set; }
         public int MaxMag{ get; set; }
         public Damage.Faction Faction{ get; set; }
-        protected bool _canAttack = true;
+        public bool _canAttack = true;
         public Type type;
         public enum Type{
             Melee,
