@@ -772,13 +772,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4053b333790c6f147bb9aff1a8b8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canAttack: 1
   type: 0
   WaveComponent: {fileID: 1816152926367876}
   attackDelay: 0.35
   comboDelay: 1.25
   swingCount: 3
   faction: 1
-  Damage: 15
+  Damage: 25
 --- !u!114 &114850213985238202
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -6,5 +6,5 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/SpawnerTesting.unity
-    guid: 5da692246ddb4374788573467fc58015
+    path: Assets/MVPSCENE.unity
+    guid: defc75c1d17f3e545bac5627c62d11f4

@@ -1,24 +1,40 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using JLProject;
+using MEC;
 using UnityEngine;
 
-namespace MyNamespace{
+namespace JLProject{
     public class TestDummy : Entity{
         public float speed;
 
         public EventItem eventItem;
+        private bool _canActivate = true;
+
         // Use this for initialization
-        void Start() {
+        void Start(){
+            TookDamage += FireExplosion;
             MovementSpeed = speed;
             Faction = Damage.Faction.Enemy;
         }
 
         void Update(){
-            if (Input.GetKeyDown(KeyCode.T)){
+            if (Input.GetKeyDown(KeyCode.T) && eventItem){
                 eventItem.Activate();
             }
+        }
+
+        private void FireExplosion(float hp){
+            if (_canActivate && eventItem) {
+                eventItem.Activate();
+                Timing.RunCoroutine(Delay());
+            }
+        }
+
+        private IEnumerator<float> Delay(){
+            _canActivate = false;
+            yield return Timing.WaitForSeconds(2.0f);
+            _canActivate = true;
         }
 
         protected override void Movement() {

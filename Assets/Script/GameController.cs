@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour{
     /// loads main menu
     /// </summary>
     private void LoadMainMenu() {
-        throw new System.NotImplementedException();
+        Application.Quit();
     }
 
     //Move this to the pause handler

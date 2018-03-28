@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using JLProject;
-using MyNamespace;
 using UnityEngine;
 /// <summary>
 /// a kill-type objective for testing purposes
