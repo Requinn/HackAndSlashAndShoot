@@ -24,6 +24,8 @@ namespace JLProject{
 
         private List<Weapon> _weaponsInHand = new List<Weapon>(2);
 
+        private float _timeSinceAttack = 0.0f;
+        private float _attackDelay = 0.0f;
         void Awake(){
             floorMask = LayerMask.GetMask("Floor");
         }
@@ -36,9 +38,12 @@ namespace JLProject{
         // Update is called once per frame
         void Update(){
             if (!GameController.Controller.paused){
+                _timeSinceAttack += Time.deltaTime;
                 _MousePos = GetMousePosition();
                 AngleUpdate(_MousePos);
-                Movement();
+                if (_timeSinceAttack > _attackDelay){
+                    Movement();
+                }
                 MouseInput();
                 WeaponSwap();
             }
@@ -64,9 +69,18 @@ namespace JLProject{
                 MovementSpeed = speed;
                 CurrentShield.blocking = false;
             }
+            
+            //TODO: MOVEMENT FORWARD ON EACH MELEE SWING
             if (Input.GetMouseButtonDown(0) && CurrentWeapon != null ) {
                 if (CurrentShield != null && !CurrentShield.blocking){
-                    CurrentWeapon.Fire();
+                    if (CurrentWeapon._canAttack){
+                        CurrentWeapon.Fire();
+                        if (CurrentWeapon.type == Weapon.Type.Melee){   //if we're swinging a sword, stop our movement for delay seconds
+                            GetComponent<ImpactReceiver>().AddImpact((GetMousePosition() - transform.position).normalized, 25.0f); //TODO:TEMPORARYYYYY forward mvoement on each swing
+                            _timeSinceAttack = 0.0f;
+                            _attackDelay = CurrentWeapon.AttackDelay;
+                        }
+                    }
                 }
             }
         }

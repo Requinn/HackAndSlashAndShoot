@@ -774,7 +774,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canAttack: 1
   type: 0
-  WaveComponent: {fileID: 1816152926367876}
+  WaveComponent:
+  - {fileID: 1816152926367876}
+  - {fileID: 1816152926367876}
+  - {fileID: 1816152926367876}
   attackDelay: 0.35
   comboDelay: 1.25
   swingCount: 3
