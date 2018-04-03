@@ -22,6 +22,7 @@ namespace JLProject{
         public Transform WeaponAttachPoint;
         public Transform ShieldAttachPoint;
 
+        public bool freezeMovement = false;
         private List<Weapon> _weaponsInHand = new List<Weapon>(2);
 
         private float _timeSinceAttack = 0.0f;
@@ -55,7 +56,11 @@ namespace JLProject{
         private void MouseInput(){
             if (Input.GetMouseButton(1) && CurrentShield != null){
                 if (!CurrentShield.broken){
-                    if (CurrentWeapon && CurrentWeapon._canAttack) { //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
+                    if (CurrentWeapon.type == Weapon.Type.Ranged && CurrentWeapon._canAttack) { //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
+                        CurrentShield.blocking = true;
+                        MovementSpeed = shieldedSpeed;
+                    }
+                    if (CurrentWeapon.type == Weapon.Type.Melee){
                         CurrentShield.blocking = true;
                         MovementSpeed = shieldedSpeed;
                     }
@@ -75,8 +80,7 @@ namespace JLProject{
                 if (CurrentShield != null && !CurrentShield.blocking){
                     if (CurrentWeapon._canAttack){
                         CurrentWeapon.Fire();
-                        if (CurrentWeapon.type == Weapon.Type.Melee){   //if we're swinging a sword, stop our movement for delay seconds
-                            GetComponent<ImpactReceiver>().AddImpact((GetMousePosition() - transform.position).normalized, 25.0f); //TODO:TEMPORARYYYYY forward mvoement on each swing
+                        if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
                             _timeSinceAttack = 0.0f;
                             _attackDelay = CurrentWeapon.AttackDelay;
                         }

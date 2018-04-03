@@ -178,7 +178,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 603fae72aff7ce047b3328181ccdb189, type: 2}
+  - {fileID: 2100000, guid: 5c0f801168da1fe42b7366f9ee681a73, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -224,6 +224,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Marker: {fileID: 1957059384101846}
   Max: {fileID: 1781087428768170}
+  shape: 0
 --- !u!114 &114907333169316990
 MonoBehaviour:
   m_ObjectHideFlags: 1

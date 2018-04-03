@@ -7,14 +7,17 @@ namespace JLProject{
     public class ShortWave : Melee{
         public GameObject[] WaveComponent;
         public float attackDelay = 0.65f;
-        public float comboDelay = 1.25f;
+        public float comboDelay = 0.75f;
         public int swingCount = 3;
         
         private int _currentCombo = 0;
         private float _timeSinceSwing = 0.0f;
         public Damage.Faction faction;
         public float Damage = 15.0f;
+        private ImpactReceiver _parentImpactRcvr;
+
         void Start(){
+            _parentImpactRcvr = GetComponentInParent<ImpactReceiver>();
             AttackDelay = attackDelay;
             CurMag = MaxMag = swingCount;
             ReloadSpeed = comboDelay;
@@ -38,13 +41,16 @@ namespace JLProject{
 
         public override void Fire(){
             if (_canAttack){
+                if (_currentCombo > 0){
+                    PushForward();
+                }
                 _timeSinceSwing = 0.0f;
                 Debug.Log(_currentCombo);
                 WaveComponent[_currentCombo].SetActive(true);
                 WaveComponent[_currentCombo].GetComponent<MeshRenderer>().enabled = true; //This is to re enable the mesh, for some reason it turns off and stays off
                 Timing.RunCoroutine(WaveDelay(_currentCombo));
                 _currentCombo++;
-                if (_currentCombo == 3){
+                if (_currentCombo == swingCount) {
                     Timing.RunCoroutine(Reload());
                 }
                 else{
@@ -53,9 +59,17 @@ namespace JLProject{
             }
         }
 
+        private void PushForward(){
+            _parentImpactRcvr.AddImpact(_parentImpactRcvr.transform.forward.normalized, 25.0f);
+        }
+
+        /// <summary>
+        /// Temporary new? look into later
+        /// </summary>
+        /// <returns></returns>
         private new IEnumerator<float> Reload() {
             _canAttack = false;
-            yield return Timing.WaitForSeconds(ReloadSpeed);
+            yield return Timing.WaitForSeconds(comboDelay);
             _canAttack = true;
             _currentCombo = 0;
         }
