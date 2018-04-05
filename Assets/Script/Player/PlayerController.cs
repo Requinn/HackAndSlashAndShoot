@@ -56,17 +56,21 @@ namespace JLProject{
         private void MouseInput(){
             if (Input.GetMouseButton(1) && CurrentShield != null){
                 if (!CurrentShield.broken){
-                    if (CurrentWeapon.type == Weapon.Type.Ranged && CurrentWeapon._canAttack) { //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
+                    if (!CurrentWeapon){
+                        //we don't have a weapon, so block freely
                         CurrentShield.blocking = true;
                         MovementSpeed = shieldedSpeed;
                     }
-                    if (CurrentWeapon.type == Weapon.Type.Melee){
-                        CurrentShield.blocking = true;
-                        MovementSpeed = shieldedSpeed;
-                    }
-                    if (!CurrentWeapon){            //we don't have a weapon, so block freely
-                        CurrentShield.blocking = true;
-                        MovementSpeed = shieldedSpeed;
+                    else{
+                        if (CurrentWeapon.type == Weapon.Type.Ranged && CurrentWeapon._canAttack){
+                            //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
+                            CurrentShield.blocking = true;
+                            MovementSpeed = shieldedSpeed;
+                        }
+                        if (CurrentWeapon.type == Weapon.Type.Melee){
+                            CurrentShield.blocking = true;
+                            MovementSpeed = shieldedSpeed;
+                        }
                     }
                 }
             }

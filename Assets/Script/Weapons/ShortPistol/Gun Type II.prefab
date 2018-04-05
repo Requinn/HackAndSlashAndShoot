@@ -1140,13 +1140,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fe79947b069ab4390a3cea81969ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canAttack: 1
   type: 1
   bullet:
     objectToPool: {fileID: 1446906852857892, guid: 223f209bc6900cf4dbf986dd80b5dd5e,
       type: 2}
     amountToPool: 4
     shouldExpand: 1
-  ShotDelay: 0.15
-  ReloadTime: 0.25
+  GunType: 0
+  ShotDelay: 0.2
+  ReloadTime: 0.75
+  gunAudio:
+  - {fileID: 0}
+  - {fileID: 0}
   MaxAmmo: 3
   BarrelPoint: {fileID: 4235349364553892}
+  faction: 0

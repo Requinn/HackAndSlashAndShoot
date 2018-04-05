@@ -117,6 +117,7 @@ namespace JLProject{
                 if (_maximumhealth > 0){
                     _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
                     if (TookDamage != null) TookDamage(damage);
+                    floater.SpawnDamageText(damage);
                     UpdateHealthUI();
                     if (_currenthealth == 0){
                         HandleDeath();

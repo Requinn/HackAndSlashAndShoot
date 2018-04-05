@@ -116,7 +116,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+  - {fileID: 2100000, guid: a3fdda65c5818584f9c646439a745706, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,12 +263,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fe79947b069ab4390a3cea81969ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _canAttack: 1
   type: 1
   bullet:
     objectToPool: {fileID: 1620600583638238, guid: 44be517d919f04d4ab21955569a6e64c,
       type: 2}
     amountToPool: 2
     shouldExpand: 1
+  GunType: 0
   ShotDelay: 0.2
   ReloadTime: 0.75
   gunAudio:
