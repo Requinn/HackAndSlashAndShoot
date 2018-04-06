@@ -196,7 +196,7 @@ namespace JLProject{
                         GO.transform.rotation = WeaponAttachPoint.rotation;
                     }
                 }
-                if (equipped != null) equipped(CurrentWeapon, _weaponsInHand.Count < 2 ? null : _weaponsInHand[1]);
+                if (equipped != null) equipped(_weaponsInHand[0], _weaponsInHand.Count < 2 ? null : _weaponsInHand[1]);
             }
             if (GO.GetComponent<Shield>()){
                 
