@@ -44,7 +44,7 @@ namespace JLProject{
                     PushForward();
                 }
                 _timeSinceSwing = 0.0f;
-                Debug.Log(_currentCombo);
+                //Debug.Log(_currentCombo);
                 WaveComponent[_currentCombo].SetActive(true);
                 WaveComponent[_currentCombo].GetComponent<MeshRenderer>().enabled = true; //This is to re enable the mesh, for some reason it turns off and stays off
                 Timing.RunCoroutine(WaveDelay(_currentCombo));

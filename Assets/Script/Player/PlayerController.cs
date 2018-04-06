@@ -39,7 +39,9 @@ namespace JLProject{
         // Update is called once per frame
         void Update(){
             if (!GameController.Controller.paused){
-                _timeSinceAttack += Time.deltaTime;
+                if (_timeSinceAttack <= _attackDelay){
+                    _timeSinceAttack += Time.deltaTime;
+                }
                 _MousePos = GetMousePosition();
                 AngleUpdate(_MousePos);
                 if (_timeSinceAttack > _attackDelay){
@@ -155,6 +157,8 @@ namespace JLProject{
             UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
         }
 
+        public delegate void WeaponEquipEvent(Weapon primary, Weapon secondary);
+        public event WeaponEquipEvent equipped;
         /// <summary>
         /// Equips a GO to the attachpoint
         /// </summary>
@@ -192,12 +196,15 @@ namespace JLProject{
                         GO.transform.rotation = WeaponAttachPoint.rotation;
                     }
                 }
+                if (equipped != null) equipped(CurrentWeapon, _weaponsInHand.Count < 2 ? null : _weaponsInHand[1]);
             }
             if (GO.GetComponent<Shield>()){
                 
             }
         }
 
+        public delegate void WeaponSwapEvent();
+        public event WeaponSwapEvent swapped;
         /// <summary>
         /// swap a weapon on keypress
         /// </summary>
@@ -213,6 +220,7 @@ namespace JLProject{
                     CurrentWeapon = _weaponsInHand[0];
                     _weaponsInHand[0].gameObject.SetActive(true);
                 }
+                if (swapped != null) swapped();
             }
         }
     }

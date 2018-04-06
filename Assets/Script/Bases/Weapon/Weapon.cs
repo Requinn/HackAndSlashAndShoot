@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using MEC;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace JLProject{
     public abstract class Weapon : MonoBehaviour{
+        public Sprite weaponIcon;
         public int AttackValue{ get; set; }
         public float AttackDelay{ get; set; }
         public float ReloadSpeed{ get; set; }

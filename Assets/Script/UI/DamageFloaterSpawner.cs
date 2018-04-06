@@ -24,8 +24,14 @@ public class DamageFloaterSpawner : MonoBehaviour{
     }
 
     public void SpawnDamageText(float damageIn){
-        _text.color = _damagedColor;
-        _text.text = "-" + Mathf.Floor(damageIn);
+        if (damageIn != 0){
+            _text.color = _damagedColor;
+            _text.text = "-" + Mathf.Floor(damageIn);
+        }
+        else{
+            _text.color = _immuneColor;
+            _text.text = "Immune!";
+        }
         Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 

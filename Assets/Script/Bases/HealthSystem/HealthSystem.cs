@@ -84,9 +84,10 @@ namespace JLProject{
             }
             else{
                 if (_maximumhealth > 0 && args.SourceFaction != _faction){
-                    _currenthealth = Mathf.Clamp(_currenthealth - ((int) args.DamageValue - _armorvalue), 0, _maximumhealth);
-                    floater.SpawnDamageText(args.DamageValue);
-                    if (TookDamage != null) TookDamage(args.DamageValue);
+                    float calculatedDamage = CalculateDamage(args);
+                    _currenthealth = Mathf.Clamp(_currenthealth - calculatedDamage, 0, _maximumhealth);
+                    floater.SpawnDamageText(calculatedDamage);
+                    if (TookDamage != null) TookDamage(calculatedDamage);
                     UpdateHealthUI();
                     if (_currenthealth == 0){
                         HandleDeath();
@@ -104,7 +105,7 @@ namespace JLProject{
         /// <returns></returns>
         protected virtual float CalculateDamage(Damage.DamageEventArgs e) {
             // For the simplest case, just pass the raw DamageValue.
-            return e.DamageValue;
+            return Mathf.Clamp((int)e.DamageValue - _armorvalue, 0, _maximumhealth);
         }
 
         /// <summary>

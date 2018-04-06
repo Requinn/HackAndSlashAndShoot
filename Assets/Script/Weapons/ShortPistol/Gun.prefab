@@ -263,6 +263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fe79947b069ab4390a3cea81969ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIcon: {fileID: 21300000, guid: 861b1603e1d42ee44a525c6732981853, type: 3}
   _canAttack: 1
   type: 1
   bullet:
