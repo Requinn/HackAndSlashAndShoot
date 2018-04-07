@@ -18,6 +18,7 @@ namespace JLProject{
 
         private bool _targetAcquired = false;
         private NavMeshAgent _NMAgent;
+
         // Use this for initialization
         void Awake(){
             _vision = GetComponent<FoVDetection>();
@@ -32,19 +33,29 @@ namespace JLProject{
                     if (_vision.inAttackCone){
                         Attack();
                     }
-                    else if(Vector3.Distance(transform.position, target.transform.position) < 1.0f){
+                    else if(Vector3.Distance(transform.position, target.transform.position) > 1f){
                         Movement();
                     }
                 }
             }
         }
-        private Quaternion _lookrotation;
+        
+        /// <summary>
+        /// called from the FSM
+        /// </summary>
         protected override void Movement(){
+            Rotate();
+            if(Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange){
+                _NMAgent.Move(transform.forward * movementSpeed * Time.deltaTime);
+            }
+        }
+
+        private Quaternion _lookrotation;
+        protected void Rotate(){
             _pos = transform.position;
             _dir = (target.transform.position - _pos).normalized;       //direction to look at
             _lookrotation = Quaternion.LookRotation(_dir);              //generate a quaternion using the direction
-            transform.DORotate(_lookrotation.eulerAngles, 0.25f);    //rotate towards it with a speed
-            _NMAgent.Move(transform.forward * movementSpeed * Time.deltaTime);
+            transform.DORotate(_lookrotation.eulerAngles, rotationTime);    //rotate towards it with a speed
         }
         /// <summary>
         /// this is for fsm experiments
@@ -53,7 +64,9 @@ namespace JLProject{
             Movement();
         }
         protected override void Attack(){
-            weapon.Fire();
+            if (weapon._canAttack){
+                weapon.Fire();
+            }
         }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 namespace JLProject{
     public class FoVDetection : MonoBehaviour{
         [Tooltip("Max view range.")] [SerializeField] private float _maxViewRange;
-        [Tooltip("Max attacking distance")] [SerializeField] private float _maxAttackRange;
+        [Tooltip("Max attacking distance")] public float maxAttackRange;
         [Range(0, 180)] [SerializeField] private float _xAngle = 60.0f;
         [Range(0, 180)] [SerializeField] private float _yAngle = 30.0f;
         [Range(0, 180)] [SerializeField] private float _aggroXAngle = 15.0f;
@@ -63,7 +63,7 @@ namespace JLProject{
                     float angle = Vector3.Angle(target.position - transform.position, transform.forward);
                     if (angle <= _xAngle){
                         //debugstr += "In Cone > ";
-                        if (angle <= _aggroXAngle && sightDistance.magnitude < _maxAttackRange){
+                        if (angle <= _aggroXAngle && sightDistance.magnitude < maxAttackRange){
                             inAttackCone = true;
                         }
                         else{

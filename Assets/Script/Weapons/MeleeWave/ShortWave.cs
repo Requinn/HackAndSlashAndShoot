@@ -40,7 +40,7 @@ namespace JLProject{
 
         public override void Fire(){
             if (_canAttack){
-                if (_currentCombo > 0){
+                if (_currentCombo > 0 && _parentImpactRcvr){
                     PushForward();
                 }
                 _timeSinceSwing = 0.0f;
