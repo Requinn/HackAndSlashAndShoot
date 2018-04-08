@@ -7,7 +7,7 @@ using UnityEngine;
 /// <summary>
 /// basic turret code to seek a player and fire upon them
 /// </summary>
-public class Turret : Entity{
+public class Turret : AIEntity{
     public bool useAI; //DEBUG ONLY
     private FoVDetection _vision;
     public GameObject target;
@@ -15,8 +15,6 @@ public class Turret : Entity{
     public float rotationTime = 3.0f;
     private Vector3 _pos, _dir;
     private Quaternion _lookrotation;
-
-    public Weapon weapon;
 
     private bool _targetAcquired = false;
     // Use this for initialization

@@ -18,6 +18,8 @@ public class ShortPistol : Gun{
 	    AttackDelay = ShotDelay;
 	    ReloadSpeed = ReloadTime;
 	    CurMag = MaxMag = MaxAmmo;
+	    if (faction == Damage.Faction.Enemy)
+	        bullet.objectToPool.tag = "EnemyProjectile";
 	    ObjectPooler.ObjectPool.PoolItem(bullet);
 	    _gunSounds = GetComponent<AudioSource>();
 	}

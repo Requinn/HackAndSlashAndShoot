@@ -5,12 +5,7 @@ using UnityEngine;
 namespace JLProject{
     public class ShortWave : Melee{
         public GameObject[] WaveComponent;
-        public float attackDelay = 0.65f;
-        public float comboDelay = 0.75f;
-        public int swingCount = 3;
-        
-        private int _currentCombo = 0;
-        private float _timeSinceSwing = 0.0f;
+
         public Damage.Faction faction;
         public float Damage = 15.0f;
         private ImpactReceiver _parentImpactRcvr;

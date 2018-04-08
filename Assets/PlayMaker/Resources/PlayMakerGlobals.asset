@@ -30,4 +30,5 @@ MonoBehaviour:
     categories:
     - 
     variableCategoryIDs: 
-  events: []
+  events:
+  - Evading

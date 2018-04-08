@@ -27,20 +27,22 @@ public class LaserBeam : Weapon {
         Timing.RunCoroutine(Explode());
     }
 
-    private IEnumerator<float> Explode() {
+    private IEnumerator<float> Explode(){
+        _canAttack = false;
         yield return Timing.WaitForSeconds(CastTime);
         foreach (Entity e in _targets) {
             if (e.gameObject != null) {
                 e.TakeDamage(this.gameObject, ref args);
                 var impact = e.GetComponent<ImpactReceiver>();
                 if (impact) {
-                    impact.AddImpact((e.transform.position - GetComponentInParent<ExplosiveEventTrigger>().transform.position).normalized, Force);
+                    impact.AddImpact((e.transform.position - GetComponentInParent<Entity>().transform.position).normalized, Force);
                 }
             }
             else {
                 _targets.Remove(e);
             }
         }
+        _canAttack = true;
     }
 
     //is this efficient??

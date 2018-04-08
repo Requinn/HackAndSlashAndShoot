@@ -8,6 +8,7 @@ TagManager:
   - Environment
   - PlayerProjectile
   - Switch
+  - EnemyProjectile
   layers:
   - Default
   - TransparentFX

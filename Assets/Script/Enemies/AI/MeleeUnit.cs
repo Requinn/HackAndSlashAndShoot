@@ -1,11 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
+using HutongGames.PlayMaker;
+using HutongGames.PlayMaker.Actions;
+using MEC;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace JLProject{
-    public class MeleeRusher : Entity{
+    public class MeleeUnit : AIEntity{
         public bool useAI; //DEBUG ONLY
         private FoVDetection _vision;
 
@@ -14,13 +19,19 @@ namespace JLProject{
         public float movementSpeed = 5.0f;
 
         private Vector3 _pos, _dir;
-        public Weapon weapon;
 
         private bool _targetAcquired = false;
-        private NavMeshAgent _NMAgent;
 
+        private RaycastHit[] surroundingObjects;
+
+        public PlayMakerFSM thisFSM;
+        //unused??
+        public State prevState;
+        public State state;
         // Use this for initialization
         void Awake(){
+            thisFSM = GetComponent<PlayMakerFSM>();
+            prevState = state = State.Idle;
             _vision = GetComponent<FoVDetection>();
             _NMAgent = GetComponent<NavMeshAgent>();
             target = FindObjectOfType<PlayerController>().gameObject;
@@ -28,10 +39,14 @@ namespace JLProject{
 
         // Update is called once per frame
         void Update(){
+            ProjectileDetection();
             if (useAI){
                 if (_vision.CanSeeTarget(target.transform)){
                     if (_vision.inAttackCone){
-                        Attack();
+                        if (weapon._canAttack){
+                            state = State.Attacking;
+                            Attack();
+                        }
                     }
                     else if(Vector3.Distance(transform.position, target.transform.position) > 1f){
                         Movement();
@@ -39,7 +54,18 @@ namespace JLProject{
                 }
             }
         }
-        
+
+        protected void ProjectileDetection(){
+            surroundingObjects = Physics.SphereCastAll(transform.position, 4f, Vector3.up);
+            foreach (RaycastHit obj in surroundingObjects){
+                if (obj.transform.gameObject.tag == "PlayerProjectile" && _canEvade){
+                    thisFSM.SendEvent("Evading");
+                    break;
+                }
+                    
+            }
+        }
+
         /// <summary>
         /// called from the FSM
         /// </summary>
@@ -64,9 +90,7 @@ namespace JLProject{
             Movement();
         }
         protected override void Attack(){
-            if (weapon._canAttack){
-                weapon.Fire();
-            }
+            weapon.Fire();
         }
     }
 }

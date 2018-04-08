@@ -13,7 +13,6 @@ namespace JLProject{
             Idle
 
         }
-
         private float _movementspeed;
 
         public float MovementSpeed {

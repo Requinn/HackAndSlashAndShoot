@@ -1249,7 +1249,7 @@ MonoBehaviour:
     shouldExpand: 1
   GunType: 0
   ShotDelay: 0.9
-  ReloadTime: 0.25
+  ReloadTime: 1
   burstCount: 8
   burstDelay: 0.07
   spray: 5

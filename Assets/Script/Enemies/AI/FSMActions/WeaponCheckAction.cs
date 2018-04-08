@@ -8,21 +8,19 @@ public class WeaponCheckAction : FsmStateAction {
     [RequiredField]
     [CheckForComponent(typeof(FoVDetection))]
     public FsmBool weaponReady;
+    public FsmBool inCombo;
     public FsmOwnerDefault gameobject;
 
     private Weapon weapon;
     // Use this for initialization
     public override void Awake () {
-		weapon = Fsm.GetOwnerDefaultTarget(gameobject).GetComponent<MeleeRusher>().weapon;
-
+        weapon = Fsm.GetOwnerDefaultTarget(gameobject).GetComponent<AIEntity>().weapon;
     }
-    public override void Reset() {
-        gameobject = null;
-        weaponReady = null;
 
-    }
     public override void OnEnter() {
+        weapon = Fsm.GetOwnerDefaultTarget(gameobject).GetComponent<AIEntity>().weapon;
         CheckWeapon();
+        Finish();
     }
 
     public override void OnUpdate() {
@@ -30,7 +28,13 @@ public class WeaponCheckAction : FsmStateAction {
     }
     public void CheckWeapon(){
         if (weapon != null){
-            weaponReady = weapon._canAttack;
+            weaponReady.Value = weapon._canAttack;
+            if (weapon.type == Weapon.Type.Melee){
+                if (weapon.GetComponent<Melee>().CurrentCombo > 0){
+                    inCombo.Value = true;
+                }
+                else inCombo.Value = false;
+            }
         }
     }
 }

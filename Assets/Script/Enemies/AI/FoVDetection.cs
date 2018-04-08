@@ -7,9 +7,9 @@ namespace JLProject{
     public class FoVDetection : MonoBehaviour{
         [Tooltip("Max view range.")] [SerializeField] private float _maxViewRange;
         [Tooltip("Max attacking distance")] public float maxAttackRange;
-        [Range(0, 180)] [SerializeField] private float _xAngle = 60.0f;
+        [Range(0, 180)] [SerializeField] private float _xAngle = 60.0f; //viewing cone
         [Range(0, 180)] [SerializeField] private float _yAngle = 30.0f;
-        [Range(0, 180)] [SerializeField] private float _aggroXAngle = 15.0f;
+        [Range(0, 180)] [SerializeField] private float _aggroXAngle = 15.0f; //attacking cone
 
         public Vector3 lastSeenPosition;
 
@@ -73,6 +73,7 @@ namespace JLProject{
                         if (Physics.Raycast(_eyeTransform.position, -sightDistance, out hit, _maxViewRange)){
                             //debugstr += "FOUND";
                             //Debug.DrawRay(_eyeTransform.position, -sightDistance, Color.cyan, 600.0f);
+                            //Debug.Log(hit.collider.gameObject);
                             if (hit.collider.gameObject.tag == target.tag){
                                 lastSeenPosition = hit.collider.gameObject.transform.position;
                                 return true;

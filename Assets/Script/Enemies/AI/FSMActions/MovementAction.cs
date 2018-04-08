@@ -6,10 +6,9 @@ using UnityEngine;
 namespace JLProject {
     public class MovementAction : FsmStateAction {
         public FsmOwnerDefault gameobject;
-        private Weapon weapon;
-        private MeleeRusher entity;
+        private AIEntity entity;
         public override void Awake(){
-            entity = Fsm.GameObject.GetComponent<MeleeRusher>();
+            entity = Fsm.GameObject.GetComponent<AIEntity>();
         }
 
         public override void OnUpdate(){

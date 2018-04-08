@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using HutongGames.PlayMaker;
 using JLProject;
 using MEC;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class BurstGun : Gun {
 
     public delegate void BurstFiredEvent();
 
+    private CoroutineHandle _delayHandle;
     public event BurstFiredEvent BurstStart, BurstEnd;
     // Use this for initialization
     void Start(){
@@ -34,14 +36,17 @@ public class BurstGun : Gun {
             ReactivateBulletObj();
             CurMag--;
             if (CurMag == 0){
+                Timing.KillCoroutines(_delayHandle);
                 Timing.RunCoroutine(Reload());
                 _gunSounds.PlayOneShot(gunAudio[1]);
+                i = burstCount + 1;
             }
             else{
                 yield return Timing.WaitForSeconds(burstDelay);
                 i++;
             }
         }
+        
     }
 
     private void ReactivateBulletObj(){
@@ -64,7 +69,7 @@ public class BurstGun : Gun {
         //don't allow weapon swapping mid mission to avoid repooling mid level
         if (_canAttack){
             Timing.RunCoroutine(Burst());
-            Timing.RunCoroutine(Delay());
+            _delayHandle = Timing.RunCoroutine(Delay());
         }
     }
 }

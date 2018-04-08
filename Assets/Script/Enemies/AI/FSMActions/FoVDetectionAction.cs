@@ -9,6 +9,7 @@ using UnityEngine;
 public class FoVDetectionAction : FsmStateAction{
     [RequiredField] [CheckForComponent(typeof(FoVDetection))] public FsmBool canSee;
     [RequiredField] [CheckForComponent(typeof(FoVDetection))] public FsmBool canAttack;
+    [RequiredField] [CheckForComponent(typeof(FoVDetection))] public FsmBool inRange;
     public FsmOwnerDefault gameobject;
     private FoVDetection FoVScript;
     private Transform _player;
@@ -34,6 +35,7 @@ public class FoVDetectionAction : FsmStateAction{
     }
 
     public void CheckSight(){
+        inRange.Value = FoVScript.inRange;
         canAttack.Value = FoVScript.inAttackCone;
         canSee.Value = FoVScript.CanSeeTarget(_player);
     }
