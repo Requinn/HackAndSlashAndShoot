@@ -9,8 +9,10 @@ public abstract class AIEntity : Entity{
     public Weapon weapon;
     protected NavMeshAgent _NMAgent;
     private float _evasionSpeed = 65f;
+    [SerializeField]
     private float _evasionDuration = 0.3f;
     private float _evadeDistance = 12.5f;
+    [SerializeField]
     private float _evadeCooldown = 1.0f;
     public bool _canEvade = true;
     /// <summary>

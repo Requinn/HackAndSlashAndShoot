@@ -775,15 +775,18 @@ MonoBehaviour:
   weaponIcon: {fileID: 21300000, guid: 11313f94af346ea44b9dfc9aece1bbd0, type: 3}
   _canAttack: 1
   type: 0
+  attackDelay: 0.35
+  comboDelay: 1.25
+  swingCount: 3
+  _currentCombo: 0
+  _comboDecay: 0.7
   WaveComponent:
   - {fileID: 1816152926367876}
   - {fileID: 1816152926367876}
   - {fileID: 1816152926367876}
-  attackDelay: 0.35
-  comboDelay: 1.25
-  swingCount: 3
+  damageValues: 190000001900000019000000
+  momentum: 000000001900000019000000
   faction: 1
-  Damage: 25
 --- !u!114 &114850213985238202
 MonoBehaviour:
   m_ObjectHideFlags: 1

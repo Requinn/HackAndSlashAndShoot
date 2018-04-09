@@ -38,7 +38,9 @@ public class AoEMarker : MonoBehaviour{
 
     private IEnumerator<float> DelayedDisable(float castTime){
         yield return Timing.WaitForSeconds(castTime);
-        Max.SetActive(false);
-        Marker.SetActive(false);
+        if (this){
+            Max.SetActive(false);
+            Marker.SetActive(false);
+        }
     }
 }

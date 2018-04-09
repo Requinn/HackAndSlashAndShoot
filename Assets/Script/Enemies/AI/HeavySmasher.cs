@@ -7,7 +7,6 @@ using UnityEngine.AI;
 
 namespace JLProject {
     public class HeavySmasher : AIEntity {
-        public bool useAI; //DEBUG ONLY
         private FoVDetection _vision;
 
         public GameObject target;
@@ -30,19 +29,6 @@ namespace JLProject {
 
         // Update is called once per frame
         void Update() {
-            if (useAI) {
-                if (_vision.CanSeeTarget(target.transform)) {
-                    if (_vision.inAttackCone) {
-                        if (weapon._canAttack) {
-                            state = State.Attacking;
-                            Attack();
-                        }
-                    }
-                    else if (Vector3.Distance(transform.position, target.transform.position) > 1f) {
-                        Movement();
-                    }
-                }
-            }
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ public class Melee : Weapon {
     [SerializeField]
     protected int _currentCombo = 0;
     protected float _timeSinceSwing = 0.0f;
+    [SerializeField]
     protected float _comboDecay = 0.7f;
 
     public int CurrentCombo {

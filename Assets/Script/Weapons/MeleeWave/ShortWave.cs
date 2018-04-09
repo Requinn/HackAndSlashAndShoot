@@ -5,9 +5,9 @@ using UnityEngine;
 namespace JLProject{
     public class ShortWave : Melee{
         public GameObject[] WaveComponent;
-
+        public int[] damageValues;
+        public int[] momentum;
         public Damage.Faction faction;
-        public float Damage = 15.0f;
         private ImpactReceiver _parentImpactRcvr;
 
         void Start(){
@@ -17,8 +17,8 @@ namespace JLProject{
             ReloadSpeed = comboDelay;
             //temporary!!!!
             //TODO: Change this so things like, 3rd hits do more damage in a combo or something similar!!
-            foreach (var meleehitbox in WaveComponent){
-                meleehitbox.GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(Damage,
+            for(int i = 0; i < WaveComponent.Length; i++) { 
+                WaveComponent[i].GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(damageValues[i],
                     this.transform.position, JLProject.Damage.DamageType.Melee, faction);
             }
         }
@@ -36,7 +36,7 @@ namespace JLProject{
         public override void Fire(){
             if (_canAttack){
                 if (_currentCombo > 0 && _parentImpactRcvr){
-                    PushForward();
+                    PushForward(_currentCombo);
                 }
                 _timeSinceSwing = 0.0f;
                 //Debug.Log(_currentCombo);
@@ -53,8 +53,8 @@ namespace JLProject{
             }
         }
 
-        private void PushForward(){
-            _parentImpactRcvr.AddImpact(_parentImpactRcvr.transform.forward.normalized, 25.0f);
+        private void PushForward(int combo){
+            _parentImpactRcvr.AddImpact(_parentImpactRcvr.transform.forward.normalized, momentum[combo]);
         }
 
         /// <summary>

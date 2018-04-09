@@ -15,6 +15,7 @@ namespace JLProject{
         public override void OnEnter() {
             //weapon = Fsm.GetOwnerDefaultTarget(gameobject).GetComponentInChildren<Weapon>();
             Attack();
+            Finish();
         }
 
         public override void OnUpdate() {
