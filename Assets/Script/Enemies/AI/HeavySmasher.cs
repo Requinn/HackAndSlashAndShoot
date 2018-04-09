@@ -48,12 +48,6 @@ namespace JLProject {
             _lookrotation = Quaternion.LookRotation(_dir);              //generate a quaternion using the direction
             transform.DORotate(_lookrotation.eulerAngles, rotationTime);    //rotate towards it with a speed
         }
-        /// <summary>
-        /// this is for fsm experiments
-        /// </summary>
-        public void Move() {
-            Movement();
-        }
         protected override void Attack() {
             weapon.Fire();
         }

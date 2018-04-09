@@ -14,7 +14,7 @@ public class Explosive : Weapon{
     private float Radius = 4.0f;
     public SphereCollider Collider;
     public AoEMarker MarkerScript;
-    public Damage.DamageType Type = JLProject.Damage.DamageType.Explosive;
+    public Damage.DamageType dmgType = JLProject.Damage.DamageType.Explosive;
     public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
     private Damage.DamageEventArgs args;
 

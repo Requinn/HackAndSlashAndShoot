@@ -8,7 +8,6 @@ using UnityEngine;
 /// basic turret code to seek a player and fire upon them
 /// </summary>
 public class Turret : AIEntity{
-    public bool useAI; //DEBUG ONLY
     private FoVDetection _vision;
     public GameObject target;
 
@@ -25,18 +24,6 @@ public class Turret : AIEntity{
 
 	// Update is called once per frame
 	void Update (){
-	    if (useAI){
-	        if (_vision.CanSeeTarget(target.transform) || _vision.inRange){
-	            _targetAcquired = true;
-	            if (!_vision.inRange){
-	                _targetAcquired = false;
-	            }
-	            if (_vision.inAttackCone){
-	                Attack();
-	            }
-	            Movement();
-	        }
-	    }
 	}
 
     protected override void Movement(){
@@ -47,12 +34,6 @@ public class Turret : AIEntity{
         transform.DORotate(_lookrotation.eulerAngles, rotationTime);    //rotate towards it with a speed
     }
 
-    /// <summary>
-    /// this is for fsm experiments
-    /// </summary>
-    public void Move(){
-        Movement();
-    }
     protected override void Attack(){
         weapon.Fire();
     }
