@@ -5,7 +5,6 @@ using UnityEngine;
 namespace JLProject{
     public class CameraController : MonoBehaviour{
         private Transform _player;
-        private Camera c;
         public float CameraHeight = 9.0f, CameraHorizontal = 0.0f, CameraVertical = -7.5f;
         public bool LockedToPlayer = true;
         public float CameraFollowDelay = 0.1f; //How behind the camera is when the player moves
@@ -16,7 +15,6 @@ namespace JLProject{
 
         // Use this for initialization
         void Start(){
-            c = Camera.main;
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
             _cameraTimetoReach = CameraFollowDelay;
         }

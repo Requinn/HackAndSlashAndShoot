@@ -32,18 +32,18 @@ public class DamageFloaterSpawner : MonoBehaviour{
             _text.color = _immuneColor;
             _text.text = "Immune!";
         }
-        Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
+        Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 
     public void SpawnHealText(float healIn){
         _text.color = _healedColor;
         _text.text = "+" + Mathf.Floor(healIn);
-        Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
+        Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 
     public void SpawnShieldText(float shieldIn){
         _text.color = _shieldedColor;
         _text.text = "-" + Mathf.Floor(shieldIn);
-        Transform floaterText = Instantiate(UIobj, transform.position, transform.rotation, transform);
+        Instantiate(UIobj, transform.position, transform.rotation, transform);
     }
 }

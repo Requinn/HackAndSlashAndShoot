@@ -64,9 +64,9 @@ namespace JLProject{
         }
 
         void LateUpdate(){
-            if (Input.GetMouseButton(1) && blocking){
+            if (blocking && !shieldBubble.activeSelf) {
                 ShieldBubbleOn();
-            }else if (Input.GetMouseButtonUp(1) && !blocking){
+            }else if (!blocking && shieldBubble.activeSelf) {
                 ShieldBubbleOff();
             }
         }

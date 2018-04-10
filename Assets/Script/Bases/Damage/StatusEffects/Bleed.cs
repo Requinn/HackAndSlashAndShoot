@@ -11,26 +11,25 @@ public class Bleed : StatusObject{
     public float damagePerTick = 5;
     private float _initTime;
     private bool _canTick = false;
-
+    private Entity _target;
     void Start(){
-        Timing.RunCoroutine(TickDown());
+        _target = GetComponentInParent<Entity>();
+        if (_target){
+            Timing.RunCoroutine(TickDown());
+        }
         InitializeProc();
         //StartProcs();
         _initTime = Time.time;
     }
 
     void Update(){
-        if (_canTick && tickCount >= 0){
-            GetComponentInParent<Entity>().TakeStatusDamage(damagePerTick, StatusType.Bleed);
-            Timing.RunCoroutine(TickDown());
-            tickCount--;
-        }
-        if (tickCount == 0){
-            Destroy(gameObject);
-        }
+
     }
+
     public void StartProcs(){
-        _canTick = true;
+        if (_target) {
+            Timing.RunCoroutine(TickDown());
+        }
         /**do{
             GetComponentInParent<Entity>().TakeStatusDamage(damagePerTick, Type.Bleed);
             Timing.RunCoroutine(TickDown());
@@ -38,8 +37,11 @@ public class Bleed : StatusObject{
     }
 
     public override IEnumerator<float> TickDown(){
-        _canTick = false;
-        yield return Timing.WaitForSeconds(tickDelay);
-        _canTick = true;
+        while (tickCount >= 0){
+            yield return Timing.WaitForSeconds(tickDelay);
+            _target.TakeStatusDamage(damagePerTick, StatusType.Bleed);            
+            tickCount--;
+        }
+        Destroy(gameObject);
     }
 }

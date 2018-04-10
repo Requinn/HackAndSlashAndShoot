@@ -236,15 +236,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ccc890e72d8b641ade96b2220be580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIcon: {fileID: 0}
   _canAttack: 1
   type: 1
   _targets: []
-  Damage: 30
+  Damage: 80
   Force: 60
   CastTime: 1.75
   Collider: {fileID: 0}
   MarkerScript: {fileID: 114121098330699608}
-  Type: 3
+  dmgType: 3
   Faction: 3
 --- !u!135 &135834792904046218
 SphereCollider:

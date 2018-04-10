@@ -12,14 +12,14 @@ public class LaserBeam : Weapon {
     public float CastTime = 2.25f;
     public BoxCollider Collider;
     public AoEMarker MarkerScript;
-    public Damage.DamageType Type = JLProject.Damage.DamageType.Explosive;
+    public Damage.DamageType dType = JLProject.Damage.DamageType.Explosive;
     public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
     private Damage.DamageEventArgs args;
 
     // Use this for initialization
     void Start (){
         Collider = GetComponent<BoxCollider>();
-        args = new Damage.DamageEventArgs(Damage, this.transform.position, Type, Faction);
+        args = new Damage.DamageEventArgs(Damage, this.transform.position, dType, Faction);
     }
 
     public override void Fire(){

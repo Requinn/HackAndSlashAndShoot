@@ -11,6 +11,7 @@ public class DamageFloater : MonoBehaviour{
     public float duration = 0.5f; // how long text stays
     public float scrollSpeed = 0.05f; // speed text moves
 
+    //TODO: Minor performance hit in instantiation due to Getcomponent<Text>()
     void Awake (){
 	    alpha = GetComponent<Text>().material.color.a;
         DestroyObject(gameObject, duration);

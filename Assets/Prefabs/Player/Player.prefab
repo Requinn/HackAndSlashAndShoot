@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4352109575474120}
   - component: {fileID: 33282970635225166}
-  - component: {fileID: 136984713801810172}
   - component: {fileID: 23162655464979556}
   - component: {fileID: 114095253093492628}
   - component: {fileID: 143055931490861988}
@@ -163,7 +162,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002170645820572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.306568, y: 2.6, z: 1.585}
+  m_LocalPosition: {x: 10.63, y: 6.02, z: -16.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4274008265826652}
@@ -291,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74978a8d53e2e624a97f71b392700cc3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 100
-  _currenthealth: 100
+  _maximumhealth: 200
+  _currenthealth: 200
   _armorvalue: 0
   _faction: 1
   StatusImmunities: 
@@ -307,6 +306,7 @@ MonoBehaviour:
   CurrentShield: {fileID: 114984650945366130}
   WeaponAttachPoint: {fileID: 4274008265826652}
   ShieldAttachPoint: {fileID: 4763654183145382}
+  freezeMovement: 0
 --- !u!114 &114136307307576236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -376,8 +376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d48cd97ad8e1a7478f125f2fd5d33ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 50
-  _currenthealth: 50
+  _maximumhealth: 80
+  _currenthealth: 80
   _rechargevalue: 5
   _rechargedelay: 2
   _rechargespeed: 0.5
@@ -397,19 +397,6 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &136984713801810172
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1002170645820572}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!143 &143055931490861988
 CharacterController:

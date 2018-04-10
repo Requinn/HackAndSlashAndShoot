@@ -69,8 +69,10 @@ namespace JLProject{
         }
 
         private IEnumerator<float> WaveDelay(int hitboxNo){
-            yield return Timing.WaitForSeconds(0.025f);
-            WaveComponent[hitboxNo].SetActive(false);
+            if (this){
+                yield return Timing.WaitForSeconds(0.025f);
+                WaveComponent[hitboxNo].SetActive(false);
+            }
         }
     }
 

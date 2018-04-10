@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
 
 namespace JLProject {
-    public class HeavySmasher : AIEntity {
+    public class HeavySmasher : AIEntity{
         private FoVDetection _vision;
 
         public GameObject target;
@@ -15,12 +14,12 @@ namespace JLProject {
 
         private Vector3 _pos, _dir;
 
-        private bool _targetAcquired = false;
-        //unused??
         public State prevState;
+
         public State state;
+
         // Use this for initialization
-        void Awake() {
+        void Awake(){
             prevState = state = State.Idle;
             _vision = GetComponent<FoVDetection>();
             _NMAgent = GetComponent<NavMeshAgent>();
@@ -28,28 +27,33 @@ namespace JLProject {
         }
 
         // Update is called once per frame
-        void Update() {
+        void Update(){
         }
 
         /// <summary>
         /// called from the FSM
         /// </summary>
-        protected override void Movement() {
+        protected override void Movement(){
             Rotate();
-            if (Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange) {
+            if (Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange){
                 _NMAgent.Move(transform.forward * movementSpeed * Time.deltaTime);
             }
         }
 
         private Quaternion _lookrotation;
-        protected void Rotate() {
+
+        protected void Rotate(){
             _pos = transform.position;
-            _dir = (target.transform.position - _pos).normalized;       //direction to look at
-            _lookrotation = Quaternion.LookRotation(_dir);              //generate a quaternion using the direction
-            transform.DORotate(_lookrotation.eulerAngles, rotationTime);    //rotate towards it with a speed
+            _dir = (target.transform.position - _pos).normalized; //direction to look at
+            _lookrotation = Quaternion.LookRotation(_dir); //generate a quaternion using the direction
+            transform.DORotate(_lookrotation.eulerAngles, rotationTime); //rotate towards it with a speed
         }
-        protected override void Attack() {
+
+        protected override void Attack(){
             weapon.Fire();
+        }
+
+        public override void ProjectileResponse(){
         }
     }
 }

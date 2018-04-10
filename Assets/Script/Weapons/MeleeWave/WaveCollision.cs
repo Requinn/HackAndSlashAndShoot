@@ -9,6 +9,7 @@ namespace JLProject {
         //TODO CLEAN UP THIS MESS
 
         void OnTriggerEnter(Collider c){
+            //Debug.Log(c);
             Entity ent = c.GetComponent<Entity>();
             Switch swtch = c.GetComponent<Switch>();
             if (ent != null){

@@ -8,17 +8,14 @@ using UnityEngine;
 /// basic turret code to seek a player and fire upon them
 /// </summary>
 public class Turret : AIEntity{
-    private FoVDetection _vision;
     public GameObject target;
 
     public float rotationTime = 3.0f;
     private Vector3 _pos, _dir;
     private Quaternion _lookrotation;
 
-    private bool _targetAcquired = false;
     // Use this for initialization
     void Awake(){
-	    _vision = GetComponent<FoVDetection>();
 	    target = FindObjectOfType<PlayerController>().gameObject;
 	}
 
@@ -26,8 +23,8 @@ public class Turret : AIEntity{
 	void Update (){
 	}
 
-    protected override void Movement(){
-        //this enemy does not move, but rotates
+    //this enemy does not move, but rotates
+    protected override void Movement(){   
         _pos = transform.position;
         _dir = (target.transform.position - _pos).normalized;       //direction to look at
         _lookrotation = Quaternion.LookRotation(_dir);              //generate a quaternion using the direction
@@ -36,6 +33,9 @@ public class Turret : AIEntity{
 
     protected override void Attack(){
         weapon.Fire();
+    }
+
+    public override void ProjectileResponse() {
     }
 
 }

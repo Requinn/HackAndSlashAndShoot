@@ -22,7 +22,7 @@ public class Explosive : Weapon{
     void Start(){
         Collider = GetComponent<SphereCollider>();
         Radius = Collider.radius;
-        args = new Damage.DamageEventArgs(Damage, this.transform.position, Type, Faction);
+        args = new Damage.DamageEventArgs(Damage, this.transform.position, dmgType, Faction);
 
     }
 

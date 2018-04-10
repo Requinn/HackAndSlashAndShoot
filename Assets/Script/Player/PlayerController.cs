@@ -81,7 +81,6 @@ namespace JLProject{
                 CurrentShield.blocking = false;
             }
             
-            //TODO: MOVEMENT FORWARD ON EACH MELEE SWING
             if (Input.GetMouseButtonDown(0) && CurrentWeapon != null ) {
                 if (CurrentShield != null && !CurrentShield.blocking){
                     if (CurrentWeapon._canAttack){

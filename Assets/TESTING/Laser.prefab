@@ -300,15 +300,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde268d77ddc1e34a98c4022a45d5329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponIcon: {fileID: 0}
   _canAttack: 1
   type: 1
   _targets: []
-  Damage: 30
-  Force: 120
+  Damage: 80
+  Force: 125
   CastTime: 2.25
   Collider: {fileID: 0}
   MarkerScript: {fileID: 114300060436685352}
-  Type: 3
+  dType: 3
   Faction: 3
 --- !u!114 &114300060436685352
 MonoBehaviour:

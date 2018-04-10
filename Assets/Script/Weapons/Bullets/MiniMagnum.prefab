@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   args:
-    DamageValue: 18
+    DamageValue: 35
     DamageType: 1
     HitPoint: {x: 0, y: 0, z: 0}
     SourceFaction: 1
