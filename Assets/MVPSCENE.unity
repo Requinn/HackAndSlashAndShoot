@@ -1775,7 +1775,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh103174
+  m_Name: pb_Mesh-1034
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2165,7 +2165,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1719146
+  m_Name: pb_Mesh-1190
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -5480,6 +5480,23 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!1 &1051615297 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1051497158504586, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+    type: 2}
+  m_PrefabInternal: {fileID: 1503066628}
+--- !u!65 &1051615298
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1051615297}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 4.9906063, z: 1.5}
+  m_Center: {x: 0, y: 2.4203033, z: 0}
 --- !u!1 &1096651688
 GameObject:
   m_ObjectHideFlags: 0
@@ -8095,7 +8112,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2470958
+  m_Name: pb_Mesh-1132
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -8678,7 +8695,47 @@ Prefab:
       propertyPath: m_Size.z
       value: 1.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114965127461860536, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _quads.Array.data[0]._mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    - target: {fileID: 114965127461860536, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _quads.Array.data[1]._mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    - target: {fileID: 114965127461860536, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _quads.Array.data[2]._mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    - target: {fileID: 114965127461860536, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _quads.Array.data[3]._mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    - target: {fileID: 114965127461860536, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _quads.Array.data[4]._mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    - target: {fileID: 114965127461860536, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _quads.Array.data[5]._mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 55296d1b6ee54e14e8eb4648d4b448ee, type: 2}
+    - target: {fileID: 1051497158504586, guid: ef37b58653e7a2c4e8498ede1ea5ba14, type: 2}
+      propertyPath: m_StaticEditorFlags
+      value: 127
+      objectReference: {fileID: 0}
+    - target: {fileID: 114602402800288108, guid: ef37b58653e7a2c4e8498ede1ea5ba14,
+        type: 2}
+      propertyPath: _entityType
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 65866909527360364, guid: ef37b58653e7a2c4e8498ede1ea5ba14, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ef37b58653e7a2c4e8498ede1ea5ba14, type: 2}
   m_IsPrefabParent: 0
 --- !u!43 &1518986722

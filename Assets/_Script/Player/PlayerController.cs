@@ -24,15 +24,17 @@ namespace JLProject{
 
         public bool freezeMovement = false;
         private List<Weapon> _weaponsInHand = new List<Weapon>(2);
-
+        private PlayerAnimationController _PAC;
         private float _timeSinceAttack = 0.0f;
         private float _attackDelay = 0.0f;
+
         void Awake(){
             floorMask = LayerMask.GetMask("Floor");
         }
         void Start(){
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
+            _PAC = GetComponentInChildren<PlayerAnimationController>();
             Faction = Damage.Faction.Player;
         }
 
@@ -102,6 +104,11 @@ namespace JLProject{
             _MovZ = Input.GetAxisRaw("Vertical");
             _MoveDir = new Vector3(_MovX, 0, _MovZ).normalized;
             _MoveDir *= MovementSpeed;
+            if (_MovX > 0){
+                if (_PAC) {
+                    _PAC.WalkForward();
+                }
+            }
             cc.Move(_MoveDir * Time.deltaTime);
         }
 
