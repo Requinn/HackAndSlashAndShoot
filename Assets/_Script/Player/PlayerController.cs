@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 /// <summary>
-/// TODO: Shielding mid attack shouldn't be possible. (fixed?)
-/// TODO: Moving during a melee attack or burst fire weapon shouldn't be possible.
+/// A controller for the player character
 /// </summary>
 namespace JLProject{
     public class PlayerController : Entity{
@@ -46,9 +45,11 @@ namespace JLProject{
                 }
                 _MousePos = GetMousePosition();
                 AngleUpdate(_MousePos);
+
                 if (_timeSinceAttack > _attackDelay){
                     Movement();
                 }
+                
                 MouseInput();
                 WeaponSwap();
             }
@@ -103,12 +104,10 @@ namespace JLProject{
             _MovX = Input.GetAxisRaw("Horizontal");
             _MovZ = Input.GetAxisRaw("Vertical");
             _MoveDir = new Vector3(_MovX, 0, _MovZ).normalized;
-            _MoveDir *= MovementSpeed;
-            if (_MovX > 0){
-                if (_PAC) {
-                    _PAC.WalkForward();
-                }
+            if(_PAC){
+                _PAC.moveVector = _MoveDir;
             }
+            _MoveDir *= MovementSpeed;
             cc.Move(_MoveDir * Time.deltaTime);
         }
 
@@ -135,7 +134,10 @@ namespace JLProject{
         private void AngleUpdate(Vector3 tpos){
             _pos = transform.position;
             _dir = (tpos - _pos).normalized;
-             _lookrotation = Quaternion.LookRotation(_dir);
+            _lookrotation = Quaternion.LookRotation(_dir);
+            if (_PAC){
+                _PAC.lookAngle = _lookrotation.eulerAngles.y;
+            }
             transform.rotation = Quaternion.Slerp(transform.rotation, _lookrotation, Time.deltaTime * rotationSpeed);
         }
 
