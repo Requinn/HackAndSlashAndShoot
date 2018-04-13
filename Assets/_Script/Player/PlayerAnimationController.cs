@@ -24,12 +24,12 @@ public class PlayerAnimationController : MonoBehaviour{
             }
 
             //translate movement to an angle
-            _moveAngle = Mathf.Atan2(moveVector.z, moveVector.x) / Mathf.PI * 180;
+            _moveAngle = Mathf.Atan2(moveVector.x, moveVector.z) / Mathf.PI * 180;
             if (_moveAngle < 0){
                 _moveAngle += 360;
             }
 
-            //get the difference in angle to get the inbetween "state" of directional movement
+            //get the difference in angle to get the direction of relative travel from look to movement (and clamp that shit)
             _moveLookDiff = _moveAngle - lookAngle;
             if (_moveLookDiff > 180){
                 _moveLookDiff -= 360;
@@ -71,8 +71,8 @@ public class PlayerAnimationController : MonoBehaviour{
 
     //Attacking animations
     public void GunShot() {
-        //anim.Play("gun shooting animation");
-        _animator.SetTrigger("GunAttack");
+        _animator.Play("GunShot");
+        //_animator.SetTrigger("GunAttack");
     }
 
     public void SwordSwing(){

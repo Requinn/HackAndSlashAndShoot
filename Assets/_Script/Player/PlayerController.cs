@@ -87,6 +87,7 @@ namespace JLProject{
             if (Input.GetMouseButtonDown(0) && CurrentWeapon != null ) {
                 if (CurrentShield != null && !CurrentShield.blocking){
                     if (CurrentWeapon._canAttack){
+                        _PAC.GunShot();
                         CurrentWeapon.Fire();
                         if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
                             _timeSinceAttack = 0.0f;
