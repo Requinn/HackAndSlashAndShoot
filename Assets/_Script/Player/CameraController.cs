@@ -13,6 +13,9 @@ namespace JLProject{
 
         private Vector3 _camVelocity = Vector3.zero;
 
+        public bool FadeObstruction = true;
+        private RaycastHit _lineHit;
+        private ObjectCameraFader _objFader;
         // Use this for initialization
         void Start(){
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
@@ -27,7 +30,20 @@ namespace JLProject{
                 _target = _player.position + new Vector3(CameraHorizontal, CameraHeight, CameraVertical);
             }
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _camVelocity, _cameraTimetoReach);
+
+            if (FadeObstruction){
+                FadeObjectBetweenPlayer();
+            }
            
+        }
+
+        private void FadeObjectBetweenPlayer(){
+            if (Physics.Linecast(transform.position, _player.position, out _lineHit)){
+                _objFader = _lineHit.transform.GetComponent<ObjectCameraFader>();
+                if (_objFader){
+                    _objFader.EnableFade();
+                }
+            }
         }
 
         //Moves the camera to the targetPos in timeToReach seconds
