@@ -107,7 +107,7 @@ NavMeshSettings:
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
-  m_NavMeshData: {fileID: 23800000, guid: 33c9c6c2b07f7cc4184243e1fffa6d23, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 27ac2abc4807fb84a9d4d7c84199a7e8, type: 2}
 --- !u!43 &18113325
 Mesh:
   m_ObjectHideFlags: 0
@@ -2165,7 +2165,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1190
+  m_Name: pb_Mesh-781282
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -2859,8 +2859,8 @@ GameObject:
   m_Name: DoorIn
   m_TagString: Environment
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!114 &450704891
 MonoBehaviour:
@@ -3206,7 +3206,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -6521,6 +6521,7 @@ MonoBehaviour:
   CameraVertical: -9
   LockedToPlayer: 1
   CameraFollowDelay: 0.1
+  FadeObstruction: 1
 --- !u!81 &1327743194
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8743,7 +8744,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh42468
+  m_Name: pb_Mesh60678
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -9231,7 +9232,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -10435,7 +10436,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh42694
+  m_Name: pb_Mesh60996
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
