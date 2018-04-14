@@ -17,6 +17,7 @@ namespace JLProject{
         void Start(){
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
             _cameraTimetoReach = CameraFollowDelay;
+            transform.rotation = Quaternion.Euler(45f,0,0);
         }
 
         // Update is called once per frame
@@ -26,6 +27,7 @@ namespace JLProject{
                 _target = _player.position + new Vector3(CameraHorizontal, CameraHeight, CameraVertical);
             }
             transform.position = Vector3.SmoothDamp(transform.position, _target, ref _camVelocity, _cameraTimetoReach);
+           
         }
 
         //Moves the camera to the targetPos in timeToReach seconds
