@@ -67,12 +67,8 @@ namespace JLProject{
                         MovementSpeed = shieldedSpeed;
                     }
                     else{
-                        if (CurrentWeapon.type == Weapon.Type.Ranged && CurrentWeapon._canAttack){
+                        if (CurrentWeapon._canBlock){
                             //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
-                            CurrentShield.blocking = true;
-                            MovementSpeed = shieldedSpeed;
-                        }
-                        if (CurrentWeapon.type == Weapon.Type.Melee){
                             CurrentShield.blocking = true;
                             MovementSpeed = shieldedSpeed;
                         }

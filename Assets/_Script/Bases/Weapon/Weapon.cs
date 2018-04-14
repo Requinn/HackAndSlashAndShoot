@@ -13,6 +13,7 @@ namespace JLProject{
         public int MaxMag{ get; set; }
         public Damage.Faction Faction{ get; set; }
         public bool _canAttack = true;
+        public bool _canBlock = true;
         public Type type;
         public enum Type{
             Melee,
@@ -28,21 +29,21 @@ namespace JLProject{
         /// the delay between attacks
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<float> Delay(){
-            _canAttack = false;
+        public virtual IEnumerator<float> Delay(){
+            _canBlock = _canAttack = false;
             yield return Timing.WaitForSeconds(AttackDelay);
-            _canAttack = true;
+            _canBlock = _canAttack = true;
         }
 
         /// <summary>
         /// reloads the weapon's magazine/attack count
         /// </summary>
         /// <returns></returns>
-        public IEnumerator<float> Reload(){
+        public virtual IEnumerator<float> Reload(){
             _canAttack = false;
             yield return Timing.WaitForSeconds(ReloadSpeed);
             CurMag = MaxMag;
-            _canAttack = true;
+            _canBlock = _canAttack = true;
         }
     }
 }
