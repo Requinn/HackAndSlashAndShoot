@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using MEC;
 using UnityEngine;
 
 /// <summary>
@@ -40,6 +41,7 @@ namespace JLProject{
 
         public bool IsDead{ get; protected set; }
         public bool CanRevive{ get; protected set; }
+        public bool CanMove{ get; protected set; }
 
         protected Action onDeath = delegate{ };
         public Action OnDeath{
@@ -116,10 +118,18 @@ namespace JLProject{
         public virtual void TakeStatusDamage(float damage, StatusObject.StatusType type){
             if (!StatusImmunities.Contains(type)){
                 if (_maximumhealth > 0){
-                    _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
-                    if (TookDamage != null) TookDamage(damage);
-                    floater.SpawnDamageText(damage);
-                    UpdateHealthUI();
+                    switch (type){
+                        case StatusObject.StatusType.Bleed:
+                            _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
+                            if (TookDamage != null) TookDamage(damage);
+                            floater.SpawnDamageText(damage);
+                            UpdateHealthUI();
+                            break;
+                        case StatusObject.StatusType.Shock: //WIP
+                            Timing.RunCoroutine(DelayToggle(CanMove, damage));
+                            break;
+                    }
+                    
                     if (_currenthealth == 0){
                         HandleDeath();
                     }
@@ -128,6 +138,13 @@ namespace JLProject{
             else{
                 if (TookDamage != null) TookDamage(0);
             }
+        }
+
+        //TODO: REmove??
+        private IEnumerator<float> DelayToggle(bool b, float f){
+            b = false;
+            yield return Timing.WaitForSeconds(f);
+            b = true;
         }
 
         /// <summary>

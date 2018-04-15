@@ -31,6 +31,7 @@ namespace JLProject{
             floorMask = LayerMask.GetMask("Floor");
         }
         void Start(){
+            CanMove = true;
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
             _PAC = GetComponentInChildren<PlayerAnimationController>();
@@ -46,10 +47,12 @@ namespace JLProject{
                 _MousePos = GetMousePosition();
                 AngleUpdate(_MousePos);
 
-                if (_timeSinceAttack > _attackDelay){
-                    Movement();
+                if (CanMove){
+                    if (_timeSinceAttack > _attackDelay){
+                        Movement();
+                    }
                 }
-                
+
                 MouseInput();
                 WeaponSwap();
             }

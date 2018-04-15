@@ -17,5 +17,6 @@ public abstract class StatusObject : MonoBehaviour{
         Shock,
         Freeze
     }
+
     public abstract IEnumerator<float> TickDown();
 }

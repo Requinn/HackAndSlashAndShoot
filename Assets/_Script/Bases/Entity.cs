@@ -50,6 +50,7 @@ namespace JLProject{
                 Afflictions.Add(Instantiate(SO, this.gameObject.transform));
             }*/
             Instantiate(SO, this.gameObject.transform);
+            
         }
     }
 }
