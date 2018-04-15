@@ -41,7 +41,7 @@ namespace JLProject{
 
         public bool IsDead{ get; protected set; }
         public bool CanRevive{ get; protected set; }
-        public bool CanMove{ get; protected set; }
+        public bool CanMove = true;
 
         protected Action onDeath = delegate{ };
         public Action OnDeath{
@@ -126,7 +126,7 @@ namespace JLProject{
                             UpdateHealthUI();
                             break;
                         case StatusObject.StatusType.Shock: //WIP
-                            Timing.RunCoroutine(DelayToggle(CanMove, damage));
+                            Timing.RunCoroutine(DelayToggle(damage));
                             break;
                     }
                     
@@ -141,10 +141,10 @@ namespace JLProject{
         }
 
         //TODO: REmove??
-        private IEnumerator<float> DelayToggle(bool b, float f){
-            b = false;
+        private IEnumerator<float> DelayToggle(float f){
+            CanMove = false;
             yield return Timing.WaitForSeconds(f);
-            b = true;
+            CanMove = true;
         }
 
         /// <summary>

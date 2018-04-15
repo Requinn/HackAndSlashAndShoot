@@ -17,8 +17,8 @@ namespace JLProject{
 
         }
 
-        public Unlockable ObjectToUnlock;
-        public Unlockable ObjectToLock;
+        public Toggleable ObjectToUnlock;
+        public Toggleable ObjectToLock;
 
         protected Action onCompleteObjective = delegate { };
         public Action OnCompleteObjective {

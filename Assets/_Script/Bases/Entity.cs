@@ -6,7 +6,6 @@ using UnityEngine;
 /// </summary>
 namespace JLProject{
     public abstract class Entity : HealthSystem {
-
         public enum State{
             Attacking,
             Moving,
@@ -35,22 +34,6 @@ namespace JLProject{
             throw new System.NotImplementedException();
         }
 
-        /// <summary>
-        /// Apply the status effect
-        /// 
-        /// FIX THIS TO STACK PROPERLY BY REFRESHING DURATION
-        /// </summary>
-        /// <param name="SO"></param>
-        public void ApplyStatus(StatusObject SO){
-            /**if (Afflictions.Find(a => a.Type == SO.Type)){
-                Debug.Log(SO.Type+"Refreshed!");
-                SO.InitializeProc();
-            }
-            else{
-                Afflictions.Add(Instantiate(SO, this.gameObject.transform));
-            }*/
-            Instantiate(SO, this.gameObject.transform);
-            
-        }
+        
     }
 }

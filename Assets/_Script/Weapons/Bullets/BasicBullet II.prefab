@@ -116,7 +116,7 @@ MonoBehaviour:
     SourceFaction: 1
   FlightDistance: 10
   Velocity: 30
-  statusObj: {fileID: 114298409760909618, guid: 1900281587de3cd48a57e2bde964ed3b,
+  statusObj: {fileID: 114371423328252966, guid: 806a8d7687e0c2942a4afa38719c5153,
     type: 2}
 --- !u!135 &135375924508276002
 SphereCollider:

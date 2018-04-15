@@ -15,7 +15,6 @@ public class BurstGun : Gun {
     public AudioClip[] gunAudio;
     public int MaxAmmo = 3;
     public Transform BarrelPoint;
-    public Damage.Faction faction;
     private Damage.DamageEventArgs args;
 
     public delegate void BurstFiredEvent();
@@ -27,8 +26,10 @@ public class BurstGun : Gun {
         AttackDelay = ShotDelay;
         ReloadSpeed = ReloadTime;
         CurMag = MaxMag = MaxAmmo;
-        ObjectPooler.ObjectPool.PoolItem(bullet);
         _gunSounds = GetComponent<AudioSource>();
+        if (faction == Damage.Faction.Enemy)
+            bullet.objectToPool.tag = "EnemyProjectile";
+        ObjectPooler.ObjectPool.PoolItem(bullet);
     }
 
     private IEnumerator<float> Burst(){

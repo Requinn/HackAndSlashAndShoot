@@ -18,7 +18,7 @@ namespace JLProject {
                     args.HitPoint = transform.position;
                     ent.TakeDamage(gameObject, ref args);
                     if (statusObj){
-                        ent.ApplyStatus(statusObj);
+                        ApplyStatus(statusObj, ent);
                     }
                 }
             }
@@ -26,5 +26,21 @@ namespace JLProject {
                 swtch.Toggle();
             }
         }
+        /// <summary>
+        /// Apply the status effect
+        /// 
+        /// FIX THIS TO STACK PROPERLY BY REFRESHING DURATION
+        /// </summary>
+        /// <param name="SO"></param>
+        public void ApplyStatus(StatusObject SO, Entity E) {
+            if (E.Afflictions.Contains(SO)) {
+                E.Afflictions.Find(A => A.Type == SO.Type).InitializeProc();
+            }
+            else {
+                E.Afflictions.Add(SO);
+                Instantiate(SO, E.transform);
+            }
+        }
     }
+
 }

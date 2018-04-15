@@ -17,18 +17,15 @@ public class ObjectPooler : MonoBehaviour{
 	// Use this for initialization
 	void Awake (){
 	    ObjectPool = this;
-	}
-
-    void Start(){
-        pooledObjects = new List<GameObject>();
-        foreach (var item in itemsToPool){
-            PoolItem(item);
-        }
+	    pooledObjects = new List<GameObject>();
+	    foreach (var item in itemsToPool) {
+	        PoolItem(item);
+	    }
     }
 
     public void PoolItem(ObjectPoolItem item){
         for (int i = 0; i < item.amountToPool; i++) {
-            GameObject obj = (GameObject)Instantiate(item.objectToPool);
+            GameObject obj = Instantiate(item.objectToPool);
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
@@ -52,7 +49,7 @@ public class ObjectPooler : MonoBehaviour{
         foreach (var item in itemsToPool){
             if (item.objectToPool.tag == tag){
                 if (item.shouldExpand){
-                    GameObject obj = (GameObject)Instantiate(item.objectToPool);
+                    GameObject obj = Instantiate(item.objectToPool);
                     obj.SetActive(false);
                     pooledObjects.Add(obj);
                     return obj;

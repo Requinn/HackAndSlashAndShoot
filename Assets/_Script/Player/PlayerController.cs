@@ -21,7 +21,6 @@ namespace JLProject{
         public Transform WeaponAttachPoint;
         public Transform ShieldAttachPoint;
 
-        public bool freezeMovement = false;
         private List<Weapon> _weaponsInHand = new List<Weapon>(2);
         private PlayerAnimationController _PAC;
         private float _timeSinceAttack = 0.0f;
@@ -52,7 +51,6 @@ namespace JLProject{
                         Movement();
                     }
                 }
-
                 MouseInput();
                 WeaponSwap();
             }

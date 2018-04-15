@@ -11,18 +11,17 @@ public class ShortPistol : Gun{
     public AudioClip[] gunAudio;
     public int MaxAmmo = 3;
     public Transform BarrelPoint;
-    public Damage.Faction faction;
     private Damage.DamageEventArgs args;
 	// Use this for initialization
 	void Start (){
 	    AttackDelay = ShotDelay;
 	    ReloadSpeed = ReloadTime;
-	    CurMag = MaxMag = MaxAmmo;
+	    CurMag = MaxMag = MaxAmmo;	    
+	    _gunSounds = GetComponent<AudioSource>();
 	    if (faction == Damage.Faction.Enemy)
 	        bullet.objectToPool.tag = "EnemyProjectile";
 	    ObjectPooler.ObjectPool.PoolItem(bullet);
-	    _gunSounds = GetComponent<AudioSource>();
-	}
+    }
 	
     public override void Fire(){
         //get bullet from the object pool
@@ -38,8 +37,8 @@ public class ShortPistol : Gun{
                 bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
                 _gunSounds.PlayOneShot(gunAudio[0]);
                 bullet.SetActive(true);
+                CurMag--;
             }
-            CurMag--;
             if (CurMag == 0){
                 Timing.RunCoroutine(base.Reload());
                 _gunSounds.PlayOneShot(gunAudio[1]);

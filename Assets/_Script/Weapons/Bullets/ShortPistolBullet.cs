@@ -37,7 +37,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
                 args.HitPoint = transform.position;
                 ent.TakeDamage(gameObject, ref args);
                 if (statusObj){
-                    ent.ApplyStatus(statusObj);
+                    ApplyStatus(statusObj, ent);
                 }
                 Timing.KillCoroutines(_repoolHandle);
                 gameObject.SetActive(false);
@@ -63,5 +63,19 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
 
     public float GetVelocity(){
         return Velocity;
+    }
+
+    /// <summary>
+    /// Apply the status effect, refreshing if it exists
+    /// </summary>
+    /// <param name="SO"></param>
+    public void ApplyStatus(StatusObject SO, Entity E) {
+        StatusObject temp = E.Afflictions.Find(a => a.Type == SO.Type);
+        if (temp){
+            temp.InitializeProc();
+        }
+        else{
+            E.Afflictions.Add(Instantiate(SO, E.transform));
+        }
     }
 }
