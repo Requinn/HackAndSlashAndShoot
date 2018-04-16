@@ -5,12 +5,11 @@ using UnityEngine;
 namespace JLProject{
     public class CameraController : MonoBehaviour{
         private Transform _player;
-        public float CameraHeight = 9.0f, CameraHorizontal = 0.0f, CameraVertical = -7.5f;
+        public float CameraHeight = 9.0f, CameraHorizontal = 0.0f, CameraVertical = -7.5f, XAngle = 45f;
         public bool LockedToPlayer = true;
         public float CameraFollowDelay = 0.1f; //How behind the camera is when the player moves
         private float _screenHeight, _screenWidth, _cameraHeight, _cameraTimetoReach;
         private Vector3 _target;
-
         private Vector3 _camVelocity = Vector3.zero;
 
         public bool FadeObstruction = true;
@@ -20,7 +19,7 @@ namespace JLProject{
         void Start(){
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
             _cameraTimetoReach = CameraFollowDelay;
-            transform.rotation = Quaternion.Euler(45f,0,0);
+            transform.rotation = Quaternion.Euler(XAngle,0,0);
         }
 
         // Update is called once per frame

@@ -23,11 +23,11 @@ namespace JLProject{
         // Update is called once per frame
         void Update(){
             if (_canFade){
-                _mat.color = new Color(_col.r, _col.g, _col.b, Mathf.Clamp(_mat.color.a - (FadeRate * Time.deltaTime), 0.1f, 1f));
+                _mat.color = new Color(_col.r, _col.g, _col.b, Mathf.Clamp(_mat.color.a - (FadeRate * Time.deltaTime), 0.15f, 1f));
             }
             else
             {
-                _mat.color = new Color(_col.r, _col.g, _col.b, Mathf.Clamp(_mat.color.a + (FadeRate * Time.deltaTime), 0.1f, 1f));
+                _mat.color = new Color(_col.r, _col.g, _col.b, Mathf.Clamp(_mat.color.a + (FadeRate * Time.deltaTime), 0.15f, 1f));
             }
             _canFade = false;
         }
