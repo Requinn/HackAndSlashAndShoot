@@ -26,13 +26,13 @@ namespace JLProject{
         }
 
         public override void Open(){
-            Debug.Log(transform.position.y - verticalMovement);
+            //Debug.Log(transform.position.y - verticalMovement);
             transform.DOMoveY(transform.position.y - verticalMovement, 0.1f);
             Opened = true;
         }
 
         public override void Close() {
-            Debug.Log(transform.position.y + verticalMovement);
+            //Debug.Log(transform.position.y + verticalMovement);
             transform.DOMoveY(transform.position.y + verticalMovement, 0.1f);
             Opened = false;
         }

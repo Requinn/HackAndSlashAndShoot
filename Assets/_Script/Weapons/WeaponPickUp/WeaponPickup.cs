@@ -8,7 +8,7 @@ using UnityEngine.Diagnostics;
 /// <summary>
 /// Dispenses a weapon to the player.
 /// </summary>
-public class WeaponPickup : MonoBehaviour {
+public class WeaponPickup : Interactable {
     public GameObject WeaponToPickup;
     public bool OneUse = false;
     private PlayerController _pc;
@@ -19,7 +19,7 @@ public class WeaponPickup : MonoBehaviour {
         if (_pc && Input.GetKeyDown(KeyCode.E) && _canPick) {
             GameObject go = Instantiate(WeaponToPickup);
             _pc.Equip(go);
-
+            InvokeInteractEvent();
             if (OneUse){
                 gameObject.SetActive(false);
             }
@@ -38,6 +38,7 @@ public class WeaponPickup : MonoBehaviour {
     void OnTriggerExit(Collider c){
         if (c.gameObject.CompareTag("Player")) {
             //disable the pickup key
+            _pc = null;
         }
     }
 

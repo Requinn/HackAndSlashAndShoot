@@ -9,6 +9,7 @@ namespace JLProject{
 
         void OnTriggerEnter(Collider c){
             if (c.gameObject.tag == "Player"){
+                //GameController.Controller.dialogManager.WriteText("It was a trap!",0 , 0.01f, 3f);
                 objective.Initiate();
             }
         }

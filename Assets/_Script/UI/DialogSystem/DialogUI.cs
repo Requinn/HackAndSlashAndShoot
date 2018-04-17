@@ -12,7 +12,7 @@ namespace JLProject{
 
         private bool _isTyping = false;
         private int _currentLetter;
-
+        private CoroutineHandle typingHandle;
         /// <summary>
         /// sets the text of _textArea[textBox] to text with typeSpeed, lasting for textDuration after finished typing
         /// TODO: I don't know if this actually works?
@@ -22,9 +22,10 @@ namespace JLProject{
         /// <param name="typeSpeed"></param>
         /// <param name="textDuration"></param>
         public void WriteText(string text, int textBox, float typeSpeed, float textDuration){
+            Timing.KillCoroutines(typingHandle);
             _currentLetter = 0;
             _textArea[textBox].SetActive(true);
-            Timing.RunCoroutine(StartTyping(text, textBox, typeSpeed, textDuration));
+            typingHandle = Timing.RunCoroutine(StartTyping(text, textBox, typeSpeed, textDuration));
         }
 
         private IEnumerator<float> StartTyping(string text, int t, float typeSpeed, float textDuration) {
@@ -36,11 +37,11 @@ namespace JLProject{
                 _currentLetter++;
                 yield return Timing.WaitForSeconds(typeSpeed);
             }
-            writeBox.text = text;
-            _isTyping = false;
+            writeBox.text = text;   
             yield return Timing.WaitForSeconds(textDuration);
             writeBox.text = "";
             _textArea[t].SetActive(false);
+            _isTyping = false;
         }
 
         // Update is called once per frame

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using MEC;
 using UnityEngine;
 
@@ -33,13 +34,14 @@ namespace JLProject{
                 }
             } 
             if (_occupied && Input.GetKeyDown(KeyCode.E) && !_inTransit){
-                if (V3Equal(transform.position, pointB.position)) {
-                    if(platformDoorB) platformDoorB.SetActive(true);
+                _inTransit = true;
+                if (V3Equal(transform.position, pointB.position)) {  
+                    if (platformDoorB) platformDoorB.SetActive(true);
                     doorB.Close();
                     Timing.RunCoroutine(ChangeDirection(pointA.position));
                 }
                 if (V3Equal(transform.position, pointA.position)) {
-                    if(platformDoorA) platformDoorA.SetActive(true);
+                    if (platformDoorA) platformDoorA.SetActive(true);
                     doorA.Close();
                     Timing.RunCoroutine(ChangeDirection(pointB.position));
                 }
@@ -49,7 +51,6 @@ namespace JLProject{
         public IEnumerator<float> ChangeDirection(Vector3 newPosition){
             yield return Timing.WaitForSeconds(0.25f);
             _destinationPosition = newPosition;
-            _inTransit = true;
         }
 
         public Vector3 GetPosition(){

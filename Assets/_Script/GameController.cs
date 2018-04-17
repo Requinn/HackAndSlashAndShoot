@@ -9,6 +9,7 @@ namespace JLProject{
     public class GameController : MonoBehaviour{
         public static GameController Controller;
         public GameObject soundManager;
+        public DialogUI dialogManager;
 
         public bool paused = false;
         public GameObject pauseUI;
@@ -22,6 +23,7 @@ namespace JLProject{
                 Controller = this;
             }
 
+            dialogManager = GetComponent<DialogUI>();
             DontDestroyOnLoad(this); //this instance will persist through scenes
 
             Cursor.lockState = CursorLockMode.Confined;
@@ -55,7 +57,7 @@ namespace JLProject{
         /// </summary>
         public void LoadNextLevel(){
             //just call restart level for now
-            RestartLevel();
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         /// <summary>
