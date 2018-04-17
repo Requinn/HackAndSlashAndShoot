@@ -16,12 +16,11 @@ namespace JLProject{
         private RaycastHit _lineHit;
         private ObjectCameraFader _objFader;
         // Use this for initialization
-        void Start(){
+        void Awake(){
             _player = GameObject.FindGameObjectWithTag("Player").gameObject.transform;
             _cameraTimetoReach = CameraFollowDelay;
-            transform.rotation = Quaternion.Euler(XAngle,0,0);
+            transform.rotation = Quaternion.Euler(XAngle, 0, 0);
         }
-
         // Update is called once per frame
         void Update(){
             //camera following the player

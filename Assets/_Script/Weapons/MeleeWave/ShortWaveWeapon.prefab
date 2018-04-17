@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 54162297510848726}
   m_Layer: 0
   m_Name: Wave
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -774,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponIcon: {fileID: 21300000, guid: 11313f94af346ea44b9dfc9aece1bbd0, type: 3}
   _canAttack: 1
+  _canBlock: 1
   type: 0
   attackDelay: 0.35
   comboDelay: 1.25

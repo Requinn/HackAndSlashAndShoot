@@ -8,6 +8,7 @@ namespace JLProject{
         public float velocity;
         public Transform pointA, pointB;
         public VerticalDoor doorA, doorB;
+        public GameObject platformDoorA, platformDoorB;
         private Vector3 _destinationPosition;
         private bool _occupied, _inTransit;
 
@@ -21,9 +22,11 @@ namespace JLProject{
                 transform.position = Vector3.MoveTowards(transform.position, _destinationPosition, Time.smoothDeltaTime * velocity);
                 if (V3Equal(transform.position,_destinationPosition)){
                     if (V3Equal(transform.position, pointA.position)) {
+                        if(platformDoorA) platformDoorA.SetActive(false);
                         doorA.Invoke("Open", 0.25f);
                     }
                     if (V3Equal(transform.position, pointB.position)){
+                        if(platformDoorB) platformDoorB.SetActive(false);
                         doorB.Invoke("Open", 0.25f);
                     }
                     _inTransit = false;
@@ -31,10 +34,12 @@ namespace JLProject{
             } 
             if (_occupied && Input.GetKeyDown(KeyCode.E) && !_inTransit){
                 if (V3Equal(transform.position, pointB.position)) {
+                    if(platformDoorB) platformDoorB.SetActive(true);
                     doorB.Close();
                     Timing.RunCoroutine(ChangeDirection(pointA.position));
                 }
                 if (V3Equal(transform.position, pointA.position)) {
+                    if(platformDoorA) platformDoorA.SetActive(true);
                     doorA.Close();
                     Timing.RunCoroutine(ChangeDirection(pointB.position));
                 }

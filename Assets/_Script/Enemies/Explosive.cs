@@ -11,6 +11,7 @@ public class Explosive : Weapon{
     public float Damage = 10.0f;
     public float Force = 25.0f;
     public float CastTime = 1.5f;
+    public bool Repeated = false; //used for inplace explosions that are "static" on a level
     private float Radius = 4.0f;
     public SphereCollider Collider;
     public AoEMarker MarkerScript;
@@ -23,6 +24,9 @@ public class Explosive : Weapon{
         Collider = GetComponent<SphereCollider>();
         Radius = Collider.radius;
         args = new Damage.DamageEventArgs(Damage, this.transform.position, dmgType, Faction);
+        if (Repeated){
+            InvokeRepeating("Fire", CastTime + 2.0f, CastTime + 2.0f);
+        }
 
     }
 
