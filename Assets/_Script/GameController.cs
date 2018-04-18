@@ -21,10 +21,11 @@ namespace JLProject{
             }
             else{
                 Controller = this;
+                DontDestroyOnLoad(this); //this instance will persist through scenes
             }
 
+            //DataService.Instance.LoadSaveData(1);
             dialogManager = GetComponent<DialogUI>();
-            DontDestroyOnLoad(this); //this instance will persist through scenes
 
             Cursor.lockState = CursorLockMode.Confined;
             //pause menu stuff
@@ -57,7 +58,9 @@ namespace JLProject{
         /// </summary>
         public void LoadNextLevel(){
             //just call restart level for now
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(nextScene);
+            
         }
 
         /// <summary>

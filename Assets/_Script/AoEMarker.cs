@@ -20,10 +20,10 @@ public class AoEMarker : MonoBehaviour{
         Marker.transform.localScale = new Vector3(1,0.01f,0);
         if (shape == Shape.Circle){
             if (Max){
-                Max.transform.DOScale(new Vector3(AoESize * 2, 0.01f, AoESize * 2), 0.1f);
+                Max.transform.DOScale(new Vector3(AoESize / 2f , 0.01f, AoESize / 2f), 0.1f);
             }
             if (Marker){
-                Marker.transform.DOScale(new Vector3(AoESize * 2, 0.01f, AoESize * 2), castTime);
+                Marker.transform.DOScale(new Vector3(AoESize/2f, 0.01f, AoESize/2f), castTime);
             }
         }
         if (shape == Shape.Rectangle){
