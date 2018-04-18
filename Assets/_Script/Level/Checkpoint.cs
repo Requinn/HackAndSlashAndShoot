@@ -7,7 +7,6 @@ public class Checkpoint : MonoBehaviour {
 
     void Update() {
         if (_contact && Input.GetKeyDown(KeyCode.E)) {
-            ES3.Save<PlayerController>("Player", FindObjectOfType<PlayerController>());
         }
     }
 
