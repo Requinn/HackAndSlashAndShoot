@@ -21,7 +21,7 @@ namespace JLProject{
         public Transform WeaponAttachPoint;
         public Transform ShieldAttachPoint;
 
-        private List<Weapon> _weaponsInHand = new List<Weapon>(2);
+        public List<Weapon> WeaponsInHand = new List<Weapon>(2);
         private PlayerAnimationController _PAC;
         private float _timeSinceAttack = 0.0f;
         private float _attackDelay = 0.0f;
@@ -30,6 +30,13 @@ namespace JLProject{
             floorMask = LayerMask.GetMask("Floor");
         }
         void Start(){
+            CurrentHealth = DataService.Instance.PlayerStats.Health;
+            ArmorValue = DataService.Instance.PlayerStats.Armor;
+
+            foreach (var wepID in DataService.Instance.PlayerStats.weapons){
+                Equip(Instantiate(ObjectReferencer.Instance.FetchObjByID(wepID)));
+            }
+
             CanMove = true;
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
@@ -173,11 +180,11 @@ namespace JLProject{
             if (GO.GetComponent<Weapon>()){
                 //we have a weapon in both slots, replace the current by:
                 //setting current weapon to the new instance, destroying the old one, then setting our current weapon to the one we just picked up
-                if (_weaponsInHand.Count >= 2){
+                if (WeaponsInHand.Count >= 2){
                     /**if (CurrentWeapon.type == Weapon.Type.Ranged){
                         ObjectPooler.ObjectPool.UnPoolItem(CurrentWeapon.GetComponent<Gun>().bullet);
                     }**/
-                    _weaponsInHand[_weaponsInHand.IndexOf(CurrentWeapon)] = GO.GetComponent<Weapon>();
+                    WeaponsInHand[WeaponsInHand.IndexOf(CurrentWeapon)] = GO.GetComponent<Weapon>();
                     Destroy(CurrentWeapon.gameObject);
                     CurrentWeapon = GO.GetComponent<Weapon>();
                     GO.transform.parent = WeaponAttachPoint.transform;
@@ -187,22 +194,22 @@ namespace JLProject{
                 else{
                     if (CurrentWeapon == null){
                         //if we don't have one
-                        _weaponsInHand.Add(GO.GetComponent<Weapon>());
-                        CurrentWeapon = _weaponsInHand[0];
+                        WeaponsInHand.Add(GO.GetComponent<Weapon>());
+                        CurrentWeapon = WeaponsInHand[0];
                         GO.transform.parent = WeaponAttachPoint.transform;
                         GO.transform.position = WeaponAttachPoint.position;
                         GO.transform.rotation = WeaponAttachPoint.rotation;
                     }
-                    else if (_weaponsInHand[0] != null){
+                    else if (WeaponsInHand[0] != null){
                         //if we have a weapon already, put it in the secondary slot
-                        _weaponsInHand.Add(GO.GetComponent<Weapon>());
-                        _weaponsInHand[1].gameObject.SetActive(false);
+                        WeaponsInHand.Add(GO.GetComponent<Weapon>());
+                        WeaponsInHand[1].gameObject.SetActive(false);
                         GO.transform.parent = WeaponAttachPoint.transform;
                         GO.transform.position = WeaponAttachPoint.position;
                         GO.transform.rotation = WeaponAttachPoint.rotation;
                     }
                 }
-                if (equipped != null) equipped(_weaponsInHand[0], _weaponsInHand.Count < 2 ? null : _weaponsInHand[1]);
+                if (equipped != null) equipped(WeaponsInHand[0], WeaponsInHand.Count < 2 ? null : WeaponsInHand[1]);
             }
             if (GO.GetComponent<Shield>()){
                 
@@ -215,16 +222,16 @@ namespace JLProject{
         /// swap a weapon on keypress
         /// </summary>
         private void WeaponSwap(){
-            if (Input.GetKeyDown(KeyCode.Space) && _weaponsInHand.Count > 1){
-                if (CurrentWeapon == _weaponsInHand[0]){
-                    _weaponsInHand[0].gameObject.SetActive(false);
-                    CurrentWeapon = _weaponsInHand[1];
-                    _weaponsInHand[1].gameObject.SetActive(true);
+            if (Input.GetKeyDown(KeyCode.Space) && WeaponsInHand.Count > 1){
+                if (CurrentWeapon == WeaponsInHand[0]){
+                    WeaponsInHand[0].gameObject.SetActive(false);
+                    CurrentWeapon = WeaponsInHand[1];
+                    WeaponsInHand[1].gameObject.SetActive(true);
                 }
-                else if (CurrentWeapon == _weaponsInHand[1]){
-                    _weaponsInHand[1].gameObject.SetActive(false);
-                    CurrentWeapon = _weaponsInHand[0];
-                    _weaponsInHand[0].gameObject.SetActive(true);
+                else if (CurrentWeapon == WeaponsInHand[1]){
+                    WeaponsInHand[1].gameObject.SetActive(false);
+                    CurrentWeapon = WeaponsInHand[0];
+                    WeaponsInHand[0].gameObject.SetActive(true);
                 }
                 if (swapped != null) swapped();
             }

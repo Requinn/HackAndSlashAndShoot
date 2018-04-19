@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 namespace JLProject{
     public abstract class Weapon : MonoBehaviour{
+        public int ReferenceID;
         public Sprite weaponIcon;
         public int AttackValue{ get; set; }
         public float AttackDelay{ get; set; }

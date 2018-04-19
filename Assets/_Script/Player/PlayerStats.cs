@@ -35,7 +35,10 @@ namespace JLProject {
             Shield = PC.CurrentShield.CurrentHealth;
             Health = PC.CurrentHealth;
             Armor = PC.ArmorValue;
-
+            lastLevel = sceneNo;
+            foreach (var weap in PC.WeaponsInHand){
+                weapons.Add(weap.ReferenceID);
+            }
             DataService.Instance.WriteSaveData();
         }
 

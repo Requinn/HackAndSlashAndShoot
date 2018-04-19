@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// A singleton to control the game
-/// </summary>
 namespace JLProject{
+    /// <summary>
+    /// A singleton to control the game
+    /// </summary>
     public class GameController : MonoBehaviour{
         public static GameController Controller;
         public GameObject soundManager;
@@ -24,7 +24,7 @@ namespace JLProject{
                 DontDestroyOnLoad(this); //this instance will persist through scenes
             }
 
-            //DataService.Instance.LoadSaveData(1);
+            DataService.Instance.LoadSaveData(1);
             dialogManager = GetComponent<DialogUI>();
 
             Cursor.lockState = CursorLockMode.Confined;
@@ -59,6 +59,7 @@ namespace JLProject{
         public void LoadNextLevel(){
             //just call restart level for now
             int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
+            DataService.Instance.PlayerStats.UpdateStats(FindObjectOfType<PlayerController>(), nextScene);
             SceneManager.LoadScene(nextScene);
             
         }
