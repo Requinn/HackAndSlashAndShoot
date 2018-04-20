@@ -29,12 +29,15 @@ namespace JLProject{
         void Awake(){
             floorMask = LayerMask.GetMask("Floor");
         }
-        void Start(){
-            CurrentHealth = DataService.Instance.PlayerStats.Health;
-            ArmorValue = DataService.Instance.PlayerStats.Armor;
 
-            foreach (var wepID in DataService.Instance.PlayerStats.weapons){
-                Equip(Instantiate(ObjectReferencer.Instance.FetchObjByID(wepID)));
+        void Start(){
+            if (DataService.Instance.curLoadedProfile == 1){
+                CurrentHealth = DataService.Instance.PlayerStats.Health;
+                ArmorValue = DataService.Instance.PlayerStats.Armor;
+
+                foreach (var wepID in DataService.Instance.PlayerStats.weapons){
+                    Equip(Instantiate(ObjectReferencer.Instance.FetchObjByID(wepID)));
+                }
             }
 
             CanMove = true;
@@ -187,6 +190,7 @@ namespace JLProject{
                     WeaponsInHand[WeaponsInHand.IndexOf(CurrentWeapon)] = GO.GetComponent<Weapon>();
                     Destroy(CurrentWeapon.gameObject);
                     CurrentWeapon = GO.GetComponent<Weapon>();
+                    CurrentWeapon.gameObject.SetActive(true);
                     GO.transform.parent = WeaponAttachPoint.transform;
                     GO.transform.position = WeaponAttachPoint.position;
                     GO.transform.rotation = WeaponAttachPoint.rotation;

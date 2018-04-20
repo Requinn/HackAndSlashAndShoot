@@ -4,6 +4,10 @@ using System.Collections.Generic;
 using ProBuilder2.Common;
 using UnityEngine;
 
+
+/// <summary>
+/// Holds a reference to objects assigned by an arbitrary ID.
+/// </summary>
 public class ObjectReferencer : MonoBehaviour {
     private static ObjectReferencer _instance = null;
 

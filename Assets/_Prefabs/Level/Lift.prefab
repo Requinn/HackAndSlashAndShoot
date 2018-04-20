@@ -1436,6 +1436,8 @@ MonoBehaviour:
   pointB: {fileID: 0}
   doorA: {fileID: 114143255267022020}
   doorB: {fileID: 114823325717490542}
+  platformDoorA: {fileID: 0}
+  platformDoorB: {fileID: 0}
 --- !u!114 &114823325717490542
 MonoBehaviour:
   m_ObjectHideFlags: 1

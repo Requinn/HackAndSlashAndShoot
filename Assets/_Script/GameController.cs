@@ -10,7 +10,7 @@ namespace JLProject{
         public static GameController Controller;
         public GameObject soundManager;
         public DialogUI dialogManager;
-
+        public DataService dataManager;
         public bool paused = false;
         public GameObject pauseUI;
         private PauseMenu _pauseMenu;
@@ -23,7 +23,6 @@ namespace JLProject{
                 Controller = this;
                 DontDestroyOnLoad(this); //this instance will persist through scenes
             }
-
             DataService.Instance.LoadSaveData(1);
             dialogManager = GetComponent<DialogUI>();
 
@@ -31,7 +30,6 @@ namespace JLProject{
             //pause menu stuff
             _pauseMenu = pauseUI.GetComponent<PauseMenu>();
             _pauseMenu.Restart += RestartLevel;
-            _pauseMenu.LoadNext += LoadNextLevel;
             _pauseMenu.LoadMain += LoadMainMenu;
             _pauseMenu.ResumeGame += TogglePause;
             //world triggers
@@ -53,16 +51,6 @@ namespace JLProject{
             Time.timeScale = 1.0f;
         }
 
-        /// <summary>
-        /// go to the next level
-        /// </summary>
-        public void LoadNextLevel(){
-            //just call restart level for now
-            int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-            DataService.Instance.PlayerStats.UpdateStats(FindObjectOfType<PlayerController>(), nextScene);
-            SceneManager.LoadScene(nextScene);
-            
-        }
 
         /// <summary>
         /// loads main menu

@@ -28,7 +28,7 @@ public class DataService : MonoBehaviour{
     //used to prevent reloading data everytime we load a new scene
     private bool isDataLoaded = false;
     public int curLoadedProfile{ get; set; }
-    public const int MAX_SAVE_SLOTS = 3;
+    public const int MAX_SAVE_SLOTS = 1;
 
     void Awake(){
         if (Instance != this){
@@ -85,7 +85,7 @@ public class DataService : MonoBehaviour{
     /// </summary>
     /// <param name="profileNumber"></param>
     /// <returns></returns>
-    private string GetSaveDataFilePath(int profileNumber){
+    public string GetSaveDataFilePath(int profileNumber){
         if (profileNumber < 1){
             throw new System.ArgumentException("profileNumber < 1. Was: "+ profileNumber);
         }

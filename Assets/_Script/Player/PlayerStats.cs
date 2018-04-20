@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace JLProject {
     /// <summary>
-    /// experimental method for getting the player to transition between scenes
+    /// Holds all the player data for saving and loading
     /// </summary>
     public class PlayerStats{
         //region defaults
