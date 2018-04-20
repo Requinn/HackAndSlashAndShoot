@@ -10,7 +10,6 @@ namespace JLProject{
         public static GameController Controller;
         public GameObject soundManager;
         public DialogUI dialogManager;
-        public DataService dataManager;
         public bool paused = false;
         public GameObject pauseUI;
         private PauseMenu _pauseMenu;

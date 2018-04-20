@@ -41,7 +41,7 @@ namespace JLProject{
                 ShowWarning();
             }
             else{
-                SceneLoader.Instance.LoadLevel(0);
+                SceneLoader.Instance.LoadLevel(1);
             }
         }
 

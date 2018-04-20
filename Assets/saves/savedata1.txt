@@ -3,8 +3,8 @@
     "Shield": 80.0,
     "Armor": 0.0,
     "weapons": [
-        2,
-        1
+        1,
+        2
     ],
-    "lastLevel": 1
+    "lastLevel": 2
 }
