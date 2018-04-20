@@ -20,9 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4379041869498630}
   - component: {fileID: 114924028037767378}
-  - component: {fileID: 114251727394387120}
   - component: {fileID: 114336490910907196}
-  - component: {fileID: 114783005160461840}
   - component: {fileID: 114108126698053846}
   m_Layer: 0
   m_Name: GameController
@@ -55,19 +53,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9af9cce2b520da342810c98be00a2fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114251727394387120
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1164509465320072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6fc552b6d5006b4fbdca03fad7cd0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsToPool: []
-  pooledObjects: []
 --- !u!114 &114336490910907196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -84,19 +69,6 @@ MonoBehaviour:
     obj: {fileID: 1213158088283906, guid: a9633f0d747efbb469ecd7bc98c42ecd, type: 2}
   - ID: 2
     obj: {fileID: 1224940042672958, guid: b097c05f4a949da40bd56b7f4385595a, type: 2}
---- !u!114 &114783005160461840
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1164509465320072}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c242698fbb2085542a01dd8e8d23360d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _textArea:
-  - {fileID: 0}
 --- !u!114 &114924028037767378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -109,6 +81,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundManager: {fileID: 0}
-  dialogManager: {fileID: 0}
   paused: 0
   pauseUI: {fileID: 0}

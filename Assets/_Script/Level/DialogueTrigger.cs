@@ -12,7 +12,7 @@ namespace JLProject{
         public float typeSpeed = 0.01f;
         public int dialogBoxID = 0;
         public float postTypeDuration = 3f;
-
+        public DialogUI dialogManager;
         void Start(){
             text = initText;
         }
@@ -23,7 +23,7 @@ namespace JLProject{
 
         void OnTriggerEnter(Collider c) {
             if (c.gameObject.tag == "Player"){
-                GameController.Controller.dialogManager.WriteText(text , dialogBoxID , typeSpeed, postTypeDuration);
+                dialogManager.WriteText(text , dialogBoxID , typeSpeed, postTypeDuration);
             }
         }
     }

@@ -14,8 +14,6 @@ namespace JLProject{
         private CoroutineHandle typingHandle;
         /// <summary>
         /// sets the text of _textArea[textBox] to text with typeSpeed, lasting for textDuration after finished typing
-        /// TODO: I don't know if this actually works?
-        /// TODO: Look into accessing this from a global area or someshit
         /// </summary>
         /// <param name="text"></param>
         /// <param name="typeSpeed"></param>

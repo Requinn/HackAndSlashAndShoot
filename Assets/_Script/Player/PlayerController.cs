@@ -200,6 +200,7 @@ namespace JLProject{
                         //if we don't have one
                         WeaponsInHand.Add(GO.GetComponent<Weapon>());
                         CurrentWeapon = WeaponsInHand[0];
+                        CurrentWeapon.gameObject.SetActive(true);
                         GO.transform.parent = WeaponAttachPoint.transform;
                         GO.transform.position = WeaponAttachPoint.position;
                         GO.transform.rotation = WeaponAttachPoint.rotation;

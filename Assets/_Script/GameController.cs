@@ -9,7 +9,6 @@ namespace JLProject{
     public class GameController : MonoBehaviour{
         public static GameController Controller;
         public GameObject soundManager;
-        public DialogUI dialogManager;
         public bool paused = false;
         public GameObject pauseUI;
         private PauseMenu _pauseMenu;
@@ -23,13 +22,12 @@ namespace JLProject{
                 DontDestroyOnLoad(this); //this instance will persist through scenes
             }
             DataService.Instance.LoadSaveData(1);
-            dialogManager = GetComponent<DialogUI>();
 
             Cursor.lockState = CursorLockMode.Confined;
             //pause menu stuff
             _pauseMenu = pauseUI.GetComponent<PauseMenu>();
             _pauseMenu.Restart += RestartLevel;
-            _pauseMenu.LoadMain += LoadMainMenu;
+            _pauseMenu.LoadMain += LoadMain; 
             _pauseMenu.ResumeGame += TogglePause;
             //world triggers
         }
@@ -37,6 +35,14 @@ namespace JLProject{
         // Update is called once per frame
         void Update(){
             Pause();
+        }
+
+        public void LoadMain(){
+            SceneManager.LoadScene(0);
+            paused = false;
+            pauseUI.SetActive(false);
+            Destroy(this);
+            Time.timeScale = 1.0f;
         }
 
         /// <summary>
@@ -48,14 +54,6 @@ namespace JLProject{
             paused = false;
             pauseUI.SetActive(false);
             Time.timeScale = 1.0f;
-        }
-
-
-        /// <summary>
-        /// loads main menu
-        /// </summary>
-        private void LoadMainMenu(){
-            Application.Quit();
         }
 
         //Move this to the pause handler

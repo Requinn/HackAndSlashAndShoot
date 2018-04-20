@@ -17,7 +17,16 @@ public class ObjectPooler : MonoBehaviour{
 	// Use this for initialization
 	void Awake (){
 	    ObjectPool = this;
-	    pooledObjects = new List<GameObject>();
+	    /*if (ObjectPool != null && ObjectPool != this) {
+	        Destroy(ObjectPool);
+	    }
+	    else {
+	        ObjectPool = this;
+	        DontDestroyOnLoad(this); //this instance will persist through scenes
+	    }*/
+
+
+        pooledObjects = new List<GameObject>();
 	    foreach (var item in itemsToPool) {
 	        PoolItem(item);
 	    }

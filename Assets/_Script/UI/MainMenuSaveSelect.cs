@@ -51,7 +51,11 @@ namespace JLProject{
         public void DeleteSaveAndContinue(){
             HideWarning();
             File.Delete(DataService.Instance.GetSaveDataFilePath(1));
-            SceneLoader.Instance.LoadLevel(0);
+            SceneLoader.Instance.LoadLevel(1);
+        }
+
+        public void QuitApp(){
+            Application.Quit();
         }
 
         private void ShowWarning(){
