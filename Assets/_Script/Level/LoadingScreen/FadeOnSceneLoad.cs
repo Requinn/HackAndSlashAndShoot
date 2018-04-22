@@ -49,6 +49,10 @@ namespace JLProject{
 
                 yield return 0f;
             }
+
+            if (alphaValue == 0f){
+                fadeCanvas.gameObject.SetActive(false);
+            }
         }
     }
 }

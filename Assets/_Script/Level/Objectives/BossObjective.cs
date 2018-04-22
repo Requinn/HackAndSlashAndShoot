@@ -11,6 +11,10 @@ namespace JLProject{
         private ObjectiveType objective = ObjectiveType.Kill;
         public CinemachineVirtualCamera BossCamera;
 
+        void Awake(){
+            BossCamera.Priority = 0;
+        }
+
         public override void Initiate(){
             BossCamera.Priority = 20;
             if (ObjectToLock) {
