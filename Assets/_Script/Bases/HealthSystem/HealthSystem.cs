@@ -40,7 +40,7 @@ namespace JLProject{
         public DamageFloaterSpawner floater;
 
         public bool IsDead{ get; protected set; }
-        public bool CanRevive{ get; protected set; }
+        public bool CanRevive = false;
         public bool CanMove = true;
 
         protected Action onDeath = delegate{ };
@@ -169,6 +169,8 @@ namespace JLProject{
         protected virtual void HandleRevive(){
             if (!IsDead) return;
             IsDead = false;
+            CurrentHealth = MaxHealth;
+            UpdateHealthUI();
             OnRevive();
         }
     }

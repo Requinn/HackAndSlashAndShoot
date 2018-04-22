@@ -236,15 +236,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06ccc890e72d8b641ade96b2220be580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 0
   weaponIcon: {fileID: 0}
   _canAttack: 1
   _canBlock: 1
   type: 1
   _targets: []
   Damage: 80
-  Force: 60
-  CastTime: 1.75
+  Force: 0
+  CastTime: 1.2
   Repeated: 1
+  OneUse: 0
+  Radius: 4
   Collider: {fileID: 0}
   MarkerScript: {fileID: 114121098330699608}
   dmgType: 3
@@ -259,5 +262,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 4
+  m_Radius: 2.5
   m_Center: {x: 0, y: 0, z: 0}

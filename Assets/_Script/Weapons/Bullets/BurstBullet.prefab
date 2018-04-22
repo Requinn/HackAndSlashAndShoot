@@ -114,7 +114,7 @@ MonoBehaviour:
     DamageType: 1
     HitPoint: {x: 0, y: 0, z: 0}
     SourceFaction: 1
-  FlightDistance: 8
+  FlightDistance: 10
   Velocity: 12
   statusObj: {fileID: 0}
 --- !u!135 &135777204060006428

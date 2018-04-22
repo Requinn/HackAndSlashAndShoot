@@ -1239,8 +1239,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3813a09bf36d3428342650f9afb649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 3
   weaponIcon: {fileID: 21300000, guid: 546ed69e9eab00e4bb16f293d98cf6dd, type: 3}
   _canAttack: 1
+  _canBlock: 1
   type: 1
   bullet:
     objectToPool: {fileID: 1850941345847022, guid: 979532bf8a82aa041bfe949162a625af,
@@ -1248,6 +1250,7 @@ MonoBehaviour:
     amountToPool: 10
     shouldExpand: 1
   GunType: 0
+  faction: 0
   ShotDelay: 0.9
   ReloadTime: 1
   burstCount: 8
@@ -1258,4 +1261,3 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
   MaxAmmo: 16
   BarrelPoint: {fileID: 4456432953854406}
-  faction: 0

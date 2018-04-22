@@ -7,6 +7,7 @@ using UnityEngine;
 public class LaserBeam : Weapon {
     [SerializeField]
     private List<Entity> _targets = new List<Entity>();
+    public bool hasTarget;
     public float Damage = 10.0f;
     public float Force = 15.0f;
     public float CastTime = 2.25f;
@@ -35,7 +36,7 @@ public class LaserBeam : Weapon {
                 if (e.gameObject != null){
                     e.TakeDamage(this.gameObject, ref args);
                     var impact = e.GetComponent<ImpactReceiver>();
-                    if (impact){
+                    if (impact && Force > 0){
                         impact.AddImpact(
                             (e.transform.position - GetComponentInParent<Entity>().transform.position).normalized,
                             Force);
@@ -56,6 +57,7 @@ public class LaserBeam : Weapon {
             Entity ent = c.gameObject.GetComponent<Entity>();
             if (ent.Faction == JLProject.Damage.Faction.Player) {
                 _targets.Add(ent);
+                hasTarget = true;
             }
         }
     }
@@ -64,6 +66,9 @@ public class LaserBeam : Weapon {
         Entity ent = c.gameObject.GetComponent<Entity>();
         if (_targets.Contains(ent)) {
             _targets.Remove(ent);
+            if (ent.Faction == (JLProject.Damage.Faction.Player)){
+                hasTarget = false;
+            }
         }
     }
 }

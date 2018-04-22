@@ -69,6 +69,10 @@ MonoBehaviour:
     obj: {fileID: 1213158088283906, guid: a9633f0d747efbb469ecd7bc98c42ecd, type: 2}
   - ID: 2
     obj: {fileID: 1224940042672958, guid: b097c05f4a949da40bd56b7f4385595a, type: 2}
+  - ID: 3
+    obj: {fileID: 1442791684928592, guid: 0724b89dc0de5c24490dd67490c629db, type: 2}
+  - ID: 4
+    obj: {fileID: 1535153847613550, guid: 0219d7986ac074545b2e6d7efef4a7b9, type: 2}
 --- !u!114 &114924028037767378
 MonoBehaviour:
   m_ObjectHideFlags: 1

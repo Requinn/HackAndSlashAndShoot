@@ -12,7 +12,8 @@ public class Explosive : Weapon{
     public float Force = 25.0f;
     public float CastTime = 1.5f;
     public bool Repeated = false; //used for inplace explosions that are "static" on a level
-    private float Radius = 4.0f;
+    public bool OneUse = false;
+    public float Radius = 4.0f;
     public SphereCollider Collider;
     public AoEMarker MarkerScript;
     public Damage.DamageType dmgType = JLProject.Damage.DamageType.Explosive;
@@ -22,7 +23,7 @@ public class Explosive : Weapon{
     //change this to use a sphere cast or something???
     void Start(){
         Collider = GetComponent<SphereCollider>();
-        Radius = Collider.radius;
+        Collider.radius = Radius;
         args = new Damage.DamageEventArgs(Damage, this.transform.position, dmgType, Faction);
         if (Repeated){
             InvokeRepeating("Fire", CastTime + 2.0f, CastTime + 2.0f);
@@ -42,13 +43,15 @@ public class Explosive : Weapon{
             if (e.gameObject != null) {
                 e.TakeDamage(this.gameObject, ref args);
                 var impact = e.GetComponent<ImpactReceiver>();
-                if (impact) {
-                    impact.AddImpact((e.transform.position - transform.position).normalized, Force);
+                if (impact) { impact.AddImpact((e.transform.position - transform.position).normalized, Force);
                 }
             }
             else {
                 _targets.Remove(e);
             }
+        }
+        if (OneUse){
+            Destroy(this);
         }
     }
 

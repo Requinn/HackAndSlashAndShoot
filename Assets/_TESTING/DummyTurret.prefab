@@ -300,7 +300,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -312,7 +312,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -324,7 +324,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &114036150309416500
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -391,8 +391,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 467413a64774f684ba13cafec3ce32b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxViewRange: 10
-  maxAttackRange: 10
+  _maxViewRange: 20
+  maxAttackRange: 20
   _xAngle: 180
   _yAngle: 30
   _aggroXAngle: 15
@@ -486,8 +486,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52fe79947b069ab4390a3cea81969ad6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 0
   weaponIcon: {fileID: 0}
   _canAttack: 1
+  _canBlock: 1
   type: 1
   bullet:
     objectToPool: {fileID: 1713346435508252, guid: 9f5ae7dbc42c16d44bd6716335630e61,
@@ -495,6 +497,7 @@ MonoBehaviour:
     amountToPool: 1
     shouldExpand: 1
   GunType: 0
+  faction: 3
   ShotDelay: 1
   ReloadTime: 4
   gunAudio:
@@ -502,7 +505,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
   MaxAmmo: 2
   BarrelPoint: {fileID: 4679165472318824}
-  faction: 3
 --- !u!114 &114531125134560354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -523,6 +525,7 @@ MonoBehaviour:
   UIhp: {fileID: 114096443861145058}
   shield: {fileID: 0}
   floater: {fileID: 114521330462257012}
+  CanMove: 1
   weapon: {fileID: 114528671568539166}
   target: {fileID: 0}
   rotationTime: 1.5

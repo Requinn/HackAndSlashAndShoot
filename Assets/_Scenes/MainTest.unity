@@ -7387,16 +7387,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
-        type: 2}
-      propertyPath: UIhp
-      value: 
-      objectReference: {fileID: 647239587}
-    - target: {fileID: 114984650945366130, guid: 3988dcee9cf79db478e5f507a1cb79d2,
-        type: 2}
-      propertyPath: UIshield
-      value: 
-      objectReference: {fileID: 28994814}
     - target: {fileID: 4804814290989470, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0.53267515
@@ -7425,9 +7415,14 @@ Prefab:
       objectReference: {fileID: 970861273}
     - target: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
         type: 2}
-      propertyPath: freezeMovement
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: UIhp
+      value: 
+      objectReference: {fileID: 647239587}
+    - target: {fileID: 114984650945366130, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+        type: 2}
+      propertyPath: UIshield
+      value: 
+      objectReference: {fileID: 28994814}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
   m_IsPrefabParent: 0

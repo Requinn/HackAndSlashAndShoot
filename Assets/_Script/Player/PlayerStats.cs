@@ -36,6 +36,7 @@ namespace JLProject {
             Health = PC.CurrentHealth;
             Armor = PC.ArmorValue;
             lastLevel = sceneNo;
+            weapons.Clear();
             foreach (var weap in PC.WeaponsInHand){
                 weapons.Add(weap.ReferenceID);
             }
