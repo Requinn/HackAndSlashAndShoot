@@ -33,6 +33,7 @@ namespace JLProject{
         void Start(){
             if (DataService.Instance.curLoadedProfile == 1){
                 CurrentHealth = DataService.Instance.PlayerStats.Health;
+                UIhp.UpdateHealthBar(HealthPercent());
                 ArmorValue = DataService.Instance.PlayerStats.Armor;
 
                 foreach (var wepID in DataService.Instance.PlayerStats.weapons){
@@ -44,7 +45,7 @@ namespace JLProject{
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
             _PAC = GetComponentInChildren<PlayerAnimationController>();
-            Faction = Damage.Faction.Player;
+            Faction = Damage.Faction.Player; 
         }
 
         // Update is called once per frame
