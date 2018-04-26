@@ -7,16 +7,24 @@ using UnityEngine;
 public class ShortPistol : Gun{
     public float ShotDelay = 0.15f;
     public float ReloadTime = 0.25f;
+    public float damage = 35f;
     private AudioSource _gunSounds;
     public AudioClip[] gunAudio;
     public int MaxAmmo = 3;
     public Transform BarrelPoint;
     private Damage.DamageEventArgs args;
+
+    public WeaponsModHandler modHandler;
+    public DamageMod mod;
+
 	// Use this for initialization
 	void Start (){
+	    modHandler.AddMod(mod);
 	    AttackDelay = ShotDelay;
 	    ReloadSpeed = ReloadTime;
-	    CurMag = MaxMag = MaxAmmo;	    
+	    CurMag = MaxAmmo;
+	    MaxMag = CurMag;
+	    AttackValue = damage;
 	    _gunSounds = GetComponent<AudioSource>();
 	    if (faction == Damage.Faction.Enemy)
 	        bullet.objectToPool.tag = "EnemyProjectile";

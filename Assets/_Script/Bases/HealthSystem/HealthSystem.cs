@@ -4,11 +4,11 @@ using DG.Tweening;
 using MEC;
 using UnityEngine;
 
-/// <summary>
-/// A base class to handle health values on all entities
-/// - Big Thanks to Michael Wolf for letting me use some of his ideas
-/// </summary>
 namespace JLProject{
+    /// <summary>
+    /// A base class to handle health values on all entities
+    /// - Big Thanks to Michael Wolf for letting me use some of his ideas
+    /// </summary>
     public abstract class HealthSystem : MonoBehaviour{
         [SerializeField] protected float _maximumhealth = 100.0f;
         public float MaxHealth{

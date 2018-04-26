@@ -2,16 +2,19 @@
 using MEC;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Windows.Speech;
 
 namespace JLProject{
     public abstract class Weapon : MonoBehaviour{
         public int ReferenceID;
         public Sprite weaponIcon;
-        public int AttackValue{ get; set; }
+        public float AttackValue{ get; set; }
         public float AttackDelay{ get; set; }
         public float ReloadSpeed{ get; set; }
         public int CurMag{ get; set; }
         public int MaxMag{ get; set; }
+
+        public List<string> StatsList = new List<string>(){"Damage", "AttackDelay", "ReloadSpeed", "MagazineSize"};
         public Damage.Faction Faction{ get; set; }
         public bool _canAttack = true;
         public bool _canBlock = true;
