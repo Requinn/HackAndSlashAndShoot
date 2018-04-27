@@ -4,41 +4,53 @@ using UnityEngine;
 
 namespace JLProject {
     /// <summary>
-    /// and interface applied to weapons that will handle their modifications
+    /// Weapon Modification handler, attached to a weapon you wish to modify.
+    /// Currently, mods work
+    /// TODO: BE CAUTIOS OF DELETING MODS WHILE NOT PLAYING
     /// </summary>
     public class WeaponsModHandler : MonoBehaviour{
-        private List<IWeaponModifier> _weaponMods = new List<IWeaponModifier>();
+        public List<WeaponModifier> _weaponMods = new List<WeaponModifier>();
+        public Weapon weapon;
 
         //modify the stats of a weapon
-        public void ModifyStats(Weapon w) {
+        public void ModifyStats() {
             foreach (var mod in _weaponMods){
-                foreach (var appplicablestat in mod.ModifiedStats){
-                    if (!w.StatsList.Contains(appplicablestat.Key)){
-                        break;
-                    }
-                    mod.ApplyMod(w);
-                }
+                mod.ApplyMod(weapon);
             }
         }
 
         //try to add a weapon mod
-        public bool AddMod(IWeaponModifier mod){
+        public void AddMod(WeaponModifier mod){
+            bool contains = false;
             foreach (var m in _weaponMods){
                 if (m.modType == mod.modType){
-                    return false;
+                    contains = true;
+                    break;
                 }
             }
-            Debug.Log("aa");
-            _weaponMods.Add(mod);
-            return true;
+            if (!contains){
+                _weaponMods.Add(mod);
+                ModifyStats();
+            }
         }
 
-        public void RemoveMod(IWeaponModifier mod){
-            _weaponMods.Remove(mod);
+        public void RemoveMod(WeaponModifier mod){
+            if (_weaponMods.Contains(mod)){
+                mod.RemoveMod(weapon);
+                _weaponMods.Remove(mod);
+            }
+        }
+
+        public void RemoveModByType(ModType type){
+            foreach (var mod in _weaponMods){
+                if (mod.modType == type){
+                    RemoveMod(mod);
+                }
+            }
         }
 
         //remove mod1 and replace it with mod2
-        public bool SwapMod(IWeaponModifier mod1, IWeaponModifier mod2){
+        public bool SwapMod(WeaponModifier mod1, WeaponModifier mod2){
             //swap a mod
             if (mod1.modType == mod2.modType){
                 RemoveMod(mod1);
@@ -46,6 +58,10 @@ namespace JLProject {
                 return true;
             }
             return false;
+        }
+
+        public void ClearMods(){
+            _weaponMods.Clear();
         }
     }
 }

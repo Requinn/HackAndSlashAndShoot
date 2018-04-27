@@ -6,14 +6,11 @@ using MEC;
 using UnityEngine;
 
 public class BurstGun : Gun {
-    public float ShotDelay = 0.15f;
-    public float ReloadTime = 0.25f;
     public int burstCount = 5;
     public float burstDelay = 0.05f;
     public float spray = 0.1f;
     private AudioSource _gunSounds;
     public AudioClip[] gunAudio;
-    public int MaxAmmo = 3;
     public Transform BarrelPoint;
     private Damage.DamageEventArgs args;
 
@@ -23,13 +20,12 @@ public class BurstGun : Gun {
     public event BurstFiredEvent BurstStart, BurstEnd;
     // Use this for initialization
     void Start(){
-        AttackDelay = ShotDelay;
-        ReloadSpeed = ReloadTime;
-        CurMag = MaxMag = MaxAmmo;
         _gunSounds = GetComponent<AudioSource>();
         if (faction == Damage.Faction.Enemy)
             bullet.objectToPool.tag = "EnemyProjectile";
-        ObjectPooler.ObjectPool.PoolItem(bullet);
+        if (ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool) == null){
+            ObjectPooler.ObjectPool.PoolItem(bullet);
+        }
     }
 
     private IEnumerator<float> Burst(){
@@ -57,6 +53,7 @@ public class BurstGun : Gun {
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             float deviation = Random.Range(-spray/2, spray/2); //a spray of bullets
             rb.velocity = transform.TransformDirection(new Vector3(deviation, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
+            bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
             _gunSounds.PlayOneShot(gunAudio[0]);

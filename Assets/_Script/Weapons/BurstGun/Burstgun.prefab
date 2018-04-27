@@ -40,6 +40,7 @@ GameObject:
   - component: {fileID: 4135747464813692}
   - component: {fileID: 82193292924162736}
   - component: {fileID: 114972855288568784}
+  - component: {fileID: 114797434260611734}
   m_Layer: 0
   m_Name: Burstgun
   m_TagString: Untagged
@@ -1228,6 +1229,19 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114797434260611734
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1442791684928592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af86bcb700f19da40af0dc3a32416069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponMods: []
+  weapon: {fileID: 114972855288568784}
 --- !u!114 &114972855288568784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1241,6 +1255,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 3
   weaponIcon: {fileID: 21300000, guid: 546ed69e9eab00e4bb16f293d98cf6dd, type: 3}
+  _damage: 18
+  _attackDelay: 0.9000001
+  _reloadSpeed: 0.7
+  _currentMag: 16
+  _maximumMag: 16
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
   _canBlock: 1
   type: 1
@@ -1251,13 +1275,10 @@ MonoBehaviour:
     shouldExpand: 1
   GunType: 0
   faction: 0
-  ShotDelay: 0.9
-  ReloadTime: 0.7
   burstCount: 8
   burstDelay: 0.07
   spray: 5
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
-  MaxAmmo: 16
   BarrelPoint: {fileID: 4456432953854406}

@@ -8,11 +8,31 @@ namespace JLProject{
     public abstract class Weapon : MonoBehaviour{
         public int ReferenceID;
         public Sprite weaponIcon;
-        public float AttackValue{ get; set; }
-        public float AttackDelay{ get; set; }
-        public float ReloadSpeed{ get; set; }
-        public int CurMag{ get; set; }
-        public int MaxMag{ get; set; }
+        [SerializeField] protected float _damage;
+        public float AttackValue{
+            get{ return _damage; }
+            set{ _damage = value; }
+        }
+        [SerializeField] protected float _attackDelay;
+        public float AttackDelay{
+            get{ return _attackDelay; }
+            set{ _attackDelay = value; }
+        }
+        [SerializeField] protected float _reloadSpeed;
+        public float ReloadSpeed{
+            get{ return _reloadSpeed; }
+            set{ _reloadSpeed = value; }
+        }
+        [SerializeField] protected int _currentMag;
+        public int CurMag{
+            get{ return _currentMag; }
+            set{ _currentMag = value; }
+        }
+        [SerializeField] protected int _maximumMag;
+        public int MaxMag{
+            get{ return _maximumMag; }
+            set{ _maximumMag = value; }
+        }
 
         public List<string> StatsList = new List<string>(){"Damage", "AttackDelay", "ReloadSpeed", "MagazineSize"};
         public Damage.Faction Faction{ get; set; }

@@ -8,7 +8,12 @@ namespace JLProject{
         public Weapon weaponToShow;
         public Text text;
 
-        void Awake(){
+        void OnEnable(){
+            UpdateWeaponText();
+        }
+
+        public void UpdateWeaponToShow(Weapon w){
+            weaponToShow = w;
             UpdateWeaponText();
         }
 

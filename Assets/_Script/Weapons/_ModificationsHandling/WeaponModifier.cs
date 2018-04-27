@@ -8,12 +8,14 @@ namespace JLProject{
     /// <summary>
     /// interface to handle weapon mods
     /// </summary>
-    public interface IWeaponModifier{
-        string ModName { get; set; }
-        ModType modType{ get; set; }
-        string[] ValidWeapon { get; set; }
-        Dictionary<string, float> ModifiedStats{ get; set; }
-        void ApplyMod(Weapon w);
+    public abstract class WeaponModifier : MonoBehaviour{
+        public string ModName { get; set; }
+        public bool Applied{ get; set; }
+        public ModType modType{ get; set; }
+        public string[] ValidWeapon { get; set; }
+        public Dictionary<string, float> ModifiedStats{ get; set; }
+        public abstract void ApplyMod(Weapon w);
+        public abstract void RemoveMod(Weapon w);
     }
 
     public enum ModType {

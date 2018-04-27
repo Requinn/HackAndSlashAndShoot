@@ -36,6 +36,7 @@ GameObject:
   - component: {fileID: 4986631538467046}
   - component: {fileID: 114514985020910520}
   - component: {fileID: 82900433401386490}
+  - component: {fileID: 114786722131981128}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -265,6 +266,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 2
   weaponIcon: {fileID: 21300000, guid: 861b1603e1d42ee44a525c6732981853, type: 3}
+  _damage: 35
+  _attackDelay: 0.20000005
+  _reloadSpeed: 0.75
+  _currentMag: 3
+  _maximumMag: 3
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
   _canBlock: 1
   type: 1
@@ -275,13 +286,23 @@ MonoBehaviour:
     shouldExpand: 1
   GunType: 0
   faction: 1
-  ShotDelay: 0.2
-  ReloadTime: 0.75
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
-  MaxAmmo: 3
   BarrelPoint: {fileID: 4780547283479546}
+--- !u!114 &114786722131981128
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1224940042672958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af86bcb700f19da40af0dc3a32416069, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponMods: []
+  weapon: {fileID: 114514985020910520}
 --- !u!114 &114860700001598530
 MonoBehaviour:
   m_ObjectHideFlags: 1

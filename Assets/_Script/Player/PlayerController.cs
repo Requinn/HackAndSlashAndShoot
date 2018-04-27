@@ -33,7 +33,9 @@ namespace JLProject{
         void Start(){
             if (DataService.Instance.curLoadedProfile == 1){
                 CurrentHealth = DataService.Instance.PlayerStats.Health;
-                UIhp.UpdateHealthBar(HealthPercent());
+                if (UIhp){
+                    UIhp.UpdateHealthBar(HealthPercent());
+                }
                 ArmorValue = DataService.Instance.PlayerStats.Armor;
 
                 foreach (var wepID in DataService.Instance.PlayerStats.weapons){
