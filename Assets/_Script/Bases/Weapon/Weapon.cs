@@ -33,7 +33,18 @@ namespace JLProject{
             get{ return _maximumMag; }
             set{ _maximumMag = value; }
         }
+        [SerializeField] protected float _chargeTime;
+        public float ChargeTime{
+            get{ return _chargeTime; }
+            set{ _chargeTime = value; }
+        }
+        [SerializeField] protected float _chargeAttackDamageBonus;
+        public float ChargeDamageBonus{
+            get{ return _chargeAttackDamageBonus; }
+            set{ _chargeAttackDamageBonus = value; }
+        }
 
+        protected Entity _owningObj;
         public List<string> StatsList = new List<string>(){"Damage", "AttackDelay", "ReloadSpeed", "MagazineSize"};
         public Damage.Faction Faction{ get; set; }
         public bool _canAttack = true;
@@ -48,6 +59,10 @@ namespace JLProject{
         /// perform the attack
         /// </summary>
         public abstract void Fire();
+
+        public virtual void ChargeAttack(){
+            //Nothing
+        }
 
         /// <summary>
         /// the delay between attacks

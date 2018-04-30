@@ -16,4 +16,8 @@ public class Gun : Weapon {
     public override void Fire(){
         throw new System.NotImplementedException();
     }
+
+    public override void ChargeAttack(){
+        throw new System.NotImplementedException();
+    }
 }

@@ -1,0 +1,9 @@
+{
+    "Health": 90.0,
+    "Shield": 160.0,
+    "Armor": 0.0,
+    "weapons": [
+        3
+    ],
+    "lastLevel": 3
+}

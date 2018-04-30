@@ -26,6 +26,7 @@ namespace JLProject{
         }
 
         void Start(){
+            _owningObj = GetComponentInParent<Entity>();
             _parentImpactRcvr = GetComponentInParent<ImpactReceiver>();
             AttackDelay = attackDelay;
             CurMag = MaxMag = swingCount;
@@ -50,6 +51,7 @@ namespace JLProject{
 
         public override void Fire(){
             if (_canAttack){
+                _owningObj.AdjustSpeed(0f);
                 if (_currentCombo > 0 && _parentImpactRcvr){
                     PushForward(_currentCombo);
                 }
@@ -69,8 +71,18 @@ namespace JLProject{
             }
         }
 
+        public override void ChargeAttack(){
+        }
+
         private void PushForward(int combo){
             _parentImpactRcvr.AddImpact(_parentImpactRcvr.transform.forward.normalized, momentum[combo]);
+        }
+
+        public override IEnumerator<float> Delay() {
+            _canBlock = _canAttack = false;
+            yield return Timing.WaitForSeconds(AttackDelay);
+            _canBlock = _canAttack = true;
+            _owningObj.ResetSpeed(); //attack is over
         }
 
         /// <summary>
@@ -80,6 +92,7 @@ namespace JLProject{
         public override IEnumerator<float> Reload(){
             _canBlock = _canAttack = false;
             yield return Timing.WaitForSeconds(attackDelay);
+            _owningObj.ResetSpeed(); //attack is over
             _canBlock = true;
             yield return Timing.WaitForSeconds(comboDelay - attackDelay);
             _canAttack = true;

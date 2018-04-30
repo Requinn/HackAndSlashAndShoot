@@ -16,11 +16,26 @@ namespace JLProject{
 
         public float MovementSpeed {
             get { return _movementspeed; }
-            set { _movementspeed = value; }
+            set { _movementspeed = _speedVar = value; }
         }
 
+        private float _speedVar;
         protected abstract void Movement();
 
+        /// <summary>
+        /// adjust movement speed to the value
+        /// </summary>
+        /// <param name="newSpeed"></param>
+        public void AdjustSpeed(float newSpeed){
+            _movementspeed = newSpeed;
+        }
+
+        /// <summary>
+        /// reset movement speed to the base value
+        /// </summary>
+        public void ResetSpeed(){
+            _movementspeed = _speedVar;
+        }
         /// <summary>
         /// perform an attack with the weapon in the current slot
         /// </summary>

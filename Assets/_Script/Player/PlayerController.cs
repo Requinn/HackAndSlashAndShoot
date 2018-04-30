@@ -9,7 +9,7 @@ using UnityEngine;
 namespace JLProject{
     public class PlayerController : Entity{
         // Use this for initialization
-        public float speed, shieldedSpeed;
+        public float speed, shieldedSpeed, chargingSpeed;
         private float _MovX, _MovZ;
         private CharacterController cc;
         private Vector3 _MoveDir = Vector3.zero; //not going anywhere
@@ -25,7 +25,9 @@ namespace JLProject{
         private PlayerAnimationController _PAC;
         private float _timeSinceAttack = 0.0f;
         private float _attackDelay = 0.0f;
+        public float _chargeTime = 0.0f;
 
+        private ParticleSystem _chargeParticle;
         void Awake(){
             floorMask = LayerMask.GetMask("Floor");
         }
@@ -47,11 +49,13 @@ namespace JLProject{
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
             _PAC = GetComponentInChildren<PlayerAnimationController>();
+            _chargeParticle = GetComponentInChildren<ParticleSystem>();
             Faction = Damage.Faction.Player; 
         }
 
         // Update is called once per frame
         void Update(){
+            Debug.Log(MovementSpeed);
             if (!GameController.Controller.paused){
                 if (_timeSinceAttack <= _attackDelay){
                     _timeSinceAttack += Time.deltaTime;
@@ -60,9 +64,7 @@ namespace JLProject{
                 AngleUpdate(_MousePos);
 
                 if (CanMove){
-                    if (_timeSinceAttack > _attackDelay){
-                        Movement();
-                    }
+                    Movement();
                 }
                 MouseInput();
                 WeaponSwap();
@@ -73,41 +75,78 @@ namespace JLProject{
         /// gets mous input
         /// </summary>
         private void MouseInput(){
+            //check for blocking
             if (Input.GetMouseButton(1) && CurrentShield != null){
+                CancelCharge();
                 if (!CurrentShield.broken){
                     if (!CurrentWeapon){
                         //we don't have a weapon, so block freely
                         CurrentShield.blocking = true;
-                        MovementSpeed = shieldedSpeed;
+                        AdjustSpeed(shieldedSpeed);
                     }
                     else{
                         if (CurrentWeapon._canBlock){
                             //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
                             CurrentShield.blocking = true;
-                            MovementSpeed = shieldedSpeed;
+                            AdjustSpeed(shieldedSpeed);
                         }
                     }
                 }
             }
+            //stop blocking
             else if (Input.GetMouseButtonUp(1) && CurrentShield != null){
-                MovementSpeed = speed;
+                CancelCharge();
+                ResetSpeed();
                 CurrentShield.blocking = false;
             }
-            
+            //check for attacking
             if (Input.GetMouseButtonDown(0) && CurrentWeapon != null ) {
                 if (CurrentShield != null && !CurrentShield.blocking){
                     if (CurrentWeapon._canAttack){
                         _PAC.GunShot();
                         CurrentWeapon.Fire();
-                        if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
+                        /*if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
                             _timeSinceAttack = 0.0f;
                             _attackDelay = CurrentWeapon.AttackDelay;
                         }
+                    **/
                     }
                 }
             }
+            //handle Charge Attacks
+            if (Input.GetMouseButton(0) && CurrentWeapon != null){
+                if (_chargeTime < CurrentWeapon.ChargeTime){
+                    _chargeTime += Time.deltaTime;
+                }
+
+                if (_chargeTime > 0.25f){
+                    AdjustSpeed(chargingSpeed);
+                }
+                if (!_chargeParticle.isPlaying && Math.Abs(_chargeTime - CurrentWeapon.ChargeTime) < .01){
+                    //var psMain = _chargeParticle.main;
+                    //psMain.duration = CurrentWeapon.ChargeTime;
+                    _chargeParticle.Play();
+                }
+            }
+            //handle charge attack execution
+            if (Input.GetMouseButtonUp(0) && CurrentWeapon != null){  
+                if (_chargeTime >= CurrentWeapon.ChargeTime){
+                    CurrentWeapon.ChargeAttack();
+                }
+                if (_chargeTime > 0.25f) {
+                    ResetSpeed();
+                }
+                CancelCharge();
+            }
         }
 
+        ///cancels the current weapn charge
+        private void CancelCharge(){
+            _chargeTime = 0f;
+            if (_chargeParticle.isPlaying) {
+                _chargeParticle.Stop();
+            }
+        }
         /// <summary>
         /// character motor
         /// </summary>
@@ -231,6 +270,7 @@ namespace JLProject{
         /// </summary>
         private void WeaponSwap(){
             if (Input.GetKeyDown(KeyCode.Space) && WeaponsInHand.Count > 1){
+                CancelCharge();
                 if (CurrentWeapon == WeaponsInHand[0]){
                     WeaponsInHand[0].gameObject.SetActive(false);
                     CurrentWeapon = WeaponsInHand[1];

@@ -1260,6 +1260,8 @@ MonoBehaviour:
   _reloadSpeed: 0.7
   _currentMag: 16
   _maximumMag: 16
+  _chargeTime: 3
+  _chargeAttackDamageBonus: 0
   StatsList:
   - Damage
   - AttackDelay

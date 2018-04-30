@@ -40,24 +40,27 @@ public class DodgyRusher : MeleeUnit {
     }
 
     private IEnumerator<float> Evade(){
-        if (Random.Range(0, 2) == 1) {
-            _evadeDir = -transform.right;
+        if (_NMAgent){
+            if (Random.Range(0, 2) == 1){
+                _evadeDir = -transform.right;
+            }
+            else{
+                _evadeDir = transform.right;
+            }
+            _canEvade = false;
+            _NMAgent.isStopped = true;
+            _NMAgent.velocity = _evadeDir * _evadeDistance;
+            _NMAgent.speed = _evasionSpeed;
+            _NMAgent.angularSpeed = 0; //don't rotate around
+            _NMAgent.acceleration = 25f; //speed up fast
+
+            yield return Timing.WaitForSeconds(_evasionDuration);
+
+            if (this){
+                _NMAgent.isStopped = false;
+            }
+            yield return Timing.WaitForSeconds(_evadeCooldown);
+            _canEvade = true;
         }
-        else {
-            _evadeDir = transform.right;
-        }
-        _canEvade = false;
-        _NMAgent.isStopped = true;
-        _NMAgent.velocity = _evadeDir * _evadeDistance;
-        _NMAgent.speed = _evasionSpeed;
-        _NMAgent.angularSpeed = 0; //don't rotate around
-        _NMAgent.acceleration = 25f; //speed up fast
-
-        yield return Timing.WaitForSeconds(_evasionDuration);
-
-        _NMAgent.isStopped = false;
-
-        yield return Timing.WaitForSeconds(_evadeCooldown);
-        _canEvade = true;
     }
 }

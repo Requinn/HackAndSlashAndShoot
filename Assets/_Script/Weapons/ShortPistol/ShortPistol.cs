@@ -12,10 +12,13 @@ public class ShortPistol : Gun{
     private Damage.DamageEventArgs args;
     private WeaponsModHandler _modHandler;
 
+    private float chargeTime = 3f;
 	// Use this for initialization
 	void Start (){
-	    _modHandler = GetComponent<WeaponsModHandler>();
-	    _modHandler.weapon = this;
+        //TODO: Weapon mod code
+	    //_modHandler = GetComponent<WeaponsModHandler>();
+	    //_modHandler.weapon = this;
+
 	    _gunSounds = GetComponent<AudioSource>();
 	    if (faction == Damage.Faction.Enemy)
 	        bullet.objectToPool.tag = "EnemyProjectile";
@@ -23,7 +26,7 @@ public class ShortPistol : Gun{
 	        ObjectPooler.ObjectPool.PoolItem(bullet);
 	    }
     }
-	
+
     public override void Fire(){
         //get bullet from the object pool
         //pool objects on level start
@@ -33,7 +36,9 @@ public class ShortPistol : Gun{
             if (bullet != null){
                 bullet.GetComponent<IProjectile>().SetFaction(faction);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
-                rb.velocity = transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
+                rb.velocity =
+                    transform.TransformDirection(
+                        new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
                 bullet.transform.position = BarrelPoint.position;
                 bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
                 _gunSounds.PlayOneShot(gunAudio[0]);
@@ -50,4 +55,22 @@ public class ShortPistol : Gun{
             }
         }
     }
+
+    public override void ChargeAttack() {
+        GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
+        if (bullet != null) {
+            bullet.GetComponent<IProjectile>().SetFaction(faction);
+            Rigidbody rb = bullet.GetComponent<Rigidbody>();
+            rb.velocity =
+                transform.TransformDirection(
+                    new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
+            bullet.transform.position = BarrelPoint.position;
+            bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
+            _gunSounds.PlayOneShot(gunAudio[0]);
+            bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue * 2.25f;
+            bullet.SetActive(true);
+        }
+        Timing.RunCoroutine(base.Delay());
+    }
+
 }

@@ -488,6 +488,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _damage: 25
+  _attackDelay: 0.5
+  _reloadSpeed: 0.5
+  _currentMag: 10
+  _maximumMag: 10
+  _chargeTime: 0
+  _chargeAttackDamageBonus: 0
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
   _canBlock: 1
   type: 1
@@ -498,12 +510,9 @@ MonoBehaviour:
     shouldExpand: 1
   GunType: 0
   faction: 3
-  ShotDelay: 1
-  ReloadTime: 4
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
-  MaxAmmo: 2
   BarrelPoint: {fileID: 4679165472318824}
 --- !u!114 &114531125134560354
 MonoBehaviour:
@@ -525,6 +534,7 @@ MonoBehaviour:
   UIhp: {fileID: 114096443861145058}
   shield: {fileID: 0}
   floater: {fileID: 114521330462257012}
+  CanRevive: 0
   CanMove: 1
   weapon: {fileID: 114528671568539166}
   target: {fileID: 0}
