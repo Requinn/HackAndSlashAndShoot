@@ -5,6 +5,7 @@ using UnityEngine;
 namespace JLProject{
     public abstract class Toggleable : MonoBehaviour{
         private bool locked = false;
+        public bool Opened = false;
         public bool Locked{
             get{ return locked; }
             set{ locked = value; }

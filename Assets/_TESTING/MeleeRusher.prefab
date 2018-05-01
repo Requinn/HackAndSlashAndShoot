@@ -154,6 +154,7 @@ GameObject:
   - component: {fileID: 114321388030308720}
   - component: {fileID: 114752604222415518}
   - component: {fileID: 195170186507339148}
+  - component: {fileID: 143456578848819598}
   m_Layer: 0
   m_Name: MeleeRusher
   m_TagString: Enemy
@@ -599,6 +600,8 @@ MonoBehaviour:
   UIhp: {fileID: 114219216753257162}
   shield: {fileID: 0}
   floater: {fileID: 114481612553244400}
+  CanRevive: 0
+  CanMove: 1
   weapon: {fileID: 114082777032006382}
   target: {fileID: 0}
   rotationTime: 0.25
@@ -641,8 +644,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4053b333790c6f147bb9aff1a8b8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _damage: 0
+  _attackDelay: 0
+  _reloadSpeed: 0
+  _currentMag: 0
+  _maximumMag: 0
+  _chargeTime: 0
+  _chargeAttackDamageBonus: 0
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
+  _canBlock: 1
   type: 0
   attackDelay: 0.75
   comboDelay: 3
@@ -3236,8 +3253,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3813a09bf36d3428342650f9afb649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 0
   weaponIcon: {fileID: 21300000, guid: 546ed69e9eab00e4bb16f293d98cf6dd, type: 3}
+  _damage: 0
+  _attackDelay: 0
+  _reloadSpeed: 0
+  _currentMag: 0
+  _maximumMag: 0
+  _chargeTime: 0
+  _chargeAttackDamageBonus: 0
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
+  _canBlock: 1
   type: 1
   bullet:
     objectToPool: {fileID: 1850941345847022, guid: 979532bf8a82aa041bfe949162a625af,
@@ -3245,17 +3276,14 @@ MonoBehaviour:
     amountToPool: 10
     shouldExpand: 1
   GunType: 1
-  ShotDelay: 0.9
-  ReloadTime: 1
+  faction: 0
   burstCount: 8
   burstDelay: 0.07
   spray: 5
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
-  MaxAmmo: 16
   BarrelPoint: {fileID: 4500803486952876}
-  faction: 0
 --- !u!114 &114950159469104962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3295,6 +3323,23 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.849335
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &143456578848819598
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812043628140048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195170186507339148
 NavMeshAgent:

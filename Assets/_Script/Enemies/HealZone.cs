@@ -15,12 +15,18 @@ public class HealZone : MonoBehaviour{
     /// </summary>
     /// <param name="c"></param>
     void OnTriggerStay(Collider c){
-        if (c.GetComponent<Entity>() && _canTick) {
-            PlayerController ent = c.gameObject.GetComponent<PlayerController>();
-            if (ent.gameObject.tag == "Player") {
+        Entity ent = c.GetComponent<Entity>();
+        if (ent && _canTick){
+            if (ent.gameObject.CompareTag("Player")) {
                 ent.Heal(this.gameObject, Heal);
-                Timing.RunCoroutine(TickDelay(TickTime));
             }
+            if (CanAffectEnemy){
+                if (ent.gameObject.CompareTag("Enemy")){
+                    ent.Heal(gameObject, Heal);
+
+                }
+            }
+            Timing.RunCoroutine(TickDelay(TickTime));
         }
     }
 

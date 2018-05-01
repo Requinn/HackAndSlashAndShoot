@@ -10,6 +10,7 @@ namespace JLProject{
         public Transform pointA, pointB;
         public VerticalDoor doorA, doorB;
         public GameObject platformDoorA, platformDoorB;
+        public Toggleable elevatorSwitch;
         private Vector3 _destinationPosition;
         private bool _occupied, _inTransit;
 
@@ -60,6 +61,7 @@ namespace JLProject{
         void OnTriggerEnter(Collider c){
             if (c.CompareTag("Player")){
                 c.transform.SetParent(transform, true);
+                elevatorSwitch.Toggle();
                 _occupied = true;
             }
         }
@@ -67,6 +69,7 @@ namespace JLProject{
         void OnTriggerExit(Collider c){
             if (c.CompareTag("Player")){
                 c.transform.parent = null;
+                elevatorSwitch.Toggle();
                 _occupied = false;
             }
         }

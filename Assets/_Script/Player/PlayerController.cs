@@ -9,6 +9,7 @@ using UnityEngine;
 namespace JLProject{
     public class PlayerController : Entity{
         // Use this for initialization
+        public bool useSave = true;
         public float speed, shieldedSpeed, chargingSpeed;
         private float _MovX, _MovZ;
         private CharacterController cc;
@@ -33,7 +34,7 @@ namespace JLProject{
         }
 
         void Start(){
-            if (DataService.Instance.curLoadedProfile == 1){
+            if (useSave && DataService.Instance.curLoadedProfile == 1){
                 CurrentHealth = DataService.Instance.PlayerStats.Health;
                 if (UIhp){
                     UIhp.UpdateHealthBar(HealthPercent());
@@ -55,7 +56,7 @@ namespace JLProject{
 
         // Update is called once per frame
         void Update(){
-            Debug.Log(MovementSpeed);
+            //Debug.Log(MovementSpeed);
             if (!GameController.Controller.paused){
                 if (_timeSinceAttack <= _attackDelay){
                     _timeSinceAttack += Time.deltaTime;

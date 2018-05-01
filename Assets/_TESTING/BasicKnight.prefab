@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 114369561806711392}
   - component: {fileID: 114934049879853146}
   - component: {fileID: 195257751345857658}
+  - component: {fileID: 143505628066261064}
   m_Layer: 0
   m_Name: BasicKnight
   m_TagString: Enemy
@@ -574,8 +575,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4053b333790c6f147bb9aff1a8b8226d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _damage: 0
+  _attackDelay: 0
+  _reloadSpeed: 0
+  _currentMag: 0
+  _maximumMag: 0
+  _chargeTime: 0
+  _chargeAttackDamageBonus: 0
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
+  _canBlock: 1
   type: 0
   attackDelay: 0.75
   comboDelay: 6
@@ -2118,22 +2133,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 250
   _currenthealth: 250
-  _armorvalue: 0
+  _armorvalue: 7
   _faction: 3
   StatusImmunities: 
   Afflictions: []
   UIhp: {fileID: 114522766261300128}
   shield: {fileID: 114003031538272142}
   floater: {fileID: 114432007178810392}
+  CanRevive: 0
+  CanMove: 1
   weapon: {fileID: 114149709478158658}
   target: {fileID: 0}
   rotationTime: 0.45
-  movementSpeed: 4
+  movementSpeed: 4.25
   thisFSM: {fileID: 0}
   prevState: 0
   state: 0
-  _blockDuration: 3
-  _blockCooldown: 6
+  _blockDuration: 2
+  _blockCooldown: 5
   _canBlock: 1
   shieldedSpeed: 2
 --- !u!114 &114934049879853146
@@ -2181,6 +2198,23 @@ CapsuleCollider:
   m_Radius: 0.5
   m_Height: 1.849335
   m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &143505628066261064
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1516102605745770}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195257751345857658
 NavMeshAgent:

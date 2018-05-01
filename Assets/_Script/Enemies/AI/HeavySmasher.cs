@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -53,7 +54,8 @@ namespace JLProject {
             weapon.Fire();
         }
 
-        public override void ProjectileResponse(){
+        public override void ProjectileResponse() {
+            throw new NotImplementedException();
         }
     }
 }

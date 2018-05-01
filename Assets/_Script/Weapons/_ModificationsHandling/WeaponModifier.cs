@@ -1,7 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using HutongGames.PlayMaker.Actions;
-using UnityEditor;
 using UnityEngine;
 
 namespace JLProject{

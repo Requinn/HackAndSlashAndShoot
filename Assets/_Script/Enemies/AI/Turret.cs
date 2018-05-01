@@ -35,7 +35,7 @@ public class Turret : AIEntity{
         weapon.Fire();
     }
 
-    public override void ProjectileResponse() {
+    public override void ProjectileResponse(){
+        throw new System.NotImplementedException();
     }
-
 }

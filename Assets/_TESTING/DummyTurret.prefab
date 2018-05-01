@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114531125134560354}
   - component: {fileID: 114546550968232414}
   - component: {fileID: 114269120321676232}
+  - component: {fileID: 143161622700189488}
   m_Layer: 0
   m_Name: DummyTurret
   m_TagString: Enemy
@@ -1172,6 +1173,23 @@ CapsuleCollider:
   m_Height: 1.849335
   m_Direction: 1
   m_Center: {x: 0, y: 0.24519432, z: 0}
+--- !u!143 &143161622700189488
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154147494263006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!222 &222273086708951588
 CanvasRenderer:
   m_ObjectHideFlags: 1

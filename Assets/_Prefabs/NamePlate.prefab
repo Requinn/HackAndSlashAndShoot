@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: 114550272335329754}
   - component: {fileID: 114859944811723780}
   - component: {fileID: 114501060008193120}
+  - component: {fileID: 114781787402489944}
   m_Layer: 0
   m_Name: NamePlate
   m_TagString: Untagged
@@ -130,6 +131,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114781787402489944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1841212058423068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b908f37b2e37d1645a36dbbad8ae6dd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displayDamage: 0
+  alphaValue: 1
+  textColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  UIobj: {fileID: 224785842745041448, guid: 3ca27591f44a1da4084b2caeca6c2e66, type: 2}
 --- !u!114 &114806011430820952
 MonoBehaviour:
   m_ObjectHideFlags: 1

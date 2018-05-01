@@ -212,6 +212,7 @@ GameObject:
   - component: {fileID: 195477438011099322}
   - component: {fileID: 114330226899406996}
   - component: {fileID: 114116102261708496}
+  - component: {fileID: 143341031434592612}
   m_Layer: 0
   m_Name: HeavySmasher
   m_TagString: Untagged
@@ -509,10 +510,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dde268d77ddc1e34a98c4022a45d5329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _damage: 0
+  _attackDelay: 0
+  _reloadSpeed: 0
+  _currentMag: 0
+  _maximumMag: 0
+  _chargeTime: 0
+  _chargeAttackDamageBonus: 0
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
+  _canBlock: 1
   type: 1
   _targets: []
+  hasTarget: 0
   Damage: 80
   Force: 135
   CastTime: 1.2
@@ -561,6 +577,8 @@ MonoBehaviour:
   UIhp: {fileID: 114279704727802292}
   shield: {fileID: 0}
   floater: {fileID: 114041877503500400}
+  CanRevive: 0
+  CanMove: 1
   weapon: {fileID: 114081805369078878}
   target: {fileID: 0}
   rotationTime: 2
@@ -1458,6 +1476,23 @@ CapsuleCollider:
   m_Height: 1.6800323
   m_Direction: 1
   m_Center: {x: 0, y: -0.33480096, z: 0}
+--- !u!143 &143341031434592612
+CharacterController:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893981512503798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &195477438011099322
 NavMeshAgent:
   m_ObjectHideFlags: 1
