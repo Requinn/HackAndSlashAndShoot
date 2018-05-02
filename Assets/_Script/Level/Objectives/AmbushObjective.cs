@@ -5,13 +5,13 @@ using UnityEngine;
 /// <summary>
 /// a kill-type objective for testing purposes
 /// </summary>
-public class TestObjective : LevelObjective, IKillObjective{
+public class AmbushObjective : LevelObjective, IKillObjective{
     public bool PreSpawn;
     public List<SingleSpawner> EnemyList = new List<SingleSpawner>();
     //public Unlockable ObjToUnlock;
     [SerializeField] private int _deathCount = 0;
     private bool _spawned = false;
-    public void Awake(){
+    public void Start(){
         if (PreSpawn && !_spawned){
             Spawn();
         }

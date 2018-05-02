@@ -7,7 +7,6 @@ using UnityEngine;
 
 namespace JLProject{
     public class VerticalDoor : Toggleable{
-        public bool Locked = false;
         public float verticalMovement = 6.0f;
         void Awake(){
             if (Opened){
