@@ -38,9 +38,11 @@ namespace JLProject{
         /// called from the FSM
         /// </summary>
         protected override void Movement(){
-            Rotate();
-            if(Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange){
-                _NMAgent.Move(transform.forward * speed * Time.deltaTime);
+            if (_vision.inRange){
+                Rotate();
+                if (Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange){
+                    _NMAgent.Move(transform.forward * speed * Time.deltaTime);
+                }
             }
         }
 

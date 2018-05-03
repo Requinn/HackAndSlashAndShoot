@@ -50,7 +50,8 @@ namespace JLProject{
                 //check if the target is behind us
                 if (_eyeTransform.InverseTransformPoint(target.position).z < 0.0f){
                     //if they're behind us return true
-                    if (targetFound){
+                    if (inRange) {
+                        inAttackCone = false;
                         return true;
                     }
                 }

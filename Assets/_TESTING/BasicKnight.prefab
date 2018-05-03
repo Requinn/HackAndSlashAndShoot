@@ -726,8 +726,8 @@ MonoBehaviour:
         serializedVersion: 2
         x: 303.10938
         y: 248.39062
-        width: 136
-        height: 48
+        width: 143
+        height: 64
       isBreakpoint: 0
       isSequence: 0
       hideUnused: 0
@@ -745,6 +745,14 @@ MonoBehaviour:
           isSystemEvent: 0
           isGlobal: 0
         toState: WeaponCheck
+        linkStyle: 0
+        linkConstraint: 0
+        colorIndex: 0
+      - fsmEvent:
+          name: DETECT_PLAYER
+          isSystemEvent: 0
+          isGlobal: 0
+        toState: VisionCheck
         linkStyle: 0
         linkConstraint: 0
         colorIndex: 0
@@ -825,7 +833,7 @@ MonoBehaviour:
         - CHECK_ATTACK
         - MOVEMENT
         - MOVEMENT
-        - 
+        - DETECT_PLAYER
         byteData: 0101
         arrayParamSizes: 
         arrayParamTypes: []
