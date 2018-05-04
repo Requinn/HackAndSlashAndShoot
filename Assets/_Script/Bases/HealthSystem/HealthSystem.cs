@@ -81,14 +81,14 @@ namespace JLProject{
         /// <param name="damage"></param>
         public virtual void TakeDamage(object source, ref Damage.DamageEventArgs args){
             if (shield != null && shield.blocking){
-                floater.SpawnShieldText(args.DamageValue);
+                if(floater)floater.SpawnShieldText(args.DamageValue);
                 shield.Block(args.DamageValue);
             }
             else{
                 if (_maximumhealth > 0 && args.SourceFaction != _faction){
                     float calculatedDamage = CalculateDamage(args);
                     _currenthealth = Mathf.Clamp(_currenthealth - calculatedDamage, 0, _maximumhealth);
-                    floater.SpawnDamageText(calculatedDamage);
+                    if (floater) floater.SpawnDamageText(calculatedDamage);
                     if (TookDamage != null) TookDamage(calculatedDamage);
                     UpdateHealthUI();
                     if (_currenthealth == 0){
@@ -122,7 +122,7 @@ namespace JLProject{
                         case StatusObject.StatusType.Bleed:
                             _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
                             if (TookDamage != null) TookDamage(damage);
-                            floater.SpawnDamageText(damage);
+                            if (floater) floater.SpawnDamageText(damage);
                             UpdateHealthUI();
                             break;
                         case StatusObject.StatusType.Shock: //WIP
@@ -153,7 +153,7 @@ namespace JLProject{
         /// <param name="heal"></param>
         public virtual void Heal(object source, int heal){
             _currenthealth = Mathf.Clamp(_currenthealth + heal, 0, _maximumhealth);
-            floater.SpawnHealText(heal);
+            if (floater) floater.SpawnHealText(heal);
             if (HealDamage != null) HealDamage(heal);
             UpdateHealthUI();
         }
