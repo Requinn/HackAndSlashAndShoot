@@ -27,6 +27,7 @@ public class AmbushObjective : LevelObjective, IKillObjective{
             enemy.SpawnedObj.GetComponent<Entity>().OnRevive += MarkLive;
         }
         _spawned = true;
+        ObjectToLock.Close();
     }
 
     public override void Initiate(){

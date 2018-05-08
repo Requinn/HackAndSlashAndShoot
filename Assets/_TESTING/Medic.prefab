@@ -546,7 +546,7 @@ MonoBehaviour:
   _canBlock: 1
   type: 0
   targets: []
-  Damage: 50
+  Damage: 75
   CastTime: 1.5
   Radius: 6
   Collider: {fileID: 135124790792022124}
