@@ -55,8 +55,11 @@ namespace JLProject{
             set{ onRevive = value; }
         }
 
-        public delegate void TookDamageEvent(float hp);
+        public delegate void TookDamageEvent(Damage.DamageEventArgs args);
         public event TookDamageEvent TookDamage;
+
+        public delegate void TookStatusDamageEvent(float damage);
+        public event TookStatusDamageEvent TookStatusDamage;
 
         public delegate void HealDamageEvent(float hp);
         public event HealDamageEvent HealDamage;
@@ -88,8 +91,10 @@ namespace JLProject{
                 if (_maximumhealth > 0 && args.SourceFaction != _faction){
                     float calculatedDamage = CalculateDamage(args);
                     _currenthealth = Mathf.Clamp(_currenthealth - calculatedDamage, 0, _maximumhealth);
+                    Damage.DamageEventArgs temp = args;
+                    temp.DamageValue = calculatedDamage;
                     if (floater) floater.SpawnDamageText(calculatedDamage);
-                    if (TookDamage != null) TookDamage(calculatedDamage);
+                    if (TookDamage != null) TookDamage(temp);
                     UpdateHealthUI();
                     if (_currenthealth == 0){
                         HandleDeath();
@@ -121,7 +126,7 @@ namespace JLProject{
                     switch (type){
                         case StatusObject.StatusType.Bleed:
                             _currenthealth = Mathf.Clamp(_currenthealth - damage, 0, _maximumhealth);
-                            if (TookDamage != null) TookDamage(damage);
+                            if (TookDamage != null) TookStatusDamage(damage);
                             if (floater) floater.SpawnDamageText(damage);
                             UpdateHealthUI();
                             break;
@@ -136,7 +141,7 @@ namespace JLProject{
                 }
             }
             else{
-                if (TookDamage != null) TookDamage(0);
+                if (TookStatusDamage != null) TookStatusDamage(0);
             }
         }
 

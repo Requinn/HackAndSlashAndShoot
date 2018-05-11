@@ -489,11 +489,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
-  _damage: 25
+  _damage: 15
   _attackDelay: 0.5
-  _reloadSpeed: 0.5
-  _currentMag: 10
-  _maximumMag: 10
+  _reloadSpeed: 0.2
+  _currentMag: 5
+  _maximumMag: 5
   _chargeTime: 0
   _chargeAttackDamageBonus: 0
   StatsList:
@@ -539,6 +539,7 @@ MonoBehaviour:
   CanMove: 1
   weapon: {fileID: 114528671568539166}
   target: {fileID: 0}
+  mass: 3
   rotationTime: 1.5
 --- !u!114 &114546550968232414
 MonoBehaviour:

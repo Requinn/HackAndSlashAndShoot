@@ -112,8 +112,9 @@ MonoBehaviour:
   args:
     DamageValue: 20
     DamageType: 1
-    HitPoint: {x: 0, y: 0, z: 0}
+    HitSourceLocation: {x: 0, y: 0, z: 0}
     SourceFaction: 1
+    HitForce: 0
   FlightDistance: 25
   Velocity: 13.5
   statusObj: {fileID: 0}

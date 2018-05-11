@@ -10,9 +10,6 @@ using UnityEngine.AI;
 
 namespace JLProject{
     public class MeleeUnit : AIEntity{
-        private FoVDetection _vision;
-
-        public GameObject target;
         public float rotationTime = 3.0f;
         public float movementSpeed = 5.0f;
         protected float speed;
@@ -25,13 +22,11 @@ namespace JLProject{
         public State prevState;
         public State state;
         // Use this for initialization
-        void Awake(){
+        void Start(){
             speed = movementSpeed;
             thisFSM = GetComponent<PlayMakerFSM>();
             prevState = state = State.Idle;
-            _vision = GetComponent<FoVDetection>();
-            _NMAgent = GetComponent<NavMeshAgent>();
-            target = FindObjectOfType<PlayerController>().gameObject;
+            
         }
 
         /// <summary>

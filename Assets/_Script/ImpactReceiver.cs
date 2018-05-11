@@ -7,7 +7,7 @@ using System.Collections;
 /// called by AddImpact(direction, force);
 /// </summary>
 public class ImpactReceiver : MonoBehaviour {
-    float mass = 3.0F; // defines the character mass
+    public float mass = 3.0F; // defines the character mass
     Vector3 impact = Vector3.zero;
     private CharacterController character;
     // Use this for initialization

@@ -15,6 +15,7 @@ namespace JLProject{
 
         public GameObject[] WaveComponent;
         public int[] damageValues;
+        public int[] force;
         public int[] momentum;
         public Damage.Faction faction;
         private ImpactReceiver _parentImpactRcvr;
@@ -34,8 +35,7 @@ namespace JLProject{
             //temporary!!!!
             //TODO: Change this so things like, 3rd hits do more damage in a combo or something similar!!
             for (int i = 0; i < WaveComponent.Length; i++){
-                WaveComponent[i].GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(damageValues[i],
-                    this.transform.position, JLProject.Damage.DamageType.Melee, faction);
+                WaveComponent[i].GetComponent<WaveCollision>().args = new Damage.DamageEventArgs(damageValues[i], transform.position, Damage.DamageType.Melee, faction, force[i]);
             }
         }
 

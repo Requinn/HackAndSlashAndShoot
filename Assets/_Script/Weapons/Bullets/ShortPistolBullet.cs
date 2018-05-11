@@ -34,7 +34,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         if (ent != null){
             if (ent.Faction != Damage.Faction.Player || ent.Faction != Damage.Faction.Allied){
                 //fix this later
-                args.HitPoint = transform.position;
+                args.HitSourceLocation = transform.position;
                 ent.TakeDamage(gameObject, ref args);
                 if (statusObj){
                     ApplyStatus(statusObj, ent);

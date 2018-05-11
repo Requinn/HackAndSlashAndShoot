@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4745600903462850}
   - component: {fileID: 82662788460134972}
   - component: {fileID: 114947093410817674}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Burstgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 33535916898730090}
   - component: {fileID: 23682076978566508}
   - component: {fileID: 114082777032006382}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: ShortWaveWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4500803486952876}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: BulletPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 23896229146830820}
   - component: {fileID: 33307223095768454}
   - component: {fileID: 114829955164470578}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114875916923542930}
   - component: {fileID: 114813608123997538}
   - component: {fileID: 114481612553244400}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NamePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 64651809114696244}
   - component: {fileID: 114661750042811098}
   - component: {fileID: 54864098515937486}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wave
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 224152198073432826}
   - component: {fileID: 222941759646285288}
   - component: {fileID: 114219216753257162}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -150,12 +150,13 @@ GameObject:
   - component: {fileID: 33115653879808478}
   - component: {fileID: 23477431843500180}
   - component: {fileID: 136985416184715296}
+  - component: {fileID: 114628229669863496}
   - component: {fileID: 114059668065324072}
   - component: {fileID: 114321388030308720}
   - component: {fileID: 114752604222415518}
   - component: {fileID: 195170186507339148}
-  - component: {fileID: 143456578848819598}
-  m_Layer: 0
+  - component: {fileID: 143499715339622702}
+  m_Layer: 2
   m_Name: MeleeRusher
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -172,7 +173,7 @@ GameObject:
   - component: {fileID: 224539591545070088}
   - component: {fileID: 222718545968782164}
   - component: {fileID: 114950159469104962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +190,7 @@ GameObject:
   - component: {fileID: 224326631311032426}
   - component: {fileID: 222302163016984854}
   - component: {fileID: 114162026073698554}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,7 +207,7 @@ GameObject:
   - component: {fileID: 224986300835958618}
   - component: {fileID: 222292487656202332}
   - component: {fileID: 114288617184755070}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: damaged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,8 +605,9 @@ MonoBehaviour:
   CanMove: 1
   weapon: {fileID: 114082777032006382}
   target: {fileID: 0}
+  mass: 3
   rotationTime: 0.25
-  movementSpeed: 4
+  movementSpeed: 7
   thisFSM: {fileID: 0}
   prevState: 0
   state: 0
@@ -646,13 +648,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
-  _damage: 0
-  _attackDelay: 0
-  _reloadSpeed: 0
-  _currentMag: 0
-  _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -669,8 +664,9 @@ MonoBehaviour:
   WaveComponent:
   - {fileID: 1714474322477190}
   - {fileID: 1714474322477190}
-  damageValues: 0f0000000f000000
-  momentum: 0000000000000000
+  damageValues: 1e0000001e000000
+  force: 0200000002000000
+  momentum: 0100000001000000
   faction: 3
 --- !u!114 &114113745991787736
 MonoBehaviour:
@@ -2189,6 +2185,18 @@ MonoBehaviour:
   m_selectedFaces: 
   m_SelectedEdges: []
   m_selectedTriangles: 
+--- !u!114 &114628229669863496
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1812043628140048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3e6c19b2d84924ebe1907bb8b49c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 3
 --- !u!114 &114634076191532084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2215,9 +2223,11 @@ MonoBehaviour:
   args:
     DamageValue: 0
     DamageType: 0
-    HitPoint: {x: 0, y: 0, z: 0}
+    HitSourceLocation: {x: 0, y: 0, z: 0}
     SourceFaction: 0
+    HitForce: 0
   statusObj: {fileID: 0}
+  parentTransform: {fileID: 4104959927957638}
 --- !u!114 &114752604222415518
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3255,13 +3265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 21300000, guid: 546ed69e9eab00e4bb16f293d98cf6dd, type: 3}
-  _damage: 0
-  _attackDelay: 0
-  _reloadSpeed: 0
-  _currentMag: 0
-  _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -3319,12 +3322,12 @@ CapsuleCollider:
   m_GameObject: {fileID: 1812043628140048}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1.849335
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!143 &143456578848819598
+--- !u!143 &143499715339622702
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

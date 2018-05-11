@@ -774,6 +774,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 1
   weaponIcon: {fileID: 21300000, guid: 11313f94af346ea44b9dfc9aece1bbd0, type: 3}
+  StatsList:
+  - Damage
+  - AttackDelay
+  - ReloadSpeed
+  - MagazineSize
   _canAttack: 1
   _canBlock: 1
   type: 0
@@ -787,6 +792,7 @@ MonoBehaviour:
   - {fileID: 1816152926367876}
   - {fileID: 1816152926367876}
   damageValues: 2d0000002d0000002d000000
+  force: 0c0000000c0000000c000000
   momentum: 000000001900000019000000
   faction: 1
 --- !u!114 &114850213985238202
@@ -813,8 +819,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   args:
-    DamageValue: 0
+    DamageValue: 45
     DamageType: 0
-    HitPoint: {x: 0, y: 0, z: 0}
+    HitSourceLocation: {x: 0, y: 0, z: 0}
     SourceFaction: 0
+    HitForce: 50
   statusObj: {fileID: 0}
+  parentTransform: {fileID: 4239354918754966}

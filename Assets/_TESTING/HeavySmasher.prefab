@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224954527824479954}
   - component: {fileID: 222974873711427588}
   - component: {fileID: 114285837087117780}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4496127454942202}
   - component: {fileID: 114078838446233294}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LinearAoEMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 224816027006798394}
   - component: {fileID: 222196311377797194}
   - component: {fileID: 114686813353763226}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 224023983105112900}
   - component: {fileID: 222211338835547162}
   - component: {fileID: 114395454663602324}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: damaged
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   - component: {fileID: 4778837639405632}
   - component: {fileID: 33193187421066354}
   - component: {fileID: 23098122790229442}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: castmarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 4118926486894886}
   - component: {fileID: 33763166180206284}
   - component: {fileID: 23568219088235234}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: max
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 114046511785192288}
   - component: {fileID: 114331280348634058}
   - component: {fileID: 114041877503500400}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: NamePlate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 224901927155812610}
   - component: {fileID: 222201857219431506}
   - component: {fileID: 114279704727802292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: healthbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4026471441644864}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MaxRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4773558366658366}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: CastRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,13 +207,14 @@ GameObject:
   - component: {fileID: 4673192944689660}
   - component: {fileID: 33589521012341642}
   - component: {fileID: 23540502353219632}
-  - component: {fileID: 114188913169106560}
+  - component: {fileID: 114580387164207148}
   - component: {fileID: 136257131333572544}
   - component: {fileID: 195477438011099322}
   - component: {fileID: 114330226899406996}
   - component: {fileID: 114116102261708496}
-  - component: {fileID: 143341031434592612}
-  m_Layer: 0
+  - component: {fileID: 143788853182851494}
+  - component: {fileID: 114053480104144646}
+  m_Layer: 2
   m_Name: HeavySmasher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,6 +486,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114053480104144646
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893981512503798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f3e6c19b2d84924ebe1907bb8b49c7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 3
 --- !u!114 &114078838446233294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -512,13 +525,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
-  _damage: 0
-  _attackDelay: 0
-  _reloadSpeed: 0
-  _currentMag: 0
-  _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -557,35 +563,6 @@ MonoBehaviour:
   inRange: 0
   inAttackCone: 0
   targetFound: 0
---- !u!114 &114188913169106560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1893981512503798}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90fc6e31c561bab47b62852acb57c6b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maximumhealth: 500
-  _currenthealth: 500
-  _armorvalue: 15
-  _faction: 3
-  StatusImmunities: 
-  Afflictions: []
-  UIhp: {fileID: 114279704727802292}
-  shield: {fileID: 0}
-  floater: {fileID: 114041877503500400}
-  CanRevive: 0
-  CanMove: 1
-  weapon: {fileID: 114081805369078878}
-  target: {fileID: 0}
-  rotationTime: 2
-  movementSpeed: 2
-  thisFSM: {fileID: 0}
-  prevState: 0
-  state: 0
 --- !u!114 &114279704727802292
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1415,6 +1392,36 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114580387164207148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1893981512503798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9b1cfdaab0574a43b90bfcc706234c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maximumhealth: 500
+  _currenthealth: 500
+  _armorvalue: 15
+  _faction: 3
+  StatusImmunities: 
+  Afflictions: []
+  UIhp: {fileID: 114279704727802292}
+  shield: {fileID: 0}
+  floater: {fileID: 114041877503500400}
+  CanRevive: 0
+  CanMove: 1
+  weapon: {fileID: 114081805369078878}
+  target: {fileID: 0}
+  mass: 7
+  rotationTime: 2
+  movementSpeed: 2
+  thisFSM: {fileID: 0}
+  prevState: 0
+  state: 0
 --- !u!114 &114661272978182924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1471,12 +1478,12 @@ CapsuleCollider:
   m_GameObject: {fileID: 1893981512503798}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1.6800323
   m_Direction: 1
   m_Center: {x: 0, y: -0.33480096, z: 0}
---- !u!143 &143341031434592612
+--- !u!143 &143788853182851494
 CharacterController:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

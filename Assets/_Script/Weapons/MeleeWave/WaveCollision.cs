@@ -6,6 +6,7 @@ namespace JLProject {
     public class WaveCollision : MonoBehaviour{
         public Damage.DamageEventArgs args;
         public StatusObject statusObj;
+        public Transform parentTransform;
         //TODO CLEAN UP THIS MESS
 
         void OnTriggerEnter(Collider c){
@@ -15,8 +16,12 @@ namespace JLProject {
             if (ent != null){
                 if (ent.Faction != args.SourceFaction || ent.Faction == Damage.Faction.Neutral){
                     //fix this later
-                    args.HitPoint = transform.position;
+                    args.HitSourceLocation = transform.position;
                     ent.TakeDamage(gameObject, ref args);
+                    var Impact = ent.GetComponent<ImpactReceiver>();
+                    if (Impact) {
+                        Impact.AddImpact((ent.transform.position - parentTransform.position).normalized,args.HitForce);
+                    }
                     if (statusObj){
                         ApplyStatus(statusObj, ent);
                     }

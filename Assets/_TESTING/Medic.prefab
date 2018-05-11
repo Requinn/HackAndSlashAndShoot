@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4961324960735618}
   - component: {fileID: 33021909946915498}
   - component: {fileID: 23355045206127474}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AoEMarkerCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -110,7 +110,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4299223558704440}
   - component: {fileID: 114915671304443938}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AoeMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 4993894637351784}
   - component: {fileID: 33411576454532650}
   - component: {fileID: 23302436614670246}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AoEMarkerMAX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -181,7 +181,7 @@ GameObject:
   - component: {fileID: 4937850066289832}
   - component: {fileID: 114170979552826992}
   - component: {fileID: 135124790792022124}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: HealingWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -530,13 +530,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
-  _damage: 0
-  _attackDelay: 3
-  _reloadSpeed: 0
-  _currentMag: 1
-  _maximumMag: 1
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -806,6 +799,7 @@ MonoBehaviour:
   CanMove: 1
   weapon: {fileID: 114170979552826992}
   target: {fileID: 0}
+  mass: 3
   rotationTime: 3
   movementSpeed: 5
   thisFSM: {fileID: 0}

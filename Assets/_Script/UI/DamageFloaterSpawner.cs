@@ -23,6 +23,10 @@ public class DamageFloaterSpawner : MonoBehaviour{
         _text = UIobj.GetComponent<Text>();
     }
 
+    /// <summary>
+    /// spawn a floating text object that will display damage, healing, or immunity
+    /// </summary>
+    /// <param name="damageIn"></param>
     public void SpawnDamageText(float damageIn){
         if (damageIn != 0){
             _text.color = _damagedColor;

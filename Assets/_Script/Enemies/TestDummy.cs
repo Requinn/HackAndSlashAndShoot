@@ -24,7 +24,7 @@ namespace JLProject{
             }
         }
 
-        private void FireExplosion(float hp){
+        private void FireExplosion(Damage.DamageEventArgs args){
             if (_canActivate && eventItem) {
                 eventItem.Activate();
                 Timing.RunCoroutine(Delay());

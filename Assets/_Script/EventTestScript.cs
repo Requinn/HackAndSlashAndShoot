@@ -20,11 +20,11 @@ public class EventTestScript : MonoBehaviour {
     private void HandleDeath(){
         Debug.Log("You killed it");
     }
-    private void HandlePlayerHealed(float hp){
-        Debug.Log("+"+hp);
+    private void HandlePlayerHealed(float health){
+        Debug.Log("+"+ health);
     }
 
-    private void HandlePlayerDamaged(float hp){
-        Debug.Log("-" + hp);
+    private void HandlePlayerDamaged(Damage.DamageEventArgs args) {
+        Debug.Log("-" + args);
     }
 }
