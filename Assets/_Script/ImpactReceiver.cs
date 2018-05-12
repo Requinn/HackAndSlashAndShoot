@@ -18,7 +18,7 @@ public class ImpactReceiver : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         // apply the impact force:
-        if (impact.magnitude > 0.2F) character.Move(impact * Time.deltaTime);
+        if (impact.magnitude > 0.2F && character.enabled) character.Move(impact * Time.deltaTime);
         // consumes the impact energy each cycle:
         impact = Vector3.Lerp(impact, Vector3.zero, 5 * Time.deltaTime);
     }

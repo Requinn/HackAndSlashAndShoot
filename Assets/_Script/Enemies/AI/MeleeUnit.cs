@@ -16,17 +16,11 @@ namespace JLProject{
         private Vector3 _pos, _dir;
 
         protected RaycastHit[] surroundingObjects;
-
-        public PlayMakerFSM thisFSM;
-        //unused??
-        public State prevState;
-        public State state;
+        
         // Use this for initialization
-        void Start(){
+        protected void Start(){
+            base.Start();
             speed = movementSpeed;
-            thisFSM = GetComponent<PlayMakerFSM>();
-            prevState = state = State.Idle;
-            
         }
 
         /// <summary>
@@ -36,8 +30,12 @@ namespace JLProject{
             if (_vision.inRange){
                 Rotate();
                 if (Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange){
+                    if(AnimController) AnimController.WalkForward();
                     _NMAgent.Move(transform.forward * speed * Time.deltaTime);
                 }
+            }
+            else{
+                if (AnimController) AnimController.Idle();
             }
         }
 
