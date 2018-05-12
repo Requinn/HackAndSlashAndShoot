@@ -39,9 +39,9 @@ namespace JLProject{
         }
 
         private void SetSelfInactive() {
-            _NMAgent.enabled = false;
-            _CC.enabled = false;
-            thisFSM.enabled = false;
+            if(_NMAgent) _NMAgent.enabled = false;
+            if(_CC) _CC.enabled = false;
+            if(thisFSM) thisFSM.enabled = false;
             enabled = false;
         }
 

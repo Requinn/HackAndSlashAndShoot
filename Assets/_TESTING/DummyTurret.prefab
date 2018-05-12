@@ -490,8 +490,8 @@ MonoBehaviour:
   ReferenceID: 0
   weaponIcon: {fileID: 0}
   _damage: 15
-  _attackDelay: 0.5
-  _reloadSpeed: 0.2
+  _attackDelay: 0.75
+  _reloadSpeed: 1
   _currentMag: 5
   _maximumMag: 5
   _chargeTime: 0
@@ -537,9 +537,11 @@ MonoBehaviour:
   floater: {fileID: 114521330462257012}
   CanRevive: 0
   CanMove: 1
+  AnimController: {fileID: 0}
   weapon: {fileID: 114528671568539166}
   target: {fileID: 0}
   mass: 3
+  thisFSM: {fileID: 0}
   rotationTime: 1.5
 --- !u!114 &114546550968232414
 MonoBehaviour:
