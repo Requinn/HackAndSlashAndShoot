@@ -2076,11 +2076,9 @@ MonoBehaviour:
   weapon: {fileID: 114082777032006382}
   target: {fileID: 0}
   mass: 3
+  thisFSM: {fileID: 114321388030308720}
   rotationTime: 0.25
   movementSpeed: 7
-  thisFSM: {fileID: 114321388030308720}
-  prevState: 0
-  state: 0
   _evasionDuration: 0.3
   _evadeCooldown: 1
   _canEvade: 1
@@ -2141,7 +2139,7 @@ MonoBehaviour:
   WaveComponent:
   - {fileID: 1714474322477190}
   - {fileID: 1714474322477190}
-  damageValues: 1e0000001e000000
+  damageValues: 1400000019000000
   force: 0200000002000000
   momentum: 0100000001000000
   faction: 3

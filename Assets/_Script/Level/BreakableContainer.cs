@@ -25,8 +25,11 @@ public class BreakableContainer : Entity{
         }
     }
 
-    
-
+    protected override void HandleDeath(){
+        IsDead = true;
+        OnDeath();
+        Destroy(gameObject);
+    }
 
     protected override void Movement(){
         throw new System.NotImplementedException();

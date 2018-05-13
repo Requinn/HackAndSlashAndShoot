@@ -30,11 +30,13 @@ public class HealingWeapon : Weapon{
     private IEnumerator<float> Explode(){
         yield return Timing.WaitForSeconds(CastTime);
         foreach (Entity e in targets.ToList()){
-            if (e != null && gameObject != null){
-                e.Heal(gameObject, Damage);
-            }
-            else{
-                targets.Remove(e);
+            if (gameObject != null){
+                if (e != null){
+                    e.Heal(gameObject, Damage);
+                }
+                else{
+                    targets.Remove(e);
+                }
             }
         }
     }

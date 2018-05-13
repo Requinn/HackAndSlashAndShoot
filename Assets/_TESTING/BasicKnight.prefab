@@ -2085,8 +2085,8 @@ MonoBehaviour:
   WaveComponent:
   - {fileID: 1652876476422862}
   - {fileID: 1652876476422862}
-  damageValues: 2300000028000000
-  force: 0200000002000000
+  damageValues: 190000001e000000
+  force: 050000000a000000
   momentum: 0100000001000000
   faction: 3
 --- !u!114 &114228231426522922

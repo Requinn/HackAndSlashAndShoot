@@ -25,6 +25,6 @@ public class EventTestScript : MonoBehaviour {
     }
 
     private void HandlePlayerDamaged(Damage.DamageEventArgs args) {
-        Debug.Log("-" + args);
+        Debug.Log("-" + args.DamageValue);
     }
 }
