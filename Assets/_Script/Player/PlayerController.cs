@@ -29,6 +29,8 @@ namespace JLProject{
         public float _chargeTime = 0.0f;
 
         private ParticleSystem _chargeParticle;
+
+        public PickupObject PickupHandler;
         void Awake(){
             floorMask = LayerMask.GetMask("Floor");
         }
@@ -61,13 +63,30 @@ namespace JLProject{
                 if (_timeSinceAttack <= _attackDelay){
                     _timeSinceAttack += Time.deltaTime;
                 }
+                //get position of mouse to get our facing angle
                 _MousePos = GetMousePosition();
                 AngleUpdate(_MousePos);
 
+                //check for movement
                 if (CanMove){
                     Movement();
                 }
-                MouseInput();
+
+                //check to pick up an object
+                if (PickupHandler.CanPickUp && Input.GetKeyDown(KeyCode.E)){
+                    PickupHandler.PickUp();
+                }
+
+                //check if we are holding an object, any mouse input will throw it
+                if (PickupHandler.currentObj){
+                    if (Input.GetMouseButtonDown(1) || Input.GetMouseButtonDown(0)){
+                        PickupHandler.Release();
+                    }
+                }
+                else{
+                    MouseInput();
+                }
+
                 WeaponSwap();
             }
         }
