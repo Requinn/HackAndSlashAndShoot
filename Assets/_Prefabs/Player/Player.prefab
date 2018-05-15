@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114673103603537684}
   - component: {fileID: 95814810231759978}
   - component: {fileID: 114206069788003708}
+  - component: {fileID: 114598965058522478}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1154,6 +1155,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1781466374706750
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4275351307608200}
+  m_Layer: 0
+  m_Name: PickUpRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1782814261739276
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,6 +1871,19 @@ Transform:
   m_Father: {fileID: 4352109575474120}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4275351307608200
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781466374706750}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4352109575474120}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4277100089741460
 Transform:
   m_ObjectHideFlags: 1
@@ -2029,6 +2058,7 @@ Transform:
   - {fileID: 4580364553121726}
   - {fileID: 4866420590248856}
   - {fileID: 4133748788003934}
+  - {fileID: 4275351307608200}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2835,6 +2865,7 @@ MonoBehaviour:
   floater: {fileID: 114136307307576236}
   CanRevive: 0
   CanMove: 1
+  useSave: 1
   speed: 7
   shieldedSpeed: 4
   chargingSpeed: 5.5
@@ -2845,6 +2876,7 @@ MonoBehaviour:
   ShieldAttachPoint: {fileID: 4763654183145382}
   WeaponsInHand: []
   _chargeTime: 0
+  PickupHandler: {fileID: 114598965058522478}
 --- !u!114 &114136307307576236
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2906,6 +2938,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityType: 4
+--- !u!114 &114598965058522478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1002170645820572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6cc0471a7c98b1145a54774afa3751ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HoldingRoot: {fileID: 4275351307608200}
+  currentObj: {fileID: 0}
+  ThrowSpeed: 15
+  ArmsLength: 1.5
+  CanPickUp: 0
 --- !u!114 &114673103603537684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2917,6 +2965,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f3e6c19b2d84924ebe1907bb8b49c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mass: 3
 --- !u!114 &114927249889500016
 MonoBehaviour:
   m_ObjectHideFlags: 1

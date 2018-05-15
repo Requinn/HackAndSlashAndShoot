@@ -51,6 +51,10 @@ namespace JLProject{
             if (c.gameObject.CompareTag("Environment")) {
                 Destroy(gameObject);
             }
+            if (c.gameObject.CompareTag("Switch")){
+                c.GetComponent<Switch>().Toggle();
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -32,4 +32,10 @@ public class Medic : MeleeUnit{
         }
     }
 
+    protected override void HandleDeath(){
+        onDeath();
+        IsDead = true;
+        gameObject.SetActive(false);
+        healTool.gameObject.SetActive(false);
+    }
 }

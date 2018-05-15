@@ -22,13 +22,17 @@ namespace JLProject{
             _fwdRay.direction = transform.forward;
             if (Physics.Raycast(_fwdRay, out _hitInfo, ArmsLength)){
                 _objToHold = _hitInfo.transform.gameObject.GetComponent<Pickuppable>();
-                if (_objToHold) {
+                if (_objToHold){
                     CanPickUp = true;
                     _objToHold.Selected = true;
                 }
                 else{
                     CanPickUp = false;
                 }
+            }
+            else{
+                _objToHold = null;
+                CanPickUp = false;
             }
         }
 
