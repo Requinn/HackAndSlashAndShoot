@@ -411,7 +411,7 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
+  _chargeTime: 99
   _chargeAttackDamageBonus: 0
   StatsList:
   - Damage

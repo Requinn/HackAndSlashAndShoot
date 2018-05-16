@@ -20,10 +20,12 @@ namespace JLProject{
 
         // Update is called once per frame
         void Update(){
-            _timeSinceLastCheck += Time.deltaTime;
+            if (_timeSinceLastCheck < SpawnTime){
+                _timeSinceLastCheck += Time.deltaTime;
+            }
+
             if (_timeSinceLastCheck >= SpawnTime){
                 _timeSinceLastCheck = 0;
-                Debug.DrawRay(transform.position, Vector3.up, Color.black, 50f);
                 if (!Physics.Raycast(_upRay, out _upRayHit, 2f)){
                     Instantiate(ObjectToSpawn, transform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
                 }
