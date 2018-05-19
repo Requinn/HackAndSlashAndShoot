@@ -14,22 +14,27 @@ public class Medic : MeleeUnit{
 
     void Start(){
         InvokeRepeating("CheckNearbyAllies", 0f, 3f);
+        OnDeath += StopChecking;
     }
     /// <summary>
     /// checks all allies in range for health
     /// </summary>
     protected void CheckNearbyAllies(){
         thresholdCount = 0;
-        if (healTool.targets.Count > 0){
+        if (healTool.targets.Count > 0 && !IsDead){
             foreach (var ally in healTool.targets){
                 if (ally.HealthPercent() <= lowHealthThreshold){
                     thresholdCount++;
                 }
             }
             if ((float)thresholdCount / (float)healTool.targets.Count >= thresholdPercent){
-                healTool.Fire();
+                if(!IsDead) healTool.Fire();
             }
         }
+    }
+
+    void StopChecking(){
+        CancelInvoke("CheckNearbyAllies");
     }
 
     protected override void HandleDeath(){
