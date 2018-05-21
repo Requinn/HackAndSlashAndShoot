@@ -26,7 +26,7 @@ namespace JLProject{
 
             if (_timeSinceLastCheck >= SpawnTime){
                 _timeSinceLastCheck = 0;
-                if (!Physics.Raycast(_upRay, out _upRayHit, 2f)){
+                if (!Physics.Raycast(_upRay, out _upRayHit, 5f)){
                     Instantiate(ObjectToSpawn, transform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
                 }
             }
