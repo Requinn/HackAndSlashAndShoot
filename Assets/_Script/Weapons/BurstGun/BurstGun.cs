@@ -23,9 +23,7 @@ public class BurstGun : Gun {
         _gunSounds = GetComponent<AudioSource>();
         if (faction == Damage.Faction.Enemy)
             bullet.objectToPool.tag = "EnemyProjectile";
-        if (ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool) == null){
-            ObjectPooler.ObjectPool.PoolItem(bullet);
-        }
+        ObjectPooler.ObjectPool.PoolItem(bullet);
     }
 
     private IEnumerator<float> Burst(){

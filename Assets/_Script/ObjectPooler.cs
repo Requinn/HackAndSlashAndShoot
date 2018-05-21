@@ -33,10 +33,20 @@ public class ObjectPooler : MonoBehaviour{
     }
 
     public void PoolItem(ObjectPoolItem item){
-        for (int i = 0; i < item.amountToPool; i++) {
-            GameObject obj = Instantiate(item.objectToPool);
-            obj.SetActive(false);
-            pooledObjects.Add(obj);
+        int tempcount = 0;
+        //count how many of the objects we have
+        foreach (var po in pooledObjects){
+            if (po.name.Equals(item.objectToPool.name + "(Clone)")){
+                tempcount++;
+            }
+        }
+        //if its the less than specified for this object, create more until the amount we need
+        if (tempcount < item.amountToPool){
+            for (int i = 0; i < item.amountToPool - tempcount; i++){
+                GameObject obj = Instantiate(item.objectToPool);
+                obj.SetActive(false);
+                pooledObjects.Add(obj);
+            }
         }
     }
 
@@ -51,10 +61,14 @@ public class ObjectPooler : MonoBehaviour{
     //get an inactive object to use
     public GameObject GetPooledObject(GameObject opi){
         for (int i = 0; i < pooledObjects.Count; i++){
-            if (!pooledObjects[i].activeInHierarchy && pooledObjects[i].name == opi.name+"(Clone)") {
-                return pooledObjects[i];
+            if (pooledObjects[i].name == opi.name + "(Clone)"){
+                if (!pooledObjects[i].activeInHierarchy){
+                    return pooledObjects[i];
+                }
             }
         }
+        //this code didn't really do anything
+        /*
         foreach (var item in itemsToPool){
             if (item.objectToPool.tag == tag){
                 if (item.shouldExpand){
@@ -64,7 +78,7 @@ public class ObjectPooler : MonoBehaviour{
                     return obj;
                 }
             }
-        }
+        }*/
         return null;
     }
 }
