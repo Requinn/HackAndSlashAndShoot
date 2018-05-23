@@ -13,7 +13,7 @@ namespace JLProject {
         public bool canToggle = true;
         public float toggleSafetyTime = 0.5f;//can only toggle once per second
 
-        public void Toggle(){
+        public virtual void Toggle(){
             if (canToggle){
                 foreach (var T in Toggleables){
                     T.Toggle();
