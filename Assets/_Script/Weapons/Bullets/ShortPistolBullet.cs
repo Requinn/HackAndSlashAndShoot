@@ -49,12 +49,13 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
-        if (swtch && args.SourceFaction == Damage.Faction.Player) {
+        if (args.SourceFaction != Damage.Faction.Player) return;
+        if (swtch) {
             swtch.Toggle();
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
-        if (brk && args.SourceFaction == Damage.Faction.Player) {
+        if (brk) {
             brk.GetComponent<BreakableObject>().Hit();
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);

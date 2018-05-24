@@ -17,7 +17,7 @@ namespace JLProject{
         }
 
         public virtual void Break(){
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
 
     }

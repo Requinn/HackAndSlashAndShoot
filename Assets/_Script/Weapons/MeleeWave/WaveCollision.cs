@@ -28,13 +28,13 @@ namespace JLProject {
                     }
                 }
             }
-            if (swtch && args.SourceFaction == Damage.Faction.Player) {
+            if (args.SourceFaction != Damage.Faction.Player) return;
+            if (swtch){
                 swtch.Toggle();
             }
-            if (brk && args.SourceFaction == Damage.Faction.Player) {
+            if (brk){
                 brk.GetComponent<BreakableObject>().Hit();
             }
-            
         }
         /// <summary>
         /// Apply the status effect
