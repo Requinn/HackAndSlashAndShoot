@@ -13,6 +13,7 @@ namespace JLProject {
             //Debug.Log(c);
             Entity ent = c.GetComponent<Entity>();
             Switch swtch = c.GetComponent<Switch>();
+            BreakableObject brk = c.GetComponent<BreakableObject>();
             if (ent != null){
                 if (ent.Faction != args.SourceFaction || ent.Faction == Damage.Faction.Neutral){
                     //fix this later
@@ -27,9 +28,13 @@ namespace JLProject {
                     }
                 }
             }
-            if (swtch){
+            if (swtch && args.SourceFaction == Damage.Faction.Player) {
                 swtch.Toggle();
             }
+            if (brk && args.SourceFaction == Damage.Faction.Player) {
+                brk.GetComponent<BreakableObject>().Hit();
+            }
+            
         }
         /// <summary>
         /// Apply the status effect

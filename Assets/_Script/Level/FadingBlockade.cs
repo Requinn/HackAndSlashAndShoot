@@ -18,10 +18,12 @@ public class FadingBlockade : Switch{
         _renderer = GetComponent<Renderer>();
         _mat = _renderer.material;
         _col = _mat.color;
+        if (_primer){
+            GetComponent<Renderer>().material.color = Color.blue;
+        }
     }
 
     public override void Toggle(){
-        Debug.Log("AAA");
         if (_primer){
             StartChain();
         }
@@ -43,7 +45,6 @@ public class FadingBlockade : Switch{
 
     //ray cast in all directions
     public void ContinueChain(){
-        Debug.Log(gameObject.name);
         //start fade
         _canFade = true;
         Timing.RunCoroutine(DelayedSendcast());

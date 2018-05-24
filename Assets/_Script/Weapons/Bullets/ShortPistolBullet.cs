@@ -31,6 +31,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
     public void OnTriggerEnter(Collider c){
         Entity ent = c.GetComponent<Entity>();
         Switch swtch = c.GetComponent<Switch>();
+        BreakableObject brk = c.GetComponent<BreakableObject>();
         if (ent != null){
             if (ent.Faction != Damage.Faction.Player || ent.Faction != Damage.Faction.Allied){
                 //fix this later
@@ -48,11 +49,17 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
-        if (swtch){
+        if (swtch && args.SourceFaction == Damage.Faction.Player) {
             swtch.Toggle();
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
+        if (brk && args.SourceFaction == Damage.Faction.Player) {
+            brk.GetComponent<BreakableObject>().Hit();
+            Timing.KillCoroutines(_repoolHandle);
+            gameObject.SetActive(false);
+        }
+        
     }
 
     private IEnumerator<float> DelayedRepool(float t){

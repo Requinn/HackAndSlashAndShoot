@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using JLProject;
 using UnityEngine;
 
-public class BreakableContainer : Entity{
+public class BreakableContainer : BreakableObject {
     [Range(1,9)]
     public int AmountToSpawn;
     public HealthPickup pickUptoSpawn;
@@ -15,27 +15,11 @@ public class BreakableContainer : Entity{
         new Vector3(-1,0,1), new Vector3(1,0,-1), new Vector3(-1,0,-1)
     };
 
-    private void Start(){
-        OnDeath += BreakOpen;
-    }
-
-    private void BreakOpen(){
+    public override void Break(){
         for (int i = 0; i < AmountToSpawn; i++){
             Instantiate(pickUptoSpawn, transform.position + _spawnPositions[i] + new Vector3(0, 0.875f, 0), Quaternion.identity);
         }
+        base.Break();
     }
 
-    protected override void HandleDeath(){
-        IsDead = true;
-        OnDeath();
-        Destroy(gameObject);
-    }
-
-    protected override void Movement(){
-        throw new System.NotImplementedException();
-    }
-
-    protected override void Attack(){
-        throw new System.NotImplementedException();
-    }
 }
