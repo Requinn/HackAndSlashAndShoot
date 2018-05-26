@@ -16,15 +16,17 @@ namespace JLProject{
             _fwdRay.direction = MortarBarrel.forward;
         }
 
+        IEnumerator<float> TimerCoroutine(float time){
+            while (_currentTime < HitTimer){
+                _currentTime += Time.deltaTime;
+                yield return 0f;
+            }
+            _readyToFire = true;
+            yield return 0f;
+        }
+
         // Update is called once per frame
         void Update(){
-            if (_currentTime < HitTimer){
-                _currentTime += Time.deltaTime;
-            }
-
-            if (_currentTime >= HitTimer){
-                _readyToFire = true;
-            }
         }
 
         public override void Toggle(){

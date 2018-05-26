@@ -32,6 +32,7 @@ public class WeaponPickup : Interactable {
         if (c.gameObject.CompareTag("Player")){
             //display the pickup key
             _pc = c.GetComponent<PlayerController>();
+            //Timing.RunCoroutine(CheckInput());
         }
     }
 
@@ -40,6 +41,28 @@ public class WeaponPickup : Interactable {
             //disable the pickup key
             _pc = null;
         }
+    }
+
+    /// <summary>
+    /// more optimized that having update, not really necessary?
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator<float> CheckInput(){
+        while (_pc){
+            if (_pc && Input.GetKeyDown(KeyCode.E) && _canPick) {
+                GameObject go = Instantiate(WeaponToPickup);
+                _pc.Equip(go);
+                InvokeInteractEvent();
+                if (OneUse) {
+                    gameObject.SetActive(false);
+                }
+                else {
+                    Timing.RunCoroutine(PickUpDelay());
+                }
+            }
+            yield return 0f;
+        }
+        yield return 0f;
     }
 
     private IEnumerator<float> PickUpDelay(){
