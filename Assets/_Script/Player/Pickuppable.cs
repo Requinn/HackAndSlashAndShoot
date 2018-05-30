@@ -48,6 +48,11 @@ namespace JLProject{
                 c.GetComponent<Entity>().TakeDamage(this ,ref args);
                 Destroy(gameObject);
             }
+            BreakableObject brk = c.GetComponent<BreakableObject>();
+            if (brk){
+                brk.Break();
+                Destroy(gameObject);
+            }
             if (c.gameObject.CompareTag("Environment")) {
                 Destroy(gameObject);
             }
