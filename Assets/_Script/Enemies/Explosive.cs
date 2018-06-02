@@ -51,7 +51,7 @@ public class Explosive : Weapon{
             }
         }
         if (OneUse){
-            Destroy(this);
+            Destroy(gameObject);
         }
     }
 
