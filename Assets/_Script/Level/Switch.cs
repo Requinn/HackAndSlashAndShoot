@@ -6,12 +6,13 @@ namespace JLProject {
     /// <summary>
     /// simepl switch to open and close a door
     /// </summary>
-    public class Switch : MonoBehaviour {
+    public class Switch : LevelObjective {
         public Toggleable[] Toggleables;
         public bool oneWay = false;
         public bool on = false;
         public bool canToggle = true;
         public float toggleSafetyTime = 0.5f;//can only toggle once per second
+        private bool _objectiveTriggered = false;
 
         public virtual void Toggle(){
             if (canToggle){
@@ -19,6 +20,10 @@ namespace JLProject {
                     T.Toggle();
                 }
                 on = !on;
+                if (!_objectiveTriggered){
+                    OnCompleteObjective();
+                    _objectiveTriggered = true;
+                }
                 if (oneWay){
                     canToggle = false;
                 }
@@ -32,6 +37,10 @@ namespace JLProject {
             canToggle = false;
             yield return Timing.WaitForSeconds(toggleSafetyTime);
             canToggle = true;
+        }
+
+        public override void Initiate(){
+            throw new System.NotImplementedException();
         }
     }
 }
