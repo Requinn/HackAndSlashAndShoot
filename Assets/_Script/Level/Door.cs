@@ -6,8 +6,9 @@ using DG.Tweening;
 using UnityEngine;
 
 namespace JLProject{
-    public class VerticalDoor : Toggleable{
-        public float verticalMovement = 6.0f;
+    public class Door : Toggleable{
+        public Vector3 doorMovement = new Vector3(0f, 6f, 0f);
+
         void Awake(){
             if (Opened){
                 Open();
@@ -25,13 +26,13 @@ namespace JLProject{
 
         public override void Open(){
             //Debug.Log(transform.position.y - verticalMovement);
-            transform.DOMoveY(transform.position.y - verticalMovement, 0.1f);
+            transform.DOMove(transform.position - doorMovement, 0.1f);
             Opened = true;
         }
 
         public override void Close() {
             //Debug.Log(transform.position.y + verticalMovement);
-            transform.DOMoveY(transform.position.y + verticalMovement, 0.1f);
+            transform.DOMove(transform.position + doorMovement, 0.1f);
             Opened = false;
         }
     }

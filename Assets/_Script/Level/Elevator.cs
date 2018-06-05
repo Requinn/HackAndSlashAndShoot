@@ -8,7 +8,7 @@ namespace JLProject{
     public class Elevator : MonoBehaviour{
         public float velocity;
         public Transform pointA, pointB;
-        public VerticalDoor doorA, doorB;
+        public Door doorA, doorB;
         public GameObject platformDoorA, platformDoorB;
         public Toggleable elevatorSwitch;
         private Vector3 _destinationPosition;

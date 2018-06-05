@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using JLProject;
 using UnityEngine;
 using JLProject.Spline;
+using MEC;
 
 /// <summary>
 /// Script that will be moved along a spline and inform the payloadobjective when its progress hits 1f
@@ -13,6 +14,7 @@ public class PayloadObject : MonoBehaviour{
     public BezierSpline rail;
     private float progress;
     private GameObject _playerObject;
+    private bool _completed = false;
 
     public delegate void OnCompleteEvent();
     public event OnCompleteEvent EndReached;
@@ -23,18 +25,22 @@ public class PayloadObject : MonoBehaviour{
     }
 
     void Update(){
-        if (Vector3.SqrMagnitude(_playerObject.transform.position - transform.position) < activeDistance * activeDistance) {
-            if (progress < 1f){
-                progress += Time.deltaTime / timeToReachEnd;
-                Vector3 position = rail.GetPoint(progress);
-                transform.localPosition = position;
-                transform.LookAt(position + rail.GetDirection(progress));
-            }
-            else{
-                EndReached();
+        if (!_completed){
+            //check we're in range to push the cart
+            if (Vector3.SqrMagnitude(_playerObject.transform.position - transform.position) <
+                activeDistance * activeDistance){
+                //if we aren't at the, move along the splin
+                if (progress < 1f){
+                    progress += Time.deltaTime / timeToReachEnd;
+                    Vector3 position = rail.GetPoint(progress);
+                    transform.localPosition = position;
+                    transform.LookAt(position + rail.GetDirection(progress));
+                }
+                else{
+                    EndReached();
+                    _completed = true;
+                }
             }
         }
-        
     }
-    //do an event on progress == 1f
 }

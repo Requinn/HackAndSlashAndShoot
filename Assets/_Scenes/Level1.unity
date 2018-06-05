@@ -7789,7 +7789,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 0
   Opened: 0
-  verticalMovement: -3
+  doorMovement: {x: 0, y: 6, z: 0}
 --- !u!4 &163184845 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4310883099844302, guid: 5d104cad90e93cc4bbff5b1b7e8dc26f,
@@ -10196,7 +10196,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh17766
+  m_Name: pb_Mesh31966
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13200,7 +13200,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2052300
+  m_Name: pb_Mesh-1491106
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -17922,7 +17922,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 0
   Opened: 0
-  verticalMovement: -3
+  doorMovement: {x: 0, y: 6, z: 0}
 --- !u!4 &360882652
 Transform:
   m_ObjectHideFlags: 0
@@ -38642,6 +38642,16 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114143255267022020, guid: 37b8d4abb4c148c40a80d8e897585d8e,
+        type: 2}
+      propertyPath: doorMovement.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114823325717490542, guid: 37b8d4abb4c148c40a80d8e897585d8e,
+        type: 2}
+      propertyPath: doorMovement.y
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37b8d4abb4c148c40a80d8e897585d8e, type: 2}
   m_IsPrefabParent: 0
@@ -46362,7 +46372,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 0
   Opened: 0
-  verticalMovement: -13
+  doorMovement: {x: 0, y: -12, z: 0}
 --- !u!65 &940135579
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -57051,7 +57061,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -72533,7 +72543,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-3374190
+  m_Name: pb_Mesh31304
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -81813,7 +81823,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -87395,7 +87405,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2052302
+  m_Name: pb_Mesh-1491108
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -90248,7 +90258,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-821830
+  m_Name: pb_Mesh-1491742
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

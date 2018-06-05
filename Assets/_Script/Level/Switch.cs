@@ -19,7 +19,12 @@ namespace JLProject {
                     T.Toggle();
                 }
                 on = !on;
-                Timing.RunCoroutine(ToggleDelay());
+                if (oneWay){
+                    canToggle = false;
+                }
+                else{
+                    Timing.RunCoroutine(ToggleDelay());
+                }
             }
         }
 

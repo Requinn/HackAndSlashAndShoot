@@ -2441,7 +2441,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 0
   Opened: 0
-  verticalMovement: 6
+  doorMovement: {x: 0, y: 6, z: 0}
 --- !u!23 &320436401
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5715,6 +5715,20 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1960519830}
+    - target: {fileID: 4935871509911700, guid: 37b8d4abb4c148c40a80d8e897585d8e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114823325717490542, guid: 37b8d4abb4c148c40a80d8e897585d8e,
+        type: 2}
+      propertyPath: doorMovement.y
+      value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114143255267022020, guid: 37b8d4abb4c148c40a80d8e897585d8e,
+        type: 2}
+      propertyPath: doorMovement.y
+      value: 1.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 37b8d4abb4c148c40a80d8e897585d8e, type: 2}
   m_IsPrefabParent: 0
@@ -6792,7 +6806,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1244378
+  m_Name: pb_Mesh-1406834
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -8371,7 +8385,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 0
   Opened: 0
-  verticalMovement: 0.75
+  doorMovement: {x: 0, y: 0.75, z: 0}
 --- !u!23 &905076399
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10180,7 +10194,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1244322
+  m_Name: pb_Mesh-1406776
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -12147,7 +12161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeDistance: 5
-  timeToReachEnd: 80
+  timeToReachEnd: 20
   rail: {fileID: 737196781}
 --- !u!23 &1440990641
 MeshRenderer:
@@ -12398,7 +12412,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-24088
+  m_Name: pb_Mesh-1407510
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13924,7 +13938,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1244380
+  m_Name: pb_Mesh-1406842
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -14590,7 +14604,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1244382
+  m_Name: pb_Mesh-1406822
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -14852,7 +14866,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1244324
+  m_Name: pb_Mesh-1406824
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -15020,7 +15034,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Locked: 0
   Opened: 1
-  verticalMovement: 0.75
+  doorMovement: {x: 0, y: 0.75, z: 0}
 --- !u!23 &2021353889
 MeshRenderer:
   m_ObjectHideFlags: 0
