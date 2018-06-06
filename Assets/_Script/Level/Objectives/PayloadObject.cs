@@ -15,6 +15,7 @@ public class PayloadObject : MonoBehaviour{
     public float activeDistance = 5.0f;
     public float timeToReachEnd = 80f;
     public BezierSpline rail;
+    [SerializeField]
     private float progress;
     private GameObject _playerObject;
     private bool _completed = false;
