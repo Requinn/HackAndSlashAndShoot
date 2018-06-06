@@ -9,12 +9,17 @@ using UnityEngine.Networking.NetworkSystem;
 /// </summary>
 namespace JLProject{
     public abstract class LevelObjective : MonoBehaviour{
+        protected bool _objectiveTriggered = false;
+
+        public bool isCompleted {
+            get { return _objectiveTriggered; }
+        }
+
         [SerializeField]
         public enum ObjectiveType{
             Kill,
             Reach,
             Trigger
-
         }
 
         public Toggleable ObjectToUnlock;

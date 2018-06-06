@@ -57,7 +57,9 @@ public class PayloadObject : MonoBehaviour{
                         //if we still have stuff to do, check if we are at that location
                         if (_objectiveIndex < ObjectiveProgressThreshold.Length){
                             if (Math.Abs(progress - ObjectiveProgressThreshold[_objectiveIndex]) < 0.001){
-                                HaltProgress();
+                                if (!Objectives[_objectiveIndex].isCompleted){
+                                    HaltProgress();
+                                }
                                 _objectiveIndex++;
                             }
                         }

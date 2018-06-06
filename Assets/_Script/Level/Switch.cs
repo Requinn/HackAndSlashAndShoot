@@ -12,7 +12,6 @@ namespace JLProject {
         public bool on = false;
         public bool canToggle = true;
         public float toggleSafetyTime = 0.5f;//can only toggle once per second
-        private bool _objectiveTriggered = false;
 
         public virtual void Toggle(){
             if (canToggle){
