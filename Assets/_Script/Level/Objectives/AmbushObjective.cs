@@ -58,6 +58,7 @@ public class AmbushObjective : LevelObjective, IKillObjective{
                 ObjectToUnlock.Open();
             }
             OnCompleteObjective();
+            _objectiveTriggered = true;
         }
     }
 

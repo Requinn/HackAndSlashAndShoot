@@ -20,12 +20,12 @@ public class PayloadObject : MonoBehaviour{
     private GameObject _playerObject;
     private bool _completed = false;
     private bool _halted = false;
-
     public delegate void OnCompleteEvent();
     public event OnCompleteEvent EndReached;
 
     public LevelObjective[] Objectives; //what is the event we want to happen
     public float[] ObjectiveProgressThreshold; //used to mark where in our progress an event will happen
+    //values for the payload level for later: 0.083 (first gate), 0.21 (ambush, second gate), 0.35 (boardwalk) , 0.57 (docks), 0.75 (boat)
     private int _objectiveIndex = 0;
 
     void Start(){
