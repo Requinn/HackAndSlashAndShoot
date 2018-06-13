@@ -6,8 +6,7 @@ using MEC;
 using UnityEngine;
 
 public class Explosive : Weapon{
-    [SerializeField]
-    private List<Entity> _targets = new List<Entity>();
+    [Header("Explosive Attributes")]
     public float Damage = 10.0f;
     public float Force = 25.0f;
     public float CastTime = 1.5f;
@@ -37,39 +36,24 @@ public class Explosive : Weapon{
         
     }
 
+    //replace list addition and removal with a physics.overlap pshere
+    //save some tiem on read write and have a more controllable link to the aoe markers
     private IEnumerator<float> Explode(){
         yield return Timing.WaitForSeconds(CastTime);
-        foreach (Entity e in _targets) {
-            if (e.gameObject != null) {
+
+        Collider[] targets = Physics.OverlapSphere(transform.position, Radius);
+        foreach (var t in targets){
+            Entity e = t.GetComponent<Entity>();
+            if (e){
                 e.TakeDamage(this.gameObject, ref args);
-                var impact = e.GetComponent<ImpactReceiver>();
-                if (impact) { impact.AddImpact((e.transform.position - transform.position).normalized, Force);
+                ImpactReceiver impact = e.GetComponent<ImpactReceiver>();
+                if (impact){
+                    impact.AddImpact((e.transform.position - transform.position).normalized, Force);
                 }
-            }
-            else {
-                _targets.Remove(e);
             }
         }
         if (OneUse){
             Destroy(gameObject);
-        }
-    }
-
-    //is this efficient??
-    //Explosion using an always enabled trigger volume to amass potential targets, then executes the explosion on targets when told to do so
-    void OnTriggerEnter(Collider c){
-        if (c.GetComponent<Entity>()){
-            Entity ent = c.gameObject.GetComponent<Entity>();
-            if (ent.Faction == JLProject.Damage.Faction.Player){
-                _targets.Add(ent);
-            }
-        }
-    }
-
-    void OnTriggerExit(Collider c){
-        Entity ent = c.gameObject.GetComponent<Entity>();
-        if (_targets.Contains(ent)){
-            _targets.Remove(ent);
         }
     }
 }

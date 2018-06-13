@@ -8,6 +8,7 @@ namespace JLProject{
     public abstract class Weapon : MonoBehaviour{
         public int ReferenceID;
         public Sprite weaponIcon;
+        [Header("Weapon Attributes")]
         [SerializeField] protected float _damage;
         public float AttackValue{
             get{ return _damage; }

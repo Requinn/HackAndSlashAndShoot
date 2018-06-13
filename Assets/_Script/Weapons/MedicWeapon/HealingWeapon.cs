@@ -29,6 +29,16 @@ public class HealingWeapon : Weapon{
 
     private IEnumerator<float> Explode(){
         yield return Timing.WaitForSeconds(CastTime);
+
+        Collider[] targets = Physics.OverlapSphere(transform.position, Radius);
+        foreach (var t in targets){
+            Entity e = t.GetComponent<Entity>();
+            if (e && e.Faction == JLProject.Damage.Faction.Enemy){
+                e.Heal(gameObject, Damage);
+            }
+        }
+
+        /*
         foreach (Entity e in targets.ToList()){
             if (gameObject != null){
                 if (e != null){
@@ -39,10 +49,11 @@ public class HealingWeapon : Weapon{
                 }
             }
         }
+        */
     }
 
-    //is this efficient??
-    //Explosion using an always enabled trigger volume to amass potential targets, then executes the explosion on targets when told to do so
+    //Currently used by the medic ai to have a list of low health enemies
+    //fix it??
     void OnTriggerEnter(Collider c){
         if (c.GetComponent<Entity>()){
             Entity ent = c.gameObject.GetComponent<Entity>();
