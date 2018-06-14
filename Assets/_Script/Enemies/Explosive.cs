@@ -16,11 +16,12 @@ public class Explosive : Weapon{
     public SphereCollider Collider;
     public AoEMarker MarkerScript;
     public Damage.DamageType dmgType = JLProject.Damage.DamageType.Explosive;
-    public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
+    public Damage.Faction damageFaction = JLProject.Damage.Faction.Enemy;
     private Damage.DamageEventArgs args;
 
     //change this to use a sphere cast or something???
     void Start(){
+        Faction = damageFaction;
         Collider = GetComponent<SphereCollider>();
         Collider.radius = Radius;
         args = new Damage.DamageEventArgs(Damage, this.transform.position, dmgType, Faction);

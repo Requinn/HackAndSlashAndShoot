@@ -13,11 +13,6 @@ public class FlyingBoss : AIEntity{
     private bool _isDowned;
     private int _currentNodeIndex = 0;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-
     public void Initiate(){
         
     }

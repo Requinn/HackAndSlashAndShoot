@@ -39,7 +39,7 @@ namespace JLProject {
         }
 
         public override void Initiate(){
-            throw new System.NotImplementedException();
+            //do nothing
         }
     }
 }

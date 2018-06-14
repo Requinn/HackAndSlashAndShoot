@@ -59,6 +59,7 @@ public class PayloadObject : MonoBehaviour{
                         if (_objectiveIndex < ObjectiveProgressThreshold.Length){
                             if (Math.Abs(progress - ObjectiveProgressThreshold[_objectiveIndex]) < 0.001){
                                 if (!Objectives[_objectiveIndex].isCompleted){
+                                    Objectives[_objectiveIndex].Initiate();
                                     HaltProgress();
                                 }
                                 _objectiveIndex++;

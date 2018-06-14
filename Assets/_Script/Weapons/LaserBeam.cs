@@ -14,11 +14,12 @@ public class LaserBeam : Weapon {
     public BoxCollider Collider;
     public AoEMarker MarkerScript;
     public Damage.DamageType dType = JLProject.Damage.DamageType.Explosive;
-    public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
+    public Damage.Faction damageFaction = JLProject.Damage.Faction.Enemy;
     private Damage.DamageEventArgs args;
 
     // Use this for initialization
     void Start (){
+        Faction = damageFaction;
         Collider = GetComponent<BoxCollider>();
         args = new Damage.DamageEventArgs(Damage, this.transform.position, dType, Faction);
     }
@@ -50,8 +51,6 @@ public class LaserBeam : Weapon {
         _canAttack = true;
     }
 
-    //is this efficient??
-    //Explosion using an always enabled trigger volume to amass potential targets, then executes the explosion on targets when told to do so
     void OnTriggerEnter(Collider c) {
         if (c.GetComponent<Entity>()) {
             Entity ent = c.gameObject.GetComponent<Entity>();

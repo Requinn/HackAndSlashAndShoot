@@ -18,7 +18,7 @@ namespace JLProject{
         protected RaycastHit[] surroundingObjects;
         
         // Use this for initialization
-        protected void Start(){
+        protected new void Start(){
             base.Start();
             speed = movementSpeed;
         }

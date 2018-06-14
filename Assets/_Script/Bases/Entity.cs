@@ -41,8 +41,13 @@ namespace JLProject{
         /// </summary>
         protected abstract void Attack();
 
+
+        /// <summary>
+        /// redundant
+        /// </summary>
+        /// <returns></returns>
         public Damage.Faction GetFaction(){
-            throw new System.NotImplementedException();
+            return Faction;
         }
 
         public void ApplyDamage(object sender, ref Damage.DamageEventArgs args){
