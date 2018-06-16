@@ -33,6 +33,7 @@ public class AmbushObjective : LevelObjective, IKillObjective{
     }
 
     public override void Initiate(){
+        base.Initiate();
         if (!PreSpawn && !_spawned){
             Spawn();
         }
@@ -53,12 +54,9 @@ public class AmbushObjective : LevelObjective, IKillObjective{
 
     public void CheckCompletion(){
         if (_deathCount == EnemyList.Count){
-            if (ObjectToUnlock){
-                ObjectToUnlock.Locked = false;
-                ObjectToUnlock.Open();
-            }
+            OpenDoors();
             OnCompleteObjective();
-            _objectiveTriggered = true;
+            isObjectiveComplete = true;
         }
     }
 

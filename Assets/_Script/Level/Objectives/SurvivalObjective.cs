@@ -1,20 +1,17 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using NUnit.Framework.Constraints;
 using UnityEngine;
 
 namespace JLProject{
     public class SurvivalObjective : LevelObjective{
         public List<SpawnWave> waves = new List<SpawnWave>();
         public int currentWave = 0;
-        public bool oneWay = true;
-        private bool completed = false;
 
         public override void Initiate(){
-            if (ObjectToLock){
-                ObjectToLock.Locked = true;
-                ObjectToLock.Close();
-            }
+            base.Initiate();
+
             waves[currentWave].Spawn();
             foreach (var w in waves){
                 w.OnCompleteWave += StartNextWave;
@@ -28,24 +25,13 @@ namespace JLProject{
             }
             else{
                 OpenDoors();
-                completed = true;
+                isObjectiveComplete = true;
                 OnCompleteObjective();
             }
         }
 
-        private void OpenDoors(){
-            if (ObjectToUnlock){
-                ObjectToUnlock.Locked = false;
-                ObjectToUnlock.Open();
-            }
-            if (!oneWay && ObjectToLock){
-                ObjectToLock.Locked = false;
-                ObjectToLock.Open();
-            }
-        }
-
         void OnTriggerEnter(Collider c){
-            if (c.gameObject.tag == "Player" && !completed){
+            if (c.gameObject.tag == "Player" && !isObjectiveComplete) {
                 Initiate();
                 GetComponent<Collider>().enabled = false;
             }

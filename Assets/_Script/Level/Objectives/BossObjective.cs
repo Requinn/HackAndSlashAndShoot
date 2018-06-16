@@ -5,8 +5,6 @@ using UnityEngine;
 
 namespace JLProject{
     public class BossObjective : LevelObjective{
-        public bool oneWay = true;
-        private bool completed = false;
         public AIEntity BossEnemy;
         private ObjectiveType objective = ObjectiveType.Kill;
         public CinemachineVirtualCamera BossCamera;
@@ -16,12 +14,9 @@ namespace JLProject{
         }
 
         public override void Initiate(){
-            BossCamera.Priority = 20;
-            if (ObjectToLock) {
-                ObjectToLock.Locked = true;
-                ObjectToLock.Close();
-            }
+            base.Initiate();
 
+            BossCamera.Priority = 20;
             BossEnemy.gameObject.SetActive(true);
             BossEnemy.OnDeath += BossKilled;
         }
@@ -30,10 +25,10 @@ namespace JLProject{
             OnCompleteObjective();
             OpenDoors();
             BossCamera.Priority = 0;
-            completed = true;
+            isObjectiveComplete = true;
         }
 
-        private void OpenDoors() {
+        protected override void OpenDoors() {
             if (ObjectToUnlock) {
                 ObjectToUnlock.Locked = false;
                 ObjectToUnlock.Open();
@@ -45,7 +40,7 @@ namespace JLProject{
         }
 
         void OnTriggerEnter(Collider c) {
-            if (c.gameObject.tag == "Player" && !completed) {
+            if (c.gameObject.tag == "Player" && !isObjectiveComplete) {
                 Initiate();
                 GetComponent<Collider>().enabled = false;
             }
