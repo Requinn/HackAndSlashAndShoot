@@ -12,7 +12,7 @@ public class Medic : MeleeUnit{
     public float thresholdPercent = .50f; //how many targets out of all in range have low health
     public int thresholdCount;
 
-    void Start(){
+   new void Start(){
         InvokeRepeating("CheckNearbyAllies", 0f, 3f);
         OnDeath += StopChecking;
     }

@@ -15,7 +15,7 @@ public class HealingWeapon : Weapon{
     public SphereCollider Collider;
     public AoEMarker MarkerScript;
     public Damage.DamageType dmgType = JLProject.Damage.DamageType.Explosive;
-    public Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
+    public new Damage.Faction Faction = JLProject.Damage.Faction.Enemy;
 
     //change this to use a sphere cast or something???
     void Start(){

@@ -5,6 +5,7 @@ using UnityEngine;
 namespace JLProject.Weapons{
     public class Gun : Weapon{
         public ObjectPoolItem bullet;
+        //does this do anything
         public GunClass GunType;
         public Damage.Faction faction;
 
