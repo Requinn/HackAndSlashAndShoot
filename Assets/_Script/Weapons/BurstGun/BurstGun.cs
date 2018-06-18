@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using HutongGames.PlayMaker;
 using JLProject;
+using JLProject.Weapons;
 using MEC;
 using UnityEngine;
 
-public class BurstGun : Gun {
+public class BurstGun : Gun{
     public int burstCount = 5;
     public float burstDelay = 0.05f;
-    public float spray = 0.1f;
+    public float accuracy = 0.1f;
     private AudioSource _gunSounds;
     public AudioClip[] gunAudio;
     public Transform BarrelPoint;
     private Damage.DamageEventArgs args;
+
     public delegate void BurstFiredEvent();
 
     private CoroutineHandle _delayHandle;
+
     public event BurstFiredEvent BurstStart, BurstEnd;
+
     // Use this for initialization
     void Start(){
         _owningObj = GetComponentInParent<Entity>();
@@ -46,10 +50,10 @@ public class BurstGun : Gun {
 
     private void ReactivateBulletObj(){
         GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
-        if (bullet != null) {
+        if (bullet != null){
             bullet.GetComponent<IProjectile>().SetFaction(faction);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            float deviation = Random.Range(-spray/2, spray/2); //a spray of bullets
+            float deviation = Random.Range(-accuracy / 2, accuracy / 2); //a spray of bullets
             rb.velocity = transform.TransformDirection(new Vector3(deviation, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
             bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
             bullet.transform.position = BarrelPoint.position;
@@ -73,12 +77,13 @@ public class BurstGun : Gun {
     /// <summary>
     /// fireoff a charged attack
     /// </summary>
-    public override void ChargeAttack() {
+    public override void ChargeAttack(){
         GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
-        if (bullet != null) {
+        if (bullet != null){
             bullet.GetComponent<IProjectile>().SetFaction(faction);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            rb.velocity = transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
+            rb.velocity =
+                transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
             bullet.GetComponent<ShortPistolBullet>().args.DamageValue = (AttackValue * burstCount);
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
@@ -93,7 +98,7 @@ public class BurstGun : Gun {
     /// the delay between attacks
     /// </summary>
     /// <returns></returns>
-    public override IEnumerator<float> Delay() {
+    public override IEnumerator<float> Delay(){
         _canBlock = _canAttack = false;
         yield return Timing.WaitForSeconds(AttackDelay);
         _canBlock = _canAttack = true;

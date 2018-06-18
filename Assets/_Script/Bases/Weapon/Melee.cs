@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using MEC;
 using UnityEngine;
 
-namespace JLProject{
+namespace JLProject.Weapons{
     public class Melee : Weapon{
         public float attackDelay = 0.65f;
         public float comboDelay = 0.75f;

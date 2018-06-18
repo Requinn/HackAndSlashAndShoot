@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using JLProject.Weapons;
 using UnityEngine;
 
 namespace JLProject{

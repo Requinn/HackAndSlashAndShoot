@@ -40,7 +40,7 @@ namespace JLProject{
         }
 
         void Update(){
-            if (Input.GetKeyDown(KeyCode.E)){
+            if (_occupied && Input.GetKeyDown(KeyCode.E)){
                 Toggle();
             }
         }

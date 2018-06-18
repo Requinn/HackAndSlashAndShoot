@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using JLProject;
+using JLProject.Weapons;
 using MEC;
 using UnityEngine;
 
@@ -13,18 +14,19 @@ public class ShortPistol : Gun{
     private WeaponsModHandler _modHandler;
 
     private float chargeTime = 3f;
-	// Use this for initialization
-	void Start (){
-        //TODO: Weapon mod code
-	    //_modHandler = GetComponent<WeaponsModHandler>();
-	    //_modHandler.weapon = this;
 
-	    _gunSounds = GetComponent<AudioSource>();
-	    if (faction == Damage.Faction.Enemy)
-	        bullet.objectToPool.tag = "EnemyProjectile";
-	    if (ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool) == null) {
-	        ObjectPooler.ObjectPool.PoolItem(bullet);
-	    }
+    // Use this for initialization
+    void Start(){
+        //TODO: Weapon mod code
+        //_modHandler = GetComponent<WeaponsModHandler>();
+        //_modHandler.weapon = this;
+
+        _gunSounds = GetComponent<AudioSource>();
+        if (faction == Damage.Faction.Enemy)
+            bullet.objectToPool.tag = "EnemyProjectile";
+        if (ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool) == null){
+            ObjectPooler.ObjectPool.PoolItem(bullet);
+        }
     }
 
     public override void Fire(){
@@ -56,9 +58,9 @@ public class ShortPistol : Gun{
         }
     }
 
-    public override void ChargeAttack() {
+    public override void ChargeAttack(){
         GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
-        if (bullet != null) {
+        if (bullet != null){
             bullet.GetComponent<IProjectile>().SetFaction(faction);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.velocity =
@@ -72,5 +74,4 @@ public class ShortPistol : Gun{
         }
         Timing.RunCoroutine(base.Delay());
     }
-
 }

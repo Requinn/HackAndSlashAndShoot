@@ -26,7 +26,6 @@ namespace JLProject{
         /// </summary>
         public void LoadNextLevel(){
             int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-            DataService.Instance.PlayerStats.UpdateStats(FindObjectOfType<PlayerController>(), nextScene);
             LoadLevel(nextScene);
         }
 
@@ -36,6 +35,7 @@ namespace JLProject{
         /// <param name="sceneIndex"></param>
         public void LoadLevel(int sceneIndex = 1){
             if (!loadScene){
+                DataService.Instance.PlayerStats.UpdateStats(FindObjectOfType<PlayerController>(), sceneIndex);
                 loadScene = true;
                 OnStartLoad(minimumWaitTime); //fire off an event for a loading screen or something
                 Timing.RunCoroutine(CoLoadScene(sceneIndex));

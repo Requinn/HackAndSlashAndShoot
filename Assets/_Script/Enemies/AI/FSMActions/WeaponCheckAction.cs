@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using HutongGames.PlayMaker;
 using JLProject;
+using JLProject.Weapons;
 using UnityEngine;
 
 public class WeaponCheckAction : FsmStateAction {

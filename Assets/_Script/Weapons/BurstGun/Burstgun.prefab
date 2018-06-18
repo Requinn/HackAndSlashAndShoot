@@ -1262,6 +1262,7 @@ MonoBehaviour:
   _maximumMag: 16
   _chargeTime: 3
   _chargeAttackDamageBonus: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -1276,10 +1277,10 @@ MonoBehaviour:
     amountToPool: 10
     shouldExpand: 1
   GunType: 0
-  faction: 0
+  faction: 1
   burstCount: 8
   burstDelay: 0.07
-  spray: 5
+  accuracy: 4
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}

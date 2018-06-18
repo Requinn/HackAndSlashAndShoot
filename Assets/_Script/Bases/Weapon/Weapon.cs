@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
-namespace JLProject{
+namespace JLProject.Weapons{
     public abstract class Weapon : MonoBehaviour{
         public int ReferenceID;
         public Sprite weaponIcon;
@@ -44,7 +44,8 @@ namespace JLProject{
             get{ return _chargeAttackDamageBonus; }
             set{ _chargeAttackDamageBonus = value; }
         }
-
+        public float movementWeight; //how much is the player slowed down when firing this weapon (Automatics only)
+        public bool isAutomatic = false;
         protected Entity _owningObj;
         public List<string> StatsList = new List<string>(){"Damage", "AttackDelay", "ReloadSpeed", "MagazineSize"};
         public Damage.Faction Faction{ get; set; }
@@ -64,7 +65,6 @@ namespace JLProject{
         public virtual void ChargeAttack(){
             //Nothing
         }
-
         /// <summary>
         /// the delay between attacks
         /// </summary>
@@ -84,6 +84,13 @@ namespace JLProject{
             yield return Timing.WaitForSeconds(ReloadSpeed);
             CurMag = MaxMag;
             _canBlock = _canAttack = true;
+        }
+
+        /// <summary>
+        /// For Automatic weapons, reset their spools
+        /// </summary>
+        public virtual void ResetWeapon(){
+            //Automatics only, for now???
         }
     }
 }

@@ -56,7 +56,7 @@ public class DodgyRusher : MeleeUnit {
 
             yield return Timing.WaitForSeconds(_evasionDuration);
 
-            if (this){
+            if (_NMAgent){
                 _NMAgent.isStopped = false;
             }
             yield return Timing.WaitForSeconds(_evadeCooldown);

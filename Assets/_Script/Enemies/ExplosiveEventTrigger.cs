@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using JLProject;
+using JLProject.Weapons;
 using MEC;
 using UnityEngine;
 

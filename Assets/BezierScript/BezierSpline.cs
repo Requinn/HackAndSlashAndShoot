@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Xml.Schema;
-using UnityEditor;
 using UnityEngine;
 
 namespace JLProject.Spline {

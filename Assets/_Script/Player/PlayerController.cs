@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using HutongGames.PlayMaker.Actions;
+using JLProject.Weapons;
 using UnityEngine;
 
 /// <summary>
@@ -119,20 +121,45 @@ namespace JLProject{
                 ResetSpeed();
                 CurrentShield.blocking = false;
             }
+
+            //TODO: Can this be better?
             //check for attacking
-            if (Input.GetMouseButtonDown(0) && CurrentWeapon != null ) {
-                if (CurrentShield != null && !CurrentShield.blocking){
-                    if (CurrentWeapon._canAttack){
-                        _PAC.GunShot();
-                        CurrentWeapon.Fire();
-                        /*if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
-                            _timeSinceAttack = 0.0f;
-                            _attackDelay = CurrentWeapon.AttackDelay;
+            if (CurrentWeapon != null){ 
+                //single shot input
+                if (!CurrentWeapon.isAutomatic){
+                    if (CurrentShield != null && !CurrentShield.blocking) {
+                        if (Input.GetMouseButtonDown(0) && CurrentWeapon._canAttack) {
+                            _PAC.GunShot();
+                            CurrentWeapon.Fire();
+                            /**if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
+                                _timeSinceAttack = 0.0f;
+                                _attackDelay = CurrentWeapon.AttackDelay;
+                            }
+                            **/
                         }
-                    **/
                     }
                 }
+                else if (CurrentWeapon.isAutomatic){
+                    //automatic input
+                    if (CurrentShield != null && !CurrentShield.blocking){
+                        if (Input.GetMouseButton(0) && CurrentWeapon._canAttack){
+                            _PAC.GunShot();
+                            CurrentWeapon.Fire();
+                            MovementSpeed = CurrentWeapon.movementWeight;
+                        }
+                        if (Input.GetMouseButtonUp(0)) {
+                            MovementSpeed = speed;
+                            CurrentWeapon.ResetWeapon();
+                        }
+                    }
+                }
+                //catchall for weapons modifying movement speed
+                if (Input.GetMouseButtonUp(0)) {
+                    MovementSpeed = speed;
+                }
             }
+            
+            /**
             //handle Charge Attacks
             if (Input.GetMouseButton(0) && CurrentWeapon != null){
                 if (_chargeTime < CurrentWeapon.ChargeTime){
@@ -158,7 +185,8 @@ namespace JLProject{
                 }
                 CancelCharge();
             }
-        }
+            **/
+            }
 
         ///cancels the current weapn charge
         private void CancelCharge(){
@@ -291,6 +319,7 @@ namespace JLProject{
         private void WeaponSwap(){
             if (Input.GetKeyDown(KeyCode.Space) && WeaponsInHand.Count > 1){
                 CancelCharge();
+                CurrentWeapon.ResetWeapon();
                 if (CurrentWeapon == WeaponsInHand[0]){
                     WeaponsInHand[0].gameObject.SetActive(false);
                     CurrentWeapon = WeaponsInHand[1];

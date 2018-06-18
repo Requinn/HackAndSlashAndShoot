@@ -45,22 +45,22 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
             }
             StopCoroutine(DelayedRepool(_lifetime));
         }
-        else if(c.gameObject.tag == "Environment"){
+        else if (c.gameObject.tag == "Environment"){
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
         if (args.SourceFaction != Damage.Faction.Player) return;
-        if (swtch) {
+        if (swtch){
             swtch.Toggle();
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
-        if (brk) {
+        if (brk){
             brk.GetComponent<BreakableObject>().Hit();
             Timing.KillCoroutines(_repoolHandle);
             gameObject.SetActive(false);
         }
-        
+
     }
 
     private IEnumerator<float> DelayedRepool(float t){
@@ -77,7 +77,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
     /// Apply the status effect, refreshing if it exists
     /// </summary>
     /// <param name="SO"></param>
-    public void ApplyStatus(StatusObject SO, Entity E) {
+    public void ApplyStatus(StatusObject SO, Entity E){
         StatusObject temp = E.Afflictions.Find(a => a.Type == SO.Type);
         if (temp){
             temp.InitializeProc();

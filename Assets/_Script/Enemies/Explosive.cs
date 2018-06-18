@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using JLProject;
+using JLProject.Weapons;
 using MEC;
 using UnityEngine;
 

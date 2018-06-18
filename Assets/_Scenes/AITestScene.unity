@@ -363,6 +363,8 @@ MonoBehaviour:
   _maximumMag: 0
   _chargeTime: 0
   _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -2379,7 +2381,7 @@ Prefab:
         type: 2}
       propertyPath: WeaponToPickup
       value: 
-      objectReference: {fileID: 1908287797091788, guid: 4d1759c75a7d68c4a8b2173dd2786a4b,
+      objectReference: {fileID: 1314872517505134, guid: af256fb9120178c43a02dc9faf54e9c8,
         type: 2}
     - target: {fileID: 1227583982562148, guid: 28d1155dfac11db4fb41f2d8fd4479bc, type: 2}
       propertyPath: m_Name
@@ -5064,6 +5066,16 @@ Prefab:
         type: 2}
       propertyPath: Damage
       value: 85
+      objectReference: {fileID: 0}
+    - target: {fileID: 224717695779372076, guid: f029dbb7c5821c040b071a6ccbae7442,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 224717695779372076, guid: f029dbb7c5821c040b071a6ccbae7442,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f029dbb7c5821c040b071a6ccbae7442, type: 2}
