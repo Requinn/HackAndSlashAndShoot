@@ -145,17 +145,15 @@ namespace JLProject{
                         if (Input.GetMouseButton(0) && CurrentWeapon._canAttack){
                             _PAC.GunShot();
                             CurrentWeapon.Fire();
-                            MovementSpeed = CurrentWeapon.movementWeight;
                         }
                         if (Input.GetMouseButtonUp(0)) {
-                            MovementSpeed = speed;
                             CurrentWeapon.ResetWeapon();
                         }
                     }
-                }
-                //catchall for weapons modifying movement speed
-                if (Input.GetMouseButtonUp(0)) {
-                    MovementSpeed = speed;
+                    //catchall for the only automatic weapon right now
+                    if (Input.GetMouseButtonUp(0)) {
+                        ResetSpeed();
+                    }
                 }
             }
             

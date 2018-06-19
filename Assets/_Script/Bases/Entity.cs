@@ -1,10 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// Defines an entity object that is able to move, take/heal damage, and die
-/// </summary>
+
 namespace JLProject{
+    /// <summary>
+    /// Defines an entity object that is able to move, take/heal damage, and die
+    /// </summary>
     public abstract class Entity : HealthSystem {
         public enum State{
             Attacking,

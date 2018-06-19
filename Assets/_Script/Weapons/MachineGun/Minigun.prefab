@@ -260,7 +260,7 @@ MonoBehaviour:
   GunType: 2
   faction: 1
   accuracy: 1
-  shotsToMaxSpin: 10
+  shotsToMaxSpin: 12
   maxSpinDelay: 0.05
   minSpinDelay: 0.3
   accuracyMin: 1

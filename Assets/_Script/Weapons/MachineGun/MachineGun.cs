@@ -76,6 +76,7 @@ public class MachineGun : Gun{
                 bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
                 bullet.SetActive(true);
                 CurMag--;
+                _owningObj.AdjustSpeed(movementWeight);
             }
             if (CurMag == 0) {
                 Timing.RunCoroutine(Reload());
@@ -88,9 +89,10 @@ public class MachineGun : Gun{
     }
 
     //reset spin up
+    //cancel all movement changes
     public override IEnumerator<float> Reload(){
-        AttackDelay = minSpinDelay;
-        accuracy = accuracyMin;
+        ResetWeapon();
+        _owningObj.ResetSpeed();
         return base.Reload();
     }
 

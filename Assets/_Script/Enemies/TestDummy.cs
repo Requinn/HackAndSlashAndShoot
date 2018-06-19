@@ -14,7 +14,7 @@ namespace JLProject{
         // Use this for initialization
         void Start(){
             TookDamage += FireExplosion;
-            MovementSpeed = speed;
+            AdjustSpeed(speed);
             Faction = Damage.Faction.Enemy;
         }
 
