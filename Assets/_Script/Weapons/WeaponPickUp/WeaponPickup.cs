@@ -18,8 +18,11 @@ public class WeaponPickup : Interactable {
     void Update(){
         if (_pc && Input.GetKeyDown(KeyCode.E) && _canPick) {
             GameObject go = Instantiate(WeaponToPickup);
+            WeaponToPickup = ObjectReferencer.Instance.FetchObjByID(_pc.CurrentWeapon.ReferenceID);
             _pc.Equip(go);
             InvokeInteractEvent();
+            //alter the dispensing object to return the weapon the player was holding
+             
             if (OneUse){
                 gameObject.SetActive(false);
             }
@@ -28,6 +31,7 @@ public class WeaponPickup : Interactable {
             }
         }
     }
+
     void OnTriggerEnter(Collider c){
         if (c.gameObject.CompareTag("Player")){
             //display the pickup key

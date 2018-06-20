@@ -255,7 +255,7 @@ MonoBehaviour:
   bullet:
     objectToPool: {fileID: 1620600583638238, guid: 44be517d919f04d4ab21955569a6e64c,
       type: 2}
-    amountToPool: 25
+    amountToPool: 13
     shouldExpand: 1
   GunType: 2
   faction: 1

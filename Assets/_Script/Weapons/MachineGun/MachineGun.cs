@@ -53,10 +53,8 @@ public class MachineGun : Gun{
             bullet.SetActive(true);
         }
     }
-
     // Update is called once per frame
     void Update(){
-
     }
 
     public override void Fire() {
