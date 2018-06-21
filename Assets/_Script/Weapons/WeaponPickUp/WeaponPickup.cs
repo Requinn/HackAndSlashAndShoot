@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using JLProject;
+using JLProject.Weapons;
 using MEC;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using UnityEngine.UI;
 
 /// <summary>
 /// Dispenses a weapon to the player.
@@ -11,14 +13,23 @@ using UnityEngine.Diagnostics;
 public class WeaponPickup : Interactable {
     public GameObject WeaponToPickup;
     public bool OneUse = false;
+    public Image Icon;
     private PlayerController _pc;
     private float _pickupDelay = 5.0f;
     private bool _canPick = true;
 
+    void Start(){
+        UpdateIcon();
+    }
+
     void Update(){
         if (_pc && Input.GetKeyDown(KeyCode.E) && _canPick) {
             GameObject go = Instantiate(WeaponToPickup);
-            WeaponToPickup = ObjectReferencer.Instance.FetchObjByID(_pc.CurrentWeapon.ReferenceID);
+            //only check for a replacement if we pick something different up
+            if (_pc.CurrentWeapon != go.GetComponent<Weapon>()){
+                WeaponToPickup = ObjectReferencer.Instance.FetchObjByID(_pc.CurrentWeapon.ReferenceID);
+                if(!OneUse) UpdateIcon();
+            }
             _pc.Equip(go);
             InvokeInteractEvent();
             //alter the dispensing object to return the weapon the player was holding
@@ -45,6 +56,13 @@ public class WeaponPickup : Interactable {
             //disable the pickup key
             _pc = null;
         }
+    }
+
+    /// <summary>
+    /// updates the displayed icon
+    /// </summary>
+    void UpdateIcon(){
+        Icon.sprite = WeaponToPickup.GetComponent<Weapon>().weaponIcon;
     }
 
     /// <summary>

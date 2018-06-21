@@ -5,10 +5,10 @@ using JLProject.Weapons;
 using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// recieves the weapon swap event from the player to cycle the icons in the UI.
-/// </summary>
 namespace JLProject{
+    /// <summary>
+    /// recieves the weapon swap event from the player to cycle the icons in the UI.
+    /// </summary>
     public class WeaponIconHandler : MonoBehaviour{
         public Image primaryImg, secondaryImg;
         public Vector3 primaryScale = new Vector3(0.75f,0.75f,0.75f);

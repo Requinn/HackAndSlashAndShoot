@@ -234,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReferenceID: 6
-  weaponIcon: {fileID: 0}
+  weaponIcon: {fileID: 21300000, guid: 3b7690fb3a2a42f4ba2d15815214200d, type: 3}
   _damage: 15
   _attackDelay: 0.3
   _reloadSpeed: 2

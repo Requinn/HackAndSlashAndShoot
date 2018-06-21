@@ -78018,9 +78018,20 @@ Prefab:
       value: 
       objectReference: {fileID: 1314872517505134, guid: af256fb9120178c43a02dc9faf54e9c8,
         type: 2}
+    - target: {fileID: 114175223697066640, guid: 28d1155dfac11db4fb41f2d8fd4479bc,
+        type: 2}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 1923664231}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 28d1155dfac11db4fb41f2d8fd4479bc, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1923664231 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114742762599668692, guid: 28d1155dfac11db4fb41f2d8fd4479bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1923664230}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1926604436
 Prefab:
   m_ObjectHideFlags: 0
