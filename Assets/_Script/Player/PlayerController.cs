@@ -5,10 +5,10 @@ using HutongGames.PlayMaker.Actions;
 using JLProject.Weapons;
 using UnityEngine;
 
-/// <summary>
-/// A controller for the player character
-/// </summary>
 namespace JLProject{
+    /// <summary>
+    /// A controller for the player character
+    /// </summary>
     public class PlayerController : Entity{
         // Use this for initialization
         public bool useSave = true;

@@ -1229,9 +1229,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114452827280626986, guid: d812d3ac24d614c42b004004203c536c,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1076999622}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d812d3ac24d614c42b004004203c536c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &15986319 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114631814458932532, guid: d812d3ac24d614c42b004004203c536c,
+    type: 2}
+  m_PrefabInternal: {fileID: 15986318}
+  m_Script: {fileID: 11500000, guid: 9f5d2af48840edb4ba93a3a145d67921, type: 3}
 --- !u!43 &16923102
 Mesh:
   m_ObjectHideFlags: 0
@@ -50411,6 +50422,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &1076999622 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 1076999621}
+  m_Script: {fileID: 11500000, guid: 74978a8d53e2e624a97f71b392700cc3, type: 3}
 --- !u!43 &1077181409
 Mesh:
   m_ObjectHideFlags: 0
@@ -96910,6 +96927,11 @@ Prefab:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1135640203}
+    - target: {fileID: 114924028037767378, guid: fcc0b43ae87950c4c9dd55dc11bf5d06,
+        type: 2}
+      propertyPath: reticle
+      value: 
+      objectReference: {fileID: 15986319}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcc0b43ae87950c4c9dd55dc11bf5d06, type: 2}
   m_IsPrefabParent: 0

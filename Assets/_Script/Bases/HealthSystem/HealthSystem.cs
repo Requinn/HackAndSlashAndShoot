@@ -111,8 +111,8 @@ namespace JLProject{
         /// <param name="e"></param>
         /// <returns></returns>
         protected virtual float CalculateDamage(Damage.DamageEventArgs e) {
-            // For the simplest case, just pass the raw DamageValue.
-            return Mathf.Clamp((int)e.DamageValue - _armorvalue, 0, _maximumhealth);
+            // reduce damage by ARMORVALUE%
+            return (int)Mathf.Clamp(e.DamageValue - (e.DamageValue * (_armorvalue * 0.01f)), 0, _maximumhealth);
         }
 
         /// <summary>

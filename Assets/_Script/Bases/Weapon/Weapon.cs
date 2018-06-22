@@ -34,6 +34,7 @@ namespace JLProject.Weapons{
             get{ return _maximumMag; }
             set{ _maximumMag = value; }
         }
+        /**
         [SerializeField] protected float _chargeTime;
         public float ChargeTime{
             get{ return _chargeTime; }
@@ -44,6 +45,7 @@ namespace JLProject.Weapons{
             get{ return _chargeAttackDamageBonus; }
             set{ _chargeAttackDamageBonus = value; }
         }
+        **/
         public float movementWeight; //how much is the player slowed down when firing this weapon (Automatics only)
         public bool isAutomatic = false;
         protected Entity _owningObj;
@@ -75,11 +77,14 @@ namespace JLProject.Weapons{
             _canBlock = _canAttack = true;
         }
 
+        public delegate void ReloadEvent(float time);
+        public ReloadEvent onReloadStart;
         /// <summary>
         /// reloads the weapon's magazine/attack count
         /// </summary>
         /// <returns></returns>
         public virtual IEnumerator<float> Reload(){
+            if (onReloadStart != null) onReloadStart(ReloadSpeed);
             _canAttack = false;
             yield return Timing.WaitForSeconds(ReloadSpeed);
             CurMag = MaxMag;

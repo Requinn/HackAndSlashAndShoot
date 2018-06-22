@@ -56,7 +56,8 @@ public class DodgyRusher : MeleeUnit {
 
             yield return Timing.WaitForSeconds(_evasionDuration);
 
-            if (_NMAgent){
+            //TODO:NavMesh Issues on death here
+            if (_NMAgent.enabled){
                 _NMAgent.isStopped = false;
             }
             yield return Timing.WaitForSeconds(_evadeCooldown);

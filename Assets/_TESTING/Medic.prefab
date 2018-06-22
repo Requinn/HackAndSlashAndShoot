@@ -530,6 +530,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _damage: 0
+  _attackDelay: 0
+  _reloadSpeed: 0
+  _currentMag: 0
+  _maximumMag: 0
+  _chargeTime: 0
+  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -788,7 +797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 500
   _currenthealth: 500
-  _armorvalue: 5
+  _armorvalue: 15
   _faction: 3
   StatusImmunities: 
   Afflictions: []
@@ -797,14 +806,13 @@ MonoBehaviour:
   floater: {fileID: 114479363887056782}
   CanRevive: 0
   CanMove: 1
+  AnimController: {fileID: 0}
   weapon: {fileID: 114170979552826992}
   target: {fileID: 0}
   mass: 3
+  thisFSM: {fileID: 0}
   rotationTime: 3
   movementSpeed: 5
-  thisFSM: {fileID: 0}
-  prevState: 0
-  state: 0
   healTool: {fileID: 114170979552826992}
   lowHealthThreshold: 0.75
   thresholdPercent: 0.25

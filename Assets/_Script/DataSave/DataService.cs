@@ -68,7 +68,7 @@ namespace JLProject {
                 }
                 //our save doesn't exist, just make a new one
                 else{
-                    PlayerStats = new PlayerStats();
+                    PlayerStats = new PlayerStats(); //I don't this actually does anything?????
                 }
                 curLoadedProfile = profileNumber;
             }

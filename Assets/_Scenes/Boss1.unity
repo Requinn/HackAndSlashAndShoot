@@ -205,6 +205,11 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114452827280626986, guid: d812d3ac24d614c42b004004203c536c,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1867150951}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d812d3ac24d614c42b004004203c536c, type: 2}
   m_IsPrefabParent: 0
@@ -339,9 +344,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa5ea370062346f4ba1150c143bdd58a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  oneWay: 1
   ObjectToUnlock: {fileID: 0}
   ObjectToLock: {fileID: 731726444}
-  oneWay: 1
   BossEnemy: {fileID: 379955232}
   BossCamera: {fileID: 1958999994}
 --- !u!65 &111212928
@@ -1386,7 +1391,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -1573,7 +1578,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 500
   _currenthealth: 500
-  _armorvalue: 10
+  _armorvalue: 17.5
   _faction: 3
   StatusImmunities: 
   Afflictions: []
@@ -1637,8 +1642,8 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -1975,8 +1980,8 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -2367,7 +2372,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -3837,6 +3842,12 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7435c5d2ae9838943806821597c7aefd, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &800614913 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114631814458932532, guid: d812d3ac24d614c42b004004203c536c,
+    type: 2}
+  m_PrefabInternal: {fileID: 22143039}
+  m_Script: {fileID: 11500000, guid: 9f5d2af48840edb4ba93a3a145d67921, type: 3}
 --- !u!1 &815232971
 GameObject:
   m_ObjectHideFlags: 0
@@ -4451,8 +4462,8 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -4722,8 +4733,8 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -5629,7 +5640,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -7365,8 +7376,8 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -9891,7 +9902,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -10153,8 +10164,8 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -11040,6 +11051,12 @@ Transform:
   m_Father: {fileID: 1147752725}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &1867150951 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 144002802}
+  m_Script: {fileID: 11500000, guid: 74978a8d53e2e624a97f71b392700cc3, type: 3}
 --- !u!1001 &1887591194
 Prefab:
   m_ObjectHideFlags: 0
@@ -11157,6 +11174,11 @@ Prefab:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 1318936612}
+    - target: {fileID: 114924028037767378, guid: fcc0b43ae87950c4c9dd55dc11bf5d06,
+        type: 2}
+      propertyPath: reticle
+      value: 
+      objectReference: {fileID: 800614913}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcc0b43ae87950c4c9dd55dc11bf5d06, type: 2}
   m_IsPrefabParent: 0
@@ -11631,7 +11653,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 500
   _currenthealth: 500
-  _armorvalue: 10
+  _armorvalue: 25
   _faction: 3
   StatusImmunities: 
   Afflictions: []

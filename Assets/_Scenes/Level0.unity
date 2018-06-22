@@ -28846,6 +28846,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114452827280626986, guid: d812d3ac24d614c42b004004203c536c,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2048939634}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d812d3ac24d614c42b004004203c536c, type: 2}
   m_IsPrefabParent: 0
@@ -28855,6 +28860,12 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 897788151}
   m_Script: {fileID: 11500000, guid: 6bcdfe6f021bc98488b0e34724335bd7, type: 3}
+--- !u!114 &897788153 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114631814458932532, guid: d812d3ac24d614c42b004004203c536c,
+    type: 2}
+  m_PrefabInternal: {fileID: 897788151}
+  m_Script: {fileID: 11500000, guid: 9f5d2af48840edb4ba93a3a145d67921, type: 3}
 --- !u!1 &915071594
 GameObject:
   m_ObjectHideFlags: 0
@@ -38978,6 +38989,11 @@ Prefab:
       propertyPath: pauseUI
       value: 
       objectReference: {fileID: 237271775}
+    - target: {fileID: 114924028037767378, guid: fcc0b43ae87950c4c9dd55dc11bf5d06,
+        type: 2}
+      propertyPath: reticle
+      value: 
+      objectReference: {fileID: 897788153}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fcc0b43ae87950c4c9dd55dc11bf5d06, type: 2}
   m_IsPrefabParent: 0
@@ -55704,6 +55720,12 @@ Transform:
   m_PrefabParentObject: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2,
     type: 2}
   m_PrefabInternal: {fileID: 2048939632}
+--- !u!114 &2048939634 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+    type: 2}
+  m_PrefabInternal: {fileID: 2048939632}
+  m_Script: {fileID: 11500000, guid: 74978a8d53e2e624a97f71b392700cc3, type: 3}
 --- !u!1 &2050037087
 GameObject:
   m_ObjectHideFlags: 0

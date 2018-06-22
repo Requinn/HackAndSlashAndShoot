@@ -56,11 +56,12 @@ public class Revolver : Gun{
             }
         }
     }
-
+    /**
     public override void ChargeAttack(){
         Timing.RunCoroutine(ChargeAttackFire());
     }
 
+    /**
     private IEnumerator<float> ChargeAttackFire(){
         _owningObj.AdjustSpeed(0);
         for (int i = 0; i < 6;){
@@ -86,4 +87,5 @@ public class Revolver : Gun{
         _owningObj.ResetSpeed();
         yield return 0f;
     }
+    **/
 }

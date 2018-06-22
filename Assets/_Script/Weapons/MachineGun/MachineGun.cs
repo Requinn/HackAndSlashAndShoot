@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using JLProject;
 using JLProject.Weapons;
 using MEC;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class MachineGun : Gun{

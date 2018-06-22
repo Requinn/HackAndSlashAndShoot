@@ -11,6 +11,7 @@ namespace JLProject{
         public GameObject soundManager;
         public bool paused = false;
         public GameObject pauseUI;
+        public MouseReticle reticle;
         private PauseMenu _pauseMenu;
 
         void Awake(){
@@ -68,12 +69,14 @@ namespace JLProject{
 
         private void TogglePause(){
             if (!paused){
+                reticle.SetCursorDefault();
                 Cursor.lockState = CursorLockMode.None;
                 paused = true;
                 pauseUI.SetActive(true);
                 Time.timeScale = 0.0f;
             }
             else{
+                reticle.SetCursorCustom();
                 Cursor.lockState = CursorLockMode.Confined;
                 paused = false;
                 pauseUI.SetActive(false);

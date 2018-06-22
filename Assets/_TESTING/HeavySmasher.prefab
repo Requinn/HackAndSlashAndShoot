@@ -2894,7 +2894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 500
   _currenthealth: 500
-  _armorvalue: 10
+  _armorvalue: 33
   _faction: 3
   StatusImmunities: 
   Afflictions: []

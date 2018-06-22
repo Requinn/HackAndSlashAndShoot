@@ -26,7 +26,7 @@ public class WeaponPickup : Interactable {
         if (_pc && Input.GetKeyDown(KeyCode.E) && _canPick) {
             GameObject go = Instantiate(WeaponToPickup);
             //only check for a replacement if we pick something different up
-            if (_pc.CurrentWeapon != go.GetComponent<Weapon>()){
+            if (_pc.CurrentWeapon && _pc.CurrentWeapon != go.GetComponent<Weapon>()){
                 WeaponToPickup = ObjectReferencer.Instance.FetchObjByID(_pc.CurrentWeapon.ReferenceID);
                 if(!OneUse) UpdateIcon();
             }

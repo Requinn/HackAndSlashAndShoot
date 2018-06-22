@@ -91,3 +91,4 @@ MonoBehaviour:
   soundManager: {fileID: 0}
   paused: 0
   pauseUI: {fileID: 0}
+  reticle: {fileID: 0}
