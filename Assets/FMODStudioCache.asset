@@ -11,9 +11,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
   m_Name: FMODStudioCache
   m_EditorClassIdentifier: 
-  EditorBanks: []
+  EditorBanks:
+  - {fileID: 114552356916908194}
+  - {fileID: 114060741557633820}
   EditorEvents: []
-  MasterBankRef: {fileID: 0}
-  StringsBankRef: {fileID: 0}
-  stringsBankWriteTime: 0
+  MasterBankRef: {fileID: 114060741557633820}
+  StringsBankRef: {fileID: 114552356916908194}
+  stringsBankWriteTime: 636655538922753688
   cacheVersion: 2
+--- !u!114 &114060741557633820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Amy Hori\Documents\GitHub\HackAndSlashAndShoot\fmod_hackandslashandshoot\Build\Desktop\Master
+    Bank.bank
+  lastModified: 636655538922473909
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 12474
+  Exists: 1
+--- !u!114 &114552356916908194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: fmod_hackandslashandshoot\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636655538922753688
+  LoadResult: 0
+  FileSizes:
+  - Name: 
+    Value: 672
+  Exists: 1
