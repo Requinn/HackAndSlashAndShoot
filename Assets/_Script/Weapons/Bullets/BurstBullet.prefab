@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23563677616960768}
   - component: {fileID: 114381071794524386}
   - component: {fileID: 54250429332971402}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BurstBullet
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -112,8 +112,9 @@ MonoBehaviour:
   args:
     DamageValue: 18
     DamageType: 1
-    HitPoint: {x: 0, y: 0, z: 0}
+    HitSourceLocation: {x: 0, y: 0, z: 0}
     SourceFaction: 1
+    HitForce: 0
   FlightDistance: 10
   Velocity: 12
   statusObj: {fileID: 0}

@@ -71,7 +71,8 @@ namespace JLProject{
                             inAttackCone = false;
                         }
                         RaycastHit hit;
-                        if (Physics.Raycast(_eyeTransform.position, -sightDistance, out hit, _maxViewRange)){
+                        //Layermask to ignore raycasting the projectile layer ~(1 << 9), doesn't seem to work
+                        if (Physics.Raycast(_eyeTransform.position, -sightDistance, out hit, _maxViewRange )){
                             //debugstr += "FOUND";
                             //Debug.DrawRay(_eyeTransform.position, -sightDistance, Color.cyan, 600.0f);
                             //Debug.Log(hit.collider.gameObject);

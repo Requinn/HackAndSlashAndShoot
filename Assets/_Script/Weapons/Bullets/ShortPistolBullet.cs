@@ -25,7 +25,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
     //Raycast ahead for high velocity bullets
     void FixedUpdate(){
         ray = new Ray(transform.position, (transform.position - _curPos).normalized);
-        Physics.Raycast(ray, out hit, 5f);
+        Physics.Raycast(ray, out hit, 1f);
         if (hit.transform){
             DoCollisionCheck(hit.transform.gameObject);
         }

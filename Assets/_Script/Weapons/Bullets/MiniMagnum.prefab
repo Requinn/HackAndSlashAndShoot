@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23231144378515960}
   - component: {fileID: 114558629977198282}
   - component: {fileID: 54924876382974320}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MiniMagnum
   m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
@@ -112,8 +112,9 @@ MonoBehaviour:
   args:
     DamageValue: 35
     DamageType: 1
-    HitPoint: {x: 0, y: 0, z: 0}
+    HitSourceLocation: {x: 0, y: 0, z: 0}
     SourceFaction: 1
+    HitForce: 0
   FlightDistance: 12
   Velocity: 17.5
   statusObj: {fileID: 0}

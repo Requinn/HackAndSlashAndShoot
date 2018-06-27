@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace JLProject.Weapons{
     public class Melee : Weapon{
+        [SerializeField]
         protected float _timeSinceSwing = 0.0f;
         [Header("Melee Combo Attributes")]
         [SerializeField] protected float _comboDecay = 0.7f;
@@ -15,12 +16,9 @@ namespace JLProject.Weapons{
         public Damage.Faction faction;
         private ImpactReceiver _parentImpactRcvr;
 
-        /*
         public int CurrentCombo{
-            get{ return _currentCombo; }
-
-            set{ _currentCombo = value; }
-        }*/
+            get{ return MaxMag - _currentMag; }
+        }
 
         void Start(){
             _owningObj = GetComponentInParent<Entity>();
@@ -46,15 +44,15 @@ namespace JLProject.Weapons{
             if (_canAttack){
                 _owningObj.AdjustSpeed(0f);
                 if (_currentMag > 0 && _parentImpactRcvr){
-                    PushForward(_currentMag);
+                    PushForward(CurrentCombo);
                 }
                 _timeSinceSwing = 0.0f;
                 //Debug.Log(_currentCombo);
-                WaveComponent[MaxMag - _currentMag].SetActive(true);
+                WaveComponent[CurrentCombo].SetActive(true);
                 //This is to re enable the mesh, for some reason it turns off and stays off
-                WaveComponent[MaxMag - _currentMag].GetComponent<MeshRenderer>().enabled =true; 
-                Timing.RunCoroutine(WaveDelay(_currentMag));
-                _currentMag--;
+                WaveComponent[CurrentCombo].GetComponent<MeshRenderer>().enabled =true; 
+                Timing.RunCoroutine(WaveDelay(CurrentCombo));
+                CurMag--;
                 if (_currentMag == 0){
                     Timing.RunCoroutine(Reload());
                 }
@@ -87,7 +85,7 @@ namespace JLProject.Weapons{
             yield return Timing.WaitForSeconds(AttackDelay);
             _owningObj.ResetSpeed(); //attack is over
             _canBlock = true;
-            yield return Timing.WaitForSeconds(_currentMag - AttackDelay);
+            yield return Timing.WaitForSeconds(ReloadSpeed - AttackDelay);
             _canAttack = true;
             _currentMag = MaxMag;
         }
