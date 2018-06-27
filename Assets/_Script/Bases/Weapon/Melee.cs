@@ -5,14 +5,9 @@ using UnityEngine;
 
 namespace JLProject.Weapons{
     public class Melee : Weapon{
-        public float attackDelay = 0.65f;
-        public float comboDelay = 0.75f;
-        public int swingCount = 3;
-
-        [SerializeField] protected int _currentCombo = 0;
         protected float _timeSinceSwing = 0.0f;
+        [Header("Melee Combo Attributes")]
         [SerializeField] protected float _comboDecay = 0.7f;
-
         public GameObject[] WaveComponent;
         public int[] damageValues;
         public int[] force;
@@ -20,18 +15,16 @@ namespace JLProject.Weapons{
         public Damage.Faction faction;
         private ImpactReceiver _parentImpactRcvr;
 
+        /*
         public int CurrentCombo{
             get{ return _currentCombo; }
 
             set{ _currentCombo = value; }
-        }
+        }*/
 
         void Start(){
             _owningObj = GetComponentInParent<Entity>();
             _parentImpactRcvr = GetComponentInParent<ImpactReceiver>();
-            AttackDelay = attackDelay;
-            CurMag = MaxMag = swingCount;
-            ReloadSpeed = comboDelay;
             //temporary!!!!
             //TODO: Change this so things like, 3rd hits do more damage in a combo or something similar!!
             for (int i = 0; i < WaveComponent.Length; i++){
@@ -40,11 +33,11 @@ namespace JLProject.Weapons{
         }
 
         void Update(){
-            if (_currentCombo > 0){
+            if (_currentMag < MaxMag){
                 _timeSinceSwing += Time.deltaTime;
             }
             if (_timeSinceSwing >= _comboDecay){
-                _currentCombo = 0;
+                _currentMag = MaxMag;
                 _timeSinceSwing = 0.0f;
             }
         }
@@ -52,17 +45,17 @@ namespace JLProject.Weapons{
         public override void Fire(){
             if (_canAttack){
                 _owningObj.AdjustSpeed(0f);
-                if (_currentCombo > 0 && _parentImpactRcvr){
-                    PushForward(_currentCombo);
+                if (_currentMag > 0 && _parentImpactRcvr){
+                    PushForward(_currentMag);
                 }
                 _timeSinceSwing = 0.0f;
                 //Debug.Log(_currentCombo);
-                WaveComponent[_currentCombo].SetActive(true);
-                WaveComponent[_currentCombo].GetComponent<MeshRenderer>().enabled =
-                    true; //This is to re enable the mesh, for some reason it turns off and stays off
-                Timing.RunCoroutine(WaveDelay(_currentCombo));
-                _currentCombo++;
-                if (_currentCombo == swingCount){
+                WaveComponent[MaxMag - _currentMag].SetActive(true);
+                //This is to re enable the mesh, for some reason it turns off and stays off
+                WaveComponent[MaxMag - _currentMag].GetComponent<MeshRenderer>().enabled =true; 
+                Timing.RunCoroutine(WaveDelay(_currentMag));
+                _currentMag--;
+                if (_currentMag == 0){
                     Timing.RunCoroutine(Reload());
                 }
                 else{
@@ -91,12 +84,12 @@ namespace JLProject.Weapons{
         /// <returns></returns>
         public override IEnumerator<float> Reload(){
             _canBlock = _canAttack = false;
-            yield return Timing.WaitForSeconds(attackDelay);
+            yield return Timing.WaitForSeconds(AttackDelay);
             _owningObj.ResetSpeed(); //attack is over
             _canBlock = true;
-            yield return Timing.WaitForSeconds(comboDelay - attackDelay);
+            yield return Timing.WaitForSeconds(_currentMag - AttackDelay);
             _canAttack = true;
-            _currentCombo = 0;
+            _currentMag = MaxMag;
         }
 
         private IEnumerator<float> WaveDelay(int hitboxNo){

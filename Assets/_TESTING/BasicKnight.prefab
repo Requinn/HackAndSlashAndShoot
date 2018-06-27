@@ -2063,12 +2063,10 @@ MonoBehaviour:
   ReferenceID: 0
   weaponIcon: {fileID: 0}
   _damage: 0
-  _attackDelay: 0
-  _reloadSpeed: 0
-  _currentMag: 0
-  _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
+  _attackDelay: 0.75
+  _reloadSpeed: 6
+  _currentMag: 2
+  _maximumMag: 2
   movementWeight: 0
   isAutomatic: 0
   StatsList:
@@ -2079,10 +2077,6 @@ MonoBehaviour:
   _canAttack: 1
   _canBlock: 1
   type: 0
-  attackDelay: 0.75
-  comboDelay: 6
-  swingCount: 2
-  _currentCombo: 0
   _comboDecay: 1
   WaveComponent:
   - {fileID: 1652876476422862}
