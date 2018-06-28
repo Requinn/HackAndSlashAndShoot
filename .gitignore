@@ -32,3 +32,15 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# FMOD Logs
+**/fmod.log
+**/fmod_editor.log
+**/FMODStudioSettings.asset
+**/FMODStudioSettings.asset.meta
+**/FMODStudioCache.asset
+**/FMODStudioCache.asset.meta
+
+# FMOD Banks
+*.bank
+*.bank.meta
