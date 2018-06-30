@@ -8,10 +8,12 @@ using UnityEngine;
 
 public class Explosive : Weapon{
     [Header("Explosive Attributes")]
+    public GameObject effect;
     public float Damage = 10.0f;
     public float Force = 25.0f;
     public float CastTime = 1.5f;
     public bool Repeated = false; //used for inplace explosions that are "static" on a level
+    public float RepeatTime = 2f;
     public bool OneUse = false;
     public float Radius = 4.0f;
     public SphereCollider Collider;
@@ -19,21 +21,35 @@ public class Explosive : Weapon{
     public Damage.DamageType dmgType = JLProject.Damage.DamageType.Explosive;
     public Damage.Faction damageFaction = JLProject.Damage.Faction.Enemy;
     private Damage.DamageEventArgs args;
-
+    private EffectSettings _effectSettings;
     //change this to use a sphere cast or something???
     void Start(){
         Faction = damageFaction;
         Collider = GetComponent<SphereCollider>();
         Collider.radius = Radius;
         args = new Damage.DamageEventArgs(Damage, this.transform.position, dmgType, Faction);
+        //set up particles
+        if (effect){
+            _effectSettings = effect.GetComponent<EffectSettings>();
+            _effectSettings.DeactivateTimeDelay = RepeatTime;
+            _effectSettings.MoveSpeed = (effect.transform.localPosition.y / CastTime) - 0.01f;
+            _effectSettings.InstanceBehaviour = EffectSettings.DeactivationEnum.Deactivate;
+            _effectSettings.MoveDistance = effect.transform.localPosition.y;
+            _effectSettings.LayerMask = LayerMask.GetMask("Floor");
+
+        }
         if (Repeated){
-            InvokeRepeating("Fire", CastTime + 2.0f, CastTime + 2.0f);
+            InvokeRepeating("Fire", CastTime + RepeatTime, CastTime + RepeatTime);
         }
 
     }
 
     public override void Fire(){
         MarkerScript.StartCast(CastTime, Radius);
+        if (effect){
+            effect.transform.localPosition = new Vector3(0f, 10f, 0f);
+            effect.SetActive(true);
+        }
         Timing.RunCoroutine(Explode());
         
     }
@@ -55,7 +71,7 @@ public class Explosive : Weapon{
             }
         }
         if (OneUse){
-            Destroy(gameObject);
+            Destroy(gameObject, 3f);
         }
     }
 }

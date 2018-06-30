@@ -17,11 +17,12 @@ namespace JLProject{
         }
         public override void Fire(){
             if (delay > 0f){
-                Timing.RunCoroutine(DelayedAttack());
+                Timing.RunCoroutine(DelayedAttack()); //uh??????????????????? why the fuck is this existing?
             }
             else{
                 for (int i = 0; i < bombCount; i++){
                     Vector2 rand = Random.insideUnitCircle * bombRadius;
+                    //some height issues
                     Instantiate(bomb, _player.transform.position + new Vector3(rand.x, 0, rand.y), Quaternion.identity)
                         .Fire();
                 }
