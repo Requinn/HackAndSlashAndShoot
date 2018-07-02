@@ -5,6 +5,9 @@ using JLProject;
 using MEC;
 using UnityEngine;
 
+/// <summary>
+/// Have the boss channel a wide area attack, which has to be interupted by a cannon to enter a dps phase
+/// </summary>
 public class FlyingBoss : AIEntity{
     public Transform[] FlightPositions;
     public Transform[] DownedPositions;
