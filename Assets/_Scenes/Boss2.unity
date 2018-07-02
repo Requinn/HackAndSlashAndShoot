@@ -3438,7 +3438,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18658
+  m_Name: pb_Mesh18668
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -5478,7 +5478,6 @@ GameObject:
   - component: {fileID: 704411856}
   - component: {fileID: 704411855}
   - component: {fileID: 704411854}
-  - component: {fileID: 704411853}
   m_Layer: 0
   m_Name: LaserSource (1)
   m_TagString: Untagged
@@ -5486,19 +5485,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!136 &704411853
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 704411852}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 30
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 15}
 --- !u!120 &704411854
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5600,7 +5586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initAngle: 0
   sweepAngle: -270
-  timeToSweep: 5
+  timeToSweep: 2
   damageTickRate: 3
   reach: 30
 --- !u!23 &704411856
@@ -6993,7 +6979,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -12359,7 +12345,6 @@ GameObject:
   - component: {fileID: 1633933182}
   - component: {fileID: 1633933181}
   - component: {fileID: 1633933186}
-  - component: {fileID: 1633933183}
   m_Layer: 0
   m_Name: LaserSource
   m_TagString: Untagged
@@ -12378,9 +12363,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c56ba8381c8c01546ab14b533213c5cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initAngle: 45
+  initAngle: 0
   sweepAngle: 270
-  timeToSweep: 5
+  timeToSweep: 2
   damageTickRate: 3
   reach: 30
 --- !u!23 &1633933182
@@ -12417,19 +12402,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &1633933183
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1633933180}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.1
-  m_Height: 30
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 15}
 --- !u!33 &1633933184
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -12444,7 +12416,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1633933180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.5, y: -0.25, z: -15.5}
+  m_LocalPosition: {x: -4, y: -0.25, z: -1.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
