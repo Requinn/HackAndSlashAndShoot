@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JLProject;
 using MEC;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ public class BulletHell : MonoBehaviour{
     public float fireRate = 1f; //how often
     public int fireCount = 1; //how many times
     public bool isFiring = false;
+    public PlayerController targetPlayer;
 
     public GameObject projectile;
     private float angleStep;
@@ -72,5 +74,6 @@ public class BulletHell : MonoBehaviour{
 	    if (Input.GetKeyDown(KeyCode.G)){
 	        Fire();
 	    }
+        transform.LookAt(targetPlayer.transform);
 	}
 }

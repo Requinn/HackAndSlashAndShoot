@@ -38,24 +38,41 @@ public class SweepingLaser : MonoBehaviour{
         if (_timeSinceLastDamageTick < damageTickRate){
             _timeSinceLastDamageTick += Time.deltaTime;
         }
-
-        CalculateHit();
-        if (!_isDoneSweeping){
-            _curSweepTime += Time.deltaTime;
-            transform.DORotate(new Vector3(0, sweepAngle + initAngle, 0), timeToSweep).SetEase(Ease.Linear);
-            //CalculateHit();
-            if (_curSweepTime > timeToSweep){
-                _isDoneSweeping = true;
-            }
+        if (Input.GetKeyDown(KeyCode.Y)){
+            StartSweep();
         }
         
     }
-
-    public void StartSweep(float startAngle = 0f, float sweepAmount = 90f){
+    /// <summary>
+    /// Start a laser sweep with these parameters
+    /// </summary>
+    /// <param name="startAngle"></param>
+    /// <param name="sweepAmount"></param>
+    /// <param name="sweepTime"></param>
+    public void StartSweep(float startAngle = 0f, float sweepAmount = 90f, float sweepTime = 7f){
         _isDoneSweeping = false;
         initAngle = startAngle;
         sweepAngle = sweepAmount;
+        timeToSweep = sweepTime;
+        transform.rotation = Quaternion.Euler(0, initAngle, 0);
         _curSweepTime = 0f;
+        Timing.RunCoroutine(SweepRoutine());
+        transform.DORotate(new Vector3(0, sweepAngle + initAngle, 0), timeToSweep).SetEase(Ease.Linear);//do the tween here so it doesn't break
+    }
+
+    ///handles when to show and disable the laser
+    IEnumerator<float> SweepRoutine(){
+        while (!_isDoneSweeping) {
+            CalculateHit();
+            _curSweepTime += Time.deltaTime;
+            if (_curSweepTime > timeToSweep) {
+                DisableLaser();
+                _isDoneSweeping = true;
+            }
+            yield return 0f;
+        }
+        
+        yield return 0f;
     }
 
     /*
@@ -115,5 +132,10 @@ public class SweepingLaser : MonoBehaviour{
                 break;
             }
         }*/
+    }
+
+    void DisableLaser(){
+        _lineRender.positionCount = 1;
+        _lineRender.SetPosition(0, _origin);
     }
 }

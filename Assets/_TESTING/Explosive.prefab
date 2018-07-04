@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4839484252620072}
   - component: {fileID: 198496336340587922}
   - component: {fileID: 199238531347568090}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Core
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4766518248042698}
   - component: {fileID: 108128422791310280}
   - component: {fileID: 114959356720037318}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Point light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 4547832563484580}
   - component: {fileID: 135834792904046218}
   - component: {fileID: 114907333169316990}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Explosive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 4030399040964256}
   - component: {fileID: 198053707753090902}
   - component: {fileID: 199293449368051566}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4312055940539382}
   - component: {fileID: 114121098330699608}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AoeMarker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4807067028402154}
   - component: {fileID: 114542081366762460}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GroundWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 4952339769334194}
   - component: {fileID: 119697166008588732}
   - component: {fileID: 114920960276605442}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Crater
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 119486753816199124}
   - component: {fileID: 114914351243537752}
   - component: {fileID: 114179243295432010}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -157,7 +157,7 @@ GameObject:
   - component: {fileID: 198080168734488764}
   - component: {fileID: 199104996259975400}
   - component: {fileID: 114272789233857634}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -173,7 +173,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4670326551443868}
   - component: {fileID: 114257088649336952}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 4299788858996716}
   - component: {fileID: 33123187158379106}
   - component: {fileID: 23475120778391628}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AoEMarkerMAX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   - component: {fileID: 4087434279999200}
   - component: {fileID: 198173118705609458}
   - component: {fileID: 199292231630743972}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 4487656649461064}
   - component: {fileID: 33865947787058314}
   - component: {fileID: 23476361292305564}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AoEMarkerCast
   m_TagString: Untagged
   m_Icon: {fileID: 0}

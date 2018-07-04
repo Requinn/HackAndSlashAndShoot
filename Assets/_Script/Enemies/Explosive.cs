@@ -23,6 +23,7 @@ public class Explosive : Weapon{
     private Damage.DamageEventArgs args;
     private EffectSettings _effectSettings;
     //change this to use a sphere cast or something???
+
     void Start(){
         Faction = damageFaction;
         Collider = GetComponent<SphereCollider>();
@@ -66,7 +67,9 @@ public class Explosive : Weapon{
                 e.TakeDamage(this.gameObject, ref args);
                 ImpactReceiver impact = e.GetComponent<ImpactReceiver>();
                 if (impact){
-                    impact.AddImpact((e.transform.position - transform.position).normalized, Force);
+                    Vector3 explosionNormal = (e.transform.position - transform.position).normalized;
+                    explosionNormal.y = 0;
+                    impact.AddImpact(explosionNormal, Force);
                 }
             }
         }

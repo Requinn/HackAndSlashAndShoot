@@ -97,7 +97,7 @@ namespace JLProject{
         /// gets mous input
         /// </summary>
         private void MouseInput(){
-            //check for blocking
+            ////check for blocking
             if (Input.GetMouseButton(1) && CurrentShield != null){
                 CancelCharge();
                 if (!CurrentShield.broken){
@@ -113,6 +113,10 @@ namespace JLProject{
                             AdjustSpeed(shieldedSpeed);
                         }
                     }
+                }
+                else {
+                    ResetSpeed();
+                    CurrentShield.blocking = false;
                 }
             }
             //stop blocking
