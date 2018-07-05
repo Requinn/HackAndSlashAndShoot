@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 135996888990347520}
   - component: {fileID: 114683683199612630}
   m_Layer: 2
-  m_Name: BullethellProjectile
+  m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

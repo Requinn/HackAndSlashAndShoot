@@ -13,6 +13,7 @@ public class MortarBoss : AIEntity{
     public SweepingLaser[] lasers;
     public BulletHell[] bullets;
     public BombardWeapon phase1Unique;
+    public WeakPoint[] vulnSpot;
 
     private float bulletCooldown = 6f;
     private float laserCooldown = 12f;
@@ -20,13 +21,51 @@ public class MortarBoss : AIEntity{
     private float laserCDstep = 1f; //how often the laser cd is lowered per phase
     private int currentPhase = 1;
 
+    public float[] phaseThresholds; //what health do we change phases at
+
     private int phaseOneSweepDirection = 1;
+
 	// Use this for initialization
 	void OnEnable () {
 		InvokeRepeating("FireLaser", 5f, laserCooldown);
         InvokeRepeating("FireBullets", 8f, bulletCooldown);
         InvokeRepeating("FireUnique", 25f, 20f);
+	    TookDamage += CheckPhase;
 	}
+
+    /// <summary>
+    /// check our health every hit to change phase
+    /// </summary>
+    /// <param name="damage"></param>
+    private void CheckPhase(Damage.DamageEventArgs damage){
+        if (HealthPercent() <= phaseThresholds[currentPhase]){
+            StartVulnerability(currentPhase);
+        }
+    }
+
+    /// <summary>
+    /// open any weakpoints that haven't been destroyed
+    /// </summary>
+    /// <param name="phase"></param>
+    void StartVulnerability(int phase){
+        foreach (var v in vulnSpot) {
+            if (!v.isDestroyed) {
+                v.Open();
+                v.WeakPointBroken += RecieveWeakPoint;
+            }
+        }
+    }
+
+    /// <summary>
+    /// recieve a hit from the weakpoint
+    /// </summary>
+    public void RecieveWeakPoint(){
+        foreach (var v in vulnSpot){
+            v.WeakPointBroken -= RecieveWeakPoint;
+        }
+        currentPhase++;
+        //do post phase change stuff
+    }
 
     /// <summary>
     /// Handles the sweeping Lasers
