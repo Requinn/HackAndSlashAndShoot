@@ -24,6 +24,7 @@ public class Explosive : Weapon{
     private EffectSettings _effectSettings;
     //change this to use a sphere cast or something???
 
+    private CoroutineHandle _explosionCountdown;
     void Start(){
         Faction = damageFaction;
         Collider = GetComponent<SphereCollider>();
@@ -51,8 +52,17 @@ public class Explosive : Weapon{
             effect.transform.localPosition = new Vector3(0f, 10f, 0f);
             effect.SetActive(true);
         }
-        Timing.RunCoroutine(Explode());
+        _explosionCountdown = Timing.RunCoroutine(Explode());
         
+    }
+
+    /// <summary>
+    /// STOP EXPLODING (COWARDS)
+    /// Also destroys this bomb
+    /// </summary>
+    public void Extinguish(){
+        Timing.KillCoroutines(_explosionCountdown);
+        Destroy(gameObject);
     }
 
     //replace list addition and removal with a physics.overlap pshere

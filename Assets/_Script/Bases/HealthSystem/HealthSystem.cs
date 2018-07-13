@@ -104,6 +104,30 @@ namespace JLProject{
         }
 
         /// <summary>
+        /// take damage unmitigated by armor
+        /// </summary>
+        /// <param name="source"></param>
+        /// <param name="args"></param>
+        public virtual void TakeRawDamage(object source, ref Damage.DamageEventArgs args){
+            if (shield != null && shield.blocking) {
+                if (floater) floater.SpawnShieldText(args.DamageValue);
+                shield.Block(args.DamageValue);
+            }
+            else {
+                if (_maximumhealth > 0 && args.SourceFaction != _faction) {
+                    _currenthealth = Mathf.Clamp(_currenthealth - args.DamageValue, 0, _maximumhealth);
+                    Damage.DamageEventArgs temp = args;
+                    temp.DamageValue = args.DamageValue;
+                    if (floater) floater.SpawnDamageText(args.DamageValue);
+                    if (TookDamage != null) TookDamage(temp);
+                    UpdateHealthUI();
+                    if (_currenthealth == 0) {
+                        HandleDeath();
+                    }
+                }
+            }
+        }
+        /// <summary>
         /// Calculates the effective damage on the HealthManager, AFTER mutators.
         /// Override this for changing how damage is handled specifically on this class.
         /// Alternatively, attach a mutator. -Michael W.

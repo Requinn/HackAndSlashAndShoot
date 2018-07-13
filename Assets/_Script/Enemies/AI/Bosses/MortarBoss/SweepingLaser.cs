@@ -43,6 +43,7 @@ public class SweepingLaser : MonoBehaviour{
         }
         
     }
+    //Consider using an animation here to do a rotation that isn't in a wrong direction
     /// <summary>
     /// Start a laser sweep with these parameters
     /// </summary>

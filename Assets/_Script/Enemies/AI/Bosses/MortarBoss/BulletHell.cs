@@ -59,7 +59,7 @@ public class BulletHell : MonoBehaviour{
                 //Debug.Log(curAngle);
                 GameObject go = Instantiate(projectile, transform.position,
                     Quaternion.Euler(0, transform.rotation.eulerAngles.y + curAngle, 0));
-                go.GetComponent<Rigidbody>().velocity = go.transform.forward * 10f;
+                go.GetComponent<Rigidbody>().velocity = go.transform.forward * 5f;
                 Destroy(go, 5f);
                 curAngle += angleStep;
             }
