@@ -16,6 +16,7 @@ public class MortarBoss : AIEntity{
     public SweepingLaser[] lasers;
     public BulletHell[] bullets;
     public BombardWeapon phase1Unique;
+    public BombardWeapon phase2Unique;
     public Explosive roomNuke;
     public WeakPoint[] vulnSpot;
     public WeakPoint HeadHitBox; //hitbox used for the head, will take more damage
@@ -91,9 +92,11 @@ public class MortarBoss : AIEntity{
     /// </summary>
     /// <param name="damage"></param>
     private void CheckPhase(Damage.DamageEventArgs damage = default(Damage.DamageEventArgs)){
-        if (HealthPercent() <= phaseThresholds[currentPhase]){
-            currentPhase++;
-            StartVulnerability(currentPhase);
+        if (currentPhase < phaseThresholds.Length){ //check to make sure we don't go to a third threshold for this  3 phase fight
+            if (HealthPercent() <= phaseThresholds[currentPhase]){
+                currentPhase++;
+                StartVulnerability(currentPhase);
+            }
         }
     }
 
@@ -150,12 +153,13 @@ public class MortarBoss : AIEntity{
     /// <returns></returns>
     private IEnumerator<float> ExposeHead(){
         _headCollider.enabled = true;
-        HeadHitBox.transform.DOMove(downedPosition.position, 1.2f, false);
+        HeadHitBox.transform.DOMove(downedPosition.position, 1.2f, false); //move head back down
         yield return Timing.WaitForSeconds(HeadExposureTime);
-        HeadHitBox.transform.DOMove(activePosition.position, 2f);
+        HeadHitBox.transform.DOMove(activePosition.position, 2f); 
         _headCollider.enabled = false;
         EnableAllAttacks();
     }
+
     /// <summary>
     /// Handles the sweeping Lasers
     /// </summary>
@@ -165,8 +169,8 @@ public class MortarBoss : AIEntity{
             phaseOneSweepDirection = -phaseOneSweepDirection;
         }
         if (currentPhase == 1){
-            lasers[0].StartSweep(-150f, 180f, 8f);
-            lasers[2].StartSweep(150f, -180, 8f);
+            lasers[0].StartSweep(-150f, 181f, 8f);
+            lasers[2].StartSweep(150f, -181f, 8f);
         }
         if (currentPhase == 2){
             //have one laser do a constant slow sweep while the two side ones do fast big sweeps
@@ -178,16 +182,7 @@ public class MortarBoss : AIEntity{
     /// handles the mini bullet hell
     /// </summary>
     private void FireBullets(){
-        if (currentPhase == 0) {
-            bullets[1].Fire();
-        }
-        if (currentPhase == 1) {
-            bullets[1].Fire();
-        }
-        if (currentPhase == 2) {
-            //have one laser do a constant slow sweep while the two side ones do fast big sweeps
-            bullets[1].Fire();
-        }
+        bullets[currentPhase].Fire();
     }
 
     /// <summary>
@@ -201,7 +196,7 @@ public class MortarBoss : AIEntity{
             phase1Unique.Fire();
         }
         if (currentPhase == 1) {
-            //nothing yet
+            phase2Unique.Fire();
         }
         if (currentPhase == 2) {
             //nothing yet

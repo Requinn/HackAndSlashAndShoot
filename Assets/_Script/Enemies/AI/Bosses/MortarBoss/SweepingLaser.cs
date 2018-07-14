@@ -38,9 +38,6 @@ public class SweepingLaser : MonoBehaviour{
         if (_timeSinceLastDamageTick < damageTickRate){
             _timeSinceLastDamageTick += Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.Y)){
-            StartSweep();
-        }
         
     }
     //Consider using an animation here to do a rotation that isn't in a wrong direction
@@ -63,7 +60,7 @@ public class SweepingLaser : MonoBehaviour{
 
     ///handles when to show and disable the laser
     IEnumerator<float> SweepRoutine(){
-        while (!_isDoneSweeping) {
+        while (!_isDoneSweeping && this) { //only do the sweep when we're alive
             CalculateHit();
             _curSweepTime += Time.deltaTime;
             if (_curSweepTime > timeToSweep) {
