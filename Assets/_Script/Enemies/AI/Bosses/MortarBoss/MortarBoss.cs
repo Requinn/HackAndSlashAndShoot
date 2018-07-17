@@ -21,12 +21,14 @@ public class MortarBoss : AIEntity{
     public WeakPoint[] vulnSpot;
     public WeakPoint HeadHitBox; //hitbox used for the head, will take more damage
     private BoxCollider _headCollider;
-    public float roomNukeTimer = 15f;
+    public float roomNukeTimer = 10f;
     public float HeadExposureTime = 10f;
     private float bulletCooldown = 6f;
     private float laserCooldown = 12f;
     private float bulletCDstep = 2f; //how much we lower the bulelt hell cooldown by per phase;
     private float laserCDstep = 1f; //how often the laser cd is lowered per phase
+    private bool _interrupted = false; //did we get interrupted
+    public float _timeInChannel = 0f; //how long have we spent doing our phase transition
     public int currentPhase = 0;
 
     private Explosive _instantiatedNuke;
@@ -105,6 +107,7 @@ public class MortarBoss : AIEntity{
     /// </summary>
     /// <param name="phase"></param>
     void StartVulnerability(int phase){
+        Debug.Log("entering Vuln");
         CancelAllAttacks();
         StartCastingWipe();
         WeakPointExposed(roomNukeTimer);
@@ -121,14 +124,43 @@ public class MortarBoss : AIEntity{
     /// </summary>
     private void StartCastingWipe(){
         _instantiatedNuke = Instantiate(roomNuke, transform.position + new Vector3(5,0,-5), Quaternion.identity); //created at the offset center
+        _instantiatedNuke.CastTime = roomNukeTimer;
         _instantiatedNuke.Fire();
-        Invoke("MissedWeakPoint", _instantiatedNuke.CastTime);
+        Timing.RunCoroutine(CheckForInterruption());
+    }
+
+    /// <summary>
+    /// Check and handle interruptions in the casting of the nuke
+    /// This should fix multifiring weapons on later phases, and possibly the lasers
+    /// </summary>
+    private IEnumerator<float> CheckForInterruption(){
+        Debug.Log("Starting wipe cast");
+        _timeInChannel = 0f;
+        //wait until we finish casting to provoke a missed call
+        while (_timeInChannel < _instantiatedNuke.CastTime){
+            float wait = Time.deltaTime;
+            _timeInChannel += wait;
+            //unless we do get interrupted then leave
+            if (_interrupted) {
+                break;
+            }
+            yield return Timing.WaitForSeconds(wait); //fake update cycles out of update()
+        }
+        Debug.Log(_interrupted);
+        if (!_interrupted) {
+            Invoke("MissedWeakPoint", _instantiatedNuke.CastTime);
+        }
+        if (_interrupted){
+            _interrupted = false; //toggle the bool to false and leave
+        }
+        yield return 0f;
     }
 
     /// <summary>
     /// recieve a hit from the weakpoint, bomb is gone, get free damage
     /// </summary>
     public void RecieveWeakPoint(){
+        _interrupted = true;
         foreach (var v in vulnSpot){
             v.WeakPointBroken -= RecieveWeakPoint; //unsub from the weakpoints to prevent accidents
         }
@@ -144,6 +176,7 @@ public class MortarBoss : AIEntity{
         foreach (var v in vulnSpot) {
             v.WeakPointBroken -= RecieveWeakPoint; //unsub from the weakpoints to prevent accidents
         }
+        Debug.Log("enabled as a miss");
         EnableAllAttacks();
     }
 
@@ -171,6 +204,7 @@ public class MortarBoss : AIEntity{
         if (currentPhase == 1){
             lasers[0].StartSweep(-150f, 181f, 8f);
             lasers[2].StartSweep(150f, -181f, 8f);
+            phaseOneSweepDirection = -phaseOneSweepDirection;
         }
         if (currentPhase == 2){
             //have one laser do a constant slow sweep while the two side ones do fast big sweeps

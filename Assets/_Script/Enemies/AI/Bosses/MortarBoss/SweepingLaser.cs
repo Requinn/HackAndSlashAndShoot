@@ -26,6 +26,7 @@ public class SweepingLaser : MonoBehaviour{
     private RaycastHit _playerHit;
     private Damage.DamageEventArgs args;
 
+    private Sequence _rotationSequence;
     void Start(){
         args = new Damage.DamageEventArgs(50f, this.transform.position, Damage.DamageType.Neutral, Damage.Faction.Enemy);
         _lineRender = GetComponent<LineRenderer>();
@@ -48,6 +49,7 @@ public class SweepingLaser : MonoBehaviour{
     /// <param name="sweepAmount"></param>
     /// <param name="sweepTime"></param>
     public void StartSweep(float startAngle = 0f, float sweepAmount = 90f, float sweepTime = 7f){
+        DOTween.Kill(this);
         _isDoneSweeping = false;
         initAngle = startAngle;
         sweepAngle = sweepAmount;
@@ -55,7 +57,7 @@ public class SweepingLaser : MonoBehaviour{
         transform.rotation = Quaternion.Euler(0, initAngle, 0);
         _curSweepTime = 0f;
         Timing.RunCoroutine(SweepRoutine());
-        transform.DORotate(new Vector3(0, sweepAngle + initAngle, 0), timeToSweep).SetEase(Ease.Linear);//do the tween here so it doesn't break
+        _rotationSequence.Append(transform.DORotate(new Vector3(0, sweepAngle + initAngle, 0), timeToSweep).SetEase(Ease.Linear));//do the tween here so it doesn't break
     }
 
     ///handles when to show and disable the laser
