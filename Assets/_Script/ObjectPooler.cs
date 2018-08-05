@@ -67,7 +67,7 @@ public class ObjectPooler : MonoBehaviour{
                 }
             }
         }
-        //this code didn't really do anything
+        //this code didn't really do anything, was meant to expand the list
         /*
         foreach (var item in itemsToPool){
             if (item.objectToPool.tag == tag){
