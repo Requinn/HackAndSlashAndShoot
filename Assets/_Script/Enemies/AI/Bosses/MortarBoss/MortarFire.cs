@@ -10,7 +10,7 @@ namespace JLProject{
         public MortarBoss Boss;
         public GameObject arrowSwitchMarker;
         private float _currentTime = 0f;
-        private bool _readyToFire;
+        private bool _readyToFire = true;
         private Ray _fwdRay;
         private RaycastHit _fwdHit;
 
@@ -38,7 +38,10 @@ namespace JLProject{
         /// </summary>
         /// <param name="timer"></param>
         private void MakeSelfObvious(float timer){
-            Timing.RunCoroutine(ShowVisual(timer));
+            //if we haven't been fired yet
+            if (_readyToFire){
+                Timing.RunCoroutine(ShowVisual(timer));
+            }
         }
 
         /// <summary>
@@ -79,6 +82,8 @@ namespace JLProject{
             if (Physics.Raycast(_fwdRay, out _fwdHit, 25f)){
                 if (_fwdHit.transform.CompareTag("Enemy")){
                     _fwdHit.transform.GetComponent<Entity>().TakeDamage(this, ref _damageArgs);
+                    //once we fire, we can never fire again
+                    _readyToFire = false;
                 }
             }
         }
