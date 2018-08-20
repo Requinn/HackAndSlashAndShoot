@@ -14,12 +14,17 @@ namespace JLProject{
         public float movementSpeed = 5.0f;
         protected float speed;
         private Vector3 _pos, _dir;
-
+        public SkinnedMeshRenderer _enemyMesh;
+        private Color _originalMeshColor;
         protected RaycastHit[] surroundingObjects;
         
         // Use this for initialization
         protected new void Start(){
             base.Start();
+            //_enemyMesh = GetComponent<Renderer>().material;
+            if (_enemyMesh){
+                _originalMeshColor = _enemyMesh.material.color;
+            }
             speed = movementSpeed;
         }
 
@@ -37,6 +42,29 @@ namespace JLProject{
             else{
                 if (AnimController) AnimController.Idle();
             }
+        }
+
+        /// <summary>
+        /// Perform a quick flash before attacking
+        /// </summary>
+        public void WarningFlash(){
+            if (_enemyMesh){
+                Timing.RunCoroutine(FlashRoutine());
+            }
+
+        }
+
+        private IEnumerator<float> FlashRoutine(){
+            float elapsedTime = 0f;
+            while (elapsedTime < 0.1f){
+                _enemyMesh.material.color = Color.red;
+                yield return Timing.WaitForSeconds(0.06f);
+                _enemyMesh.material.color = Color.white;
+                yield return Timing.WaitForSeconds(0.06f);
+                elapsedTime += Time.deltaTime;
+            }
+
+            yield return 0f;
         }
 
         private Quaternion _lookrotation;
