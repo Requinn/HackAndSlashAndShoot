@@ -5745,7 +5745,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-498614
+  m_Name: pb_Mesh-2214
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -8941,6 +8941,10 @@ Prefab:
       propertyPath: Radius
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1197952847189524, guid: c20e1fb7992901a45825cbb962bc00f6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c20e1fb7992901a45825cbb962bc00f6, type: 2}
   m_IsPrefabParent: 0
@@ -11994,6 +11998,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 1197952847189524, guid: c20e1fb7992901a45825cbb962bc00f6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907333169316990, guid: c20e1fb7992901a45825cbb962bc00f6,
+        type: 2}
+      propertyPath: OneUse
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c20e1fb7992901a45825cbb962bc00f6, type: 2}
   m_IsPrefabParent: 0
@@ -12102,6 +12115,12 @@ Transform:
   m_Father: {fileID: 18778079}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1257028297 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114194986810235772, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1605732666}
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &1294716512
 Prefab:
   m_ObjectHideFlags: 0
@@ -13057,6 +13076,10 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 630684134}
+    - target: {fileID: 1033806416611524, guid: 5d104cad90e93cc4bbff5b1b7e8dc26f, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d104cad90e93cc4bbff5b1b7e8dc26f, type: 2}
   m_IsPrefabParent: 0
@@ -13474,7 +13497,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-17832
+  m_Name: pb_Mesh-2238
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -14042,12 +14065,12 @@ Prefab:
     - target: {fileID: 114195392002542370, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
         type: 2}
       propertyPath: _maximumhealth
-      value: 3500
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 114195392002542370, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
         type: 2}
       propertyPath: _currenthealth
-      value: 3500
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 114195392002542370, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
         type: 2}
@@ -14058,6 +14081,31 @@ Prefab:
         type: 2}
       propertyPath: m_SelectedEditorRenderState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 224733251190530598, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420290716068482, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
+        type: 2}
+      propertyPath: lerpedHealthBar
+      value: 
+      objectReference: {fileID: 1257028297}
+    - target: {fileID: 224984974197787792, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420290716068482, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
+        type: 2}
+      propertyPath: lerpSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114420290716068482, guid: cee84bd61f1bfe645a2972eb1d1fe71e,
+        type: 2}
+      propertyPath: lerpDelay
+      value: 0.35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cee84bd61f1bfe645a2972eb1d1fe71e, type: 2}
