@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour{
     public Image healthBar;
     public Image lerpedHealthBar; //this healthbar is going to be used to show the effect when taking damage
-    public float lerpSpeed = 7f; //how fast do we lerp
-    public float lerpDelay = .5f; //How soon after taking damage do we lerp
+    public float lerpSpeed = 10f; //how fast do we lerp
+    public float lerpDelay = .35f; //How soon after taking damage do we lerp
     private bool _canLerp = false;
     private CoroutineHandle delayHandle;
     private float TargetValue {

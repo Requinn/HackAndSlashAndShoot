@@ -50,6 +50,9 @@ public class Cloak : MonoBehaviour{
         isCloaked = false;
         Timing.KillCoroutines(_cloakHandle);
         foreach (var obj in objectsToHide) {
+            if (!this) {
+                return;
+            }
             Renderer r = obj.GetComponent<Renderer>();
             Canvas c = obj.GetComponent<Canvas>();
             if (r) {
