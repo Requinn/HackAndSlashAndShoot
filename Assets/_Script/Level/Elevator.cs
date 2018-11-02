@@ -20,6 +20,7 @@ namespace JLProject{
 
         // Update is called once per frame
         void Update(){
+            // movement of the elevator
             if(!V3Equal(transform.position, _destinationPosition)) {
                 transform.position = Vector3.MoveTowards(transform.position, _destinationPosition, Time.smoothDeltaTime * velocity);
                 if (V3Equal(transform.position,_destinationPosition)){
@@ -34,7 +35,8 @@ namespace JLProject{
                     _inTransit = false;
                 }
             } 
-            if (_occupied && Input.GetKeyDown(KeyCode.E) && !_inTransit){
+            //input and destination checking, only moves when we have both destinations set
+            if (_occupied && Input.GetKeyDown(KeyCode.E) && !_inTransit && (pointA && pointB)){
                 _inTransit = true;
                 if (V3Equal(transform.position, pointB.position)) {  
                     if (platformDoorB) platformDoorB.SetActive(true);
@@ -61,7 +63,9 @@ namespace JLProject{
         void OnTriggerEnter(Collider c){
             if (c.CompareTag("Player")){
                 c.transform.SetParent(transform, true);
-                elevatorSwitch.Toggle();
+                if ((pointA && pointB)) {
+                    elevatorSwitch.Toggle();
+                }
                 _occupied = true;
             }
         }
@@ -69,7 +73,9 @@ namespace JLProject{
         void OnTriggerExit(Collider c){
             if (c.CompareTag("Player")){
                 c.transform.parent = null;
-                elevatorSwitch.Toggle();
+                if ((pointA && pointB)) {
+                    elevatorSwitch.Toggle();
+                }
                 _occupied = false;
             }
         }

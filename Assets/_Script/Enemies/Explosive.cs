@@ -9,6 +9,9 @@ using UnityEngine;
 public class Explosive : Weapon{
     [Header("Explosive Attributes")]
     public GameObject effect;
+    [SerializeField]
+    private GameObject _postExplosionObject;
+    //TODO: All this stuff has to be cleaned up, we are inheriting from Weapon and much of this is kind of already there?
     public float Damage = 10.0f;
     public float Force = 25.0f;
     public float CastTime = 1.5f;
@@ -48,6 +51,7 @@ public class Explosive : Weapon{
 
     public override void Fire(){
         MarkerScript.StartCast(CastTime, Radius);
+        //TODO: This effect shit needs to change
         if (effect){
             effect.transform.localPosition = new Vector3(0f, 10f, 0f);
             effect.SetActive(true);
@@ -69,7 +73,7 @@ public class Explosive : Weapon{
     //save some tiem on read write and have a more controllable link to the aoe markers
     private IEnumerator<float> Explode(){
         yield return Timing.WaitForSeconds(CastTime);
-
+        
         Collider[] targets = Physics.OverlapSphere(transform.position, Radius);
         foreach (var t in targets){
             Entity e = t.GetComponent<Entity>();
@@ -82,6 +86,10 @@ public class Explosive : Weapon{
                     impact.AddImpact(explosionNormal, Force);
                 }
             }
+        }
+        //If we have something to spawn after
+        if (_postExplosionObject) {
+            Instantiate(_postExplosionObject, transform.position, Quaternion.identity);
         }
         if (OneUse){
             Destroy(gameObject, 3f);
