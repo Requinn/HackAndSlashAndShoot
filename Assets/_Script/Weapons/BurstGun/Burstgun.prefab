@@ -113,6 +113,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 2
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -128,6 +129,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -1260,8 +1262,7 @@ MonoBehaviour:
   _reloadSpeed: 0.7
   _currentMag: 16
   _maximumMag: 16
-  _chargeTime: 3
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
   isAutomatic: 0
   StatsList:
   - Damage
@@ -1280,7 +1281,8 @@ MonoBehaviour:
   faction: 1
   burstCount: 8
   burstDelay: 0.07
-  accuracy: 4
+  deviation: 4
+  _lockMovement: 1
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}

@@ -7,10 +7,10 @@ using UnityEngine;
 namespace JLProject{
     public class EnemyAttackAction : FsmStateAction{
         public FsmOwnerDefault gameobject;
-        private Weapon weapon;
+        private AIEntity entity;
 
         public override void Awake(){
-            weapon = Fsm.GetOwnerDefaultTarget(gameobject).GetComponentInChildren<Weapon>();
+            entity = Fsm.GetOwnerDefaultTarget(gameobject).GetComponentInChildren<AIEntity>();
         }
 
         public override void OnEnter() {
@@ -24,8 +24,8 @@ namespace JLProject{
         }
 
         public void Attack(){
-            if (weapon._canAttack){
-                weapon.Fire();
+            if (entity.weapon._canAttack){
+                entity.weapon.Fire();
             }
         }
     }

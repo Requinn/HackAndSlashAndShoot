@@ -81,6 +81,7 @@ namespace JLProject.Weapons{
         /// </summary>
         /// <returns></returns>
         public override IEnumerator<float> Reload(){
+            
             _canBlock = _canAttack = false;
             yield return Timing.WaitForSeconds(AttackDelay);
             _owningObj.ResetSpeed(); //attack is over

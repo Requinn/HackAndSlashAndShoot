@@ -9,7 +9,9 @@ using UnityEngine;
 public class BurstGun : Gun{
     public int burstCount = 5;
     public float burstDelay = 0.05f;
-    public float accuracy = 0.1f;
+    public float deviation = 0.1f; //lower is better
+    [SerializeField]
+    private bool _lockMovement = true;
     private AudioSource _gunSounds;
     public AudioClip[] gunAudio;
     public Transform BarrelPoint;
@@ -45,7 +47,9 @@ public class BurstGun : Gun{
                 i++;
             }
         }
-        _owningObj.ResetSpeed(); //burst over
+        if (_lockMovement) {
+            _owningObj.ResetSpeed(); //burst over
+        }
     }
 
     private void ReactivateBulletObj(){
@@ -53,8 +57,8 @@ public class BurstGun : Gun{
         if (bullet != null){
             bullet.GetComponent<IProjectile>().SetFaction(faction);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
-            float deviation = Random.Range(-accuracy / 2, accuracy / 2); //a spray of bullets
-            rb.velocity = transform.TransformDirection(new Vector3(deviation, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
+            float accuracy = Random.Range(-deviation / 2, deviation / 2); //a spray of bullets
+            rb.velocity = transform.TransformDirection(new Vector3(accuracy, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
             bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
@@ -67,8 +71,10 @@ public class BurstGun : Gun{
         //get bullet from the object pool
         //pool objects on level start
         //don't allow weapon swapping mid mission to avoid repooling mid level
-        if (_canAttack){
-            _owningObj.AdjustSpeed(0f); //can't move during a burst
+        if (_canAttack) {
+            if (_lockMovement) {
+                _owningObj.AdjustSpeed(0f); //can't move during a burst
+            }
             Timing.RunCoroutine(Burst());
             _delayHandle = Timing.RunCoroutine(Delay());
         }

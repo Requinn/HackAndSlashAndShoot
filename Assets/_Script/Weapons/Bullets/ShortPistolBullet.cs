@@ -51,7 +51,13 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         Entity ent = hitObject.GetComponent<Entity>();
         Switch swtch = hitObject.GetComponent<Switch>();
         BreakableObject brk = hitObject.GetComponent<BreakableObject>();
+        //We did hit an entity
         if (ent != null) {
+            //if we are the enemy, and what we hit was labeled an enemy, continue through them
+            if(args.SourceFaction == Damage.Faction.Enemy && ent.Faction == Damage.Faction.Enemy) {
+                return;
+            }
+            //if they aren't a player, or an ally
             if (ent.Faction != Damage.Faction.Player || ent.Faction != Damage.Faction.Allied) {
                 //fix this later
                 args.HitSourceLocation = transform.position;

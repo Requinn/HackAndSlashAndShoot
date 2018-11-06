@@ -13,6 +13,7 @@ namespace JLProject{
         public GameObject pauseUI;
         public MouseReticle reticle;
         private PauseMenu _pauseMenu;
+        public PlayerController PlayerReference;
 
         void Awake(){
             if (Controller != null && Controller != this){
@@ -30,6 +31,8 @@ namespace JLProject{
             _pauseMenu.Restart += RestartLevel;
             _pauseMenu.LoadMain += LoadMain; 
             _pauseMenu.ResumeGame += TogglePause;
+
+            PlayerReference = FindObjectOfType<PlayerController>();
             //world triggers
         }
 
