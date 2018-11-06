@@ -27,15 +27,18 @@ public class WeaponCheckAction : FsmStateAction {
     public override void OnUpdate() {
         CheckWeapon();
     }
+
     public void CheckWeapon(){
         if (weapon != null){
             weaponReady.Value = weapon._canAttack;
             if (weapon.type == Weapon.Type.Melee){
                 Melee m = weapon.GetComponent<Melee>();
-                if (m.CurMag < m.MaxMag){
+                if (m.CurrentCombo > 0) {
+                    Debug.Log(m.CurrentCombo);
                     inCombo.Value = true;
                 }
-                else inCombo.Value = false;
+                else { inCombo.Value = false; }
+                Debug.Log(inCombo.Value);
             }
         }
     }
