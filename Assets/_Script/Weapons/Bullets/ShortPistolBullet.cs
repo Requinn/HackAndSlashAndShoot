@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using JLProject;
@@ -20,6 +21,7 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         _curPos = transform.position;
         _lifetime = CalculateTimeToLive();
         _repoolHandle = Timing.RunCoroutine(DelayedRepool(_lifetime));
+
     }
 
     //Raycast ahead for high velocity bullets
@@ -102,10 +104,6 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         gameObject.SetActive(false);
     }
 
-    public float GetVelocity(){
-        return Velocity;
-    }
-
     /// <summary>
     /// Apply the status effect, refreshing if it exists
     /// </summary>
@@ -118,5 +116,19 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
         else{
             E.Afflictions.Add(Instantiate(SO, E.transform));
         }
+    }
+
+    public void ResetLife() {
+        Timing.KillCoroutines(_repoolHandle);
+        _lifetime = CalculateTimeToLive();
+        _repoolHandle = Timing.RunCoroutine(DelayedRepool(_lifetime));
+    }
+
+    public float GetVelocity() {
+        return Velocity;
+    }
+
+    public Damage.Faction GetFaction() {
+       return args.SourceFaction;
     }
 }
