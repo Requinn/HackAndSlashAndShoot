@@ -35,19 +35,17 @@ public class OrbiterAttackDrone : AIEntity {
         //if not orbiting the player, find them
         //if in orbit range, begin orbiting
         _currentDistToPlayerSQ = Vector3.SqrMagnitude(transform.position - target.transform.position);
-        Debug.Log(Mathf.Sqrt(_currentDistToPlayerSQ));
         float playerDistSQ = _maximumPlayerOrbitDistance * _maximumPlayerOrbitDistance;
 
         if (_currentDistToPlayerSQ > playerDistSQ + (_startChaseDistanceDiff * _startChaseDistanceDiff)) {
             _isOrbiting = false;
-        }
-        if (_currentDistToPlayerSQ > playerDistSQ + (_startChaseDistanceDiff * _startChaseDistanceDiff)) {
             _NMAgent.Move(transform.forward * MovementSpeed * Time.deltaTime);
         }
         else {
             transform.RotateAround(target.transform.position, Vector3.up, _orbitSpeed * Time.deltaTime);
             Vector3 adjustedPosition = ((transform.position - target.transform.position).normalized * _maximumPlayerOrbitDistance) + target.transform.position;
             transform.position = Vector3.Lerp(transform.position, adjustedPosition, Time.deltaTime * _orbitAdjustmentDelay);
+            _NMAgent.updatePosition = true; //maybe this will fix the jumpiness
             _isOrbiting = true;
         }
         

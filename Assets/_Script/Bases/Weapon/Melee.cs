@@ -14,7 +14,7 @@ namespace JLProject.Weapons{
         public int[] force;
         public int[] momentum;
         public Damage.Faction faction;
-        private ImpactReceiver _parentImpactRcvr;
+        protected ImpactReceiver _parentImpactRcvr;
 
         public int CurrentCombo{
             get{ return MaxMag - _currentMag; }
@@ -65,7 +65,7 @@ namespace JLProject.Weapons{
         public override void ChargeAttack(){
         }
 
-        private void PushForward(int combo){
+        protected void PushForward(int combo){
             _parentImpactRcvr.AddImpact(_parentImpactRcvr.transform.forward.normalized, momentum[combo]);
         }
 
@@ -91,7 +91,7 @@ namespace JLProject.Weapons{
             _currentMag = MaxMag;
         }
 
-        private IEnumerator<float> WaveDelay(int hitboxNo){
+        protected IEnumerator<float> WaveDelay(int hitboxNo){
             yield return Timing.WaitForSeconds(0.025f);
             if (this) { 
                 WaveComponent[hitboxNo].SetActive(false);

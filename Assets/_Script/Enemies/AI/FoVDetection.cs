@@ -13,23 +13,22 @@ namespace JLProject{
 
         public Vector3 lastSeenPosition;
 
-        //public string debugstr;
-        public bool drawBounds = false;
-
         public bool inRange = false;
         public bool inAttackCone = false;
         public bool targetFound = false;
         private Transform _eyeTransform;
-
+        private float _distanceToTarget;
+        
+        /// <summary>
+        /// Get the distance to the current Target being looked at
+        /// </summary>
+        public float GetDistanceToTarget { get { return _distanceToTarget; } }
         // Use this for initialization
         void Awake(){
             _eyeTransform = transform;
         }
 
         void Update(){
-            if (drawBounds){
-                DrawBounds();
-            }
         }
 
         /// <summary>
@@ -42,9 +41,10 @@ namespace JLProject{
         public bool CanSeeTarget(Transform target){
             if (target == null) return false; //target doesn't exist
             var sightDistance = _eyeTransform.position - target.position;
+            _distanceToTarget = sightDistance.magnitude; //using a magnitude, if performance dips look here
             //debugstr = "";
             //within view range
-            if (sightDistance.magnitude < _maxViewRange){
+            if (_distanceToTarget < _maxViewRange){
                 //debugstr += "Within Range > ";
                 inRange = true;
                 //check if the target is behind us
@@ -87,27 +87,6 @@ namespace JLProject{
             inAttackCone = false;
             inRange = false;
             return false;
-        }
-
-        private void DrawBounds(){
-            var boundsColor = Color.red;
-            var center = _eyeTransform.position + (_eyeTransform.forward * _maxViewRange);
-            var endCorner1 = center - (_eyeTransform.up * (_maxViewRange)) +
-                             (_eyeTransform.right * (_maxViewRange));
-            var endCorner2 = center + (_eyeTransform.up * (_maxViewRange)) +
-                             (_eyeTransform.right * (_maxViewRange));
-            var endCorner3 = center + (_eyeTransform.up * (_maxViewRange)) -
-                             (_eyeTransform.right * (_maxViewRange));
-            var endCorner4 = center - (_eyeTransform.up * (_maxViewRange)) -
-                             (_eyeTransform.right * _maxViewRange);
-            Debug.DrawLine(_eyeTransform.position, endCorner1, boundsColor);
-            Debug.DrawLine(_eyeTransform.position, endCorner2, boundsColor);
-            Debug.DrawLine(_eyeTransform.position, endCorner3, boundsColor);
-            Debug.DrawLine(_eyeTransform.position, endCorner4, boundsColor);
-            Debug.DrawLine(endCorner1, endCorner2, boundsColor);
-            Debug.DrawLine(endCorner2, endCorner3, boundsColor);
-            Debug.DrawLine(endCorner3, endCorner4, boundsColor);
-            Debug.DrawLine(endCorner4, endCorner1, boundsColor);
         }
     }
 }
