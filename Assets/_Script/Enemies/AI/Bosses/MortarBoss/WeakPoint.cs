@@ -9,11 +9,11 @@ using UnityEngine;
 public class WeakPoint : Entity{
     public bool isOpen = false;
     public bool isDestroyed = false;
-    private BoxCollider collider;
+    private BoxCollider _collider;
 
     void Start(){
-        collider = GetComponent<BoxCollider>();
-        collider.enabled = false;
+        _collider = GetComponent<BoxCollider>();
+        _collider.enabled = false;
     }
 
     public delegate void WeakPointBreakEvent();
@@ -65,7 +65,7 @@ public class WeakPoint : Entity{
     public void Open(){
         if (!isDestroyed){
             isOpen = true;
-            collider.enabled = true;
+            _collider.enabled = true;
         }
     }
 

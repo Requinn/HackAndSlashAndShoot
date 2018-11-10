@@ -11,8 +11,6 @@ public class MethodicalSlasher : AIEntity {
     [SerializeField]
     private float _lungeCoolDown = 15f; //How often can we perform this lunge?
     [SerializeField]
-    private float _movmentSpeed = 5f;
-    [SerializeField]
     private float _minimumCircleDistance; //how close can we get during our circle movements
     [SerializeField]
     private float _maximumCircleDistance; //how far can we get during circle movements
@@ -28,20 +26,31 @@ public class MethodicalSlasher : AIEntity {
     private float _currentCycleChangeTime = 0.0f;
     private float _timeSinceLunge = 0f;
 
+    //TODO: PROBLEM: potentially killing all coroutines tagged with this, including other MethodicalSlashers
+    private string _LungerRoutineTag = "lunge_routine";
     private bool _isLungeReady = true;
     private Vector3 _originalLocation, _trackedPlayerLocation;
 
     protected new void Start() {
         base.Start();
-        Timing.RunCoroutine(AICycle());
-        MovementSpeed = _movmentSpeed;
+        Timing.RunCoroutine(AICycle(), _LungerRoutineTag);
         _currentCirclingSpeed = _circlingSpeed;
         _currentCirclingDistance = _maximumCircleDistance;
+        OnDeath += KillSelf;
+    }
+
+    /// <summary>
+    /// When we die, disable all courtines on ourselves to stop running through a null guy
+    /// TODO: potentially disables all other MethodicalSlashers
+    /// </summary>
+    private void KillSelf() {
+        Timing.KillCoroutines(_LungerRoutineTag);
     }
 
     private CoroutineHandle LungeAttackHandle;
 
     public void Update() {
+        //Lots of timer stuff
         if (!_isLungeReady) {
             _timeSinceLunge += Time.deltaTime;
             if(_timeSinceLunge >= _lungeCoolDown) {
@@ -76,7 +85,8 @@ public class MethodicalSlasher : AIEntity {
                         //record where we are going and started
                         _trackedPlayerLocation = _vision.lastSeenPosition;
                         _originalLocation = transform.position;
-                        LungeAttackHandle = Timing.RunCoroutine(LungeAttack());
+                        //check for a wall between the player and here
+                        LungeAttackHandle = Timing.RunCoroutine(LungeAttack(), _LungerRoutineTag);
                         //wait until we finish our lunge before returning to this AI cycle
                         yield return Timing.WaitUntilDone(LungeAttackHandle);
                     }
@@ -101,20 +111,21 @@ public class MethodicalSlasher : AIEntity {
     private IEnumerator<float> LungeAttack() {
         CoroutineHandle dashHandle;
         //Math to make ourself land just short of the player
+        //Simplifaction could be done by using the player's position +1 in a direction, rather than calculating distance - 1 in a direction
         Vector3 playerOffsetToSelf = _trackedPlayerLocation - transform.position; //get the offset
         float distanceToPlayer = playerOffsetToSelf.magnitude; //get distance
         Vector3 playerDistanceUnit = playerOffsetToSelf.normalized; //get direction
         Vector3 adjustedDistance = transform.position + playerDistanceUnit * (distanceToPlayer - 1f); //multiple distance by direction minus our stopping distance added to our position
 
         //"leap" at the player
-        dashHandle = Timing.RunCoroutine(DashToLocation(adjustedDistance));
+        dashHandle = Timing.RunCoroutine(DashToLocation(adjustedDistance), _LungerRoutineTag);
         yield return Timing.WaitUntilDone(dashHandle);
         transform.LookAt(target.transform);//look at the player
         //attack
         Attack();
         yield return Timing.WaitForSeconds(.5f);
         //leap back
-        dashHandle = Timing.RunCoroutine(DashToLocation(_originalLocation));
+        dashHandle = Timing.RunCoroutine(DashToLocation(_originalLocation), _LungerRoutineTag);
         yield return Timing.WaitUntilDone(dashHandle);
 
         yield return Timing.WaitForSeconds(0.1f);
@@ -142,15 +153,9 @@ public class MethodicalSlasher : AIEntity {
         //_NMAgent.updatePosition = true; //maybe this will fix the jumpiness
     }
 
-    public override void ProjectileResponse() {
-        //nothing
-    }
-
     protected override void Attack() {
         weapon.Fire();
     }
 
-
-
-
+    public override void ProjectileResponse() { }
 }

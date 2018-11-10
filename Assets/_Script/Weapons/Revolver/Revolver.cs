@@ -43,7 +43,7 @@ public class Revolver : Gun{
                 bullet.transform.position = BarrelPoint.position;
                 bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
                 _gunSounds.PlayOneShot(gunAudio[0]);
-                bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
+                bullet.GetComponent<IProjectile>().SetDamage(AttackValue);
                 bullet.SetActive(true);
                 CurMag--;
             }

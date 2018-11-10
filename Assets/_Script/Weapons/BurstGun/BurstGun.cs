@@ -59,7 +59,7 @@ public class BurstGun : Gun{
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             float accuracy = Random.Range(-deviation / 2, deviation / 2); //a spray of bullets
             rb.velocity = transform.TransformDirection(new Vector3(accuracy, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
-            bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
+            bullet.GetComponent<IProjectile>().SetDamage(AttackValue);
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
             _gunSounds.PlayOneShot(gunAudio[0]);
@@ -90,7 +90,7 @@ public class BurstGun : Gun{
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             rb.velocity =
                 transform.TransformDirection(new Vector3(0, 0, bullet.GetComponent<IProjectile>().GetVelocity()));
-            bullet.GetComponent<ShortPistolBullet>().args.DamageValue = (AttackValue * burstCount);
+            bullet.GetComponent<IProjectile>().SetDamage(AttackValue * burstCount);
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
             _gunSounds.PlayOneShot(gunAudio[0]);

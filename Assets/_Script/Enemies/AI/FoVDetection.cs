@@ -23,6 +23,8 @@ namespace JLProject{
         /// Get the distance to the current Target being looked at
         /// </summary>
         public float GetDistanceToTarget { get { return _distanceToTarget; } }
+
+        public float GetMaxViewRange { get { return _maxViewRange; } }
         // Use this for initialization
         void Awake(){
             _eyeTransform = transform;
@@ -41,10 +43,10 @@ namespace JLProject{
         public bool CanSeeTarget(Transform target){
             if (target == null) return false; //target doesn't exist
             var sightDistance = _eyeTransform.position - target.position;
-            _distanceToTarget = sightDistance.magnitude; //using a magnitude, if performance dips look here
+            _distanceToTarget = sightDistance.sqrMagnitude; //using a magnitude, if performance dips look here
             //debugstr = "";
             //within view range
-            if (_distanceToTarget < _maxViewRange){
+            if (_distanceToTarget < _maxViewRange * _maxViewRange){
                 //debugstr += "Within Range > ";
                 inRange = true;
                 //check if the target is behind us

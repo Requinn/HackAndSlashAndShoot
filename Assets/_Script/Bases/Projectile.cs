@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace JLProject{
     public interface IProjectile{
+        void SetDamage(float damage);
         float GetVelocity();
         void ResetLife();
         void SetFaction(Damage.Faction f);

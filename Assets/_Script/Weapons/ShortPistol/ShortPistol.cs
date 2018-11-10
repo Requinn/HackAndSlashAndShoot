@@ -35,7 +35,7 @@ public class ShortPistol : Gun{
         //don't allow weapon swapping mid mission to avoid repooling mid level
         if (_canAttack){
             GameObject bullet = ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool);
-            if (bullet != null){
+            if (bullet != null) {
                 bullet.GetComponent<IProjectile>().SetFaction(faction);
                 Rigidbody rb = bullet.GetComponent<Rigidbody>();
                 rb.velocity =
@@ -44,7 +44,7 @@ public class ShortPistol : Gun{
                 bullet.transform.position = BarrelPoint.position;
                 bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
                 _gunSounds.PlayOneShot(gunAudio[0]);
-                bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue;
+                bullet.GetComponent<IProjectile>().SetDamage(AttackValue);
                 bullet.SetActive(true);
                 CurMag--;
             }
@@ -69,7 +69,7 @@ public class ShortPistol : Gun{
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
             _gunSounds.PlayOneShot(gunAudio[0]);
-            bullet.GetComponent<ShortPistolBullet>().args.DamageValue = AttackValue * 2.25f;
+            bullet.GetComponent<IProjectile>().SetDamage(AttackValue * 2.25f);
             bullet.SetActive(true);
         }
         Timing.RunCoroutine(base.Delay());

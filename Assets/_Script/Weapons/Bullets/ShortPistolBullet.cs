@@ -7,7 +7,8 @@ using MEC;
 using UnityEngine;
 
 public class ShortPistolBullet : MonoBehaviour, IProjectile{
-    public Damage.DamageEventArgs args;
+    [SerializeField]
+    private Damage.DamageEventArgs args;
     public float FlightDistance = 7.5f;
     public float Velocity = 5.0f;
     private Vector3 _curPos;
@@ -43,6 +44,10 @@ public class ShortPistolBullet : MonoBehaviour, IProjectile{
 
     public void SetFaction(Damage.Faction f){
         args.SourceFaction = f;
+    }
+
+    public void SetDamage(float damage) {
+        args.DamageValue = damage;
     }
 
     /// <summary>

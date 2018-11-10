@@ -13,6 +13,7 @@ namespace JLProject{
             Idle
 
         }
+        [SerializeField]
         private float _movementspeed;
 
         public float MovementSpeed {
