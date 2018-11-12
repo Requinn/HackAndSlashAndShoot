@@ -23,17 +23,21 @@ public class ProximityAoEEnemy : AIEntity {
 
     new void Start() {
         base.Start();
-        _damageZone.gameObject.SetActive(false);
+        if (_damageZone) {
+            _damageZone.gameObject.SetActive(false);
+        }
     }
 
     public void FixedUpdate() {
-        _overlappedObjects = Physics.OverlapSphere(transform.position, _activationRadius, playerLayerMask);
-        //if the overlap sphere detected the player
-        if (_overlappedObjects.Length > 0) {
-            _damageZone.gameObject.SetActive(true);
-        }
-        else {
-            _damageZone.gameObject.SetActive(false);
+        if (_damageZone) {
+            _overlappedObjects = Physics.OverlapSphere(transform.position, _activationRadius, playerLayerMask);
+            //if the overlap sphere detected the player
+            if (_overlappedObjects.Length > 0) {
+                _damageZone.gameObject.SetActive(true);
+            }
+            else {
+                _damageZone.gameObject.SetActive(false);
+            }
         }
     }
     public override void ProjectileResponse() {
