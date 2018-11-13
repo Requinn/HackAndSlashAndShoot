@@ -7,40 +7,55 @@ using System;
 
 public class ImmobilisingMine : BreakableObject {
     [SerializeField]
-    private float _duration = 5f;
+    private float _catchDuration = 5f;
+    [SerializeField]
+    private float _floorDuration = 10f; //how long does this last on the ground
+    [SerializeField]
+    private float _trapActivationRadius = 0.75f; //how large is the trigger area
     [SerializeField]
     private GameObject _trapVisual;
     [SerializeField]
-    private CapsuleCollider _triggerHitBox; //the hitbox to trigger this trap, maybe I could do something like overlap sphere or w/e
-    [SerializeField]
     private CapsuleCollider _breakHitBox; //this hitbox allows the player to hit the trap to break free
-    private PlayerController _playerObj;
 
-    private void OnTriggerEnter(Collider c) {
-        if(c.tag == "Player") {
-            _triggerHitBox.enabled = false;
-            //player stepped in, do stuff
-            _playerObj = c.gameObject.GetComponent<PlayerController>();
-            ActivateTrap();
-            Timing.RunCoroutine(Disable());
+    private PlayerController _playerObj;
+    private CoroutineHandle _selfDisableHandle; //store the coroutine's handle for disbaling ourself while we are on the floor
+
+    private bool _activated = false;
+    private bool _isBroken = false;
+    private Collider[] _overlapHit; //used to check if we hit something, then extra controller from
+
+    public void Update() {
+        //do an overlap sphere, checking only for the player layer and if we get something, the array should only hold one thing
+        if(!_activated) {
+            _overlapHit = Physics.OverlapSphere(transform.position, _trapActivationRadius, 1 << LayerMask.NameToLayer("Player"));
+            if (_overlapHit.Length > 0) {
+                _playerObj = _overlapHit[0].GetComponent<PlayerController>();
+                Timing.KillCoroutines(_selfDisableHandle); //stop running our self destroy
+                ActivateTrap();
+            }
+        }
+
+        //if we were activated, check if we aren't broken, if we aren't tick down to 0
+        if(_activated && !_isBroken) {
+            _catchDuration -= Time.deltaTime;
+            if(_catchDuration <= 0f) {
+                Break();
+            }
         }
     }
 
+    //when this is activated, count down until this trap auto breaks
+    private void OnEnable() {
+        _selfDisableHandle = Timing.RunCoroutine(DisableSelf());
+    }
+
     /// <summary>
-    /// Disable ourself in some seconds
+    /// Destroys this trap after some seconds of non interaction
     /// </summary>
     /// <returns></returns>
-    private IEnumerator<float> Disable() {
-        yield return Timing.WaitForSeconds(_duration);
-        if (_playerObj) {
-            _playerObj.CanMove = true;
-        }
-        if (!gameObject) {
-            yield break;
-        }
-        gameObject.SetActive(false);
-        yield return 0f;
-        Destroy(gameObject);
+    private IEnumerator<float> DisableSelf() {
+        yield return Timing.WaitForSeconds(_floorDuration);
+        Break();
     }
 
     /// <summary>
@@ -48,6 +63,7 @@ public class ImmobilisingMine : BreakableObject {
     /// </summary>
     private void ActivateTrap() {
         if (_playerObj) {
+            _activated = true;
             Timing.RunCoroutine(ShiftPlayerToCenter());
             _trapVisual.SetActive(true);
             _playerObj.CanMove = false;
@@ -69,9 +85,18 @@ public class ImmobilisingMine : BreakableObject {
     }
 
     /// <summary>
+    /// only register hits if the hitbox to take damage on this trap is enabled
+    /// </summary>
+    public override void Hit() {
+        if (_breakHitBox.enabled) {
+            base.Hit();
+        }
+    }
+    /// <summary>
     /// broke the trap, we can move the player again
     /// </summary>
     public override void Break() {
+        _isBroken = true;
         if (_playerObj) {
             _playerObj.CanMove = true;
         }
