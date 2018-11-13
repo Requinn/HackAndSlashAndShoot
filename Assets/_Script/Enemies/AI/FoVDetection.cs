@@ -22,7 +22,7 @@ namespace JLProject{
         /// <summary>
         /// Get the distance to the current Target being looked at
         /// </summary>
-        public float GetDistanceToTarget { get { return _distanceToTarget; } }
+        public float GetDistanceToTarget { get { return Mathf.Sqrt(_distanceToTarget); } }
 
         public float GetMaxViewRange { get { return _maxViewRange; } }
         // Use this for initialization
