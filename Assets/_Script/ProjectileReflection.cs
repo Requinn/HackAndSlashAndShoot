@@ -4,17 +4,6 @@ using UnityEngine;
 using JLProject;
 
 public class ProjectileReflection : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
-        Debug.Log("intiialized");
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private void OnTriggerEnter(Collider collision) {{
             Debug.Log(collision.name);
             var bullet = collision.gameObject.GetComponent<IProjectile>();
