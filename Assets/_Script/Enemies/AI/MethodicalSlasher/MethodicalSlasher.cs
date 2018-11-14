@@ -123,7 +123,7 @@ public class MethodicalSlasher : AIEntity {
         dashHandle = Timing.RunCoroutine(DashToLocation(adjustedDistance));
         _handles.Add(dashHandle);
         yield return Timing.WaitUntilDone(dashHandle);
-        transform.LookAt(target.transform);//look at the player
+        //transform.LookAt(target.transform);//look at the player
         //attack
         Attack();
         yield return Timing.WaitForSeconds(.5f);
