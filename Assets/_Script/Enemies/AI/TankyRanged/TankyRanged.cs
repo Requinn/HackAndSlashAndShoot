@@ -21,6 +21,7 @@ public class TankyRanged : AIEntity {
     private float _currentCooldown = 0.0f;
     private bool _struck = false;
     private bool _isChargeInterrupted = false;
+
     //Future note remove this from AI refactor, only here bcause playmaker says so
     public override void ProjectileResponse() {
         throw new NotImplementedException();
@@ -86,18 +87,17 @@ public class TankyRanged : AIEntity {
         yield return Timing.WaitForSeconds(0.5f); //wait a little, then charge forward
 
         //check if theres a wall or something in the way after the pause, gotta look before you cross the street
-        Physics.Raycast(transform.position, transform.forward, out _hit, _maxChargeDistance);
-        //if we hit a wall move to where we hit that instead
-        if (_hit.collider != null && _hit.collider.tag == "Environment") {
-            Debug.Log(_hit.collider.name);
-            chargeDestination.x = _hit.point.x;
-            chargeDestination.z = _hit.point.z;
+        Physics.Linecast(transform.position, chargeDestination, out _hit ,1 << LayerMask.NameToLayer("Environment"));
+        if (_hit.collider != null) {
+            float distanceToAdjustedPoint = Vector3.Distance(transform.position, _hit.point) - _CC.radius/2;
+            chargeDestination = transform.forward * distanceToAdjustedPoint + transform.position;
         }
+        
         //activate our damaging hitbox
         _damageBox.SetActive(true);
 
         //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
-        while (!AreFloatsNearlyEqual(transform.position.x, chargeDestination.x, 0.5f) && !AreFloatsNearlyEqual(transform.position.z, chargeDestination.z, 0.5f)){
+        while (!V3Equals(transform.position, chargeDestination, 0.5f)){
             //_chargingTime += Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, chargeDestination, Time.deltaTime * 15f);
             yield return 0f;
@@ -121,6 +121,10 @@ public class TankyRanged : AIEntity {
     /// <returns></returns>
     private bool AreFloatsNearlyEqual(float a, float b, float tolerance) {
         return Math.Abs(a - b) <= tolerance;
+    }
+
+    private bool V3Equals(Vector3 LHS, Vector3 RHS, float tolerance) {
+        return Vector3.SqrMagnitude(LHS - RHS) < tolerance;
     }
 
     protected override void Movement() {

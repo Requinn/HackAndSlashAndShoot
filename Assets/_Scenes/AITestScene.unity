@@ -98,7 +98,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 0.5
+    agentRadius: 0.1
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -106,7 +106,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.16666667
+    cellSize: 0.033333335
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -9838,7 +9838,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18644
+  m_Name: pb_Mesh18780
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -10397,7 +10397,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh18624
+  m_Name: pb_Mesh18742
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -12396,7 +12396,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh19304
+  m_Name: pb_Mesh19318
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -13268,8 +13268,8 @@ GameObject:
   - component: {fileID: 1223894464}
   - component: {fileID: 1223894463}
   - component: {fileID: 1223894462}
-  - component: {fileID: 1223894461}
   - component: {fileID: 1223894460}
+  - component: {fileID: 1223894461}
   m_Layer: 11
   m_Name: Cube (3)
   m_TagString: Environment
@@ -13292,8 +13292,8 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.32, y: 0.5, z: -0.51}
   m_TimeToStationary: 0.5
---- !u!64 &1223894461
-MeshCollider:
+--- !u!65 &1223894461
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -13301,11 +13301,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 1835933387}
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0.5, y: 0.5, z: -0.5}
 --- !u!114 &1223894462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13625,7 +13623,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -16135,7 +16133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!143 &1632252446
 CharacterController:
   m_ObjectHideFlags: 0
@@ -18150,7 +18148,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1271744
+  m_Name: pb_Mesh19406
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -18501,7 +18499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1866350233
 Transform:
   m_ObjectHideFlags: 0
