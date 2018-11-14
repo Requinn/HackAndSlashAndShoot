@@ -3372,7 +3372,7 @@ Transform:
   m_GameObject: {fileID: 249371869}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 45.43457, y: 1.0131836, z: 25.390625}
-  m_LocalScale: {x: 1, y: 2.5507514, z: 9.797601}
+  m_LocalScale: {x: 1, y: 0.87683284, z: 14.323788}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 27
@@ -13623,7 +13623,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -15985,7 +15985,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-1266694
+  m_Name: pb_Mesh19386
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16133,7 +16133,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!143 &1632252446
 CharacterController:
   m_ObjectHideFlags: 0
@@ -18499,7 +18499,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1866350233
 Transform:
   m_ObjectHideFlags: 0
