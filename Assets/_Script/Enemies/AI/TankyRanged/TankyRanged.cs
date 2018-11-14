@@ -21,6 +21,7 @@ public class TankyRanged : AIEntity {
     private float _currentCooldown = 0.0f;
     private bool _struck = false;
     private bool _isChargeInterrupted = false;
+
     //Future note remove this from AI refactor, only here bcause playmaker says so
     public override void ProjectileResponse() {
         throw new NotImplementedException();
@@ -81,32 +82,35 @@ public class TankyRanged : AIEntity {
         Vector3 chargeDestination = transform.forward * _maxChargeDistance + transform.position; //get the offset of us towards the player in the distance, which we should be looking at
         chargeDestination.y = target.transform.position.y; //flatten the Y to be the same
 
+        Vector3 wallCheckLineOrigin = new Vector3(transform.position.x, transform.position.y - (_CC.height / 2) + 0.1f, transform.position.z); //line from our feet, to see if we can physically charge there
+        Vector3 wallCheckLineDestination = new Vector3(chargeDestination.x, chargeDestination.y - (_CC.height / 2) + 0.1f, chargeDestination.z); //where our linecast is going
         transform.LookAt(transform.forward);
 
-        yield return Timing.WaitForSeconds(0.5f); //wait a little, then charge forward
+        //Only perform the charge if we can actually do it, check for walls by raycasting along the floor
+        if (Physics.Linecast(wallCheckLineOrigin, wallCheckLineDestination, out _hit, 1 << LayerMask.NameToLayer("Environment"))) {
+            yield return Timing.WaitForSeconds(0.5f); //wait a little, then charge forward
 
-        //check if theres a wall or something in the way after the pause, gotta look before you cross the street
-        Physics.Raycast(transform.position, transform.forward, out _hit, _maxChargeDistance);
-        //if we hit a wall move to where we hit that instead
-        if (_hit.collider != null && _hit.collider.tag == "Environment") {
-            Debug.Log(_hit.collider.name);
-            chargeDestination.x = _hit.point.x;
-            chargeDestination.z = _hit.point.z;
+            //check if theres a wall or something in the way after the pause, gotta look before you cross the street
+
+            if (_hit.collider != null) {
+                float distanceToAdjustedPoint = Vector3.Distance(transform.position, _hit.point) - _CC.radius / 2;
+                chargeDestination = transform.forward * distanceToAdjustedPoint + transform.position;
+            }
+
+            //activate our damaging hitbox
+            _damageBox.SetActive(true);
+
+            //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
+            while (!V3Equals(transform.position, chargeDestination, 0.5f)) {
+                //_chargingTime += Time.deltaTime;
+                transform.position = Vector3.Lerp(transform.position, chargeDestination, Time.deltaTime * 15f);
+                yield return 0f;
+            }
+
+            yield return Timing.WaitForSeconds(0.05f);
+            //deactivate our damaging hitbox
+            _damageBox.SetActive(false);
         }
-        //activate our damaging hitbox
-        _damageBox.SetActive(true);
-
-        //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
-        while (!AreFloatsNearlyEqual(transform.position.x, chargeDestination.x, 0.5f) && !AreFloatsNearlyEqual(transform.position.z, chargeDestination.z, 0.5f)){
-            //_chargingTime += Time.deltaTime;
-            transform.position = Vector3.Lerp(transform.position, chargeDestination, Time.deltaTime * 15f);
-            yield return 0f;
-        }
-
-        yield return Timing.WaitForSeconds(0.05f);
-        //deactivate our damaging hitbox
-        _damageBox.SetActive(false);
-
         _struck = false;
         _currentCooldown = 0.0f;
         yield return 0f;
@@ -121,6 +125,10 @@ public class TankyRanged : AIEntity {
     /// <returns></returns>
     private bool AreFloatsNearlyEqual(float a, float b, float tolerance) {
         return Math.Abs(a - b) <= tolerance;
+    }
+
+    private bool V3Equals(Vector3 LHS, Vector3 RHS, float tolerance) {
+        return Vector3.SqrMagnitude(LHS - RHS) < tolerance;
     }
 
     protected override void Movement() {

@@ -26,14 +26,13 @@ public class MethodicalSlasher : AIEntity {
     private float _currentCycleChangeTime = 0.0f;
     private float _timeSinceLunge = 0f;
 
-    //TODO: PROBLEM: potentially killing all coroutines tagged with this, including other MethodicalSlashers
-    private string _LungerRoutineTag = "lunge_routine";
+    private List<CoroutineHandle> _handles = new List<CoroutineHandle>();
     private bool _isLungeReady = true;
     private Vector3 _originalLocation, _trackedPlayerLocation;
 
     protected new void Start() {
         base.Start();
-        Timing.RunCoroutine(AICycle(), _LungerRoutineTag);
+        _handles.Add(Timing.RunCoroutine(AICycle()));
         _currentCirclingSpeed = _circlingSpeed;
         _currentCirclingDistance = _maximumCircleDistance;
         OnDeath += KillSelf;
@@ -44,7 +43,9 @@ public class MethodicalSlasher : AIEntity {
     /// TODO: potentially disables all other MethodicalSlashers
     /// </summary>
     private void KillSelf() {
-        Timing.KillCoroutines(_LungerRoutineTag);
+        foreach(var h in _handles) {
+            Timing.KillCoroutines(h);
+        }
     }
 
     private CoroutineHandle LungeAttackHandle;
@@ -77,16 +78,20 @@ public class MethodicalSlasher : AIEntity {
 
     private IEnumerator<float> AICycle() {
         while (!IsDead) {
+            Debug.Log(_vision.CanSeeTarget(target.transform));
             if (_vision.CanSeeTarget(target.transform)) {
-                //if within the lunging range
-                if (_vision.GetDistanceToTarget <= _lungeRange) {
+                Vector3 wallCheckLineOrigin = new Vector3(transform.position.x, transform.position.y - (_CC.height / 2) + 0.1f, transform.position.z); //line from our feet, to see if we can physically charge there
+                Vector3 wallCheckLineDestination = new Vector3(target.transform.position.x, target.transform.position.y - (_CC.height / 2) + 0.1f, target.transform.position.z); //where our linecast is going
+                //if within range, and we don't hit a wall
+                if (_vision.GetDistanceToTarget <= _lungeRange && !Physics.Linecast(wallCheckLineOrigin, wallCheckLineDestination, 1 << LayerMask.NameToLayer("Environment"))) {
                     //and lunge is ready
                     if (_isLungeReady) {
                         //record where we are going and started
                         _trackedPlayerLocation = _vision.lastSeenPosition;
                         _originalLocation = transform.position;
                         //check for a wall between the player and here
-                        LungeAttackHandle = Timing.RunCoroutine(LungeAttack(), _LungerRoutineTag);
+                        LungeAttackHandle = Timing.RunCoroutine(LungeAttack());
+                        _handles.Add(LungeAttackHandle);
                         //wait until we finish our lunge before returning to this AI cycle
                         yield return Timing.WaitUntilDone(LungeAttackHandle);
                     }
@@ -100,15 +105,17 @@ public class MethodicalSlasher : AIEntity {
                 //move towards lunging range
                 else {
                     transform.LookAt(target.transform);
-                    _NMAgent.isStopped = true;
-                    _NMAgent.Move(transform.forward * MovementSpeed * Time.deltaTime);
+                    _NMAgent.isStopped = false;
+                    _NMAgent.SetDestination(target.transform.position); //go to the player
                 }
             }
             yield return 0f;
         }
     }
 
+    /// <returns></returns>
     private IEnumerator<float> LungeAttack() {
+        _NMAgent.isStopped = true;
         CoroutineHandle dashHandle;
         //Math to make ourself land just short of the player
         //Simplifaction could be done by using the player's position +1 in a direction, rather than calculating distance - 1 in a direction
@@ -118,16 +125,15 @@ public class MethodicalSlasher : AIEntity {
         Vector3 adjustedDistance = transform.position + playerDistanceUnit * (distanceToPlayer - 1f); //multiple distance by direction minus our stopping distance added to our position
 
         //"leap" at the player
-        dashHandle = Timing.RunCoroutine(DashToLocation(adjustedDistance), _LungerRoutineTag);
+        dashHandle = Timing.RunCoroutine(DashToLocation(adjustedDistance));
         yield return Timing.WaitUntilDone(dashHandle);
-        transform.LookAt(target.transform);//look at the player
+        //transform.LookAt(target.transform);//look at the player
         //attack
         Attack();
         yield return Timing.WaitForSeconds(.5f);
         //leap back
-        dashHandle = Timing.RunCoroutine(DashToLocation(_originalLocation), _LungerRoutineTag);
+        dashHandle = Timing.RunCoroutine(DashToLocation(_originalLocation));
         yield return Timing.WaitUntilDone(dashHandle);
-
         yield return Timing.WaitForSeconds(0.1f);
         _isLungeReady = false;
         _timeSinceLunge = 0f;
