@@ -8,9 +8,9 @@ using UnityEngine;
 namespace JLProject{
     public class Door : Toggleable{
         public Vector3 doorMovement = new Vector3(0f, 6f, 0f);
-
+        public bool StartOpened = false;
         void Awake(){
-            if (Opened){
+            if (StartOpened) {
                 Open();
             }
         }
@@ -25,12 +25,14 @@ namespace JLProject{
         }
 
         public override void Open(){
+            if(Opened) { return; }
             //Debug.Log(transform.position.y - verticalMovement);
             transform.DOMove(transform.position - doorMovement, 0.1f);
             Opened = true;
         }
 
         public override void Close() {
+            if (!Opened) { return; }
             //Debug.Log(transform.position.y + verticalMovement);
             transform.DOMove(transform.position + doorMovement, 0.1f);
             Opened = false;

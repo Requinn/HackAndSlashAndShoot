@@ -193,9 +193,6 @@ namespace JLProject{
         ///cancels the current weapn charge
         private void CancelCharge(){
             _chargeTime = 0f;
-            if (_chargeParticle.isPlaying) {
-                _chargeParticle.Stop();
-            }
         }
         /// <summary>
         /// character motor

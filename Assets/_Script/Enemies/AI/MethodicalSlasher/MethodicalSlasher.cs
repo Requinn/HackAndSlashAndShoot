@@ -78,7 +78,7 @@ public class MethodicalSlasher : AIEntity {
 
     private IEnumerator<float> AICycle() {
         while (!IsDead) {
-            Debug.Log(_vision.CanSeeTarget(target.transform));
+            //Debug.Log(_vision.CanSeeTarget(target.transform));
             if (_vision.CanSeeTarget(target.transform)) {
                 Vector3 wallCheckLineOrigin = new Vector3(transform.position.x, transform.position.y - (_CC.height / 2) + 0.1f, transform.position.z); //line from our feet, to see if we can physically charge there
                 Vector3 wallCheckLineDestination = new Vector3(target.transform.position.x, target.transform.position.y - (_CC.height / 2) + 0.1f, target.transform.position.z); //where our linecast is going
