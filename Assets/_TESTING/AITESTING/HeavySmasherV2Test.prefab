@@ -867,7 +867,7 @@ GameObject:
   - component: {fileID: 143788853182851494}
   - component: {fileID: 114053480104144646}
   m_Layer: 2
-  m_Name: HeavySmasher
+  m_Name: HeavySmasherV2Test
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1288,7 +1288,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893981512503798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.60205, y: 2.1240234, z: 13.574219}
+  m_LocalPosition: {x: 150, y: 0.25, z: -65.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755437478492124}
@@ -1380,7 +1380,7 @@ Transform:
   m_GameObject: {fileID: 1651087097566010}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.00000058114523}
   m_LocalPosition: {x: 0, y: -1, z: 2.25}
-  m_LocalScale: {x: 3.2, y: 0.1, z: 5}
+  m_LocalScale: {x: 2.669457, y: 0.1, z: 4}
   m_Children:
   - {fileID: 4496127454942202}
   m_Father: {fileID: 4673192944689660}
@@ -1915,7 +1915,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 36.66, z: 1}
+  m_Size: {x: 1, y: 36.239315, z: 0.9999999}
   m_Center: {x: 0, y: 17.61965, z: 0}
 --- !u!95 &95916684493147448
 Animator:
@@ -2023,7 +2023,7 @@ MonoBehaviour:
   hasTarget: 0
   Damage: 80
   Force: 135
-  CastTime: 0.85
+  CastTime: 1.2
   Collider: {fileID: 0}
   MarkerScript: {fileID: 114078838446233294}
   dType: 3
@@ -2045,7 +2045,6 @@ MonoBehaviour:
   _yAngle: 5
   _aggroXAngle: 15
   lastSeenPosition: {x: 0, y: 0, z: 0}
-  drawBounds: 0
   inRange: 0
   inAttackCone: 0
   targetFound: 0
@@ -2431,7 +2430,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 1.5
+          value: 1
         fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
@@ -2585,7 +2584,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0.45
+          value: 0.05
         fsmIntParams: []
         fsmBoolParams:
         - useVariable: 1
@@ -2903,8 +2902,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9b1cfdaab0574a43b90bfcc706234c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 500
-  _currenthealth: 500
+  _maximumhealth: 250
+  _currenthealth: 250
   _armorvalue: 33
   _faction: 3
   StatusImmunities: 
@@ -2914,13 +2913,14 @@ MonoBehaviour:
   floater: {fileID: 114041877503500400}
   CanRevive: 0
   CanMove: 1
+  _movementspeed: 0
   AnimController: {fileID: 114208570646630964}
   weapon: {fileID: 114081805369078878}
   target: {fileID: 0}
-  mass: 7
+  mass: 8
   thisFSM: {fileID: 0}
-  rotationTime: 2
-  movementSpeed: 3.5
+  rotationTime: 1
+  movementSpeed: 4
   _enemyMesh: {fileID: 0}
 --- !u!114 &114661272978182924
 MonoBehaviour:
@@ -3087,7 +3087,7 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 3.5
-  m_Acceleration: 8
+  m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 120
   m_StoppingDistance: 0

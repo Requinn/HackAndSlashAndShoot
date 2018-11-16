@@ -405,7 +405,6 @@ MonoBehaviour:
   _yAngle: 30
   _aggroXAngle: 15
   lastSeenPosition: {x: 0, y: 0, z: 0}
-  drawBounds: 0
   inRange: 0
   inAttackCone: 0
   targetFound: 0
@@ -544,6 +543,7 @@ MonoBehaviour:
   floater: {fileID: 114521330462257012}
   CanRevive: 0
   CanMove: 1
+  _movementspeed: 0
   AnimController: {fileID: 0}
   weapon: {fileID: 114528671568539166}
   target: {fileID: 0}

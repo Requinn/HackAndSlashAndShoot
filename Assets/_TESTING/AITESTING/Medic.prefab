@@ -298,6 +298,7 @@ MeshRenderer:
   m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -313,6 +314,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -330,6 +332,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -345,6 +348,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -362,6 +366,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -377,6 +382,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -394,6 +400,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -409,6 +416,7 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -535,8 +543,6 @@ MonoBehaviour:
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
-  _chargeTime: 0
-  _chargeAttackDamageBonus: 0
   movementWeight: 0
   isAutomatic: 0
   StatsList:
@@ -806,6 +812,7 @@ MonoBehaviour:
   floater: {fileID: 114479363887056782}
   CanRevive: 0
   CanMove: 1
+  _movementspeed: 0
   AnimController: {fileID: 0}
   weapon: {fileID: 114170979552826992}
   target: {fileID: 0}
@@ -813,6 +820,7 @@ MonoBehaviour:
   thisFSM: {fileID: 0}
   rotationTime: 3
   movementSpeed: 5
+  _enemyMesh: {fileID: 0}
   healTool: {fileID: 114170979552826992}
   lowHealthThreshold: 0.75
   thresholdPercent: 0.25
@@ -848,7 +856,6 @@ MonoBehaviour:
   _yAngle: 30
   _aggroXAngle: 15
   lastSeenPosition: {x: 0, y: 0, z: 0}
-  drawBounds: 0
   inRange: 0
   inAttackCone: 0
   targetFound: 0
@@ -864,6 +871,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 114175896299520268}
+  lerpedHealthBar: {fileID: 0}
+  lerpSpeed: 10
+  lerpDelay: 0.35
 --- !u!135 &135124790792022124
 SphereCollider:
   m_ObjectHideFlags: 1
