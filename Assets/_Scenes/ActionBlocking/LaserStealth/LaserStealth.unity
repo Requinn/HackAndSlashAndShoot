@@ -113,6 +113,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: a482bc61705a8de4aa06e078cc8ab533, type: 2}
+--- !u!114 &3719334 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114479667957296000, guid: d812d3ac24d614c42b004004203c536c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1689917780}
+  m_Script: {fileID: 11500000, guid: 6bcdfe6f021bc98488b0e34724335bd7, type: 3}
 --- !u!43 &12701700
 Mesh:
   m_ObjectHideFlags: 0
@@ -1661,6 +1667,12 @@ Mesh:
   m_BakedConvexCollisionMesh: 
   m_BakedTriangleCollisionMesh: 
   m_MeshOptimized: 0
+--- !u!114 &105435495 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114660976711544578, guid: d812d3ac24d614c42b004004203c536c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1689917780}
+  m_Script: {fileID: 11500000, guid: 6bcdfe6f021bc98488b0e34724335bd7, type: 3}
 --- !u!43 &116173804
 Mesh:
   m_ObjectHideFlags: 0
@@ -3996,7 +4008,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 349184429}
   m_LocalRotation: {x: -0, y: -0.28768072, z: -0, w: 0.9577264}
-  m_LocalPosition: {x: 7, y: 0, z: -7.699999}
+  m_LocalPosition: {x: 7, y: 0.4, z: -7.699999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269369196}
@@ -4086,6 +4098,16 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114095253093492628, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+        type: 2}
+      propertyPath: UIhp
+      value: 
+      objectReference: {fileID: 3719334}
+    - target: {fileID: 114984650945366130, guid: 3988dcee9cf79db478e5f507a1cb79d2,
+        type: 2}
+      propertyPath: UIshield
+      value: 
+      objectReference: {fileID: 105435495}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
   m_IsPrefabParent: 0
@@ -11310,7 +11332,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh72110
+  m_Name: pb_Mesh89672
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -15147,7 +15169,6 @@ MonoBehaviour:
   Toggleables:
   - {fileID: 471630609}
   materialSwitch: {fileID: 1184248941}
-  canToggle: 1
   toggleSafetyTime: 0.5
 --- !u!23 &1184248943
 MeshRenderer:
@@ -16420,6 +16441,7 @@ MonoBehaviour:
   - {fileID: 1739947258}
   - {fileID: 1855846737}
   - {fileID: 361106720}
+  _surface: {fileID: 0}
   _deathCount: 0
 --- !u!4 &1269369196
 Transform:
@@ -21363,7 +21385,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1568275461}
   m_LocalRotation: {x: -0, y: 0.2659167, z: -0, w: 0.96399605}
-  m_LocalPosition: {x: -6.199999, y: 0, z: -7.7000003}
+  m_LocalPosition: {x: -6.199999, y: 0.6, z: -7.7000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269369196}
@@ -23564,7 +23586,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1739947257}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1269369196}
@@ -25921,7 +25943,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1855846736}
   m_LocalRotation: {x: -0, y: 0.954346, z: -0, w: 0.2987033}
-  m_LocalPosition: {x: -5.3999996, y: 0, z: 8.1}
+  m_LocalPosition: {x: -5.3999996, y: 0.4, z: 8.1}
   m_LocalScale: {x: 0.9999999, y: 1, z: 0.9999999}
   m_Children: []
   m_Father: {fileID: 1269369196}
@@ -31097,8 +31119,8 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127
   m_IsActive: 1
---- !u!64 &2045966830
-MeshCollider:
+--- !u!65 &2045966830
+BoxCollider:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
@@ -31106,11 +31128,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_SkinWidth: 0.01
-  m_Mesh: {fileID: 966815069}
+  serializedVersion: 2
+  m_Size: {x: 16, y: 4.9951553, z: 1}
+  m_Center: {x: 8, y: 2.4975777, z: -0.5}
 --- !u!114 &2045966831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31430,7 +31450,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
