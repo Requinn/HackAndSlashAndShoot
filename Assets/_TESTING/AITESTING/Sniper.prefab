@@ -1934,7 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxViewRange: 50
-  maxAttackRange: 3
+  maxAttackRange: 40
   _xAngle: 80
   _yAngle: 5
   _aggroXAngle: 15

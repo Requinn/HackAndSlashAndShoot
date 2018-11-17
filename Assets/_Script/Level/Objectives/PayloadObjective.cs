@@ -17,6 +17,8 @@ public class PayloadObjective : LevelObjective {
     //listen for payload object's completion
 
     private void CompleteObjective(){
-        Debug.Log("Henlo?!");
+        if (ObjectToUnlock) {
+            ObjectToUnlock.Open();
+        }
     }
 }

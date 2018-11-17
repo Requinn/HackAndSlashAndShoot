@@ -11,7 +11,7 @@ namespace JLProject{
         public Toggleable[] Toggleables;
         [SerializeField] private MaterialToggle materialSwitch;
         private bool on = false;
-        public bool canToggle = true;
+        private bool canToggle = true;
         private bool _occupied;
         [SerializeField] private float toggleSafetyTime = 0.5f;//can only toggle once per second
 

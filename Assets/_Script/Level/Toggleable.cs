@@ -7,7 +7,14 @@ namespace JLProject{
         public bool Locked = false;
         public bool Opened = false;
 
-        public abstract void Toggle();
+        public virtual void Toggle() {
+            if (Opened) {
+                Close();
+            }
+            else if (!Opened) {
+                Open();
+            }
+        }
         public abstract void Open();
         public abstract void Close();
 

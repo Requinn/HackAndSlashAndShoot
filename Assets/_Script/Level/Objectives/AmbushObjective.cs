@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using JLProject;
 using UnityEngine;
+using UnityEngine.AI;
+
 /// <summary>
 /// a kill-type objective for testing purposes
 /// </summary>
 public class AmbushObjective : LevelObjective, IKillObjective{
     public bool PreSpawn;
     public List<SingleSpawner> EnemyList = new List<SingleSpawner>();
+    [SerializeField]
+    private NavMeshSurface _surface;
     //public Unlockable ObjToUnlock;
     [SerializeField] private int _deathCount = 0;
     private bool _spawned = false;
@@ -21,6 +25,10 @@ public class AmbushObjective : LevelObjective, IKillObjective{
     /// spawn the enemies
     /// </summary>
     public void Spawn(){
+        //Update a navmesh incase we spawn on some moving object
+        if (_surface) {
+            _surface.BuildNavMesh();
+        }
         foreach (var enemy in EnemyList){
             enemy.gameObject.SetActive(true);
             enemy.SpawnedObj.GetComponent<Entity>().OnDeath += MarkDead;
@@ -54,6 +62,9 @@ public class AmbushObjective : LevelObjective, IKillObjective{
 
     public void CheckCompletion(){
         if (_deathCount == EnemyList.Count){
+            foreach (var enemy in EnemyList) {
+                enemy.gameObject.SetActive(false);
+            }
             OpenDoors();
             OnCompleteObjective();
             isObjectiveComplete = true;
