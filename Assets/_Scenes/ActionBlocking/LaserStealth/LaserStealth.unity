@@ -2369,7 +2369,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2956204
+  m_Name: pb_Mesh-2582
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -5494,12 +5494,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1e93bc0d6daa22a40850868817ccf261, type: 2}
   m_IsPrefabParent: 0
---- !u!114 &471630609 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114123570974283494, guid: 1e93bc0d6daa22a40850868817ccf261,
-    type: 2}
-  m_PrefabInternal: {fileID: 471630608}
-  m_Script: {fileID: 11500000, guid: 88fc3d99cad2cf9479e9072902258481, type: 3}
 --- !u!4 &471630610 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4770508335931292, guid: 1e93bc0d6daa22a40850868817ccf261,
@@ -5896,7 +5890,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh71878
+  m_Name: pb_Mesh20194
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -6287,7 +6281,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-2674878
+  m_Name: pb_Mesh-2300
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -8218,7 +8212,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 836086601}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -8.807618, y: 5.3831697, z: -0.40853047}
+  m_LocalPosition: {x: -7.7999997, y: 5.3999996, z: -0.39999962}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1941180218}
@@ -8557,7 +8551,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -10132,7 +10126,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -15164,10 +15158,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneWay: 1
-  ObjectToUnlock: {fileID: 471630609}
+  ObjectToUnlock: {fileID: 0}
   ObjectToLock: {fileID: 0}
   Toggleables:
-  - {fileID: 471630609}
+  - {fileID: 0}
   materialSwitch: {fileID: 1184248941}
   toggleSafetyTime: 0.5
 --- !u!23 &1184248943
@@ -16432,8 +16426,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   oneWay: 0
-  ObjectToUnlock: {fileID: 1645640817}
-  ObjectToLock: {fileID: 1645640817}
+  ObjectToUnlock: {fileID: 0}
+  ObjectToLock: {fileID: 0}
   PreSpawn: 0
   EnemyList:
   - {fileID: 349184430}
@@ -17897,7 +17891,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh71680
+  m_Name: pb_Mesh19770
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -20605,7 +20599,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1542695665}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 2.192382, y: 5.3831697, z: -10.40853}
+  m_LocalPosition: {x: 1.1999998, y: 5.3999996, z: -10.400001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1941180218}
@@ -20944,7 +20938,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -22236,12 +22230,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1645640817 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114123570974283494, guid: 1e93bc0d6daa22a40850868817ccf261,
-    type: 2}
-  m_PrefabInternal: {fileID: 1755845392}
-  m_Script: {fileID: 11500000, guid: 88fc3d99cad2cf9479e9072902258481, type: 3}
 --- !u!1 &1662166929
 GameObject:
   m_ObjectHideFlags: 0
@@ -27356,7 +27344,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -31450,7 +31438,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 2
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
