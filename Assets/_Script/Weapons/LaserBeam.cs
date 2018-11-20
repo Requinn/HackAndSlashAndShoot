@@ -5,6 +5,9 @@ using JLProject.Weapons;
 using MEC;
 using UnityEngine;
 
+/// <summary>
+/// Laser used to detect the player
+/// </summary>
 public class LaserBeam : Weapon {
     [SerializeField]
     private List<Entity> _targets = new List<Entity>();

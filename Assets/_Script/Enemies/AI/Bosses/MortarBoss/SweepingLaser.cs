@@ -7,6 +7,9 @@ using UnityEngine;
 using MEC;
 using ProBuilder2.Common;
 
+/// <summary>
+/// Laser used to deal damage to the player
+/// </summary>
 public class SweepingLaser : MonoBehaviour{
     //only need to use single floats as we rotate only on the Y plane
     public float initAngle = 60f; //what angle do we start at

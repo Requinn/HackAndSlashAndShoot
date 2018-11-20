@@ -23,6 +23,10 @@ public class ReparentOnCollision : MonoBehaviour {
     /// <param name="other"></param>
     private void OnTriggerExit(Collider other) {
         if (other.GetComponent<IProjectile>() != null) { return; }
-        other.transform.SetParent(null);
+        //if we leave the collider and the root parent is this object, then remove it, if not, then leave it alone
+        //fixes previous object resetting parent when moving directly into a new collider
+        if (other.transform.root.gameObject == this.transform.root.gameObject) {
+            other.transform.SetParent(null);
+        }
     }
 }
