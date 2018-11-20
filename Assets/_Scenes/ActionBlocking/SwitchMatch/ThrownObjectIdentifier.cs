@@ -19,6 +19,7 @@ public class ThrownObjectIdentifier : MonoBehaviour {
             }
             Destroy(gameObject);
         }
+        //if we collide with anything of importance, delete ourself
         if(other.gameObject.tag == "Environment" || other.gameObject.tag == "Enemy" || other.gameObject.tag == "Switch") {
             Destroy(gameObject);
         }
