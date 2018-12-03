@@ -25,7 +25,7 @@ public class AmbushObjective : LevelObjective, IKillObjective{
     /// spawn the enemies
     /// </summary>
     public void Spawn(){
-        //Update a navmesh incase we spawn on some moving object
+        //Update a navmesh incase we spawn on some moving object, this is actually not needed
         if (_surface) {
             _surface.BuildNavMesh();
         }
