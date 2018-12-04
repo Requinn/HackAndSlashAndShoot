@@ -5,7 +5,6 @@ using JLProject;
 
 public class ProjectileReflection : MonoBehaviour {
     private void OnTriggerEnter(Collider collision) {{
-            Debug.Log(collision.name);
             var bullet = collision.gameObject.GetComponent<IProjectile>();
             if (bullet != null && bullet.GetFaction() == Damage.Faction.Player) {
                 var bulletPhys = collision.GetComponent<Rigidbody>();
