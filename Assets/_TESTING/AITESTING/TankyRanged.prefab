@@ -634,6 +634,7 @@ MonoBehaviour:
     shouldExpand: 1
   GunType: 0
   faction: 3
+  _gunSounds: {fileID: 82051876343727372}
   gunAudio:
   - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}

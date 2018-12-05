@@ -152,7 +152,6 @@ public class MethodicalSlasher : AIEntity {
     /// </summary>
     protected override void Movement() {
         transform.LookAt(target.transform);
-        Debug.Log(_currentCirclingDistance);
         transform.RotateAround(target.transform.position, Vector3.up, 5 * _currentCirclingSpeed * Time.deltaTime);
         Vector3 adjustedPosition = ((transform.position - target.transform.position).normalized * _currentCirclingDistance) + target.transform.position;
         transform.position = Vector3.Lerp(transform.position, adjustedPosition, Time.deltaTime * 3.5f);

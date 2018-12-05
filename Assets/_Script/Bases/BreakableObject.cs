@@ -14,6 +14,7 @@ namespace JLProject{
             if (_hitsToBreak == 0){
                 Break();
             }
+            Debug.Log(_hitsToBreak);
         }
 
         public virtual void Break(){

@@ -86,7 +86,7 @@ public class TankyRanged : AIEntity {
         Vector3 wallCheckLineDestination = new Vector3(chargeDestination.x, chargeDestination.y - (_CC.height / 2) + 0.1f, chargeDestination.z); //where our linecast is going
         transform.LookAt(transform.forward);
 
-        //Only perform the charge if we can actually do it, check for walls by raycasting along the floor
+        //if we hit the wall or some other piece of environment, charge to that instead
         if (Physics.Linecast(wallCheckLineOrigin, wallCheckLineDestination, out _hit, 1 << LayerMask.NameToLayer("Environment"))) {
             yield return Timing.WaitForSeconds(0.5f); //wait a little, then charge forward
 
@@ -96,21 +96,21 @@ public class TankyRanged : AIEntity {
                 float distanceToAdjustedPoint = Vector3.Distance(transform.position, _hit.point) - _CC.radius / 2;
                 chargeDestination = transform.forward * distanceToAdjustedPoint + transform.position;
             }
-
-            //activate our damaging hitbox
-            _damageBox.SetActive(true);
-
-            //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
-            while (!V3Equals(transform.position, chargeDestination, 0.5f)) {
-                //_chargingTime += Time.deltaTime;
-                transform.position = Vector3.Lerp(transform.position, chargeDestination, Time.deltaTime * 15f);
-                yield return 0f;
-            }
-
-            yield return Timing.WaitForSeconds(0.05f);
-            //deactivate our damaging hitbox
-            _damageBox.SetActive(false);
         }
+        //if we didn't hit a wall,l just charge on through
+        //activate our damaging hitbox
+        _damageBox.SetActive(true);
+
+        //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
+        while (!V3Equals(transform.position, chargeDestination, 0.5f)) {
+            //_chargingTime += Time.deltaTime;
+            transform.position = Vector3.Lerp(transform.position, chargeDestination, Time.deltaTime * 15f);
+            yield return 0f;
+        }
+
+        yield return Timing.WaitForSeconds(0.05f);
+        //deactivate our damaging hitbox
+        _damageBox.SetActive(false);
         _struck = false;
         _currentCooldown = 0.0f;
         yield return 0f;

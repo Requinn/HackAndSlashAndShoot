@@ -7,6 +7,7 @@ using MEC;
 using UnityEngine;
 
 public class ShortPistol : Gun{
+    [SerializeField]
     private AudioSource _gunSounds;
     public AudioClip[] gunAudio;
     public Transform BarrelPoint;
@@ -15,13 +16,15 @@ public class ShortPistol : Gun{
 
     private float chargeTime = 3f;
 
+    private void Awake() {
+        _gunSounds = GetComponent<AudioSource>();
+    }
     // Use this for initialization
     void Start(){
         //TODO: Weapon mod code
         //_modHandler = GetComponent<WeaponsModHandler>();
         //_modHandler.weapon = this;
 
-        _gunSounds = GetComponent<AudioSource>();
         if (faction == Damage.Faction.Enemy)
             bullet.objectToPool.tag = "EnemyProjectile";
         if (ObjectPooler.ObjectPool.GetPooledObject(base.bullet.objectToPool) == null){
