@@ -60,7 +60,7 @@ public class TankyRanged : AIEntity {
             if (!_struck) {
                 //just cycle move and attack
                 Movement();
-                if (weapon._canAttack) {
+                if (weapon._canAttack && _vision.inRange) {
                     Attack();
                 }
             //if we did get hit

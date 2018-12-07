@@ -43,6 +43,7 @@ public class HomingBullet : MonoBehaviour, IProjectile {
 
     public void Awake() {
         _rb = GetComponent<Rigidbody>();
+
     }
 
     public void Start() {
