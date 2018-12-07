@@ -43,10 +43,13 @@ public class YankerPull : MonoBehaviour {
 	}
 
     /// <summary>
-    /// Add a force to the player towards this location at pull force
+    /// Add a force to the player towards this location at pull force if they can move
     /// </summary>
     public void CastPull() {
-        GameController.Controller.PlayerReference.GetComponent<ImpactReceiver>().AddImpact(transform.position - GameController.Controller.PlayerReference.transform.position, _pullStrength);
+        ImpactReceiver playerImpact = GameController.Controller.PlayerReference.GetComponent<ImpactReceiver>();
+        if (playerImpact.isActiveAndEnabled) {
+            playerImpact.GetComponent<ImpactReceiver>().AddImpact(transform.position - GameController.Controller.PlayerReference.transform.position, _pullStrength);
+        }
         _timeSinceCast = 0.0f;
     }
 

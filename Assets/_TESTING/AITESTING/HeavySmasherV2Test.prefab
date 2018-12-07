@@ -1288,7 +1288,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1893981512503798}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150, y: 0.25, z: -65.5}
+  m_LocalPosition: {x: 33.3, y: 2.3, z: 16.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4755437478492124}
@@ -2071,7 +2071,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 114686813353763226}
-  lerpedHealthBar: {fileID: 0}
+  lerpedHealthBar: {fileID: 114686813353763226}
   lerpSpeed: 10
   lerpDelay: 0.35
 --- !u!114 &114285837087117780

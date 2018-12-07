@@ -67,6 +67,7 @@ public class ImmobilisingMine : BreakableObject {
             Timing.RunCoroutine(ShiftPlayerToCenter());
             _trapVisual.SetActive(true);
             _playerObj.CanMove = false;
+            _playerObj.GetComponent<ImpactReceiver>().enabled = false;
         }
     }
 
@@ -99,6 +100,7 @@ public class ImmobilisingMine : BreakableObject {
         _isBroken = true;
         if (_playerObj) {
             _playerObj.CanMove = true;
+            _playerObj.GetComponent<ImpactReceiver>().enabled = true;
         }
         gameObject.SetActive(false);
         Destroy(gameObject);
