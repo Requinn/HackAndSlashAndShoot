@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 23127046782466764}
   - component: {fileID: 114641149515279944}
   - component: {fileID: 195220594569558344}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: RunAndMine
   m_TagString: Untagged
   m_Icon: {fileID: 0}

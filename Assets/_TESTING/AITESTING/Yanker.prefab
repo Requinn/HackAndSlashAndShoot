@@ -153,7 +153,7 @@ GameObject:
   - component: {fileID: 195376837995971298}
   - component: {fileID: 143709907552707978}
   - component: {fileID: 114153587726546320}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: Yanker
   m_TagString: Enemy
   m_Icon: {fileID: 0}

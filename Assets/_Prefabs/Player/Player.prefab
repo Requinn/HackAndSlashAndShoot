@@ -2148,7 +2148,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1002170645820572}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 18, y: 2.5, z: 1.5}
+  m_LocalPosition: {x: 27.2583, y: 2.0019531, z: -2.9174805}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4274008265826652}
@@ -3028,7 +3028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 200
   _currenthealth: 200
-  _armorvalue: 0
+  _armorvalue: 999
   _faction: 1
   StatusImmunities: 
   Afflictions: []
@@ -3038,7 +3038,7 @@ MonoBehaviour:
   CanRevive: 0
   CanMove: 1
   _movementspeed: 0
-  useSave: 1
+  useSave: 0
   speed: 7
   shieldedSpeed: 4
   chargingSpeed: 5.5
@@ -3472,7 +3472,7 @@ SphereCollider:
   m_GameObject: {fileID: 1535220097249300}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -3727,7 +3727,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2039082076
+  randomSeed: 709531309
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -17192,7 +17192,7 @@ ParticleSystemRenderer:
   m_RenderMode: 0
   m_SortMode: 0
   m_MinParticleSize: 0.3
-  m_MaxParticleSize: 0.3
+  m_MaxParticleSize: 1
   m_CameraVelocityScale: 0
   m_VelocityScale: 0
   m_LengthScale: 2

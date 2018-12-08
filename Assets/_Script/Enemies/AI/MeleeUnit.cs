@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
@@ -17,7 +18,8 @@ namespace JLProject{
         public SkinnedMeshRenderer _enemyMesh;
         private Color _originalMeshColor;
         protected RaycastHit[] surroundingObjects;
-        
+        private CoroutineHandle _postChaseScanRoutine;
+
         // Use this for initialization
         protected new void Start(){
             base.Start();
@@ -25,24 +27,64 @@ namespace JLProject{
             if (_enemyMesh){
                 _originalMeshColor = _enemyMesh.material.color;
             }
+            OnDeath += StopRoutine;
             speed = movementSpeed;
+        }
+
+        private void StopRoutine() {
+            Timing.KillCoroutines(_postChaseScanRoutine);
         }
 
         /// <summary>
         /// called from the FSM
         /// </summary>
         protected override void Movement(){
-            if (_vision.inRange){
-                Rotate();
-                if (Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange){
-                    if(AnimController) AnimController.WalkForward();
-                    _NMAgent.Move(transform.forward * speed * Time.deltaTime);
+            if (!IsDead) {
+                if (_vision.inRange) {
+                    Timing.KillCoroutines(_postChaseScanRoutine);
+                    _NMAgent.ResetPath();
+                    Rotate();
+                    if (Vector3.Distance(transform.position, target.transform.position) > _vision.maxAttackRange) {
+                        if (AnimController) AnimController.WalkForward();
+                        _NMAgent.Move(transform.forward * speed * Time.deltaTime);
+                    }
+                }
+                else {
+                    //if we lose sight, go to where we last saw them
+                    if (_vision.lastSeenPosition != Vector3.zero) {
+                        _NMAgent.SetDestination(_vision.lastSeenPosition);
+                        _postChaseScanRoutine = Timing.RunCoroutine(CheckForScanLocation());
+                    }
+                    else {
+                        if (AnimController) AnimController.Idle();
+                    }
                 }
             }
-            else{
-                if (AnimController) AnimController.Idle();
-            }
         }
+        
+        /// <summary>
+        /// checking constantly if we reached the last seen position when we lose sight. 
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator<float> CheckForScanLocation() {
+            while(!IsDead && transform.position != _NMAgent.destination) {
+                if (gameObject == null) {
+                    yield break;
+                }
+                yield return 0f;
+            }
+            _postChaseScanRoutine = Timing.RunCoroutine(WaitInPlace());
+        }
+
+        /// <summary>
+        /// Wait a while in place
+        /// </summary>
+        /// <returns></returns>
+        private IEnumerator<float> WaitInPlace() {
+            yield return Timing.WaitForSeconds(UnityEngine.Random.Range(1f, 2.5f));
+            _vision.lastSeenPosition = Vector3.zero;
+        }
+
 
         /// <summary>
         /// Perform a quick flash before attacking

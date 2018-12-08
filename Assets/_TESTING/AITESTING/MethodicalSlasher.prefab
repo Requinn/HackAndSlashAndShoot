@@ -693,7 +693,7 @@ GameObject:
   - component: {fileID: 195819699127608682}
   - component: {fileID: 143912345397482998}
   - component: {fileID: 114145569247744232}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: MethodicalSlasher
   m_TagString: Enemy
   m_Icon: {fileID: 0}

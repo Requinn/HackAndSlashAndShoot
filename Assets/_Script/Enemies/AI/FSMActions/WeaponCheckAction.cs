@@ -34,11 +34,9 @@ public class WeaponCheckAction : FsmStateAction {
             if (weapon.type == Weapon.Type.Melee){
                 Melee m = weapon.GetComponent<Melee>();
                 if (m.CurrentCombo > 0) {
-                    Debug.Log(m.CurrentCombo);
                     inCombo.Value = true;
                 }
                 else { inCombo.Value = false; }
-                Debug.Log(inCombo.Value);
             }
         }
     }

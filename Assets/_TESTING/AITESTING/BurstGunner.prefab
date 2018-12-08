@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114348661213547316}
   - component: {fileID: 195705618817801432}
   - component: {fileID: 114119214331644660}
-  m_Layer: 2
+  m_Layer: 12
   m_Name: BurstGunner
   m_TagString: Enemy
   m_Icon: {fileID: 0}

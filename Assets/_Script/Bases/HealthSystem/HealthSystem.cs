@@ -190,9 +190,9 @@ namespace JLProject{
         protected virtual void HandleDeath(){
             if (IsDead) return;
             //CHANGE THIS CODE
-            Destroy(gameObject, 1.0f);
             IsDead = true;
             OnDeath();
+            Destroy(gameObject, 1.0f);
         }
 
         protected virtual void HandleRevive(){

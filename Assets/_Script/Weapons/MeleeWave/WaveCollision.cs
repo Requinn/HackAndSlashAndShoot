@@ -16,26 +16,34 @@ public class WaveCollision : MonoBehaviour{
         Entity ent = c.GetComponent<Entity>();
         Switch swtch = c.GetComponent<Switch>();
         BreakableObject brk = c.GetComponent<BreakableObject>();
+
         if (ent != null){
             if (ent.Faction != args.SourceFaction || ent.Faction == Damage.Faction.Neutral){
-                //fix this later
-                args.HitSourceLocation = transform.position;
-                ent.TakeDamage(gameObject, ref args);
-                var Impact = ent.GetComponent<ImpactReceiver>();
-                if (Impact){
-                    Impact.AddImpact((ent.transform.position - parentTransform.position).normalized, args.HitForce);
-                }
-                if (statusObj){
-                    ApplyStatus(statusObj, ent);
+                //make sure we check only for the environment layer
+                if(!Physics.Linecast(transform.root.position, ent.transform.position, 1 << 11)) {
+                    //fix this later
+                    args.HitSourceLocation = transform.position;
+                    ent.TakeDamage(gameObject, ref args);
+                    var Impact = ent.GetComponent<ImpactReceiver>();
+                    if (Impact) {
+                        Impact.AddImpact((ent.transform.position - parentTransform.position).normalized, args.HitForce);
+                    }
+                    if (statusObj) {
+                        ApplyStatus(statusObj, ent);
+                    }
                 }
             }
         }
         if (args.SourceFaction != Damage.Faction.Player) return;
         if (swtch){
-            swtch.Toggle();
+            if (!Physics.Linecast(transform.root.position, swtch.transform.position, 1 << 11)) {
+                swtch.Toggle();
+            }
         }
         if (brk){
-            brk.GetComponent<BreakableObject>().Hit();
+            if (!Physics.Linecast(transform.root.position, brk.transform.position, 1 << 11)) {
+                brk.GetComponent<BreakableObject>().Hit();
+            }
         }
     }
 

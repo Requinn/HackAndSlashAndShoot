@@ -37,7 +37,7 @@ public class OrbiterAttackDrone : AIEntity {
         _currentDistToPlayerSQ = Vector3.SqrMagnitude(transform.position - target.transform.position);
         float playerDistSQ = _maximumPlayerOrbitDistance * _maximumPlayerOrbitDistance;
 
-        if (_currentDistToPlayerSQ > playerDistSQ + (_startChaseDistanceDiff * _startChaseDistanceDiff)) {
+        if (_currentDistToPlayerSQ >= playerDistSQ + (_startChaseDistanceDiff * _startChaseDistanceDiff)) {
             _isOrbiting = false;
             _NMAgent.Move(transform.forward * MovementSpeed * Time.deltaTime);
         }

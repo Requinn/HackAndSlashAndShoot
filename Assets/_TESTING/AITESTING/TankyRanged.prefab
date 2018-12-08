@@ -93,7 +93,7 @@ GameObject:
   - component: {fileID: 114989721455173000}
   - component: {fileID: 195907092987043640}
   - component: {fileID: 143577942422087820}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TankyRanged
   m_TagString: Enemy
   m_Icon: {fileID: 0}
