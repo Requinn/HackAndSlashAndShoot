@@ -9,4 +9,6 @@ public abstract class Interactable : MonoBehaviour{
     protected void InvokeInteractEvent(){
         if (Interracted != null) Interracted();
     }
+
+
 }

@@ -3,8 +3,11 @@ guid: 84af9853e1be40c44893bfed084e0d6a
 timeCreated: 1525137026
 licenseType: Free
 MonoImporter:
+  externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - _interactionKeyIndicator: {fileID: 1004661171226060, guid: 0340ba48903f45b4097e5a0485f977d9,
+      type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

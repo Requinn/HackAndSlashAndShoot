@@ -25,19 +25,23 @@ namespace JLProject{
                 transform.position = Vector3.MoveTowards(transform.position, _destinationPosition, Time.smoothDeltaTime * velocity);
                 if (V3Equal(transform.position,_destinationPosition)){
                     if (V3Equal(transform.position, pointA.position)) {
-                        if(platformDoorA) platformDoorA.SetActive(false);
+                        elevatorSwitch.Toggle();
+                        if (platformDoorA) platformDoorA.SetActive(false);
                         doorA.Invoke("Open", 0.25f);
                     }
                     if (V3Equal(transform.position, pointB.position)){
-                        if(platformDoorB) platformDoorB.SetActive(false);
+                        if (platformDoorB) platformDoorB.SetActive(false);
                         doorB.Invoke("Open", 0.25f);
+                        elevatorSwitch.Toggle();
                     }
-                    _inTransit = false;
+                    //delay the switch retoggle to avoid the doors breaking
+                    Timing.RunCoroutine(ElevatorSafetyTimer());
                 }
             } 
             //input and destination checking, only moves when we have both destinations set
             if (_occupied && Input.GetKeyDown(KeyCode.E) && !_inTransit && (pointA && pointB)){
                 _inTransit = true;
+                elevatorSwitch.Toggle();
                 if (V3Equal(transform.position, pointB.position)) {  
                     if (platformDoorB) platformDoorB.SetActive(true);
                     doorB.Close();
@@ -49,6 +53,11 @@ namespace JLProject{
                     Timing.RunCoroutine(ChangeDirection(pointB.position));
                 }
             }
+        }
+
+        private IEnumerator<float> ElevatorSafetyTimer() {
+            yield return Timing.WaitForSeconds(0.35f);
+            _inTransit = false;
         }
 
         public IEnumerator<float> ChangeDirection(Vector3 newPosition){

@@ -39,7 +39,7 @@ namespace JLProject{
         public void SetDamageOn(){
             _collider.enabled = true;
             _collider.isTrigger = true;
-            Destroy(gameObject, 10f);
+            Destroy(gameObject, 8.5f);
         }
 
         void OnTriggerEnter(Collider c){

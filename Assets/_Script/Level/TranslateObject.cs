@@ -9,6 +9,7 @@ namespace JLProject{
     public class TranslateObject : Toggleable{
         public Vector3 doorMovement = new Vector3(0f, 6f, 0f);
         public bool StartOpened = false;
+
         void Awake(){
             if (StartOpened) {
                 Open();
