@@ -22,7 +22,7 @@ namespace JLProject{
         }
 
         void OnTriggerEnter(Collider c) {
-            if (c.gameObject.tag == "Player"){
+            if (c.gameObject.tag == "Player" && text != string.Empty){
                 dialogManager.WriteText(text , dialogBoxID , typeSpeed, postTypeDuration);
             }
         }

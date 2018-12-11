@@ -3532,7 +3532,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh24696
+  m_Name: pb_Mesh72258
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -17195,7 +17195,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 736396418}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 16.7, y: 0, z: -75.9}
+  m_LocalPosition: {x: 16.7, y: 0, z: -54.700005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 515497360}
@@ -20213,7 +20213,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh23558
+  m_Name: pb_Mesh71696
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -23385,7 +23385,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-62376
+  m_Name: pb_Mesh-612374
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -31133,7 +31133,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4734247470406786, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 1.6
+      value: 10.6
       objectReference: {fileID: 0}
     - target: {fileID: 4734247470406786, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_LocalPosition.y
@@ -31141,7 +31141,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4734247470406786, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -77.8
+      value: -58.8
       objectReference: {fileID: 0}
     - target: {fileID: 4734247470406786, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_LocalRotation.x
@@ -31173,6 +31173,16 @@ Prefab:
       value: 
       objectReference: {fileID: 1746417816458992, guid: 1c5371552f473604bab4b293d03a2f17,
         type: 2}
+    - target: {fileID: 114269120321676232, guid: 7d6f0e35f945ad947b794c459ddb0378,
+        type: 2}
+      propertyPath: _maxViewRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269120321676232, guid: 7d6f0e35f945ad947b794c459ddb0378,
+        type: 2}
+      propertyPath: maxAttackRange
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
   m_IsPrefabParent: 0
@@ -34642,7 +34652,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1799771080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.90000004, y: 0, z: -76.200005}
+  m_LocalPosition: {x: 8.1, y: 0, z: -55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 515497360}
@@ -37102,7 +37112,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-225316
+  m_Name: pb_Mesh-612796
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -37960,6 +37970,11 @@ Prefab:
         type: 2}
       propertyPath: maxAttackRange
       value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 195032867430550962, guid: b4be6a1c63695554c88edc48cafeb393,
+        type: 2}
+      propertyPath: m_BaseOffset
+      value: 1.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b4be6a1c63695554c88edc48cafeb393, type: 2}
@@ -41256,7 +41271,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4734247470406786, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -77.6
+      value: -58.600002
       objectReference: {fileID: 0}
     - target: {fileID: 4734247470406786, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_LocalRotation.x
@@ -41291,6 +41306,16 @@ Prefab:
     - target: {fileID: 1154147494263006, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}
       propertyPath: m_Name
       value: DummyTurret (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269120321676232, guid: 7d6f0e35f945ad947b794c459ddb0378,
+        type: 2}
+      propertyPath: _maxViewRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 114269120321676232, guid: 7d6f0e35f945ad947b794c459ddb0378,
+        type: 2}
+      propertyPath: maxAttackRange
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7d6f0e35f945ad947b794c459ddb0378, type: 2}

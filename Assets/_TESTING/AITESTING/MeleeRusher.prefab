@@ -2104,8 +2104,8 @@ MonoBehaviour:
   target: {fileID: 0}
   mass: 3
   thisFSM: {fileID: 114321388030308720}
-  rotationTime: 0.25
-  movementSpeed: 6
+  rotationTime: 0.5
+  movementSpeed: 5
   _enemyMesh: {fileID: 137697011243224256}
   _evasionDuration: 0.3
   _evadeCooldown: 1
@@ -2690,7 +2690,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0.4
+          value: 0.65
         fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params: []
@@ -4998,7 +4998,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 1
-  m_BaseOffset: 1
+  m_BaseOffset: 1.25
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!222 &222292487656202332

@@ -41,7 +41,6 @@ public class WaveCollision : MonoBehaviour{
             }
         }
         if (brk){
-            Debug.Log(transform.root.position + " || " + brk.transform.position);
             if (!Physics.Linecast(transform.root.position, brk.transform.position, 1 << 11)) {
                 brk.GetComponent<BreakableObject>().Hit();
             }

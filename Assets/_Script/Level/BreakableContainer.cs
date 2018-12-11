@@ -17,7 +17,7 @@ public class BreakableContainer : BreakableObject {
 
     public override void Break(){
         for (int i = 0; i < AmountToSpawn; i++){
-            Instantiate(pickUptoSpawn, transform.position + _spawnPositions[i] + new Vector3(0, 0.875f, 0), Quaternion.identity);
+            Instantiate(pickUptoSpawn, transform.position + _spawnPositions[i], Quaternion.identity);
         }
         base.Break();
     }
