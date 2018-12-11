@@ -20,7 +20,7 @@ public class WaveCollision : MonoBehaviour{
         if (ent != null){
             if (ent.Faction != args.SourceFaction || ent.Faction == Damage.Faction.Neutral){
                 //make sure we check only for the environment layer
-                if(!Physics.Linecast(transform.root.position, ent.transform.position, 1 << 11)) {
+                if(!Physics.Linecast(transform.root.position, ent.transform.position, 1 << LayerMask.NameToLayer("Environment"))) {
                     //fix this later
                     args.HitSourceLocation = transform.position;
                     ent.TakeDamage(gameObject, ref args);
@@ -41,6 +41,7 @@ public class WaveCollision : MonoBehaviour{
             }
         }
         if (brk){
+            Debug.Log(transform.root.position + " || " + brk.transform.position);
             if (!Physics.Linecast(transform.root.position, brk.transform.position, 1 << 11)) {
                 brk.GetComponent<BreakableObject>().Hit();
             }

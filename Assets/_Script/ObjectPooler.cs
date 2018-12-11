@@ -59,26 +59,17 @@ public class ObjectPooler : MonoBehaviour{
     }**/
 
     //get an inactive object to use
-    public GameObject GetPooledObject(GameObject opi){
-        for (int i = 0; i < pooledObjects.Count; i++){
-            if (pooledObjects[i].name == opi.name + "(Clone)"){
-                if (!pooledObjects[i].activeInHierarchy){
+    public GameObject GetPooledObject(GameObject opi) {
+        for (int i = 0; i < pooledObjects.Count; i++) {
+            if (pooledObjects[i].name == opi.name + "(Clone)") {
+                if (!pooledObjects[i].activeInHierarchy) {
                     return pooledObjects[i];
                 }
             }
         }
-        //this code didn't really do anything, was meant to expand the list
-        /*
-        foreach (var item in itemsToPool){
-            if (item.objectToPool.tag == tag){
-                if (item.shouldExpand){
-                    GameObject obj = Instantiate(item.objectToPool);
-                    obj.SetActive(false);
-                    pooledObjects.Add(obj);
-                    return obj;
-                }
-            }
-        }*/
-        return null;
+        //this only reaches if we don't have an object to grab from the pool, so make a new one
+        GameObject obj = Instantiate(opi);
+        pooledObjects.Add(obj);
+        return obj;
     }
 }

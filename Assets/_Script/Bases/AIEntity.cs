@@ -35,8 +35,15 @@ namespace JLProject{
                 _impact.mass = mass;
             }
             TookDamage += PlayHitAnimation;
+            TookDamage += AggroAttacker;
             OnDeath += PlayDeathAnimation;
             OnDeath += SetSelfInactive;
+        }
+
+        protected void AggroAttacker(Damage.DamageEventArgs args) {
+            if (args.SourceFaction == Damage.Faction.Player) {
+                //Debug.Log("Hit by player");
+            }
         }
 
         private void SetSelfInactive() {
@@ -56,30 +63,6 @@ namespace JLProject{
             if (AnimController){
                 AnimController.PlayAnim("Hit");
             }
-        }
-
-        /// <summary>
-        /// handles knockback on enabled entities 
-        /// experimental
-        /// </summary>
-        /// <param name="args"></param>
-        private void KnockBack(Damage.DamageEventArgs args){
-            _hitDirection = (transform.position - args.HitSourceLocation).normalized;
-            _NMAgent.velocity = _hitDirection * args.HitForce;
-            Timing.KillCoroutines(knockbackHandle);
-            knockbackHandle = Timing.RunCoroutine(KnockBackCo());
-        }
-
-        private IEnumerator<float> KnockBackCo(){
-            _NMAgent.speed = 10;
-            _NMAgent.angularSpeed = 0;//Keeps the enemy facing forwad rther than spinning
-            _NMAgent.acceleration = 20;
-
-            yield return Timing.WaitForSeconds(0.2f);//Only knock the enemy back for a short time    
-
-            _NMAgent.speed = 4;
-            _NMAgent.angularSpeed = 180;
-            _NMAgent.acceleration = 10;
         }
 
         /// <summary>

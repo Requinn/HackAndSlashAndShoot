@@ -82,8 +82,8 @@ public class TankyRanged : AIEntity {
         Vector3 chargeDestination = transform.forward * _maxChargeDistance + transform.position; //get the offset of us towards the player in the distance, which we should be looking at
         chargeDestination.y = target.transform.position.y; //flatten the Y to be the same
 
-        Vector3 wallCheckLineOrigin = new Vector3(transform.position.x, transform.position.y - (_CC.height / 2) + 0.1f, transform.position.z); //line from our feet, to see if we can physically charge there
-        Vector3 wallCheckLineDestination = new Vector3(chargeDestination.x, chargeDestination.y - (_CC.height / 2) + 0.1f, chargeDestination.z); //where our linecast is going
+        Vector3 wallCheckLineOrigin = new Vector3(transform.position.x, transform.position.y - (_CC.height / 4) + 0.1f, transform.position.z); //line from our feet, to see if we can physically charge there
+        Vector3 wallCheckLineDestination = new Vector3(chargeDestination.x, chargeDestination.y - (_CC.height / 4) + 0.1f, chargeDestination.z); //where our linecast is going
         transform.LookAt(transform.forward);
 
         //if we hit the wall or some other piece of environment, charge to that instead
@@ -102,7 +102,7 @@ public class TankyRanged : AIEntity {
         _damageBox.SetActive(true);
 
         //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
-        while (!V3Equals(transform.position, chargeDestination, 0.5f)) {
+        while (!V3Equals(transform.position, chargeDestination, 1f)) {
             //_chargingTime += Time.deltaTime;
             transform.position = Vector3.Lerp(transform.position, chargeDestination, Time.deltaTime * 15f);
             yield return 0f;
