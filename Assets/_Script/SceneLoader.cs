@@ -26,7 +26,7 @@ namespace JLProject{
         /// </summary>
         public void LoadNextLevel(){
             int nextScene = SceneManager.GetActiveScene().buildIndex + 1;
-            DataService.Instance.PlayerStats.UpdateStats(FindObjectOfType<PlayerController>(), nextScene); //keep this here, don't fancy and put in the load level
+            DataService.Instance.PlayerStats.UpdateStats(GameController.Controller.PlayerReference, nextScene); //keep this here, don't fancy and put in the load level
             LoadLevel(nextScene);
         }
 

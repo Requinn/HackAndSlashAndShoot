@@ -3038,7 +3038,7 @@ MonoBehaviour:
   CanRevive: 0
   CanMove: 1
   _movementspeed: 0
-  useSave: 0
+  useSave: 1
   speed: 7
   shieldedSpeed: 4
   chargingSpeed: 5.5
