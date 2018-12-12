@@ -7,6 +7,7 @@ using UnityEngine;
 namespace JLProject{
     public class Elevator : MonoBehaviour{
         public float velocity;
+        public bool oneWay = false;
         public Transform pointA, pointB;
         public TranslateObject doorA, doorB;
         public GameObject platformDoorA, platformDoorB;
@@ -23,6 +24,7 @@ namespace JLProject{
             // movement of the elevator
             if(!V3Equal(transform.position, _destinationPosition)) {
                 transform.position = Vector3.MoveTowards(transform.position, _destinationPosition, Time.smoothDeltaTime * velocity);
+                //Reached destination
                 if (V3Equal(transform.position,_destinationPosition)){
                     if (V3Equal(transform.position, pointA.position)) {
                         elevatorSwitch.Toggle();
@@ -33,6 +35,10 @@ namespace JLProject{
                         if (platformDoorB) platformDoorB.SetActive(false);
                         doorB.Invoke("Open", 0.25f);
                         elevatorSwitch.Toggle();
+                    }
+                    //if this elevator is one way we disable the collider
+                    if (oneWay) {
+                        GetComponent<BoxCollider>().enabled = false;
                     }
                     //delay the switch retoggle to avoid the doors breaking
                     Timing.RunCoroutine(ElevatorSafetyTimer());

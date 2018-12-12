@@ -57,6 +57,7 @@ namespace JLProject{
 
         public delegate void TookDamageEvent(Damage.DamageEventArgs args);
         public event TookDamageEvent TookDamage;
+        public event TookDamageEvent TookShieldDamage;
 
         public delegate void TookStatusDamageEvent(float damage);
         public event TookStatusDamageEvent TookStatusDamage;
@@ -86,6 +87,7 @@ namespace JLProject{
             if (shield != null && shield.blocking){
                 if(floater)floater.SpawnShieldText(args.DamageValue);
                 shield.Block(args.DamageValue);
+                if(TookShieldDamage != null) TookShieldDamage(args);
             }
             else{
                 if (_maximumhealth > 0 && args.SourceFaction != _faction){

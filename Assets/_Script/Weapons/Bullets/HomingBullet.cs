@@ -48,7 +48,9 @@ public class HomingBullet : MonoBehaviour, IProjectile {
 
     public void Start() {
         if (!GameController.Controller.PlayerReference.IsDead) {
-            SetTarget(GameController.Controller.PlayerReference.gameObject);
+            if (GameController.Controller.PlayerReference.gameObject) {
+                SetTarget(GameController.Controller.PlayerReference.gameObject);
+            }
         }
     }
     public void OnEnable() {

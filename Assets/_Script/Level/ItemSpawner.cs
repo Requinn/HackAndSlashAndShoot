@@ -7,12 +7,12 @@ namespace JLProject{
     /// spawns an item above this point every X seconds
     /// </summary>
     public class ItemSpawner : MonoBehaviour{
-        public float SpawnTime = 5.0f;
+        public float SpawnTime = 3.0f;
         public GameObject ObjectToSpawn;
         private float _timeSinceLastCheck;
 
         private Ray _upRay;
-        private RaycastHit _upRayHit;
+        private GameObject _spawnedObject = null;
 
         void Start(){
             _upRay = new Ray(transform.position, Vector3.up);
@@ -20,14 +20,14 @@ namespace JLProject{
 
         // Update is called once per frame
         void Update(){
-            if (_timeSinceLastCheck < SpawnTime){
+            if (_spawnedObject == null && _timeSinceLastCheck < SpawnTime){
                 _timeSinceLastCheck += Time.deltaTime;
             }
 
             if (_timeSinceLastCheck >= SpawnTime){
                 _timeSinceLastCheck = 0;
-                if (!Physics.Raycast(_upRay, out _upRayHit, 5f)){
-                    Instantiate(ObjectToSpawn, transform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
+                if (_spawnedObject == null && !Physics.Raycast(_upRay, 5f)){
+                    _spawnedObject = Instantiate(ObjectToSpawn, transform.position + new Vector3(0, 0.75f, 0), Quaternion.identity);
                 }
             }
         }

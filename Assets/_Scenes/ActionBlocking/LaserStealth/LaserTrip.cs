@@ -12,12 +12,14 @@ public class LaserTrip : MonoBehaviour {
     private float _laserMaxLength = 10f;
 
     public LevelObjective Objective;
+    public Toggleable Toggleable;
 
     private LineRenderer _LineRender;
     private Vector3 _endPoint;
     private Ray _forwardRay;
     private RaycastHit _laserEnd;
-
+    private bool _didToggle = false;
+     
     private void Start() {
         if (!GetComponent<LineRenderer>()) {
             gameObject.AddComponent<LineRenderer>();
@@ -34,8 +36,14 @@ public class LaserTrip : MonoBehaviour {
         //send out a raycast every frame to find if we hit anything
         if (Physics.Raycast(_forwardRay, out _laserEnd, _laserMaxLength)) {
             //laser was tripped by the player, start the objective if isn't already happning or completed.
-            if(_laserEnd.collider.tag == "Player" && Objective && (!Objective.isActiveAndEnabled || !Objective.isCompleted)) {
-                Objective.Initiate();
+            if (_laserEnd.collider.tag == "Player") {
+                if (Objective && (!Objective.isActiveAndEnabled || !Objective.isCompleted)) {
+                    Objective.Initiate();
+                }
+                if (Toggleable && !_didToggle) {
+                    _didToggle = true;
+                    Toggleable.Toggle();
+                }
             }
             _endPoint = _laserEnd.point;
         }
