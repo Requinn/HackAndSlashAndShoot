@@ -2061,7 +2061,7 @@ MonoBehaviour:
   faction: 3
   _gunSounds: {fileID: 0}
   gunAudio:
-  - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
+  - {fileID: 8300000, guid: a719e15f743284641a4df35d64f59c79, type: 3}
   - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
   BarrelPoint: {fileID: 4307950245017944}
 --- !u!114 &114671095527873430

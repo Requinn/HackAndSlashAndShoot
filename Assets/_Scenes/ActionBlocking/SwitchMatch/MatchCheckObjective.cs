@@ -35,6 +35,6 @@ public class MatchCheckObjective : LevelObjective {
         }
         //we finished
         onCompleteObjective();
-        ObjectToUnlock.Open();
+        ObjectToUnlock.Toggle();
     }
 }

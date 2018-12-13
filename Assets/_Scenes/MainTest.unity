@@ -6919,6 +6919,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: 5
+  oneWay: 0
   pointA: {fileID: 47749415}
   pointB: {fileID: 1842232103}
   doorA: {fileID: 2021353888}
@@ -8072,15 +8073,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4385914093048316, guid: 979532bf8a82aa041bfe949162a625af, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 25.567854
+      value: 25.7
       objectReference: {fileID: 0}
     - target: {fileID: 4385914093048316, guid: 979532bf8a82aa041bfe949162a625af, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5827248
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4385914093048316, guid: 979532bf8a82aa041bfe949162a625af, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.5169103
+      value: -1.7
       objectReference: {fileID: 0}
     - target: {fileID: 4385914093048316, guid: 979532bf8a82aa041bfe949162a625af, type: 2}
       propertyPath: m_LocalRotation.x
@@ -8438,15 +8439,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4389106924629456, guid: 44be517d919f04d4ab21955569a6e64c, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 26.520084
+      value: 27.230001
       objectReference: {fileID: 0}
     - target: {fileID: 4389106924629456, guid: 44be517d919f04d4ab21955569a6e64c, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5827248
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4389106924629456, guid: 44be517d919f04d4ab21955569a6e64c, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.1418457
+      value: -1.0971001
       objectReference: {fileID: 0}
     - target: {fileID: 4389106924629456, guid: 44be517d919f04d4ab21955569a6e64c, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10158,6 +10159,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: ce837a533e78ef644bee0f0d2b6ee03e, type: 2}
   - {fileID: 2100000, guid: cdfcdd72ba361ce4285b75075317ea8f, type: 2}
   _interactionKeyIndicator: {fileID: 0}
+  _interactionKey: 69
 --- !u!43 &1050602986
 Mesh:
   m_ObjectHideFlags: 0
@@ -12921,7 +12923,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh-4301934
+  m_Name: pb_Mesh-2038370
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -16529,6 +16531,7 @@ MonoBehaviour:
   - {fileID: 2100000, guid: cdfcdd72ba361ce4285b75075317ea8f, type: 2}
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   _interactionKeyIndicator: {fileID: 0}
+  _interactionKey: 69
 --- !u!114 &2085193148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16617,15 +16620,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4141784122110402, guid: 9f5ae7dbc42c16d44bd6716335630e61, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 24.141762
+      value: 23.407001
       objectReference: {fileID: 0}
     - target: {fileID: 4141784122110402, guid: 9f5ae7dbc42c16d44bd6716335630e61, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1.5827248
+      value: 1.6
       objectReference: {fileID: 0}
     - target: {fileID: 4141784122110402, guid: 9f5ae7dbc42c16d44bd6716335630e61, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -1.0499575
+      value: -0.94949013
       objectReference: {fileID: 0}
     - target: {fileID: 4141784122110402, guid: 9f5ae7dbc42c16d44bd6716335630e61, type: 2}
       propertyPath: m_LocalRotation.x

@@ -112,6 +112,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 2
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -127,6 +128,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -197,7 +199,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -209,7 +211,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -221,7 +223,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!114 &114102826172049850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,8 +240,8 @@ MonoBehaviour:
   _damage: 10
   _attackDelay: 0.3
   _reloadSpeed: 2
-  _currentMag: 100
-  _maximumMag: 100
+  _currentMag: 50
+  _maximumMag: 50
   movementWeight: 3
   isAutomatic: 1
   StatsList:
@@ -259,13 +261,13 @@ MonoBehaviour:
   faction: 1
   accuracy: 1
   shotsToMaxSpin: 12
-  maxSpinDelay: 0.05
+  maxSpinDelay: 0.075
   minSpinDelay: 0.3
   accuracyMin: 1
   accuracyMax: 4
   gunAudio:
-  - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
-  - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
+  - {fileID: 8300000, guid: 800b12a7d548b5f4b980b98552bf5975, type: 3}
+  - {fileID: 8300000, guid: 9b1ef66356ca13a4d8d2ca2bce5199c2, type: 3}
   BarrelPoint: {fileID: 4245628455056300}
 --- !u!114 &114159931689585166
 MonoBehaviour:

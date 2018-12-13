@@ -113,6 +113,7 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 2
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -128,6 +129,7 @@ MeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 2
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -266,13 +268,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 2
   weaponIcon: {fileID: 21300000, guid: 861b1603e1d42ee44a525c6732981853, type: 3}
-  _damage: 35
+  _damage: 40
   _attackDelay: 0.35
   _reloadSpeed: 0.85
   _currentMag: 2
   _maximumMag: 2
-  _chargeTime: 2.5
-  _chargeAttackDamageBonus: 0
+  movementWeight: 0
+  isAutomatic: 0
   StatsList:
   - Damage
   - AttackDelay
@@ -288,9 +290,10 @@ MonoBehaviour:
     shouldExpand: 1
   GunType: 0
   faction: 1
+  _gunSounds: {fileID: 0}
   gunAudio:
-  - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
-  - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
+  - {fileID: 8300000, guid: a82886fd6067cc14babf32a57ee2dcd0, type: 3}
+  - {fileID: 8300000, guid: 5290dba3a54096546a9392b96e0a16b3, type: 3}
   BarrelPoint: {fileID: 4780547283479546}
 --- !u!114 &114786722131981128
 MonoBehaviour:

@@ -70,7 +70,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1442791684928592}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13, y: 1.75, z: -4.5}
+  m_LocalPosition: {x: 23.605522, y: 1.5600001, z: -4.770177}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4929221748013314}
@@ -164,7 +164,7 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 1
+  MinDistance: 14.33762
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 2
@@ -1284,6 +1284,6 @@ MonoBehaviour:
   deviation: 4
   _lockMovement: 1
   gunAudio:
-  - {fileID: 8300000, guid: a3daa2576c175be4e80a81981cf6a505, type: 3}
-  - {fileID: 8300000, guid: 11917166c230262409fe9af01e75391b, type: 3}
+  - {fileID: 8300000, guid: 800b12a7d548b5f4b980b98552bf5975, type: 3}
+  - {fileID: 8300000, guid: 5290dba3a54096546a9392b96e0a16b3, type: 3}
   BarrelPoint: {fileID: 4456432953854406}

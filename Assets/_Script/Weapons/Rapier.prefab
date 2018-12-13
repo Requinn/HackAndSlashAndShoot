@@ -413,10 +413,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ReferenceID: 4
-  weaponIcon: {fileID: 21300000, guid: 11313f94af346ea44b9dfc9aece1bbd0, type: 3}
+  weaponIcon: {fileID: 21300000, guid: 5cbc96a5204f2ad45b810d24ea630be2, type: 3}
   _damage: 0
   _attackDelay: 0.4
-  _reloadSpeed: 1.5
+  _reloadSpeed: 1.2
   _currentMag: 3
   _maximumMag: 3
   movementWeight: 0

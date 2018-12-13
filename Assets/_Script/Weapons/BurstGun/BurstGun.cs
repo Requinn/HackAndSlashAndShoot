@@ -19,7 +19,7 @@ public class BurstGun : Gun{
 
     public delegate void BurstFiredEvent();
 
-    private CoroutineHandle _delayHandle;
+    private CoroutineHandle _delayHandle, _burstHandle;
 
     public event BurstFiredEvent BurstStart, BurstEnd;
 
@@ -32,20 +32,28 @@ public class BurstGun : Gun{
         ObjectPooler.ObjectPool.PoolItem(bullet);
     }
 
-    private IEnumerator<float> Burst(){
-        for (int i = 0; i < burstCount;){
+    /// <summary>
+    /// When the gun is disabled, as a result of being swapped out, stop it from shooting.
+    /// </summary>
+    private void OnDisable() {
+        Timing.KillCoroutines(_burstHandle);
+        if (_lockMovement && _owningObj) {
+            _owningObj.ResetSpeed(); //burst over
+        }
+    }
+
+    private IEnumerator<float> Burst() {
+        //pre-emptively remove bullets from the magazine
+        CurMag -= burstCount;
+        for (int i = 0; i < burstCount;) {
             ReactivateBulletObj();
-            CurMag--;
-            if (CurMag == 0){
-                Timing.KillCoroutines(_delayHandle);
-                Timing.RunCoroutine(Reload());
-                _gunSounds.PlayOneShot(gunAudio[1]);
-                i = burstCount + 1;
-            }
-            else{
-                yield return Timing.WaitForSeconds(burstDelay);
-                i++;
-            }
+            yield return Timing.WaitForSeconds(burstDelay);
+            i++;
+        }
+        if (CurMag <= 0) {
+            Timing.KillCoroutines(_delayHandle);
+            Timing.RunCoroutine(Reload());
+            _gunSounds.PlayOneShot(gunAudio[1]);
         }
         if (_lockMovement) {
             _owningObj.ResetSpeed(); //burst over
@@ -75,7 +83,7 @@ public class BurstGun : Gun{
             if (_lockMovement) {
                 _owningObj.AdjustSpeed(0f); //can't move during a burst
             }
-            Timing.RunCoroutine(Burst());
+            _burstHandle = Timing.RunCoroutine(Burst());
             _delayHandle = Timing.RunCoroutine(Delay());
         }
     }

@@ -25,4 +25,13 @@ public class ToggleEnabled : Toggleable{
         _objectToToggle.SetActive(false);
     }
 
+    public override void Toggle() {
+        if (!_objectToToggle.activeInHierarchy) {
+            _objectToToggle.SetActive(true);
+        }
+        else {
+            _objectToToggle.SetActive(false);
+        }
+    }
+
 }

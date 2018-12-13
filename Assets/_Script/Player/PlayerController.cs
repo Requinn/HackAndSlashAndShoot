@@ -317,7 +317,7 @@ namespace JLProject{
         /// </summary>
         private void WeaponSwap(){
             if (Input.GetKeyDown(KeyCode.Space) && WeaponsInHand.Count > 1){
-                CancelCharge();
+                //CancelCharge();
                 CurrentWeapon.ResetWeapon();
                 if (CurrentWeapon == WeaponsInHand[0]){
                     WeaponsInHand[0].gameObject.SetActive(false);
