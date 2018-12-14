@@ -6,6 +6,7 @@ using JLProject;
 using UnityEngine;
 using MEC;
 using ProBuilder2.Common;
+using System;
 
 /// <summary>
 /// Laser used to deal damage to the player
@@ -15,6 +16,7 @@ public class SweepingLaser : MonoBehaviour{
     public float initAngle = 60f; //what angle do we start at
     public float sweepAngle = 180f; //how much of an angle do we move
     public float timeToSweep = 7f; //how long it takes to finish the sweep
+    public float damage = 50f;
     public float damageTickRate = 3f; //how often we can deal damage
     public float reach = 30f;
     private bool _isDoneSweeping = false;
@@ -31,7 +33,7 @@ public class SweepingLaser : MonoBehaviour{
 
     private Sequence _rotationSequence;
     void Start(){
-        args = new Damage.DamageEventArgs(50f, this.transform.position, Damage.DamageType.Neutral, Damage.Faction.Enemy);
+        args = new Damage.DamageEventArgs(damage, this.transform.position, Damage.DamageType.Neutral, Damage.Faction.Enemy);
         _lineRender = GetComponent<LineRenderer>();
         _origin = transform.position;
         _lineRender.positionCount = 1;
@@ -42,8 +44,8 @@ public class SweepingLaser : MonoBehaviour{
         if (_timeSinceLastDamageTick < damageTickRate){
             _timeSinceLastDamageTick += Time.deltaTime;
         }
-        
     }
+
     //Consider using an animation here to do a rotation that isn't in a wrong direction
     /// <summary>
     /// Start a laser sweep with these parameters
@@ -66,6 +68,7 @@ public class SweepingLaser : MonoBehaviour{
     ///handles when to show and disable the laser
     IEnumerator<float> SweepRoutine(){
         while (!_isDoneSweeping && this) { //only do the sweep when we're alive
+            _lineRender.SetPosition(0, _origin);
             CalculateHit();
             _curSweepTime += Time.deltaTime;
             if (_curSweepTime > timeToSweep) {
@@ -77,6 +80,30 @@ public class SweepingLaser : MonoBehaviour{
         
         yield return 0f;
     }
+
+    private CoroutineHandle _activeLaserHandle;
+    /// <summary>
+    /// Don't actually sweep, and instead fire straight ahead
+    /// </summary>
+    /// <param name="activeTime"></param>
+    public void ActivateLaser(float activeTime) {
+        _activeLaserHandle = Timing.RunCoroutine(ActiveRoutine(activeTime));
+    }
+
+    private IEnumerator<float> ActiveRoutine(float activeTime) {
+        bool _isDone = false;
+        float _timer = 0f;
+        while (!_isDone) {
+            CalculateHit();
+            _timer += Time.deltaTime;
+            if(_timer >= activeTime) {
+                DisableLaser();
+                _isDone = true;
+            }
+            yield return 0f;
+        }
+    }
+
 
     /*
     //if player collides with the laser hitbox, and is hittable, then do damage.
@@ -99,7 +126,7 @@ public class SweepingLaser : MonoBehaviour{
     /// draw a laserfrom self to end of raycast
     /// </summary>
     void CalculateHit(){
-        _lineRender.SetPosition(0, _origin);
+        _lineRender.SetPosition(0, transform.position);
 
         _ray.origin = transform.position;
         _ray.direction = transform.forward;
@@ -135,6 +162,11 @@ public class SweepingLaser : MonoBehaviour{
                 break;
             }
         }*/
+    }
+
+    private void OnDisable() {
+        Timing.KillCoroutines(_activeLaserHandle);
+        DisableLaser();
     }
 
     void DisableLaser(){

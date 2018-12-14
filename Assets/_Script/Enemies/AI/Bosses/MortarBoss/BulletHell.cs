@@ -11,8 +11,12 @@ public class BulletHell : MonoBehaviour{
     public int fireCount = 1; //how many times
     public bool isFiring = false;
     public PlayerController targetPlayer;
-
+    public bool lookAtPlayer = true;
     public GameObject projectile;
+
+    [SerializeField]
+    private AudioClip _fireSound;
+    private AudioSource _sound;
     private float angleStep;
     private float maxAngle;
     private float minAngle;
@@ -20,6 +24,8 @@ public class BulletHell : MonoBehaviour{
 
     void Start(){
         ReCalculateAngle();
+        targetPlayer = GameController.Controller.PlayerReference;
+        _sound = GetComponent<AudioSource>();
     }
 
     /// <summary>
@@ -53,15 +59,23 @@ public class BulletHell : MonoBehaviour{
 
     IEnumerator<float> FirePulse(){
         isFiring = true;
+
         for (int j = 0; j < fireCount; j++) {
             if (this) {
+                if (_fireSound) {
+                    _sound.PlayOneShot(_fireSound);
+                }
                 curAngle = minAngle;
                 for (int i = 0; i <= projectileCount; i++) { //add +1 to make the pattern symmetrical??
                                                              //Debug.Log(curAngle);
-                    GameObject go = Instantiate(projectile, transform.position,
-                        Quaternion.Euler(0, transform.rotation.eulerAngles.y + curAngle, 0));
-                    go.GetComponent<Rigidbody>().velocity = go.transform.forward * 5f;
-                    Destroy(go, 5f);
+                    GameObject go = Instantiate(projectile, transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y + curAngle, 0));
+                    if (go.GetComponent<IProjectile>() == null) {
+                        go.GetComponent<Rigidbody>().velocity =  go.transform.forward * 5f ;
+                    }
+                    else {
+                        go.GetComponent<Rigidbody>().velocity = go.transform.forward * go.GetComponent<IProjectile>().GetVelocity();
+                    }
+                    
                     curAngle += angleStep;
                 }
                 yield return Timing.WaitForSeconds(fireRate);
@@ -76,6 +90,8 @@ public class BulletHell : MonoBehaviour{
 	    if (Input.GetKeyDown(KeyCode.G)){
 	        Fire();
 	    }
-        transform.LookAt(targetPlayer.transform);
+        if (lookAtPlayer) {
+            transform.LookAt(targetPlayer.transform);
+        }
 	}
 }

@@ -21,7 +21,7 @@ public class DodgyRusher : MeleeUnit {
 
     protected void ProjectileDetection() {
         if (_canEvade){
-            surroundingObjects = Physics.SphereCastAll(transform.position, 4f, Vector3.up);
+            surroundingObjects = Physics.SphereCastAll(transform.position, 4f, Vector3.up, 1 << LayerMask.NameToLayer("Projectile"));
             foreach (RaycastHit obj in surroundingObjects){
                 if (obj.transform.gameObject.tag == "PlayerProjectile"){
                     thisFSM.SendEvent("ProjectileDetectedEvent");

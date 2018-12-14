@@ -54,6 +54,7 @@ namespace JLProject{
         /// </summary>
         public void RestartLevel(){
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            PlayerReference = FindObjectOfType<PlayerController>();
             Cursor.lockState = CursorLockMode.Confined;
             paused = false;
             pauseUI.SetActive(false);

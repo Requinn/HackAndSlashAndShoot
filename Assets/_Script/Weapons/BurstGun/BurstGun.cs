@@ -53,7 +53,9 @@ public class BurstGun : Gun{
         if (CurMag <= 0) {
             Timing.KillCoroutines(_delayHandle);
             Timing.RunCoroutine(Reload());
-            _gunSounds.PlayOneShot(gunAudio[1]);
+            if (gunAudio.Length == 2) {
+                _gunSounds.PlayOneShot(gunAudio[1]);
+            }
         }
         if (_lockMovement) {
             _owningObj.ResetSpeed(); //burst over
@@ -70,7 +72,9 @@ public class BurstGun : Gun{
             bullet.GetComponent<IProjectile>().SetDamage(AttackValue);
             bullet.transform.position = BarrelPoint.position;
             bullet.transform.rotation = GetComponentInParent<Transform>().rotation;
-            _gunSounds.PlayOneShot(gunAudio[0]);
+            if (gunAudio.Length >= 1) {
+                _gunSounds.PlayOneShot(gunAudio[0]);
+            }
             bullet.SetActive(true);
         }
     }

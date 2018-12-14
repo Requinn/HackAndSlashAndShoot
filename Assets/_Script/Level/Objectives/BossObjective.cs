@@ -15,7 +15,6 @@ namespace JLProject{
 
         public override void Initiate(){
             base.Initiate();
-
             BossCamera.Priority = 20;
             BossEnemy.gameObject.SetActive(true);
             BossEnemy.OnDeath += BossKilled;

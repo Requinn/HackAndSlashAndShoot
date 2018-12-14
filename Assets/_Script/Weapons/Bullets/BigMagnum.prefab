@@ -9,47 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1850941345847022}
+  m_RootGameObject: {fileID: 1620600583638238}
   m_IsPrefabParent: 1
---- !u!1 &1850941345847022
+--- !u!1 &1620600583638238
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4385914093048316}
-  - component: {fileID: 33208739052734950}
-  - component: {fileID: 135777204060006428}
-  - component: {fileID: 23563677616960768}
-  - component: {fileID: 114381071794524386}
-  - component: {fileID: 54250429332971402}
+  - component: {fileID: 4389106924629456}
+  - component: {fileID: 33711655994234610}
+  - component: {fileID: 135122271072685236}
+  - component: {fileID: 23231144378515960}
+  - component: {fileID: 114558629977198282}
+  - component: {fileID: 54924876382974320}
   m_Layer: 9
-  m_Name: BurstBullet
+  m_Name: BigMagnum
   m_TagString: EnemyProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4385914093048316
+--- !u!4 &4389106924629456
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850941345847022}
+  m_GameObject: {fileID: 1620600583638238}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.7, y: 1.6, z: -1.7}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_LocalPosition: {x: 27.230001, y: 1.6, z: -1.0971001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &23563677616960768
+--- !u!23 &23231144378515960
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850941345847022}
+  m_GameObject: {fileID: 1620600583638238}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +58,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 976922253b67d4147b53ed53a1fa705e, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,19 +78,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33208739052734950
+--- !u!33 &33711655994234610
 MeshFilter:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850941345847022}
+  m_GameObject: {fileID: 1620600583638238}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54250429332971402
+--- !u!54 &54924876382974320
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850941345847022}
+  m_GameObject: {fileID: 1620600583638238}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -100,32 +100,32 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &114381071794524386
+--- !u!114 &114558629977198282
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850941345847022}
+  m_GameObject: {fileID: 1620600583638238}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8378adefc2e3b4f4297299ac5c8b71c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   args:
-    DamageValue: 15
+    DamageValue: 10
     DamageType: 1
     HitSourceLocation: {x: 0, y: 0, z: 0}
-    SourceFaction: 1
+    SourceFaction: 3
     HitForce: 0
-  FlightDistance: 10
+  FlightDistance: 30
   Velocity: 15
   statusObj: {fileID: 0}
---- !u!135 &135777204060006428
+--- !u!135 &135122271072685236
 SphereCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1850941345847022}
+  m_GameObject: {fileID: 1620600583638238}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
