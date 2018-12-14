@@ -60,7 +60,6 @@ public class DroneBoss : AIEntity {
         if(_currentPhase == 1 && HealthPercent() <= .4f) {
             _currentPhase = 2;
             AdjustAllWeapons();
-            _droneRotator.AdjustRotation(100f, -1);
         }
     }
 
@@ -134,13 +133,9 @@ public class DroneBoss : AIEntity {
             //pick random within that circle
 
             Transform player = GameController.Controller.PlayerReference.transform;
-            float distance = Vector3.Distance(transform.position, player.position);
-            Vector3 direction = (player.position - transform.position).normalized;
-            float thirdDist = distance / 3;
-            float radius = thirdDist / 2;
-            Vector3 movePoint = UnityEngine.Random.insideUnitSphere + player.position * UnityEngine.Random.Range(0f, radius);
+            Vector3 movePoint = UnityEngine.Random.insideUnitSphere * UnityEngine.Random.Range(0f, 30f) + centerStage.position;
             movePoint.y = -1f; //this is floor height
-            Debug.DrawLine(player.position, player.position + -direction * Mathf.Clamp(thirdDist, thirdDist, 6), Color.red);
+            //Debug.DrawLine(player.position, player.position + -direction * Mathf.Clamp(thirdDist, thirdDist, 6), Color.red);
             _navAgent.SetDestination(movePoint);
         }
 
@@ -169,11 +164,11 @@ public class DroneBoss : AIEntity {
                 if (drone.isFacingPlayer && !drone.isDisabled) {
                     drone.isFacingPlayer = false;
                     drone.FireShotgun();
-                    firedShots++;
                     break;
                 }
             }
-            if(_shotgunAttack.activeTime[_currentPhase] > 0) {
+            if (_shotgunAttack.activeTime[_currentPhase] >= 0) {
+                firedShots++;
                 yield return Timing.WaitForSeconds(0.5f);
             }
             yield return 0f;
@@ -193,7 +188,7 @@ public class DroneBoss : AIEntity {
         while (_navAgent.pathPending) {
             yield return 0f;
         }
-        while(_navAgent.remainingDistance > 0) {
+        while(_navAgent.remainingDistance >= _navAgent.stoppingDistance) {
             yield return 0f;
         }
         yield return Timing.WaitForSeconds(0.5f);

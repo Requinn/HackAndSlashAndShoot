@@ -24,7 +24,8 @@ public class DroneBossSummon : AIEntity {
     private Collider _hitbox;
     private Transform _playerTransform; 
 
-    void Start() {
+    new void Start() {
+        base.Start();
         _hitbox = GetComponent<BoxCollider>();
         _visuals = GetComponent<MeshRenderer>();
         TookDamage += FlashColors; 
@@ -33,6 +34,23 @@ public class DroneBossSummon : AIEntity {
     private void OnEnable() {
         _playerTransform = GameController.Controller.PlayerReference.transform;
 
+    }
+
+    /// <summary>
+    /// Recalculate damage, drones take twice damage after armor from guns
+    /// </summary>
+    /// <param name="e"></param>
+    /// <returns></returns>
+    protected override float CalculateDamage(Damage.DamageEventArgs e) {
+        // reduce damage by ARMORVALUE% * 2.5x
+        float damage = (int)Mathf.Clamp(e.DamageValue - (e.DamageValue * (_armorvalue * 0.01f)), 0, _maximumhealth);
+        if(e.DamageType == Damage.DamageType.Ranged) {
+            damage *= 2.5f;
+        }
+        if(e.DamageType == Damage.DamageType.Melee) {
+            damage *= 0.9f;
+        }
+        return damage;
     }
 
     private void FlashColors(Damage.DamageEventArgs args) {
@@ -87,7 +105,7 @@ public class DroneBossSummon : AIEntity {
     /// <returns></returns>
     private IEnumerator<float> WaitOutDeath() {
         yield return Timing.WaitForSeconds(_respawnTimer);
-        if (!this) { return; }
+        if (!this) { yield break; }
         CurrentHealth = MaxHealth;
         _hitbox.enabled = true;
         _visuals.enabled = true;
@@ -101,6 +119,7 @@ public class DroneBossSummon : AIEntity {
     private IEnumerator<float> FlashRoutine() {
         float elapsedTime = 0f;
         while (elapsedTime < 0.1f) {
+            if (!this) { yield break; }
             _visuals.material.color = Color.red;
             yield return Timing.WaitForSeconds(0.06f);
             _visuals.material.color = Color.white;

@@ -270,7 +270,7 @@ MonoBehaviour:
   weaponIcon: {fileID: 21300000, guid: 861b1603e1d42ee44a525c6732981853, type: 3}
   _damage: 40
   _attackDelay: 0.35
-  _reloadSpeed: 0.85
+  _reloadSpeed: 0.75
   _currentMag: 2
   _maximumMag: 2
   movementWeight: 0
