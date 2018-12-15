@@ -7,6 +7,7 @@ using DG.Tweening;
 
 //Bug: if you manage to line up the charge so that they end in a corner, they might get stuck?
 public class TankyRanged : AIEntity {
+    [Header("Tanky Ranged Stats")]
     [SerializeField]
     private float _followingDistance = 10f;
     [SerializeField]
@@ -17,6 +18,8 @@ public class TankyRanged : AIEntity {
     private float _chargeCooldown = 10f;
     [SerializeField]
     private GameObject _damageBox; //this is enabled during the charge to do damage
+    [SerializeField]
+    private AoEMarker _chargeCastVisual;
 
     private float _currentCooldown = 0.0f;
     private bool _struck = false;
@@ -84,21 +87,29 @@ public class TankyRanged : AIEntity {
 
         Vector3 wallCheckLineOrigin = new Vector3(transform.position.x, transform.position.y - (_CC.height / 4) + 0.1f, transform.position.z); //line from our feet, to see if we can physically charge there
         Vector3 wallCheckLineDestination = new Vector3(chargeDestination.x, chargeDestination.y - (_CC.height / 4) + 0.1f, chargeDestination.z); //where our linecast is going
-        transform.LookAt(transform.forward);
 
-        //if we hit the wall or some other piece of environment, charge to that instead
-        if (Physics.Linecast(wallCheckLineOrigin, wallCheckLineDestination, out _hit, 1 << LayerMask.NameToLayer("Environment"))) {
+        float distanceToPoint = _maxChargeDistance;
+        //if we hit the wall or some other piece of environment, charge to that instead, ignoring the player
+        if (Physics.Linecast(wallCheckLineOrigin, wallCheckLineDestination, out _hit, (1 << LayerMask.NameToLayer("Environment") | ~(1 << LayerMask.NameToLayer("Player"))))) {
             yield return Timing.WaitForSeconds(0.5f); //wait a little, then charge forward
 
             //check if theres a wall or something in the way after the pause, gotta look before you cross the street
 
             if (_hit.collider != null) {
-                float distanceToAdjustedPoint = Vector3.Distance(transform.position, _hit.point) - _CC.radius / 2;
-                chargeDestination = transform.forward * distanceToAdjustedPoint + transform.position;
+                distanceToPoint = Vector3.Distance(transform.position, _hit.point) - _CC.radius / 2;
+                chargeDestination = transform.forward * distanceToPoint + transform.position;
             }
         }
+
+        CoroutineHandle chargingChannel;
+        Debug.Log(distanceToPoint);
+        chargingChannel = Timing.RunCoroutine(ChannelCharge(distanceToPoint * (3.54f/15f)));
+        //wait until we are done casting the channel
+        yield return Timing.WaitUntilDone(chargingChannel);
+
         //if we didn't hit a wall,l just charge on through
         //activate our damaging hitbox
+        transform.LookAt(transform.forward);
         _damageBox.SetActive(true);
 
         //Charge towards our destination, approximately within half a unit. a sloppy distance, but this charge was finicky in finer comparisons
@@ -113,6 +124,16 @@ public class TankyRanged : AIEntity {
         _damageBox.SetActive(false);
         _struck = false;
         _currentCooldown = 0.0f;
+        yield return 0f;
+    }
+
+    /// <summary>
+    /// used to pause AI for a second during the charge to channel
+    /// </summary>
+    /// <returns></returns>
+    private IEnumerator<float> ChannelCharge(float distance) {
+        _chargeCastVisual.StartCast(0.5f, distance);
+        yield return Timing.WaitForSeconds(0.5f);
         yield return 0f;
     }
 

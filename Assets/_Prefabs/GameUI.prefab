@@ -1037,7 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f5d2af48840edb4ba93a3a145d67921, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reticleImage: {fileID: 2800000, guid: 92db75dd8f91ebb448a399383deb0b6d, type: 3}
+  reticleImage: {fileID: 2800000, guid: df558969171abed4095759b9ce40bef8, type: 3}
 --- !u!114 &114652386107909922
 MonoBehaviour:
   m_ObjectHideFlags: 1
