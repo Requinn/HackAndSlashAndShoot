@@ -10,6 +10,8 @@ using UnityEngine.UI;
 /// </summary>
 public class LevelSelectUI : MonoBehaviour {
     [SerializeField]
+    private GameObject _background;
+    [SerializeField]
     private Text _levelDescriptionText;
     [SerializeField]
     private Text _levelName;
@@ -19,6 +21,9 @@ public class LevelSelectUI : MonoBehaviour {
     private string _lockedDesc, _lockedName;
     private int _lockedLevelIndex;
 
+    public void Start() {
+        _background.SetActive(false);
+    }
     /// <summary>
     /// Clear out the text stored in the fields.
     /// </summary>
@@ -29,14 +34,19 @@ public class LevelSelectUI : MonoBehaviour {
         _levelDescriptionText.text = "";
         _levelName.text = "";
         _loadLevelButton.gameObject.SetActive(false);
+        _background.SetActive(false);
     }
 
     public void ClearData() {
         _levelDescriptionText.text = _lockedDesc;
         _levelName.text = _lockedName;
         //if we have data locked in, return the button
-        if(_lockedLevelIndex != 0) {
+        if (_lockedLevelIndex != 0) {
             _loadLevelButton.gameObject.SetActive(true);
+        }
+        else {
+            //else turn off the background
+            _background.SetActive(false);
         }
     }
 
@@ -45,6 +55,7 @@ public class LevelSelectUI : MonoBehaviour {
     /// </summary>
     /// <param name="data"></param>
     public void SetText(LevelData data) {
+        _background.SetActive(true);
         _levelDescriptionText.text = data.Description;
         _levelName.text = data.Name;
         if (_lockedLevelIndex != data.Scene) {
