@@ -47,7 +47,9 @@ public class LevelSelectUI : MonoBehaviour {
     public void SetText(LevelData data) {
         _levelDescriptionText.text = data.Description;
         _levelName.text = data.Name;
-        _loadLevelButton.gameObject.SetActive(false);
+        if (_lockedLevelIndex != data.Scene) {
+            _loadLevelButton.gameObject.SetActive(false);
+        }
     }
     
     public void SetLockText(LevelData data) {
