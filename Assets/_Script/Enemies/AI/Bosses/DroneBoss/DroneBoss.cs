@@ -161,7 +161,7 @@ public class DroneBoss : AIEntity {
         int firedShots = 0;
         while (firedShots < _shotgunAttack.activeTime[_currentPhase]) {
             foreach (var drone in _droneList) {
-                if (drone.isFacingPlayer && !drone.isDisabled) {
+                if (drone.isFacingPlayer) {
                     drone.isFacingPlayer = false;
                     drone.FireShotgun();
                     break;

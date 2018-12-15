@@ -47,12 +47,19 @@ public class HomingBullet : MonoBehaviour, IProjectile {
     }
 
     public void Start() {
+        Timing.RunCoroutine(DelayedPlayerReferenceGrab());
+    }
+
+    private IEnumerator<float> DelayedPlayerReferenceGrab() {
+        yield return Timing.WaitForSeconds(0.25f);
         if (!GameController.Controller.PlayerReference.IsDead) {
             if (GameController.Controller.PlayerReference.gameObject) {
                 SetTarget(GameController.Controller.PlayerReference.gameObject);
             }
         }
+        yield return 0f;
     }
+
     public void OnEnable() {
         _curPos = transform.position;
         _lifetime = CalculateTimeToLive();

@@ -540,10 +540,10 @@ MonoBehaviour:
   ReferenceID: 0
   weaponIcon: {fileID: 0}
   _damage: 15
-  _attackDelay: 1
-  _reloadSpeed: 1
-  _currentMag: 5
-  _maximumMag: 5
+  _attackDelay: 1.5
+  _reloadSpeed: 1.5
+  _currentMag: 10000
+  _maximumMag: 10000
   movementWeight: 0
   isAutomatic: 0
   StatsList:

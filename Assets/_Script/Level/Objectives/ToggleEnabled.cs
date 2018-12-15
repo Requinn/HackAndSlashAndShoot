@@ -10,19 +10,31 @@ using System;
 public class ToggleEnabled : Toggleable{
     [SerializeField]
     private GameObject _objectToToggle;
-
+    [SerializeField]
+    [Tooltip("Calling OPEN will turn an object OFF. Turning this true will make OPEN turn the object ON.")]
+    private bool _mirror = false; 
     /// <summary>
     /// enable the object
     /// </summary>
     public override void Close() {
-        _objectToToggle.SetActive(true);
+        if (!_mirror) {
+            _objectToToggle.SetActive(true);
+        }
+        else {
+            _objectToToggle.SetActive(false);
+        }
     }
 
     /// <summary>
     /// disable the object
     /// </summary>
     public override void Open() {
-        _objectToToggle.SetActive(false);
+        if (!_mirror) {
+            _objectToToggle.SetActive(false);
+        }
+        else {
+            _objectToToggle.SetActive(true);
+        }
     }
 
     public override void Toggle() {
