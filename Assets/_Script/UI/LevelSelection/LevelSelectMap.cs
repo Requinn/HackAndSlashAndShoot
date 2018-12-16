@@ -16,8 +16,12 @@ public class LevelSelectMap : MonoBehaviour {
     private LevelSelectUI _UIComponent;
     [SerializeField]
     private GameObject _healthUI;
+    [SerializeField]
+    private GameObject _arrowPointer;
+
 	// Use this for initialization
 	void Start () {
+        _arrowPointer.SetActive(false);
         _interactionkeyToggle.Open();
         _UIComponent.gameObject.SetActive(false);
         Timing.RunCoroutine(LateStart());
@@ -37,8 +41,11 @@ public class LevelSelectMap : MonoBehaviour {
         _UIComponent.ClearData();
     }
 
-    private void LockUISelection(LevelData data) {
+    private void LockUISelection(LevelData data, Transform t) {
         _UIComponent.SetLockText(data);
+        _arrowPointer.SetActive(true);
+        _arrowPointer.transform.position = t.position + new Vector3(0, 0.3f, 0);
+
     }
 
     ///<summary>
@@ -60,7 +67,12 @@ public class LevelSelectMap : MonoBehaviour {
         _healthUI.SetActive(false);
         _interactionkeyToggle.Open();
         _mapCamera.Priority = 50;
-        foreach(var node in _levelNodes) {
+        Timing.RunCoroutine(DelayedActivation());
+    }
+
+    private IEnumerator<float> DelayedActivation() {
+        yield return Timing.WaitForSeconds(0.25f);
+        foreach (var node in _levelNodes) {
             node.SetHitBoxActive(true);
         }
         _UIComponent.gameObject.SetActive(true);
@@ -74,6 +86,7 @@ public class LevelSelectMap : MonoBehaviour {
         _UIComponent.gameObject.SetActive(false);
         _interactionkeyToggle.Close();
         _healthUI.SetActive(true);
+        _arrowPointer.SetActive(false);
         foreach (var node in _levelNodes) {
             node.SetHitBoxActive(false);
         }

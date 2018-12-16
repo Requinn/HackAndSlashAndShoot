@@ -22,7 +22,7 @@ public class LevelSelectNode : MonoBehaviour {
     public delegate void NodeSelectedEvent(LevelData data);
     public NodeSelectedEvent NodeSelected;
     //lock in that data
-    public delegate void NodeLockInEvent(LevelData data);
+    public delegate void NodeLockInEvent(LevelData data, Transform position);
     public NodeLockInEvent NodeLocked;
     public delegate void NodeDeselectedEvent();
     public NodeDeselectedEvent NodeLeft;
@@ -45,7 +45,7 @@ public class LevelSelectNode : MonoBehaviour {
     }
 
     private void OnMouseDown() {
-        NodeLocked(GetData());
+        NodeLocked(GetData(), transform);
     }
 
     private void OnMouseEnter() {
