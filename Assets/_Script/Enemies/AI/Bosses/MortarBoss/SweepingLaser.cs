@@ -19,6 +19,8 @@ public class SweepingLaser : MonoBehaviour{
     public float damage = 50f;
     public float damageTickRate = 3f; //how often we can deal damage
     public float reach = 30f;
+    [SerializeField]
+    private bool _isConstant = false;
     private bool _isDoneSweeping = false;
     private float _curSweepTime = 0f;
     private float _timeSinceLastDamageTick = 0f; //control how often something is hit by the beam, fixed instant melting
@@ -32,12 +34,18 @@ public class SweepingLaser : MonoBehaviour{
     private Damage.DamageEventArgs args;
 
     private Sequence _rotationSequence;
+
+    private CoroutineHandle _activeLaserHandle;
+
     void Start(){
         args = new Damage.DamageEventArgs(damage, this.transform.position, Damage.DamageType.Neutral, Damage.Faction.Enemy);
         _lineRender = GetComponent<LineRenderer>();
         _origin = transform.position;
         _lineRender.positionCount = 1;
         _lineRender.SetPosition(0, _origin);
+        if (_isConstant) {
+            ActivateLaserConstant();
+        }
     }
 
     void Update() {
@@ -61,7 +69,8 @@ public class SweepingLaser : MonoBehaviour{
         timeToSweep = sweepTime;
         transform.rotation = Quaternion.Euler(0, initAngle, 0);
         _curSweepTime = 0f;
-        Timing.RunCoroutine(SweepRoutine());
+        Timing.KillCoroutines(_activeLaserHandle);
+        _activeLaserHandle = Timing.RunCoroutine(SweepRoutine());
         _rotationSequence.Append(transform.DORotate(new Vector3(0, sweepAngle + initAngle, 0), timeToSweep).SetEase(Ease.Linear));//do the tween here so it doesn't break
     }
 
@@ -81,24 +90,33 @@ public class SweepingLaser : MonoBehaviour{
         yield return 0f;
     }
 
-    private CoroutineHandle _activeLaserHandle;
     /// <summary>
     /// Don't actually sweep, and instead fire straight ahead
     /// </summary>
-    /// <param name="activeTime"></param>
+    /// <param name="activeTime">how long this laser is active for</param>
     public void ActivateLaser(float activeTime) {
-        _activeLaserHandle = Timing.RunCoroutine(ActiveRoutine(activeTime));
+        Timing.KillCoroutines(_activeLaserHandle);
+        _activeLaserHandle = Timing.RunCoroutine(ActiveRoutine(activeTime, false));
     }
 
-    private IEnumerator<float> ActiveRoutine(float activeTime) {
+    public void ActivateLaserConstant() {
+        Timing.KillCoroutines(_activeLaserHandle);
+        _activeLaserHandle = Timing.RunCoroutine(ActiveRoutine(0, true));
+    }
+    private IEnumerator<float> ActiveRoutine(float activeTime, bool isConstant) {
         bool _isDone = false;
         float _timer = 0f;
         while (!_isDone) {
             CalculateHit();
-            _timer += Time.deltaTime;
-            if(_timer >= activeTime) {
-                DisableLaser();
-                _isDone = true;
+            //if we aren't constant, tick the timer and check it
+            if (!_isConstant) {
+                if (_timer >= activeTime) {
+                    DisableLaser();
+                    _isDone = true;
+                }
+                else {
+                    _timer += Time.deltaTime;
+                }
             }
             yield return 0f;
         }
