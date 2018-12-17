@@ -13,7 +13,7 @@ namespace JLProject{
         public GameObject platformDoorA, platformDoorB;
         public Toggleable elevatorSwitch;
         private Vector3 _destinationPosition;
-        private bool _occupied, _inTransit;
+        private bool _occupied, _inTransit, _locked = false;
 
         void Start(){
             _destinationPosition = transform.position;
@@ -21,6 +21,9 @@ namespace JLProject{
 
         // Update is called once per frame
         void Update(){
+            if (_locked) {
+                return;
+            }
             // movement of the elevator
             if(!V3Equal(transform.position, _destinationPosition)) {
                 transform.position = Vector3.MoveTowards(transform.position, _destinationPosition, Time.smoothDeltaTime * velocity);
@@ -38,7 +41,7 @@ namespace JLProject{
                     }
                     //if this elevator is one way we disable the collider
                     if (oneWay) {
-                        GetComponent<BoxCollider>().enabled = false;
+                        _locked = true;
                     }
                     //delay the switch retoggle to avoid the doors breaking
                     Timing.RunCoroutine(ElevatorSafetyTimer());
@@ -76,7 +79,7 @@ namespace JLProject{
         }
 
         void OnTriggerEnter(Collider c){
-            if (c.CompareTag("Player")){
+            if (!_locked && c.CompareTag("Player")){
                 c.transform.SetParent(transform, true);
                 if ((pointA && pointB)) {
                     elevatorSwitch.Toggle();
@@ -86,7 +89,7 @@ namespace JLProject{
         }
 
         void OnTriggerExit(Collider c){
-            if (c.CompareTag("Player")){
+            if (!_locked && c.CompareTag("Player")){
                 c.transform.parent = null;
                 if ((pointA && pointB)) {
                     elevatorSwitch.Toggle();
