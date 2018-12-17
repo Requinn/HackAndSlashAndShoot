@@ -66,7 +66,7 @@ public class MortarBoss : AIEntity{
     private void EnableAllAttacks(){
         InvokeRepeating("FireLaser", 5f, laserCooldown);
         InvokeRepeating("FireBullets", 8f, bulletCooldown);
-        InvokeRepeating("FireUnique", 25f, 20f);
+        InvokeRepeating("FireUnique", 10f, 12f);
     }
 
     /// <summary>
@@ -222,17 +222,25 @@ public class MortarBoss : AIEntity{
     /// handles the unique attacks
     /// </summary>
     private void FireUnique(){
-        if (currentPhase == 0){
-            phase1Unique.delay = 0f;
-            phase1Unique.Fire();
-            phase1Unique.delay = 1f;
-            phase1Unique.Fire();
+        if (currentPhase == 0) {
+            for (int i = 0; i <= 5; i++) {
+                phase1Unique.delay = i * 0.5f; ;
+                phase1Unique.Fire();
+            }
         }
         if (currentPhase == 1) {
-            phase2Unique.Fire();
+            for (int i = 0; i <= 7; i++) {
+                phase1Unique.delay = i * 0.5f; ;
+                phase1Unique.Fire();
+            }
         }
         if (currentPhase == 2) {
-            //nothing yet
+            for (int i = 0; i <= 5; i++) {
+                phase1Unique.delay = i * 0.5f; ;
+                phase1Unique.Fire();
+            }
+            phase2Unique.delay = 3.25f;
+            phase2Unique.Fire();
         }
     }
 

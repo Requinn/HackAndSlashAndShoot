@@ -2087,8 +2087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfc6973af5056949a079e887be0563b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 125
-  _currenthealth: 125
+  _maximumhealth: 120
+  _currenthealth: 120
   _armorvalue: 0
   _faction: 3
   StatusImmunities: 
@@ -2145,7 +2145,7 @@ MonoBehaviour:
   ReferenceID: 0
   weaponIcon: {fileID: 0}
   _damage: 0
-  _attackDelay: 0.75
+  _attackDelay: 0.85
   _reloadSpeed: 3
   _currentMag: 2
   _maximumMag: 2
@@ -2164,7 +2164,7 @@ MonoBehaviour:
   WaveComponent:
   - {fileID: 1714474322477190}
   - {fileID: 1714474322477190}
-  damageValues: 1400000019000000
+  damageValues: 0f0000000f000000
   force: 0200000002000000
   momentum: 0100000001000000
   faction: 3
@@ -3074,7 +3074,7 @@ MonoBehaviour:
     locked: 0
     manualUpdate: 0
     keepDelayedEventsOnStateExit: 0
-    preprocessed: 0
+    preprocessed: 1
     ExposedEvents: []
     RestartOnEnable: 1
     EnableDebugFlow: 0

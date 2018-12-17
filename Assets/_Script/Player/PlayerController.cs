@@ -30,6 +30,8 @@ namespace JLProject{
         private float _attackDelay = 0.0f;
         public float _chargeTime = 0.0f;
 
+        private bool _isInputDisabled = false;
+
         private ParticleSystem _chargeParticle;
 
         public PickupObject PickupHandler;
@@ -61,7 +63,8 @@ namespace JLProject{
         // Update is called once per frame
         void Update(){
             //Debug.Log(MovementSpeed);
-            if (!GameController.Controller.paused){
+            //as long as the game isn't pause, or we aren't frozen in place
+            if (!GameController.Controller.paused && !_isInputDisabled){
                 if (_timeSinceAttack <= _attackDelay){
                     _timeSinceAttack += Time.deltaTime;
                 }
@@ -194,6 +197,15 @@ namespace JLProject{
         private void CancelCharge(){
             _chargeTime = 0f;
         }
+
+        /// <summary>
+        /// Set whether the player is allowed to use inputs or not
+        /// </summary>
+        /// <param name="freeze"></param>
+        public void SetPlayerFrozen(bool freeze = false) {
+            _isInputDisabled = freeze;
+        }
+
         /// <summary>
         /// character motor
         /// </summary>

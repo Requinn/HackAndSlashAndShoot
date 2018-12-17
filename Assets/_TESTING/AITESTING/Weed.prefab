@@ -217,7 +217,7 @@ MonoBehaviour:
   _activeCooldown: 0
   _warningDuration: 0
   _activeDuration: 0
-  TickTime: 0.15
+  TickTime: 0.3
   Damage: 5
   type: 0
 --- !u!114 &114609143600286958

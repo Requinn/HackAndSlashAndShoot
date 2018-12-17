@@ -5,6 +5,7 @@ using MEC;
 using UnityEngine;
 
 public class BulletHell : MonoBehaviour{
+    public float damage = 10f;
     public int projectileCount = 12; //how many bullets do we shoot 
     public float projectileAngleRange = 120f; //how wide of an angle are they spread in
     public float fireRate = 1f; //how often
@@ -73,6 +74,7 @@ public class BulletHell : MonoBehaviour{
                         go.GetComponent<Rigidbody>().velocity =  go.transform.forward * 5f ;
                     }
                     else {
+                        go.GetComponent<ShortPistolBullet>().SetDamage(damage);
                         go.GetComponent<Rigidbody>().velocity = go.transform.forward * go.GetComponent<IProjectile>().GetVelocity();
                     }
                     
@@ -87,9 +89,6 @@ public class BulletHell : MonoBehaviour{
 
 	// Update is called once per frame
 	void Update () {
-	    if (Input.GetKeyDown(KeyCode.G)){
-	        Fire();
-	    }
         if (lookAtPlayer) {
             transform.LookAt(targetPlayer.transform);
         }

@@ -120,9 +120,9 @@ public class DroneBossSummon : AIEntity {
         float elapsedTime = 0f;
         while (elapsedTime < 0.1f) {
             if (!this) { yield break; }
-            _visuals.material.color = Color.red;
+            if (_visuals) _visuals.material.color = Color.red;
             yield return Timing.WaitForSeconds(0.06f);
-            _visuals.material.color = Color.white;
+            if (_visuals) _visuals.material.color = Color.white;
             yield return Timing.WaitForSeconds(0.06f);
             elapsedTime += Time.deltaTime;
         }
