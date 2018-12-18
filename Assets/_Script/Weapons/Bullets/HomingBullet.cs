@@ -51,7 +51,7 @@ public class HomingBullet : MonoBehaviour, IProjectile {
     }
 
     private IEnumerator<float> DelayedPlayerReferenceGrab() {
-        yield return Timing.WaitForSeconds(0.25f);
+        yield return Timing.WaitForSeconds(1f);
         if (!GameController.Controller.PlayerReference.IsDead) {
             if (GameController.Controller.PlayerReference.gameObject) {
                 SetTarget(GameController.Controller.PlayerReference.gameObject);

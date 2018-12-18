@@ -25,6 +25,7 @@ public class Turret : AIEntity{
     protected override void Movement(){   
         _pos = transform.position;
         _dir = (target.transform.position - _pos).normalized;       //direction to look at
+        _dir.y = 0;
         _lookrotation = Quaternion.LookRotation(_dir);              //generate a quaternion using the direction
         transform.DORotate(_lookrotation.eulerAngles, rotationTime);    //rotate towards it with a speed
     }

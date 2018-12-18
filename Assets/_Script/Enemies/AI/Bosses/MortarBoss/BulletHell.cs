@@ -28,7 +28,6 @@ public class BulletHell : MonoBehaviour{
         targetPlayer = GameController.Controller.PlayerReference;
         _sound = GetComponent<AudioSource>();
     }
-
     /// <summary>
     /// Used to update the attack properties from the boss's side
     /// </summary>

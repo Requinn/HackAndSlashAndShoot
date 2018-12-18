@@ -1055,9 +1055,10 @@ MonoBehaviour:
   initAngle: 0
   sweepAngle: 0
   timeToSweep: 0
-  damage: 25
+  damage: 40
   damageTickRate: 0.5
   reach: 30
+  _isConstant: 0
 --- !u!114 &101281527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1111,7 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56f05df56433b3488e98c217acf9d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
   projectileCount: 5
   projectileAngleRange: 90
   fireRate: 0.5
@@ -1736,9 +1737,10 @@ MonoBehaviour:
   initAngle: 0
   sweepAngle: 0
   timeToSweep: 0
-  damage: 25
+  damage: 40
   damageTickRate: 0.5
   reach: 30
+  _isConstant: 0
 --- !u!114 &352956719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,7 +1794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56f05df56433b3488e98c217acf9d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
   projectileCount: 5
   projectileAngleRange: 90
   fireRate: 0.5
@@ -2623,9 +2625,10 @@ MonoBehaviour:
   initAngle: 0
   sweepAngle: 0
   timeToSweep: 0
-  damage: 25
+  damage: 40
   damageTickRate: 0.5
   reach: 30
+  _isConstant: 0
 --- !u!114 &402692817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2679,7 +2682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56f05df56433b3488e98c217acf9d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
   projectileCount: 5
   projectileAngleRange: 90
   fireRate: 0.5
@@ -4798,8 +4801,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09c61ba5ea99394b84957453bde6d8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 1000
-  _currenthealth: 1000
+  _maximumhealth: 1250
+  _currenthealth: 1250
   _armorvalue: 40
   _faction: 3
   StatusImmunities: 
@@ -4847,7 +4850,7 @@ MonoBehaviour:
     cooldown:
     - 5
     - 6
-    - 8
+    - 6.5
     activeTime:
     - 1
     - 2
@@ -6279,9 +6282,10 @@ MonoBehaviour:
   initAngle: 0
   sweepAngle: 0
   timeToSweep: 0
-  damage: 25
+  damage: 40
   damageTickRate: 0.5
   reach: 30
+  _isConstant: 0
 --- !u!114 &1072057445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6335,7 +6339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56f05df56433b3488e98c217acf9d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
   projectileCount: 5
   projectileAngleRange: 90
   fireRate: 0.5
@@ -8220,9 +8224,10 @@ MonoBehaviour:
   initAngle: 0
   sweepAngle: 0
   timeToSweep: 0
-  damage: 25
+  damage: 40
   damageTickRate: 0.5
   reach: 30
+  _isConstant: 0
 --- !u!114 &1670361871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8276,7 +8281,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56f05df56433b3488e98c217acf9d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
   projectileCount: 5
   projectileAngleRange: 90
   fireRate: 0.5
@@ -9690,7 +9695,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.5
   m_BuildHeightMesh: 0
   m_NavMeshData: {fileID: 23800000, guid: 38f5778f149e54b44a3239b2256f83fc, type: 2}
 --- !u!1 &1968423169
@@ -9832,9 +9837,10 @@ MonoBehaviour:
   initAngle: 0
   sweepAngle: 0
   timeToSweep: 0
-  damage: 25
+  damage: 40
   damageTickRate: 0.5
   reach: 30
+  _isConstant: 0
 --- !u!114 &1968423176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9888,7 +9894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e56f05df56433b3488e98c217acf9d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
   projectileCount: 5
   projectileAngleRange: 90
   fireRate: 0.5

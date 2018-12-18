@@ -102,7 +102,6 @@ public class TankyRanged : AIEntity {
         }
 
         CoroutineHandle chargingChannel;
-        Debug.Log(distanceToPoint);
         chargingChannel = Timing.RunCoroutine(ChannelCharge(distanceToPoint * (3.54f/15f)));
         //wait until we are done casting the channel
         yield return Timing.WaitUntilDone(chargingChannel);

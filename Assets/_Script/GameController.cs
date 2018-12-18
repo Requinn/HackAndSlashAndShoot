@@ -1,5 +1,7 @@
-﻿using HutongGames.PlayMaker.Actions;
+﻿using System;
+using HutongGames.PlayMaker.Actions;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 namespace JLProject{
@@ -31,9 +33,14 @@ namespace JLProject{
             _pauseMenu.Restart += RestartLevel;
             _pauseMenu.LoadMain += LoadMain; 
             _pauseMenu.ResumeGame += TogglePause;
-
             PlayerReference = FindObjectOfType<PlayerController>();
+            SceneManager.activeSceneChanged += UpdatePlayerReference;
+
             //world triggers
+        }
+
+        private void UpdatePlayerReference(Scene arg0, Scene arg1) {
+            PlayerReference = FindObjectOfType<PlayerController>();
         }
 
         // Update is called once per frame
