@@ -13,7 +13,8 @@ public class ReparentOnCollision : MonoBehaviour {
     /// </summary>
     /// <param name="other"></param>
     private void OnTriggerEnter(Collider other) {
-        if(other.GetComponent<IProjectile>() != null) { return; }
+        //dirty check for bullets and melee hitboxes
+        if(other.GetComponent<IProjectile>() != null || other.GetComponent<WaveCollision>()) { return; }
         other.transform.SetParent(transform);
     }
 

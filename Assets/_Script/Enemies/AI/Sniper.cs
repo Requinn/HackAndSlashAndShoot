@@ -10,10 +10,10 @@ using UnityEngine;
 /// Maybe add some kind of defensive buff whil cloaked.
 /// </summary>
 public class Sniper : AIEntity{
+    [Header("Sniper Stats")]
     private LineRenderer _line;
     public float aimTime = 1.5f;
     public float minDistance = 5f;
-    public float speed;
     private bool _isDoneAiming = false;
     private CoroutineHandle _aimHandle;
     private Cloak cloak;
@@ -22,7 +22,6 @@ public class Sniper : AIEntity{
 	// Use this for initialization
     new void Start (){
 	    base.Start();
-        MovementSpeed = speed = 5.0f;
 	    cloak = GetComponent<Cloak>();
 	    _line = GetComponent<LineRenderer>();
 	    _line.positionCount = 2;
@@ -67,7 +66,7 @@ public class Sniper : AIEntity{
 	            if (!cloak.isCloaked){ //cloak if we aren't cloaked
 	                cloak.StartCloak();
 	            }
-	            Move();
+                Movement();
 	        }
 	    }
 		//if can attack
@@ -86,8 +85,9 @@ public class Sniper : AIEntity{
     }
 
     protected override void Movement(){
-        transform.forward = (transform.position - target.transform.position).normalized;
-        _NMAgent.Move(transform.forward * MovementSpeed * Time.deltaTime);
+        Vector3 pointAwayFromTarget = (transform.position - target.transform.position).normalized;
+        transform.forward = pointAwayFromTarget;
+        _NMAgent.Move(pointAwayFromTarget * MovementSpeed * Time.deltaTime);
     }
 
     protected override void Attack(){

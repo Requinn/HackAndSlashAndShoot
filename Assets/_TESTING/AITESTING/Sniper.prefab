@@ -2150,9 +2150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83e23d266c2048f45ac61486f255e0f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 200
-  _currenthealth: 200
-  _armorvalue: 5
+  _maximumhealth: 120
+  _currenthealth: 120
+  _armorvalue: 10
   _faction: 3
   StatusImmunities: 
   Afflictions: []
@@ -2161,7 +2161,7 @@ MonoBehaviour:
   floater: {fileID: 114554829239292364}
   CanRevive: 0
   CanMove: 1
-  _movementspeed: 0
+  _movementspeed: 6.25
   AnimController: {fileID: 0}
   weapon: {fileID: 114668999889928158}
   target: {fileID: 0}
@@ -2169,7 +2169,6 @@ MonoBehaviour:
   thisFSM: {fileID: 0}
   aimTime: 1.5
   minDistance: 5
-  speed: 5
 --- !u!114 &114868890347697432
 MonoBehaviour:
   m_ObjectHideFlags: 1

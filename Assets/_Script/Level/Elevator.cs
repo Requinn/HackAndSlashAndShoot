@@ -29,20 +29,25 @@ namespace JLProject{
                 transform.position = Vector3.MoveTowards(transform.position, _destinationPosition, Time.smoothDeltaTime * velocity);
                 //Reached destination
                 if (V3Equal(transform.position,_destinationPosition)){
-                    if (V3Equal(transform.position, pointA.position)) {
-                        elevatorSwitch.Toggle();
-                        if (platformDoorA) platformDoorA.SetActive(false);
-                        doorA.Invoke("Open", 0.25f);
-                    }
-                    if (V3Equal(transform.position, pointB.position)){
-                        if (platformDoorB) platformDoorB.SetActive(false);
-                        doorB.Invoke("Open", 0.25f);
-                        elevatorSwitch.Toggle();
-                    }
                     //if this elevator is one way we disable the collider
                     if (oneWay) {
                         _locked = true;
                     }
+                    if (V3Equal(transform.position, pointA.position)) {
+                        elevatorSwitch.Toggle();
+                        if (platformDoorA) platformDoorA.SetActive(false);
+                        if (!_locked) {
+                            doorA.Invoke("Open", 0.25f);
+                        }
+                    }
+                    if (V3Equal(transform.position, pointB.position)){
+                        if (platformDoorB) platformDoorB.SetActive(false);
+                        doorB.Invoke("Open", 0.25f);
+                        if (!_locked) {
+                            elevatorSwitch.Toggle();
+                        }
+                    }
+
                     //delay the switch retoggle to avoid the doors breaking
                     Timing.RunCoroutine(ElevatorSafetyTimer());
                 }
