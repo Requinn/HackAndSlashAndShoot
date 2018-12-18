@@ -1,10 +1,10 @@
 {
-    "Health": 200.0,
-    "Shield": 80.0,
+    "Health": 160.0,
+    "Shield": 90.0,
     "Armor": 0.0,
     "weapons": [
         5,
         4
     ],
-    "lastLevel": 6
+    "lastLevel": 8
 }
