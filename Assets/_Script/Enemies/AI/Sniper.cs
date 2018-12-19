@@ -85,7 +85,9 @@ public class Sniper : AIEntity{
     }
 
     protected override void Movement(){
-        Vector3 pointAwayFromTarget = (transform.position - target.transform.position).normalized;
+        Vector3 targetPosition = target.transform.position;
+        targetPosition.y = transform.position.y;
+        Vector3 pointAwayFromTarget = (transform.position - targetPosition).normalized;
         transform.forward = pointAwayFromTarget;
         _NMAgent.Move(pointAwayFromTarget * MovementSpeed * Time.deltaTime);
     }

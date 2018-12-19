@@ -589,8 +589,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b6bfab79b18a014ab56b998fbbf85e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maximumhealth: 100
-  _currenthealth: 100
+  _maximumhealth: 120
+  _currenthealth: 120
   _armorvalue: 0
   _faction: 3
   StatusImmunities: 
