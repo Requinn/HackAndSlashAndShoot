@@ -35,13 +35,13 @@ public class WaveCollision : MonoBehaviour{
             }
         }
         if (args.SourceFaction != Damage.Faction.Player) return;
-        if (swtch){
+        if (c.CompareTag("Switch") || swtch){
             if (!Physics.Linecast(transform.root.position, swtch.transform.position, 1 << 11)) {
                 swtch.Toggle();
             }
         }
-        if (brk){
-            if (!Physics.Linecast(transform.root.position, brk.transform.position, 1 << 11)) {
+        if (c.CompareTag("Breakable") || brk){
+            if (!Physics.Linecast(transform.root.position, brk.transform.position, 1 << LayerMask.NameToLayer("Environment"))) {
                 brk.GetComponent<BreakableObject>().Hit();
             }
         }

@@ -28,7 +28,7 @@ GameObject:
   - component: {fileID: 208260103712983240}
   m_Layer: 0
   m_Name: Canister
-  m_TagString: Enemy
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 127

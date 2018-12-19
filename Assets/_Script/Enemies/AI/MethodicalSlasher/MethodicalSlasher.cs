@@ -127,7 +127,7 @@ public class MethodicalSlasher : AIEntity {
         //"leap" at the player
         dashHandle = Timing.RunCoroutine(DashToLocation(adjustedDistance));
         yield return Timing.WaitUntilDone(dashHandle);
-        //transform.LookAt(target.transform);//look at the player
+        //transform.LookAt(target.transform); //look at the player
         //attack
         Attack();
         yield return Timing.WaitForSeconds(.5f);
@@ -142,7 +142,7 @@ public class MethodicalSlasher : AIEntity {
 
     private IEnumerator<float> DashToLocation(Vector3 Location) {
         while(!Mathf.Approximately(transform.position.x, Location.x) && !Mathf.Approximately(transform.position.z, Location.z)) {
-            transform.position = Vector3.Lerp(transform.position, Location, Time.deltaTime * 15f);
+            transform.position = Vector3.Lerp(transform.position, Location, Time.deltaTime * 20f);
             yield return 0f;
         }
     }
