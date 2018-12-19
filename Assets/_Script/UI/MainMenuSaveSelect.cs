@@ -41,7 +41,7 @@ namespace JLProject{
                 ShowWarning();
             }
             else{
-                SceneLoader.Instance.LoadLevel(1);
+                SceneLoader.Instance.LoadLevel(2);
             }
         }
 
@@ -51,7 +51,7 @@ namespace JLProject{
         public void DeleteSaveAndContinue(){
             HideWarning();
             File.Delete(DataService.Instance.GetSaveDataFilePath(1));
-            SceneLoader.Instance.LoadLevel(1);
+            SceneLoader.Instance.LoadLevel(2);
         }
 
         public void QuitApp(){
