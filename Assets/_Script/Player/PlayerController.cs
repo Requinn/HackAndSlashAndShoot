@@ -37,9 +37,16 @@ namespace JLProject{
         public PickupObject PickupHandler;
         void Awake(){
             floorMask = LayerMask.GetMask("Floor");
+            _PAC = GetComponentInChildren<PlayerAnimationController>();
         }
 
         void Start(){
+            CanMove = true;
+            MovementSpeed = speed;
+            cc = GetComponent<CharacterController>();
+
+            _chargeParticle = GetComponentInChildren<ParticleSystem>();
+            Faction = Damage.Faction.Player;
             if (useSave && DataService.Instance.curLoadedProfile == 1){
                 CurrentHealth = DataService.Instance.PlayerStats.Health;
                 if (UIhp){
@@ -51,13 +58,6 @@ namespace JLProject{
                     Equip(Instantiate(ObjectReferencer.Instance.FetchObjByID(wepID)));
                 }
             }
-
-            CanMove = true;
-            MovementSpeed = speed;
-            cc = GetComponent<CharacterController>();
-            _PAC = GetComponentInChildren<PlayerAnimationController>();
-            _chargeParticle = GetComponentInChildren<ParticleSystem>();
-            Faction = Damage.Faction.Player; 
         }
 
         // Update is called once per frame
@@ -131,12 +131,12 @@ namespace JLProject{
 
             //TODO: Can this be better?
             //check for attacking
-            if (CurrentWeapon != null){ 
+            if (CurrentWeapon != null){
                 //single shot input
                 if (!CurrentWeapon.isAutomatic){
                     if (CurrentShield != null && !CurrentShield.blocking) {
                         if (Input.GetMouseButtonDown(0) && CurrentWeapon._canAttack) {
-                            _PAC.GunShot();
+                            _PAC.PlayAttack((int)CurrentWeapon.Category + 1);
                             CurrentWeapon.Fire();
                             /**if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
                                 _timeSinceAttack = 0.0f;
@@ -316,6 +316,8 @@ namespace JLProject{
                     }
                 }
                 if (equipped != null) equipped(WeaponsInHand[0], WeaponsInHand.Count < 2 ? null : WeaponsInHand[1]);
+                //update the animator to use the correct layer
+                if(_PAC) _PAC.SetActiveLayer((int)CurrentWeapon.Category);
             }
             if (GO.GetComponent<Shield>()){
                 
@@ -342,6 +344,8 @@ namespace JLProject{
                     WeaponsInHand[0].gameObject.SetActive(true);
                 }
                 if (swapped != null) swapped();
+                //update animator to use correct layer
+                _PAC.SetActiveLayer((int)CurrentWeapon.Category);
             }
         }
     }

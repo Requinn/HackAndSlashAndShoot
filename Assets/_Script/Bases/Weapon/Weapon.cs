@@ -5,10 +5,19 @@ using UnityEngine.UI;
 using UnityEngine.Windows.Speech;
 
 namespace JLProject.Weapons{
+    public enum WeaponType {
+        ShortSword = 1, Pistol, Autogun, Rapier
+    }
+
     public abstract class Weapon : MonoBehaviour{
         public int ReferenceID;
         public Sprite weaponIcon;
         [Header("Weapon Attributes")]
+        [SerializeField] protected WeaponType _type;
+        public WeaponType Category {
+            get { return _type; }
+        }
+
         [SerializeField] protected float _damage;
         public float AttackValue{
             get{ return _damage; }
@@ -46,18 +55,20 @@ namespace JLProject.Weapons{
             set{ _chargeAttackDamageBonus = value; }
         }
         **/
+        public Type damageType;
+        public Damage.Faction Faction { get; set; }
+        public enum Type {
+            Melee,
+            Ranged
+        } 
         public float movementWeight; //how much is the player slowed down when firing this weapon (Automatics only)
         public bool isAutomatic = false;
         protected Entity _owningObj;
-        public List<string> StatsList = new List<string>(){"Damage", "AttackDelay", "ReloadSpeed", "MagazineSize"};
-        public Damage.Faction Faction{ get; set; }
+        //public List<string> StatsList = new List<string>(){"Damage", "AttackDelay", "ReloadSpeed", "MagazineSize"};
+
         public bool _canAttack = true;
         public bool _canBlock = true;
-        public Type type;
-        public enum Type{
-            Melee,
-            Ranged
-        }
+
 
         /// <summary>
         /// perform the attack

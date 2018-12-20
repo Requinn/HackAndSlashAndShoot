@@ -31,7 +31,7 @@ public class WeaponCheckAction : FsmStateAction {
     public void CheckWeapon(){
         if (weapon != null){
             weaponReady.Value = weapon._canAttack;
-            if (weapon.type == Weapon.Type.Melee){
+            if (weapon.damageType == Weapon.Type.Melee){
                 Melee m = weapon.GetComponent<Melee>();
                 if (m.CurrentCombo > 0) {
                     inCombo.Value = true;

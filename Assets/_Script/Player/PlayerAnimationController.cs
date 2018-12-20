@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JLProject;
+using System;
 
 /// <summary>
 /// Handles the animations for the player
@@ -11,7 +13,7 @@ public class PlayerAnimationController : MonoBehaviour{
     public float lookAngle;
     public Vector3 moveVector;
 	// Use this for initialization
-	void Start (){
+	void Awake (){
 	    _animator = GetComponent<Animator>();
 	}
 
@@ -51,6 +53,30 @@ public class PlayerAnimationController : MonoBehaviour{
         _animator.Play(animName);
     }
 
+    /// <summary>
+    /// Play an animation based on the weapon's id
+    /// </summary>
+    /// <param name="weaponLayerID"></param>
+    public void PlayIdle(int weaponLayerID) {
+        _animator.Play("Idle", weaponLayerID);
+    }
+
+    public void PlayAttack(int weaponLayerID) {
+        _animator.Play("Attack", weaponLayerID);
+    }
+
+    public void SetActiveLayer(int weaponLayerID) {
+        Debug.Log(weaponLayerID + 1);
+        int layerCount = _animator.layerCount;
+        for (int i = 1; i < layerCount; i++) {
+            if (i == weaponLayerID + 1) {
+                _animator.SetLayerWeight(i, 1f);
+            }
+            else {
+                _animator.SetLayerWeight(i, 0f);
+            }
+        }
+    }
     //DEPRECATED BELOW------------------
     //movement animations
     public void WalkForward(){
@@ -69,9 +95,10 @@ public class PlayerAnimationController : MonoBehaviour{
         _animator.SetFloat("Speed", 0f);
     }
 
+
     //Attacking animations
     public void GunShot() {
-        _animator.Play("GunShot");
+        _animator.Play("GunShot", 1);
         //_animator.SetTrigger("GunAttack");
     }
 
