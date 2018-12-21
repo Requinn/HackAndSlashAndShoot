@@ -107,12 +107,14 @@ namespace JLProject{
                     if (!CurrentWeapon){
                         //we don't have a weapon, so block freely
                         CurrentShield.blocking = true;
+                        _PAC.PlayBlock();
                         AdjustSpeed(shieldedSpeed);
                     }
                     else{
                         if (CurrentWeapon._canBlock){
                             //we have a weapon, can't block if it can't attack, which is blocked by reloading or firing
                             CurrentShield.blocking = true;
+                            _PAC.PlayBlock();
                             AdjustSpeed(shieldedSpeed);
                         }
                     }
@@ -136,7 +138,11 @@ namespace JLProject{
                 if (!CurrentWeapon.isAutomatic){
                     if (CurrentShield != null && !CurrentShield.blocking) {
                         if (Input.GetMouseButtonDown(0) && CurrentWeapon._canAttack) {
-                            _PAC.PlayAttack((int)CurrentWeapon.Category + 1);
+                            if (CurrentWeapon is Gun) {
+                                _PAC.PlayAttack((int)CurrentWeapon.Category);
+                            }else {
+                                _PAC.PlayMeleeAttack((int)CurrentWeapon.Category, CurrentWeapon.GetComponent<Melee>().CurrentCombo);
+                            }
                             CurrentWeapon.Fire();
                             /**if (CurrentWeapon.type == Weapon.Type.Melee || CurrentWeapon.GetComponent<BurstGun>()){   //if we're swinging a sword, stop our movement for delay seconds
                                 _timeSinceAttack = 0.0f;
@@ -210,14 +216,16 @@ namespace JLProject{
         /// character motor
         /// </summary>
         protected override void Movement(){
-            _MovX = Input.GetAxisRaw("Horizontal");
-            _MovZ = Input.GetAxisRaw("Vertical");
-            _MoveDir = new Vector3(_MovX, 0, _MovZ).normalized;
-            if(_PAC){
-                _PAC.moveVector = _MoveDir;
+            if (MovementSpeed > 0) {
+                _MovX = Input.GetAxisRaw("Horizontal");
+                _MovZ = Input.GetAxisRaw("Vertical");
+                _MoveDir = new Vector3(_MovX, 0, _MovZ).normalized;
+                if (_PAC) {
+                    _PAC.moveVector = _MoveDir;
+                }
+                _MoveDir *= MovementSpeed;
+                cc.Move(_MoveDir * Time.deltaTime);
             }
-            _MoveDir *= MovementSpeed;
-            cc.Move(_MoveDir * Time.deltaTime);
         }
 
         /// <summary>
@@ -346,6 +354,7 @@ namespace JLProject{
                 if (swapped != null) swapped();
                 //update animator to use correct layer
                 _PAC.SetActiveLayer((int)CurrentWeapon.Category);
+                _PAC.PlayWeaponSwap((int)CurrentWeapon.Category);
             }
         }
     }

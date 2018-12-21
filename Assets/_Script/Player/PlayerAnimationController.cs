@@ -65,11 +65,22 @@ public class PlayerAnimationController : MonoBehaviour{
         _animator.Play("Attack", weaponLayerID);
     }
 
+    public void PlayMeleeAttack(int weaponLayerID, int comboCount) {
+        _animator.Play("Attack" + comboCount, weaponLayerID);
+    }
+
+    public void PlayWeaponSwap(int weaponLayerID) {
+        _animator.Play("Swap", _animator.layerCount - 1);
+    }
+
+    public void PlayBlock() {
+        _animator.Play("Block", _animator.layerCount - 1);
+    }
     public void SetActiveLayer(int weaponLayerID) {
-        Debug.Log(weaponLayerID + 1);
+        Debug.Log(weaponLayerID);
         int layerCount = _animator.layerCount;
-        for (int i = 1; i < layerCount; i++) {
-            if (i == weaponLayerID + 1) {
+        for (int i = 1; i < layerCount - 1; i++) {
+            if (i == weaponLayerID) {
                 _animator.SetLayerWeight(i, 1f);
             }
             else {
@@ -77,6 +88,7 @@ public class PlayerAnimationController : MonoBehaviour{
             }
         }
     }
+
     //DEPRECATED BELOW------------------
     //movement animations
     public void WalkForward(){
