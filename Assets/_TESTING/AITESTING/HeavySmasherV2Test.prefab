@@ -2021,21 +2021,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 1
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 1
   _targets: []
   hasTarget: 0
   Damage: 50

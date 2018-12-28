@@ -42,7 +42,10 @@ public class Sniper : AIEntity{
 
 	            if (_curAimTime < aimTime){
 	                _curAimTime += Time.deltaTime;
-	            }
+                    //_make laser thicker as aim time increases
+                    _line.startWidth = _curAimTime / aimTime;
+                    _line.endWidth = _curAimTime / aimTime;
+                }
 
 	            //if (!_isDoneAiming){
 	              //  _aimHandle = Timing.RunCoroutine(StartAiming());
@@ -52,6 +55,8 @@ public class Sniper : AIEntity{
                     weapon.Fire();
                     _line.enabled = false;
                     _curAimTime = 0f;
+                    _line.startWidth = _curAimTime / aimTime;
+                    _line.endWidth = _curAimTime / aimTime;
                 }
 	        }
         }

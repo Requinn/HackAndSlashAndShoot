@@ -551,21 +551,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 15
   _attackDelay: 1.5
   _reloadSpeed: 1.5
   _currentMag: 10000
   _maximumMag: 10000
+  damageType: 1
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 1
   bullet:
     objectToPool: {fileID: 1713346435508252, guid: 9f5ae7dbc42c16d44bd6716335630e61,
       type: 2}

@@ -3,6 +3,7 @@ using JLProject;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class YankerPull : MonoBehaviour {
     [SerializeField]
@@ -14,6 +15,7 @@ public class YankerPull : MonoBehaviour {
     [SerializeField]
     private float _coolDown = 15f;
 
+    private LineRenderer _ropeDraw;
     private float _timeSinceCast = 15f;
     private bool _isReadytoCast = true;
     private bool _isInRange = false;
@@ -24,7 +26,7 @@ public class YankerPull : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	    
+        _ropeDraw = GetComponent<LineRenderer>();
 	}
 	
 	// Update is called once per frame
@@ -47,10 +49,24 @@ public class YankerPull : MonoBehaviour {
     /// </summary>
     public void CastPull() {
         ImpactReceiver playerImpact = GameController.Controller.PlayerReference.GetComponent<ImpactReceiver>();
+        _ropeDraw.positionCount = 2;
+        _ropeDraw.SetPosition(0, transform.position);
+        _ropeDraw.SetPosition(1, GameController.Controller.PlayerReference.transform.position);
         if (playerImpact.isActiveAndEnabled) {
             playerImpact.GetComponent<ImpactReceiver>().AddImpact(transform.position - GameController.Controller.PlayerReference.transform.position, _pullStrength);
         }
+        MEC.Timing.RunCoroutine(RemoveLineDelayed());
         _timeSinceCast = 0.0f;
+    }
+
+    private IEnumerator<float> RemoveLineDelayed() {
+        float timepass = 0f;
+        while(timepass < 0.15f && GameController.Controller.PlayerReference) {
+            timepass += Time.deltaTime;
+            _ropeDraw.SetPosition(1, GameController.Controller.PlayerReference.transform.position);
+            yield return 0f;
+        }
+        _ropeDraw.positionCount = 0; //clear the position
     }
 
     /// <summary>
