@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: 4945cfc1b6d8b924c8a0ed664239ce50
+timeCreated: 1546042676
+licenseType: Free
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: detail_airHuge_24
+    100004: detail_airHuge_29
+    100006: detail_airLarge_28
+    100008: detail_airSmall_25
+    100010: detail_airSmall_27
+    100012: detail_solarPanel_21
+    100014: detail_solarPanel_22
+    100016: detail_solarPanel_23
+    100018: detail_solarPanel_32
+    100020: detail_solarPanel_33
+    100022: detail_solarPanel_34
+    100024: wall_border_30
+    100026: wall_garageDoor_31
+    100028: wall_straight_20
+    400000: //RootNode
+    400002: detail_airHuge_24
+    400004: detail_airHuge_29
+    400006: detail_airLarge_28
+    400008: detail_airSmall_25
+    400010: detail_airSmall_27
+    400012: detail_solarPanel_21
+    400014: detail_solarPanel_22
+    400016: detail_solarPanel_23
+    400018: detail_solarPanel_32
+    400020: detail_solarPanel_33
+    400022: detail_solarPanel_34
+    400024: wall_border_30
+    400026: wall_garageDoor_31
+    400028: wall_straight_20
+    2100000: darkStone
+    2100002: lightStone
+    2100004: customMaterial5
+    2300000: detail_airHuge_24
+    2300002: detail_airHuge_29
+    2300004: detail_airLarge_28
+    2300006: detail_airSmall_25
+    2300008: detail_airSmall_27
+    2300010: detail_solarPanel_21
+    2300012: detail_solarPanel_22
+    2300014: detail_solarPanel_23
+    2300016: detail_solarPanel_32
+    2300018: detail_solarPanel_33
+    2300020: detail_solarPanel_34
+    2300022: wall_border_30
+    2300024: wall_garageDoor_31
+    2300026: wall_straight_20
+    3300000: detail_airHuge_24
+    3300002: detail_airHuge_29
+    3300004: detail_airLarge_28
+    3300006: detail_airSmall_25
+    3300008: detail_airSmall_27
+    3300010: detail_solarPanel_21
+    3300012: detail_solarPanel_22
+    3300014: detail_solarPanel_23
+    3300016: detail_solarPanel_32
+    3300018: detail_solarPanel_33
+    3300020: detail_solarPanel_34
+    3300022: wall_border_30
+    3300024: wall_garageDoor_31
+    3300026: wall_straight_20
+    4300000: wall_straight_20
+    4300002: detail_solarPanel_21
+    4300004: detail_solarPanel_22
+    4300006: detail_solarPanel_23
+    4300008: detail_airHuge_24
+    4300010: detail_airSmall_25
+    4300012: detail_airSmall_27
+    4300014: detail_airLarge_28
+    4300016: detail_airHuge_29
+    4300018: wall_border_30
+    4300020: wall_garageDoor_31
+    4300022: detail_solarPanel_32
+    4300024: detail_solarPanel_33
+    4300026: detail_solarPanel_34
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: customMaterial5
+    second: {fileID: 2100000, guid: feedf3aa3bbd5f047b91a71a1f1ee2e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: darkStone
+    second: {fileID: 2100000, guid: e0a1405bbc89bbb4994eabdd338d6141, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lightStone
+    second: {fileID: 2100000, guid: 7d325a57713547742b8074fd00ac130a, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
