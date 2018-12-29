@@ -9695,7 +9695,7 @@ Prefab:
     - target: {fileID: 224000517169049438, guid: d812d3ac24d614c42b004004203c536c,
         type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224434381325447822, guid: d812d3ac24d614c42b004004203c536c,
         type: 2}
@@ -9720,6 +9720,11 @@ Prefab:
         type: 2}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114625243110385592, guid: d812d3ac24d614c42b004004203c536c,
+        type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d812d3ac24d614c42b004004203c536c, type: 2}
@@ -15787,7 +15792,6 @@ GameObject:
   - component: {fileID: 1435923380}
   - component: {fileID: 1435923379}
   - component: {fileID: 1435923382}
-  - component: {fileID: 1435923383}
   m_Layer: 5
   m_Name: LevelSelectionUI
   m_TagString: Untagged
@@ -15811,7 +15815,7 @@ RectTransform:
   - {fileID: 1043184121}
   - {fileID: 383799866}
   m_Father: {fileID: 2092564440}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -15890,27 +15894,6 @@ MonoBehaviour:
   _levelDescriptionText: {fileID: 1517166722}
   _levelName: {fileID: 237878471}
   _loadLevelButton: {fileID: 1043184122}
---- !u!114 &1435923383
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435923377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
-  m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
-  m_PhysicalUnit: 3
-  m_FallbackScreenDPI: 96
-  m_DefaultSpriteDPI: 96
-  m_DynamicPixelsPerUnit: 1
 --- !u!1001 &1448542074
 Prefab:
   m_ObjectHideFlags: 0

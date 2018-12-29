@@ -413,7 +413,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.75
+      value: 14.400001
       objectReference: {fileID: 0}
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalPosition.y
@@ -421,7 +421,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -35.5
+      value: -32.100002
       objectReference: {fileID: 0}
     - target: {fileID: 4352109575474120, guid: 3988dcee9cf79db478e5f507a1cb79d2, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1618,7 +1618,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 500
   _currenthealth: 500
-  _armorvalue: 20
+  _armorvalue: 25
   _faction: 3
   StatusImmunities: 
   Afflictions: []
@@ -1678,21 +1678,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 0
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 0
   bomb: {fileID: 552521200}
   bombCount: 5
   bombRadius: 4
@@ -2017,21 +2013,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 0
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 1
   Beams:
   - {fileID: 1157339309}
   - {fileID: 2066057668}
@@ -2518,6 +2510,10 @@ Prefab:
         type: 2}
       propertyPath: CastTime
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825635188142218, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
@@ -3707,7 +3703,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalScale.x
-      value: 6.25
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalScale.z
@@ -3741,6 +3737,10 @@ Prefab:
         type: 2}
       propertyPath: m_Center.x
       value: 0.0824337
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825635188142218, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
+      propertyPath: m_Name
+      value: Horizontal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
@@ -3818,6 +3818,10 @@ Prefab:
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalScale.y
       value: 0.099999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 1825635188142218, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
@@ -3944,7 +3948,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4203379238809532, guid: 31a2e2504a524b34a93809cce276e3cd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.75
+      value: 14.400001
       objectReference: {fileID: 0}
     - target: {fileID: 4203379238809532, guid: 31a2e2504a524b34a93809cce276e3cd, type: 2}
       propertyPath: m_LocalPosition.y
@@ -3952,7 +3956,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4203379238809532, guid: 31a2e2504a524b34a93809cce276e3cd, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -53.5
+      value: -50.100002
       objectReference: {fileID: 0}
     - target: {fileID: 4203379238809532, guid: 31a2e2504a524b34a93809cce276e3cd, type: 2}
       propertyPath: m_LocalRotation.x
@@ -4118,12 +4122,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6,
     type: 2}
   m_PrefabInternal: {fileID: 690555178}
---- !u!114 &878596444 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114180174857591146, guid: de9ac0589c40bdd419571dd1cbd3cea6,
-    type: 2}
-  m_PrefabInternal: {fileID: 690555178}
-  m_Script: {fileID: 11500000, guid: dde268d77ddc1e34a98c4022a45d5329, type: 3}
 --- !u!1 &894697482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4583,21 +4581,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 0
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 0
   bomb: {fileID: 377557479}
   bombCount: 6
   bombRadius: 6
@@ -4899,21 +4893,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 0
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 0
   bomb: {fileID: 833137255}
   bombCount: 4
   bombRadius: 2
@@ -5009,12 +4999,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6,
     type: 2}
   m_PrefabInternal: {fileID: 446972248}
---- !u!114 &1135571784 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114180174857591146, guid: de9ac0589c40bdd419571dd1cbd3cea6,
-    type: 2}
-  m_PrefabInternal: {fileID: 446972248}
-  m_Script: {fileID: 11500000, guid: dde268d77ddc1e34a98c4022a45d5329, type: 3}
 --- !u!1 &1147752724
 GameObject:
   m_ObjectHideFlags: 0
@@ -7554,32 +7538,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1473881910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a068f417cbfe5b742b30ae1e23335cfb, type: 3}
+  m_Script: {fileID: 11500000, guid: 433bb61b8a140804193ed6aafdaf0dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 0
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 1
-  Beams:
-  - {fileID: 2144283661}
-  - {fileID: 685633964}
-  - {fileID: 1135571784}
-  - {fileID: 878596444}
-  delay: 0
+  _horizontal: {fileID: 2144283661}
+  _vertical: {fileID: 685633964}
 --- !u!1001 &1550068536
 Prefab:
   m_ObjectHideFlags: 0
@@ -7708,7 +7684,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4923560702123634, guid: ed1cce05d1320764cb2f0e179f6961f9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 13.75
+      value: 14.400001
       objectReference: {fileID: 0}
     - target: {fileID: 4923560702123634, guid: ed1cce05d1320764cb2f0e179f6961f9, type: 2}
       propertyPath: m_LocalPosition.y
@@ -7716,7 +7692,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4923560702123634, guid: ed1cce05d1320764cb2f0e179f6961f9, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -53.5
+      value: -50.100002
       objectReference: {fileID: 0}
     - target: {fileID: 4923560702123634, guid: ed1cce05d1320764cb2f0e179f6961f9, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10243,7 +10219,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.75
+      value: 1.1500001
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalPosition.y
@@ -10251,7 +10227,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -13.75
+      value: -7.049999
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -10259,7 +10235,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalRotation.z
@@ -10267,7 +10243,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.7071068
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_RootOrder
@@ -10275,11 +10251,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1825635188142218, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_Name
-      value: Laser (1)
+      value: Vertical
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalScale.x
-      value: 6.25
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalScale.z
@@ -10302,7 +10278,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4287561667868878, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: de9ac0589c40bdd419571dd1cbd3cea6, type: 2}
@@ -10353,21 +10329,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ReferenceID: 0
   weaponIcon: {fileID: 0}
+  _type: 0
   _damage: 0
   _attackDelay: 0
   _reloadSpeed: 0
   _currentMag: 0
   _maximumMag: 0
+  damageType: 0
   movementWeight: 0
   isAutomatic: 0
-  StatsList:
-  - Damage
-  - AttackDelay
-  - ReloadSpeed
-  - MagazineSize
   _canAttack: 1
   _canBlock: 1
-  type: 1
   Beams:
   - {fileID: 104733749}
   - {fileID: 1763548410}
@@ -11867,7 +11839,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maximumhealth: 500
   _currenthealth: 500
-  _armorvalue: 30
+  _armorvalue: 40
   _faction: 3
   StatusImmunities: 
   Afflictions: []

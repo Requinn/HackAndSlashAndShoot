@@ -24,7 +24,7 @@ namespace JLProject{
                 for (int i = 0; i < bombCount; i++){
                     Vector2 rand = Random.insideUnitCircle * bombRadius;
                     //some height issues
-                    Instantiate(bomb, _player.transform.position + new Vector3(rand.x, _player.transform.position.y - 1f, rand.y), Quaternion.identity)
+                    Instantiate(bomb, _player.transform.position + new Vector3(rand.x, _player.transform.position.y - 3f, rand.y), Quaternion.identity)
                         .Fire();
                 }
             }
@@ -34,7 +34,7 @@ namespace JLProject{
             yield return Timing.WaitForSeconds(delay);
             for (int i = 0; i < bombCount; i++) {
                 Vector2 rand = Random.insideUnitCircle * bombRadius;
-                Instantiate(bomb, _player.transform.position + new Vector3(rand.x, _player.transform.position.y - 1f, rand.y), Quaternion.identity)
+                Instantiate(bomb, _player.transform.position + new Vector3(rand.x, _player.transform.position.y - 3f, rand.y), Quaternion.identity)
                     .Fire();
             }
         }
