@@ -64,10 +64,12 @@ namespace JLProject{
         void Update(){
             //Debug.Log(MovementSpeed);
             //as long as the game isn't pause, or we aren't frozen in place
-            if (!GameController.Controller.paused && !_isInputDisabled){
+            if (!GameController.Controller.paused){
                 if (_timeSinceAttack <= _attackDelay){
                     _timeSinceAttack += Time.deltaTime;
                 }
+                //can't do anything since we are disabled so return
+                if (_isInputDisabled) { return; }
                 //get position of mouse to get our facing angle
                 _MousePos = GetMousePosition();
                 AngleUpdate(_MousePos);
@@ -208,6 +210,8 @@ namespace JLProject{
         /// <param name="freeze"></param>
         public void SetPlayerFrozen(bool freeze = false) {
             _isInputDisabled = freeze;
+            CanMove = !freeze;
+            _PAC.moveVector = Vector3.zero;
         }
 
         /// <summary>
