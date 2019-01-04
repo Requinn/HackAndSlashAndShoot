@@ -73,9 +73,7 @@ namespace JLProject{
                 AngleUpdate(_MousePos);
 
                 //check for movement
-                if (CanMove){
-                    Movement();
-                }
+                Movement();
 
                 //check to pick up an object
                 if (PickupHandler.CanPickUp && Input.GetKeyDown(KeyCode.E)){
@@ -216,7 +214,8 @@ namespace JLProject{
         /// character motor
         /// </summary>
         protected override void Movement(){
-            if (MovementSpeed > 0) {
+            //if we can move, apply movement calculated with look directions
+            if (MovementSpeed > 0 && CanMove) {
                 _MovX = Input.GetAxisRaw("Horizontal");
                 _MovZ = Input.GetAxisRaw("Vertical");
                 _MoveDir = new Vector3(_MovX, 0, _MovZ).normalized;
@@ -225,6 +224,12 @@ namespace JLProject{
                 }
                 _MoveDir *= MovementSpeed;
                 cc.Move(_MoveDir * Time.deltaTime);
+            }
+            //if we can't move, set motion vector to zero
+            else if(!CanMove || MovementSpeed == 0) {
+                if (_PAC) {
+                    _PAC.moveVector = Vector3.zero;
+                }
             }
         }
 

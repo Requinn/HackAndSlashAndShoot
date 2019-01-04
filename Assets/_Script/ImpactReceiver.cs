@@ -32,9 +32,15 @@ public class ImpactReceiver : MonoBehaviour {
     /// <param name="dir"></param>
     /// <param name="force"></param>
     public void AddImpact(Vector3 dir, float force){
-        //If we're blocking, halve the force
-        if (_playerRef && _playerRef.CurrentShield.blocking){
-            force = force / 2;
+        if (_playerRef) {
+            //If we're blocking, halve the force
+            if (_playerRef.CurrentShield.blocking) {
+                force = force / 2;
+            }
+            //if we can't move, don't store any force
+            if (!_playerRef.CanMove) {
+                force = 0f;
+            }
         }
         dir.Normalize();
         if (dir.y > 0) dir.y = -dir.y; // reflect down force on the ground

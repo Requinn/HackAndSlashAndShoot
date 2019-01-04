@@ -4,7 +4,7 @@
     "Armor": 0.0,
     "weapons": [
         1,
-        2
+        3
     ],
-    "lastLevel": 1
+    "lastLevel": 5
 }
