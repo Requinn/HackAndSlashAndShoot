@@ -29,7 +29,8 @@ namespace JLProject{
         private float _timeSinceAttack = 0.0f;
         private float _attackDelay = 0.0f;
         public float _chargeTime = 0.0f;
-
+        private float _height;
+        public float FootRoot { get { return _height; } }
         private bool _isInputDisabled = false;
 
         private ParticleSystem _chargeParticle;
@@ -45,7 +46,8 @@ namespace JLProject{
             MovementSpeed = speed;
             cc = GetComponent<CharacterController>();
 
-            _chargeParticle = GetComponentInChildren<ParticleSystem>();
+            _height = transform.position.y - 0.95f;
+            //_chargeParticle = GetComponentInChildren<ParticleSystem>();
             Faction = Damage.Faction.Player;
             if (useSave && DataService.Instance.curLoadedProfile == 1){
                 CurrentHealth = DataService.Instance.PlayerStats.Health;

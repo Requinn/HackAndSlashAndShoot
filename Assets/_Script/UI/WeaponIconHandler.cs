@@ -19,14 +19,22 @@ namespace JLProject{
             PlayerController p = FindObjectOfType<PlayerController>();
             p.swapped += SwapIcons;
             p.equipped += UpdateIcons;
-            DisableIcons();
+            EnableIcons();
+            //DisableIcons();
         }
 
-        void Update(){
-            if (_timeSeen <= visibleTime){
+        void Update() {
+            //IconOffDelay();
+        }
+
+        /// <summary>
+        /// Handles turning the icons off
+        /// </summary>
+        private void IconOffDelay() {
+            if (_timeSeen <= visibleTime) {
                 _timeSeen += Time.deltaTime;
             }
-            if (_timeSeen > visibleTime && primaryImg.IsActive() && secondaryImg.IsActive()){
+            if (_timeSeen > visibleTime && primaryImg.IsActive() && secondaryImg.IsActive()) {
                 DisableIcons();
             }
         }
@@ -41,7 +49,7 @@ namespace JLProject{
             if (secondary){
                 secondaryImg.sprite = secondary.weaponIcon;
             }
-            EnableIcons();
+            //EnableIcons();
         }
 
         /// <summary>
