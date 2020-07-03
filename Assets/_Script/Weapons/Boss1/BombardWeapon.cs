@@ -17,25 +17,25 @@ namespace JLProject{
         }
 
         public override void Fire(){
-            if (delay > 0f){
+            if (delay > 0f) {
                 Timing.RunCoroutine(DelayedAttack()); //uh??????????????????? why the fuck is this existing?
             }
-            else{
-                for (int i = 0; i < bombCount; i++){
-                    Vector2 rand = Random.insideUnitCircle * bombRadius;
-                    //some height issues
-                    Instantiate(bomb, new Vector3(_player.transform.position.x + rand.x, _player.FootRoot, _player.transform.position.z + rand.y), Quaternion.identity)
-                        .Fire();
+            else {
+                for (int i = 0; i < bombCount; i++) {
+                    DropBombs();
                 }
             }
         }
 
         private IEnumerator<float> DelayedAttack(){
             yield return Timing.WaitForSeconds(delay);
+            DropBombs();
+        }
+
+        private void DropBombs() {
             for (int i = 0; i < bombCount; i++) {
                 Vector2 rand = Random.insideUnitCircle * bombRadius;
-                Instantiate(bomb, new Vector3(_player.transform.position.x + rand.x, _player.FootRoot, _player.transform.position.z + rand.y), Quaternion.identity)
-                    .Fire();
+                Instantiate(bomb, new Vector3(_player.transform.position.x + rand.x, _player.FootRoot, _player.transform.position.z + rand.y), Quaternion.identity).Fire();
             }
         }
     }

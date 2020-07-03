@@ -8,7 +8,7 @@ namespace JLProject{
     public class WeaponStatToText : MonoBehaviour{
         public Weapon weaponToShow;
         public Text text;
-        /*
+        
         void OnEnable(){
             UpdateWeaponText();
         }
@@ -19,10 +19,10 @@ namespace JLProject{
         }
         public void UpdateWeaponText(){
             text.text = weaponToShow.name + "\n"
-                        + weaponToShow.StatsList[0] + " : " + weaponToShow.AttackValue + "\n"
-                        + weaponToShow.StatsList[1] + " : " + weaponToShow.AttackDelay + "\n"
-                        + weaponToShow.StatsList[2] + " : " + weaponToShow.ReloadSpeed + "\n"
-                        + weaponToShow.StatsList[3] + " : " + weaponToShow.MaxMag + "\n";
-        }*/
+                        + "Attack: " + weaponToShow.AttackValue + "\n"
+                        + "Rate of Fire: " + weaponToShow.AttackDelay + "\n"
+                        + "Reload Speed: " + weaponToShow.ReloadSpeed + "\n"
+                        + "Magazine Size: " + weaponToShow.MaxMag + "\n";
+        }
     }
 }

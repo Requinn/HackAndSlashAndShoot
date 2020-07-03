@@ -244,7 +244,7 @@ namespace JLProject{
         /// </summary>
         private Vector3 GetMousePosition(){
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);    //cast a ray to the mouse position in world
-            Plane hPlane = new Plane(Vector3.up, transform.position);       //create a plane using the up vector and ourselves
+            Plane hPlane = new Plane(Vector3.up, transform.position);       //create a plane using the up vector as its normal and our position
             float dist = 0.0f;
             if (hPlane.Raycast(ray, out dist)){                             //raycast onto our plane with our mouse input
                 //OUT where our mouse sits on this plane and raycast the direction3 
@@ -295,6 +295,16 @@ namespace JLProject{
 
         public delegate void WeaponEquipEvent(Weapon primary, Weapon secondary);
         public event WeaponEquipEvent equipped;
+
+        public void Equip(Weapon weapon, int slot) {
+            Destroy(WeaponsInHand[slot]);
+            WeaponsInHand[slot] = weapon;
+            CurrentWeapon = weapon;
+            CurrentWeapon.gameObject.SetActive(true);
+            weapon.transform.parent = WeaponAttachPoint.transform;
+            weapon.transform.position = WeaponAttachPoint.position;
+            weapon.transform.rotation = WeaponAttachPoint.rotation;
+        }
         /// <summary>
         /// Equips a GO to the attachpoint
         /// </summary>
